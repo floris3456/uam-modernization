@@ -3,6 +3,7 @@ UAM-overdracht-INTERN-*/deliverables/validation-report.json
 UAM-overdracht-INTERN-*/deliverables/package/
 
 # Local secrets and environment configuration
+.ssh/
 .env
 .env.*
 !.env.example
@@ -27,4 +28,3 @@ Thumbs.db
 **/obj/
 TestResults/
 coverage/
-

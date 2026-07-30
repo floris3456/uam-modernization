@@ -1,0 +1,37 @@
+name: Validate research packs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Regenerate code reference
+        run: ./scripts/generate-code-reference.sh
+
+      - name: Confirm generated attachment is current
+        run: git diff --exit-code -- research-packs/attachments/UAM-CODE-REFERENCE.md
+
+      - name: Validate package structure
+        shell: bash
+        run: |
+          test "$(find research-packs -maxdepth 1 -name '*PROMPT.md' -type f | wc -l)" -eq 7
+          test "$(grep -l '^## Required output' research-packs/*PROMPT.md | wc -l)" -eq 7
+          test "$(grep -c '^## File:' research-packs/attachments/UAM-CODE-REFERENCE.md)" -eq 3
+
+      - name: Reject obvious credential material
+        shell: bash
+        run: |
+          ! grep -REn 'BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY|github_pat_|ghp_[A-Za-z0-9]{20,}' research-packs
