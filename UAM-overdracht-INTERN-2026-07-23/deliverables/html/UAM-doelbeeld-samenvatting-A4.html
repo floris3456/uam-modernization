@@ -1,0 +1,74 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>UAM gewenst doelbeeld in een oogopslag</title><style>@page{size:A4 portrait;margin:8mm}:root{--ink:#0f172a;--muted:#475569;--line:#cbd5e1;--blue:#1d4ed8;--soft:#f8fafc;--warn:#fff7ed}
+*{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);line-height:1.36;margin:0;background:#fff;font-size:10pt}
+h1{font-size:24pt;line-height:1.08;color:#0f172a;margin:0 0 8mm;border-bottom:2.5pt solid #2563eb;padding-bottom:3mm}h2{font-size:15pt;margin:7mm 0 2.5mm;color:#1e3a8a;break-after:avoid}h3{font-size:12pt;margin:5mm 0 2mm;color:#1e293b;break-after:avoid}
+p{margin:0 0 3mm}ul,ol{margin:1.5mm 0 3mm;padding-left:6mm}li{margin:0 0 1.2mm}strong{color:#0f172a}a{color:#1d4ed8;text-decoration:none}
+code{font-family:Consolas,monospace;background:#f1f5f9;padding:.1em .25em;border-radius:3px}pre{font-family:Consolas,monospace;font-size:8pt;background:#0f172a;color:#e2e8f0;padding:4mm;border-radius:6px;white-space:pre-wrap;break-inside:avoid}
+table{width:100%;border-collapse:collapse;margin:3mm 0 5mm;font-size:8.3pt;break-inside:auto}thead{display:table-header-group}tr{break-inside:avoid}th{background:#dbeafe;color:#172554;text-align:left;font-weight:700}th,td{border:.5pt solid #cbd5e1;padding:1.6mm;vertical-align:top;overflow-wrap:anywhere}
+img{display:block;max-width:100%;max-height:175mm;object-fit:contain;margin:4mm auto 7mm;break-inside:avoid;border:.5pt solid #cbd5e1;border-radius:4px}
+blockquote{border-left:3pt solid #2563eb;margin:3mm 0;padding:2mm 4mm;background:#eff6ff}.document-section{position:relative}.document-section+.document-section{break-before:page}
+.cover{height:250mm;display:flex;flex-direction:column;justify-content:center;padding:18mm;background:linear-gradient(145deg,#eff6ff,#fff 48%,#ecfeff);border:1pt solid #bfdbfe}.cover h1{font-size:31pt;border:0;margin:0 0 8mm}.cover .subtitle{font-size:16pt;color:#334155;max-width:155mm}.cover .meta{margin-top:28mm;font-size:10pt;color:#64748b}.cover .mark{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:#1d4ed8;font-weight:700;margin-bottom:6mm}
+.summary{font-size:9.8pt;line-height:1.25}.summary h1{font-size:23pt;margin-bottom:5mm;padding-bottom:2.5mm}.summary h2{font-size:13pt;margin:4.2mm 0 1.8mm}.summary p{margin-bottom:2.4mm}.summary ul,.summary ol{margin:1.2mm 0 2.4mm;padding-left:5.5mm}.summary li{margin-bottom:.8mm}.summary table{font-size:8.2pt;margin:2.2mm 0 3mm}.summary th,.summary td{padding:1.2mm}.summary .document-section{break-before:auto}.summary code{font-size:8pt}
+.database{font-size:8pt;line-height:1.25}.database h1{font-size:20pt}.database h2{font-size:12pt;margin-top:4.5mm}.database h3{font-size:10pt}.database table{font-size:6.2pt;table-layout:auto}.database th,.database td{padding:.8mm}.database img{max-height:175mm}
+.portal{font-size:9pt}.portal h1{font-size:22pt}.portal h2{font-size:14pt}.portal h3{font-size:11pt}.portal img{max-height:155mm;break-before:auto;box-shadow:0 2px 8px rgba(15,23,42,.12)}
+@media print{.cover{break-after:page}a{color:inherit}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body class="summary"><section class="document-section" data-source="docs\00b-uam-doelbeeld-samenvatting-a4.md"><h1 id="uam-gewenst-doelbeeld-in-een-oogopslag">UAM gewenst doelbeeld in een oogopslag</h1>
+<p><strong>Doel van dit blad:</strong> in circa één A4 begrijpen hoe de gewenste C#-oplossing eruitziet en welke ontwerpkeuzes de legacyproblemen oplossen.</p>
+<h2 id="kern-van-het-doelbeeld">Kern van het doelbeeld</h2>
+<p>De nieuwe UAM wordt geen één-op-één vertaling van PowerShell naar C#. Er komt een kleine, ondertekende <strong><code>uam.exe</code> bootstrapper</strong> die controleert of de gewenste agentversie aanwezig is, pakketten veilig installeert, atomair wisselt en kan terugrollen. <strong><code>uam-agent.exe</code></strong> wordt een .NET Worker Service die alleen policy, planning, gezondheid en taakcoördinatie verzorgt.</p>
+<p>Collectors worden afzonderlijke, versieerbare taskpackages: Browser History, Recent Items/Quick Access, Process Inventory en Browser Extensions. Eenvoudige volledig managed taken kunnen tijdelijk in een collectible <code>AssemblyLoadContext</code> draaien. Taken met native dependencies, PowerShell of een groter storings-/geheugenrisico draaien geïsoleerd in <strong><code>uam-taskhost.exe</code></strong>, zodat afsluiten aantoonbaar geheugen vrijmaakt.</p>
+<h2 id="gewenste-componenten-en-gegevensstroom">Gewenste componenten en gegevensstroom</h2>
+<table>
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>Doelbeeld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lokale opslag</td>
+<td>SQLite in WAL-modus voor settingssnapshot, gebruikersafwijkingen, taskstate, checkpoints en transactional outbox.</td>
+</tr>
+<tr>
+<td>Upload</td>
+<td>Kleine idempotente HTTPS-batches, gecomprimeerd met gzip, met retries, jitter en backpressure.</td>
+</tr>
+<tr>
+<td>Centrale verwerking</td>
+<td>Ingestion API → duurzame queue → schaalbare workers; endpoints krijgen nooit directe databasetoegang.</td>
+</tr>
+<tr>
+<td>Centrale database</td>
+<td>PostgreSQL met partitionering als voorkeursbasis; TimescaleDB pas kiezen na een representatieve benchmark.</td>
+</tr>
+<tr>
+<td>Beheer</td>
+<td>Moderne adminportal via een control-plane API, typed policyrevisies, capability-RBAC en volledige audit.</td>
+</tr>
+<tr>
+<td>Integraties</td>
+<td>Configureerbare HR-/AD-views/adapters en een interne Application Registry met optionele FK naar de echte CMDB.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functionele-richting">Functionele richting</h2>
+<ul>
+<li>Maak <strong>alles een taak</strong> met een expliciet contract, versie, schedule, timeout, privacyclassificatie en uitvoerformaat.</li>
+<li>Vervang brede logging door configureerbare <strong>URL- en procesallowlists</strong>, rechtstreeks gekoppeld aan een applicatiesleutel uit de Application Registry/CMDB.</li>
+<li>Maak globale instellingen en afwijkingen typed, versioned en centraal publiceerbaar; de agent gebruikt een lokaal gevalideerd snapshot.</li>
+<li>Voeg structured logging, correlatie-ID's, OpenTelemetry en instelbare diagnostiek toe, tijdelijk en gericht per gebruiker/apparaat.</li>
+<li>Bouw privacy, minimale gegevensverwerking, retentie, redactie van secrets/PII en veilige standaardwaarden in het ontwerp in.</li>
+</ul>
+<h2 id="schaal-en-betrouwbaarheid">Schaal en betrouwbaarheid</h2>
+<p>Ontwerp en test voor minimaal <strong>6.000 gebruikers</strong> en gelijktijdige pieken. De SQLite-outbox voorkomt dat metingen verloren gaan; idempotency voorkomt dubbele verwerking; queue en workers vlakken pieken af. Meet batchgrootte, compressie, wachtrijduur, database-inserts, storagegroei en herstel na langdurige uitval voordat een database-extensie of cloudproduct wordt gekozen.</p>
+<h2 id="aanbevolen-migratievolgorde">Aanbevolen migratievolgorde</h2>
+<ol>
+<li>Leg gedrag, privacybeleid, eventcontracten en acceptatiematen vast.</li>
+<li>Bouw bootstrapper, Worker Service, SQLite/outbox en package signing.</li>
+<li>Lever Browser History als eerste verticale slice van endpoint tot portal.</li>
+<li>Voeg overige collectors en geïsoleerde taskhost toe.</li>
+<li>Bewijs schaal, retentie en herstel; bouw daarna het beheerportaal uit.</li>
+<li>Draai een gecontroleerde parallelle pilot, migreer alleen bruikbare configuratie en bouw legacy daarna gefaseerd af.</li>
+</ol>
+<p><strong>Beoogd resultaat:</strong> een kleine en herstelbare endpointagent, een portable/open platform waar mogelijk, een aantoonbaar schaalbare ingestieketen en een sneller, veiliger en beter configureerbaar beheerportaal.</p>
+</section>
+</body></html>

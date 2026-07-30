@@ -1,0 +1,243 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>UAM PowerShell Universal-app — IST</title><style>@page{size:A4 landscape;margin:10mm}:root{--ink:#0f172a;--muted:#475569;--line:#cbd5e1;--blue:#1d4ed8;--soft:#f8fafc;--warn:#fff7ed}
+*{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);line-height:1.36;margin:0;background:#fff;font-size:10pt}
+h1{font-size:24pt;line-height:1.08;color:#0f172a;margin:0 0 8mm;border-bottom:2.5pt solid #2563eb;padding-bottom:3mm}h2{font-size:15pt;margin:7mm 0 2.5mm;color:#1e3a8a;break-after:avoid}h3{font-size:12pt;margin:5mm 0 2mm;color:#1e293b;break-after:avoid}
+p{margin:0 0 3mm}ul,ol{margin:1.5mm 0 3mm;padding-left:6mm}li{margin:0 0 1.2mm}strong{color:#0f172a}a{color:#1d4ed8;text-decoration:none}
+code{font-family:Consolas,monospace;background:#f1f5f9;padding:.1em .25em;border-radius:3px}pre{font-family:Consolas,monospace;font-size:8pt;background:#0f172a;color:#e2e8f0;padding:4mm;border-radius:6px;white-space:pre-wrap;break-inside:avoid}
+table{width:100%;border-collapse:collapse;margin:3mm 0 5mm;font-size:8.3pt;break-inside:auto}thead{display:table-header-group}tr{break-inside:avoid}th{background:#dbeafe;color:#172554;text-align:left;font-weight:700}th,td{border:.5pt solid #cbd5e1;padding:1.6mm;vertical-align:top;overflow-wrap:anywhere}
+img{display:block;max-width:100%;max-height:175mm;object-fit:contain;margin:4mm auto 7mm;break-inside:avoid;border:.5pt solid #cbd5e1;border-radius:4px}
+blockquote{border-left:3pt solid #2563eb;margin:3mm 0;padding:2mm 4mm;background:#eff6ff}.document-section{position:relative}.document-section+.document-section{break-before:page}
+.cover{height:250mm;display:flex;flex-direction:column;justify-content:center;padding:18mm;background:linear-gradient(145deg,#eff6ff,#fff 48%,#ecfeff);border:1pt solid #bfdbfe}.cover h1{font-size:31pt;border:0;margin:0 0 8mm}.cover .subtitle{font-size:16pt;color:#334155;max-width:155mm}.cover .meta{margin-top:28mm;font-size:10pt;color:#64748b}.cover .mark{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:#1d4ed8;font-weight:700;margin-bottom:6mm}
+.summary{font-size:9.8pt;line-height:1.25}.summary h1{font-size:23pt;margin-bottom:5mm;padding-bottom:2.5mm}.summary h2{font-size:13pt;margin:4.2mm 0 1.8mm}.summary p{margin-bottom:2.4mm}.summary ul,.summary ol{margin:1.2mm 0 2.4mm;padding-left:5.5mm}.summary li{margin-bottom:.8mm}.summary table{font-size:8.2pt;margin:2.2mm 0 3mm}.summary th,.summary td{padding:1.2mm}.summary .document-section{break-before:auto}.summary code{font-size:8pt}
+.database{font-size:8pt;line-height:1.25}.database h1{font-size:20pt}.database h2{font-size:12pt;margin-top:4.5mm}.database h3{font-size:10pt}.database table{font-size:6.2pt;table-layout:auto}.database th,.database td{padding:.8mm}.database img{max-height:175mm}
+.portal{font-size:9pt}.portal h1{font-size:22pt}.portal h2{font-size:14pt}.portal h3{font-size:11pt}.portal img{max-height:155mm;break-before:auto;box-shadow:0 2px 8px rgba(15,23,42,.12)}
+@media print{.cover{break-after:page}a{color:inherit}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body class="portal"><section class="cover">
+  <div class="mark">UAM overdracht • intern technisch dossier</div>
+  <h1>UAM PowerShell Universal-app — IST</h1>
+  <div class="subtitle">Functionele schermbeschrijving met privacygemaskeerde DEV-opnamen</div>
+  <div class="meta">Versie 1.0 • 23 juli 2026<br>Bronnen gefixeerd met SHA-256 • geen tokens of wachtwoorden opgenomen</div>
+</section>
+<section class="document-section" data-source="docs\03-psu-app-ist.md"><h1 id="psu-app-ist">PSU-app IST</h1>
+<h2 id="omgevingen">Omgevingen</h2>
+<table>
+<thead>
+<tr>
+<th>Omgeving</th>
+<th>App</th>
+<th>Route</th>
+<th>Status</th>
+<th>Bron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEV</td>
+<td><code>uam-logging</code> / UAM Activity Monitor</td>
+<td><code>/uam-logging</code></td>
+<td>Started</td>
+<td>lokaal <code>uam-logging.ps1</code>, 1.217 regels</td>
+</tr>
+<tr>
+<td>PROD</td>
+<td><code>User Activity Monitor</code>, ID 18</td>
+<td><code>/UAM</code></td>
+<td>Started</td>
+<td>PSU-content, 2.758 regels</td>
+</tr>
+<tr>
+<td>PROD oud/alternatief</td>
+<td><code>UAM2</code></td>
+<td><code>/UAM2</code></td>
+<td>Stopped</td>
+<td>niet als actuele IST behandeld</td>
+</tr>
+</tbody>
+</table>
+<p>De productie-app is functioneel uitgebreider dan de DEV-bron. De productiebron is read-only opgehaald via de PSU API en geanalyseerd; de app-token en credentials zijn niet in artifacts opgeslagen.</p>
+<h2 id="hoofdnavigatie">Hoofdnavigatie</h2>
+<pre><code class="language-text">Logging Users
+├─ User Grids
+└─ Organogram
+
+Logging Data
+
+Device Scripts &amp; Schedules
+├─ Device Types
+├─ Scripts
+├─ Planningen (Schedules)
+└─ Reference Data
+
+UAM Settings
+├─ Global Settings
+├─ Process Exclusions
+├─ Browser Logging Exclusions
+└─ Application Matches
+
+Errors
+Audit Log
+</code></pre>
+<p>De beheerapp combineert drie rollen: operationeel inzicht, configuratie van de agent en een vroege taak-/schedulerfunctie. In de nieuwe oplossing horen deze als afzonderlijke portalcapabilities met expliciete rechten en audit te worden gemodelleerd.</p>
+<h2 id="veilige-opnamewijze">Veilige opnamewijze</h2>
+<p>De DEV-app is met een tijdelijk Chrome-profiel en Chrome DevTools Protocol doorlopen. De automation staat uitsluitend toe:</p>
+<ul>
+<li>navigatie via <code>role=tab</code> of vier expliciet gewhiteliste ondertablabels;</li>
+<li>een zoek-/filterveld vullen en leegmaken;</li>
+<li>een sorteerknop in een kolomkop bedienen;</li>
+<li>vorige/volgende paginering bedienen.</li>
+</ul>
+<p>Niet toegestaan en niet uitgevoerd:</p>
+<ul>
+<li>Toevoegen, Opslaan, Wijzigen of Verwijderen;</li>
+<li>row actions;</li>
+<li>scripts of schedules starten;</li>
+<li>exporteren;</li>
+<li>forms submitten;</li>
+<li>databasewrites.</li>
+</ul>
+<p>Vóór elke screenshot worden tabellichamen/gridrijen geblurd, inputwaarden gemaskeerd, canvaslabels geblurd en accountlabels verborgen. De rode badge benoemt de omgeving en read-only status.</p>
+<h2 id="schermoverzicht">Schermoverzicht</h2>
+<h3 id="logging-users-user-grids">Logging Users — User Grids</h3>
+<p>Doel:</p>
+<ul>
+<li>bepalen welke medewerkers/apparaten in de UAM-populatie vallen;</li>
+<li>runtime-, versie-, status- en checkpointinformatie bekijken;</li>
+<li>filters, sortering en paging toepassen;</li>
+<li>in de beheerfunctionaliteit per gebruiker instellingen beïnvloeden.</li>
+</ul>
+<p>Belangrijk voor de vervanger:</p>
+<ul>
+<li>scheid “wie mag worden gelogd”, “welke tasks gelden”, “agent health” en “task checkpoint”;</li>
+<li>toon de herkomst van iedere beleidsbeslissing: global policy, groep, user override of tijdelijk diagnosticsbeleid;</li>
+<li>behandel wijzigingen als versieerbare policy en niet als directe losse tabelupdate.</li>
+</ul>
+<p><img src="../../artifacts/screenshots/dev/02-user-grids.png" alt="User grids met gemaskeerde operationele data" /></p>
+<h3 id="logging-users-organogram">Logging Users — Organogram</h3>
+<p>Doel:</p>
+<ul>
+<li>organisatiehiërarchie als alternatieve navigatie voor loggingpopulaties;</li>
+<li>startpunt/toplaag kiezen;</li>
+<li>medewerkers van een gekozen onderdeel tonen.</li>
+</ul>
+<p>In de DEV-opname is geen organisatienode gekozen, omdat “Toon Medewerkers” een servercallback kan uitvoeren en de opname strikt op generieke read-only controls is begrensd.</p>
+<p><img src="../../artifacts/screenshots/dev/03-organogram.png" alt="Organogram startscherm" /></p>
+<h3 id="logging-data">Logging Data</h3>
+<p>Doel:</p>
+<ul>
+<li>browser-, proces-, recent-item- en minimal logging bekijken;</li>
+<li>zoeken, sorteren en pagineren;</li>
+<li>operationele trends en individuele detailregels onderzoeken.</li>
+</ul>
+<p>Risico's:</p>
+<ul>
+<li>URL's, paden, procesmetadata en gebruikersidentiteiten zijn gevoelige gebruiksdata;</li>
+<li>detailtabellen en archieven hebben verschillende lifecycle;</li>
+<li>breed zoeken op miljoenen browserregels kan kostbaar zijn.</li>
+</ul>
+<p>De nieuwe portal moet standaard geaggregeerd openen, een expliciete reden/rol voor detailinzage vereisen en alle detailqueries begrenzen op tijd, tenant en scope.</p>
+<p><img src="../../artifacts/screenshots/dev/04-logging-data-read-interaction.png" alt="Logging Data met read-only filterinteractie" /></p>
+<h3 id="device-scripts-schedules">Device Scripts &amp; Schedules</h3>
+<p>Doel:</p>
+<ul>
+<li>apparaattypen beheren;</li>
+<li>aanvullende PowerShell-scripts definiëren;</li>
+<li>schedules en doelgroepen vastleggen;</li>
+<li>referentiewaarden beheren.</li>
+</ul>
+<p>De screenshot toont dat het onderdeel al als beheermodule is opgezet, maar de taakuitvoering in de legacy agent niet volledig is afgerond. <code>Script_Code</code> maakt willekeurige PowerShell mogelijk en is daardoor geen geschikt eindmodel.</p>
+<p>Nieuwe portalcapabilities:</p>
+<ul>
+<li>catalogus van ondertekende taskpackages en versies;</li>
+<li>schema-gevalideerde taskparameters;</li>
+<li>afzonderlijke target-/exclusion-relaties;</li>
+<li>cronpreview, next-run en timezone;</li>
+<li>staged rollout, canary, pause en kill switch;</li>
+<li>immutable task-run history en outputlimieten.</li>
+</ul>
+<p><img src="../../artifacts/screenshots/dev/05-device-scripts-schedules.png" alt="Device Types binnen Device Scripts &amp; Schedules" /></p>
+<h3 id="uam-settings-global-settings">UAM Settings — Global Settings</h3>
+<p>Doel:</p>
+<ul>
+<li>globale agentinstellingen als key/value-configuratie beheren;</li>
+<li>beschrijving, groep, datatype, eenheid, enabled en waarde tonen.</li>
+</ul>
+<p>In de actuele DEV-app is een concrete renderfout zichtbaar: de gridhelper krijgt een niet-bestaande parameter <code>DefaultSortColumn</code>. Dit is een DEV-runtime-/versieverschil en geen bewijs dat productie hetzelfde probleem heeft.</p>
+<p>De nieuwe portal moet typed setting schemas gebruiken, met validatie, defaults, revision, change reason, audit, staged activation en rollback. Secrets horen niet in deze generieke settingstore.</p>
+<p><img src="../../artifacts/screenshots/dev/11-global-settings.png" alt="Global Settings met actuele DEV-renderfout" /></p>
+<h3 id="uam-settings-process-exclusions">UAM Settings — Process Exclusions</h3>
+<p>Doel:</p>
+<ul>
+<li>procesnamen/-paden van logging uitsluiten;</li>
+<li>regels zoeken, sorteren en beheren.</li>
+</ul>
+<p>Nieuw inzicht is allowlist in plaats van denylist. Toon daarom alleen centraal goedgekeurde applicatie-/procesmatches en registreer waarom een match is toegestaan.</p>
+<p><img src="../../artifacts/screenshots/dev/12-process-exclusions.png" alt="Process exclusions" /></p>
+<h3 id="uam-settings-browser-logging-exclusions">UAM Settings — Browser Logging Exclusions</h3>
+<p>Doel:</p>
+<ul>
+<li>domeinen en URL-patronen uitsluiten;</li>
+<li>grote legacy referentielijst beheren.</li>
+</ul>
+<p>De productietabel bevat meer dan vierduizend regels. De nieuwe architectuur draait dit om: alleen applicatie-/URL-patronen op een allowlist worden gelogd; de rest wordt niet getransporteerd.</p>
+<p><img src="../../artifacts/screenshots/dev/13-browser-logging-exclusions.png" alt="Browser logging exclusions" /></p>
+<h3 id="uam-settings-application-matches">UAM Settings — Application Matches</h3>
+<p>Doel:</p>
+<ul>
+<li>domein-/procesexpressies aan een applicatie-id koppelen;</li>
+<li>logging vertalen naar een herkenbare applicatie.</li>
+</ul>
+<p>Dit is de functionele voorloper van de gewenste centrale Application Registry. <code>DeviceApplicationID</code> is nu tekst zonder FK. In de nieuwe portal wordt dit een echte interne <code>ApplicationId</code> met optionele externe CMDB-key en provenance.</p>
+<p><img src="../../artifacts/screenshots/dev/14-application-matches.png" alt="Application matches" /></p>
+<h3 id="errors">Errors</h3>
+<p>Doel:</p>
+<ul>
+<li>agentfouten en context bekijken;</li>
+<li>zoeken op apparaat, gebruiker, tijd, loglevel of versie;</li>
+<li>supportdiagnose uitvoeren.</li>
+</ul>
+<p>Nieuwe portal: fingerprinting/aggregatie, correlation-id, task-run, redactie-indicator, occurrence count, first/last seen, acknowledgement en gecontroleerde tijdelijke trace policy.</p>
+<p><img src="../../artifacts/screenshots/dev/15-errors.png" alt="Errors" /></p>
+<h3 id="audit-log">Audit Log</h3>
+<p>Doel:</p>
+<ul>
+<li>beheeracties per tabel/record/gebruiker/tijd volgen;</li>
+<li>gewijzigde velden onderzoeken.</li>
+</ul>
+<p>Het huidige model is polymorf. De nieuwe auditstore moet immutable events gebruiken met actor, tenant, capability, entity type/id, before/after-diff, reason, correlation en policy revision.</p>
+<p><img src="../../artifacts/screenshots/dev/16-audit-log.png" alt="Audit log" /></p>
+<h2 id="functionele-handigheden-om-te-behouden">Functionele handigheden om te behouden</h2>
+<ul>
+<li>één portal voor populatie, logging, settings, taken, fouten en audit;</li>
+<li>tabellen met filter, sortering, paging en exportmogelijkheden;</li>
+<li>organogram als begrijpelijke populatienavigatie;</li>
+<li>per-user afwijkingen naast global settings;</li>
+<li>proces-/browsermatching naar applicaties;</li>
+<li>expliciete errors- en auditviews;</li>
+<li>device types en doelgroepconcept voor taken.</li>
+</ul>
+<h2 id="wat-anders-moet">Wat anders moet</h2>
+<ul>
+<li>least-privilege RBAC per capability;</li>
+<li>scheiding tussen read, policy edit, task publish, task run en diagnostics;</li>
+<li>API/service-laag in plaats van portalcallbacks die direct SQL wijzigen;</li>
+<li>optimistic concurrency en revisions;</li>
+<li>policy preview en impact count vóór activering;</li>
+<li>allowlists en dataminimalisatie vóór endpointtransport;</li>
+<li>responsive, toegankelijke UI met deep links en bewaarde filters;</li>
+<li>detailtoegang met reden, scope en audit;</li>
+<li>geen arbitraire PowerShell-code als normaal taakmodel.</li>
+</ul>
+<h2 id="productiescreenshotstatus">Productiescreenshotstatus</h2>
+<p>De productie-appbron, routes en tabstructuur zijn vastgesteld. De productie-API-token kan appbron en metadata lezen, maar geen interactieve browsersessie aanmelden. De lokale DEV-adminreferenties worden in productie geweigerd. Een geldige productie-opname vereist daarom een handmatige login in het zichtbare tijdelijke browserprofiel. Bij een volgende sessie kan hetzelfde script worden gebruikt:</p>
+<pre><code class="language-powershell">.\scripts\Invoke-UamReadOnlyBrowserWalkthrough.ps1 `
+    -AppUri 'http://10.1.23.109:5000/UAM' `
+    -EnvironmentLabel PROD `
+    -ProxyServer 'http://proxy.net.groningen.nl:8080' `
+    -OutputDirectory '.\artifacts\screenshots\prod' `
+    -Visible `
+    -InteractiveLogin `
+    -LoginTimeoutSeconds 900
+</code></pre>
+<p>De gebruiker meldt zelf aan en deelt geen wachtwoord. Na redirect naar <code>/UAM</code> neemt de read-only automation het over en verwijdert aan het einde het tijdelijke profiel.</p>
+<h2 id="walkthroughvideo">Walkthroughvideo</h2>
+<p>De overdracht bevat daarnaast <code>UAM-PSU-app-walkthrough.mp4</code>: een stille DEV-rondleiding met alle toelichting in beeld. Het bewerkbare PowerPoint-bronbestand, een <code>.srt</code>-ondertitelbestand en een Markdown-transcript worden meegeleverd. De video gebruikt de bestaande privacygemaskeerde DEV-opnamen en vermeldt expliciet dat de actuele DEV-heropname en de PROD-opname nog een handmatige PSU-login vereisen.</p>
+</section>
+</body></html>

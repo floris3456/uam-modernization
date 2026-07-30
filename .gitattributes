@@ -1,0 +1,10 @@
+* text=auto
+
+# Preserve the validated handover package byte-for-byte so its SHA-256
+# manifest remains meaningful on every checkout.
+UAM-overdracht-INTERN-2026-07-23/** -text
+
+*.png binary
+*.pdf binary
+*.pptx binary
+*.mp4 binary

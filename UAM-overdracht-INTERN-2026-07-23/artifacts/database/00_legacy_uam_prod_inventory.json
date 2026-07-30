@@ -1,0 +1,245 @@
+[
+  {
+    "RequestedName": "ActionLog",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 383,
+    "ReservedMB": 0.48,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "AdUsers",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 15130,
+    "ReservedMB": 56.16,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceApplicationMatches",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 34,
+    "ReservedMB": 0.07,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceBrowserLogging",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 0,
+    "ReservedMB": 52.57,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceBrowserLogging_Archive",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 2474721,
+    "ReservedMB": 854.5,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceBrowserLogging2Exclude",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 4236,
+    "ReservedMB": 0.7,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceLoggingErrors",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 10275,
+    "ReservedMB": 2.79,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceLoggingSettings",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 33,
+    "ReservedMB": 0.07,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceLoggingUserAdGroupMembers",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 115,
+    "ReservedMB": 0.07,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceLoggingUsers",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 285,
+    "ReservedMB": 0.2,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceLoggingUserSettings",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 8,
+    "ReservedMB": 0.07,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceProcess2Exclude",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 304,
+    "ReservedMB": 0.2,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceProcessLogging",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 0,
+    "ReservedMB": 7.5,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceProcessLogging_archive",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 61747,
+    "ReservedMB": 16.47,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceRecentFileAndFolderLogging",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 0,
+    "ReservedMB": 1.13,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 13037,
+    "ReservedMB": 2.7,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "DeviceScripts",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 1,
+    "ReservedMB": 0.14,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 1,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "DeviceScriptSchedules",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 1,
+    "ReservedMB": 0.14,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 1,
+    "IndexCount": 2
+  },
+  {
+    "RequestedName": "DeviceTypes",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 38,
+    "ReservedMB": 0.07,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "GG_YF_Employments",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 5876,
+    "ReservedMB": 2.2,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "GG_YF_EmploymentsExtensions",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 23559,
+    "ReservedMB": 2.63,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "GG_YF_OrganizationUnits",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 682,
+    "ReservedMB": 0.13,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "SystemLookups",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 11,
+    "ReservedMB": 0.07,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 0,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "uam_log_minimal",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 29574,
+    "ReservedMB": 3.82,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 1,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "uam_log_minimal_dates",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 113099,
+    "ReservedMB": 2.83,
+    "HasPrimaryKey": true,
+    "ForeignKeyCount": 1,
+    "IndexCount": 1
+  },
+  {
+    "RequestedName": "vwt_hr_contracts",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 7179,
+    "ReservedMB": 2.9,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  },
+  {
+    "RequestedName": "WIJ_AFAS_Employments",
+    "ObjectType": "USER_TABLE",
+    "RowCount": 1321,
+    "ReservedMB": 0.51,
+    "HasPrimaryKey": false,
+    "ForeignKeyCount": 0,
+    "IndexCount": 0
+  }
+]

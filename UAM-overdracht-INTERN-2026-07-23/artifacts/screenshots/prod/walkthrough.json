@@ -1,0 +1,27 @@
+{
+  "Environment": "PROD",
+  "AppUri": "http://10.1.23.109:5000/UAM",
+  "Browser": "Chrome",
+  "StartedAtUtc": "2026-07-23T20:26:00.5167592Z",
+  "Safety": {
+    "Navigation": "role=tab only",
+    "Interactions": [
+      "search/filter input",
+      "sortable column header",
+      "previous/next pagination"
+    ],
+    "MutatingActions": "not permitted",
+    "ScreenshotMasking": [
+      "table bodies",
+      "grid rows",
+      "input values",
+      "canvas labels",
+      "account labels"
+    ]
+  },
+  "Screens": [],
+  "CompletedAtUtc": "2026-07-23T20:26:07.7971429Z",
+  "Result": "Failed",
+  "ErrorType": "System.Management.Automation.RuntimeException",
+  "ErrorMessage": "PSU-login is niet gelukt (controlecode: not-authenticated)."
+}

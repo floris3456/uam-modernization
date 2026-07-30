@@ -1,0 +1,71 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>UAM IST in een oogopslag</title><style>@page{size:A4 portrait;margin:8mm}:root{--ink:#0f172a;--muted:#475569;--line:#cbd5e1;--blue:#1d4ed8;--soft:#f8fafc;--warn:#fff7ed}
+*{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);line-height:1.36;margin:0;background:#fff;font-size:10pt}
+h1{font-size:24pt;line-height:1.08;color:#0f172a;margin:0 0 8mm;border-bottom:2.5pt solid #2563eb;padding-bottom:3mm}h2{font-size:15pt;margin:7mm 0 2.5mm;color:#1e3a8a;break-after:avoid}h3{font-size:12pt;margin:5mm 0 2mm;color:#1e293b;break-after:avoid}
+p{margin:0 0 3mm}ul,ol{margin:1.5mm 0 3mm;padding-left:6mm}li{margin:0 0 1.2mm}strong{color:#0f172a}a{color:#1d4ed8;text-decoration:none}
+code{font-family:Consolas,monospace;background:#f1f5f9;padding:.1em .25em;border-radius:3px}pre{font-family:Consolas,monospace;font-size:8pt;background:#0f172a;color:#e2e8f0;padding:4mm;border-radius:6px;white-space:pre-wrap;break-inside:avoid}
+table{width:100%;border-collapse:collapse;margin:3mm 0 5mm;font-size:8.3pt;break-inside:auto}thead{display:table-header-group}tr{break-inside:avoid}th{background:#dbeafe;color:#172554;text-align:left;font-weight:700}th,td{border:.5pt solid #cbd5e1;padding:1.6mm;vertical-align:top;overflow-wrap:anywhere}
+img{display:block;max-width:100%;max-height:175mm;object-fit:contain;margin:4mm auto 7mm;break-inside:avoid;border:.5pt solid #cbd5e1;border-radius:4px}
+blockquote{border-left:3pt solid #2563eb;margin:3mm 0;padding:2mm 4mm;background:#eff6ff}.document-section{position:relative}.document-section+.document-section{break-before:page}
+.cover{height:250mm;display:flex;flex-direction:column;justify-content:center;padding:18mm;background:linear-gradient(145deg,#eff6ff,#fff 48%,#ecfeff);border:1pt solid #bfdbfe}.cover h1{font-size:31pt;border:0;margin:0 0 8mm}.cover .subtitle{font-size:16pt;color:#334155;max-width:155mm}.cover .meta{margin-top:28mm;font-size:10pt;color:#64748b}.cover .mark{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:#1d4ed8;font-weight:700;margin-bottom:6mm}
+.summary{font-size:9.8pt;line-height:1.25}.summary h1{font-size:23pt;margin-bottom:5mm;padding-bottom:2.5mm}.summary h2{font-size:13pt;margin:4.2mm 0 1.8mm}.summary p{margin-bottom:2.4mm}.summary ul,.summary ol{margin:1.2mm 0 2.4mm;padding-left:5.5mm}.summary li{margin-bottom:.8mm}.summary table{font-size:8.2pt;margin:2.2mm 0 3mm}.summary th,.summary td{padding:1.2mm}.summary .document-section{break-before:auto}.summary code{font-size:8pt}
+.database{font-size:8pt;line-height:1.25}.database h1{font-size:20pt}.database h2{font-size:12pt;margin-top:4.5mm}.database h3{font-size:10pt}.database table{font-size:6.2pt;table-layout:auto}.database th,.database td{padding:.8mm}.database img{max-height:175mm}
+.portal{font-size:9pt}.portal h1{font-size:22pt}.portal h2{font-size:14pt}.portal h3{font-size:11pt}.portal img{max-height:155mm;break-before:auto;box-shadow:0 2px 8px rgba(15,23,42,.12)}
+@media print{.cover{break-after:page}a{color:inherit}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body class="summary"><section class="document-section" data-source="docs\00a-uam-ist-samenvatting-a4.md"><h1 id="uam-ist-in-een-oogopslag">UAM IST in een oogopslag</h1>
+<p><strong>Doel van dit blad:</strong> in circa één A4 begrijpen wat de huidige UAM-oplossing doet, hoe zij technisch is opgebouwd en waar de belangrijkste overdrachtsrisico's zitten.</p>
+<h2 id="wat-draait-er-nu">Wat draait er nu?</h2>
+<p>De endpointagent is een PowerShell-script van <strong>4.805 regels</strong> dat met PS2EXE als <code>uam.exe</code> zonder console wordt uitgevoerd. Voor debugging bestaat een consolevariant. Naast de executable is <code>dbsettings.txt</code> nodig; daarin staat de MSSQL-connectieroute versleuteld. Tijdens de start haalt de agent globale instellingen, eventuele gebruikersafwijkingen, filters en eerder opgeslagen checkpoints uit de database.</p>
+<p>De agent voert hoofdzakelijk drie collectors uit: <strong>browserhistorie</strong>, <strong>Windows Recent/Quick Access</strong> en <strong>Windows-processen</strong>. Hij controleert per collector of deze actief is en opnieuw moet draaien, verzamelt gegevens, maakt detail- en minimale logging en actualiseert checkpoints. SQL-statements worden eerst in geheugen en CSV gebufferd en daarna transactiewijs rechtstreeks naar MSSQL verstuurd. Bij verbindingsproblemen wordt de CSV-buffer bij een volgende start hersteld.</p>
+<h2 id="huidige-componenten-en-gegevens">Huidige componenten en gegevens</h2>
+<table>
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>IST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><code>uam.exe</code>, gecompileerde PowerShell; orchestratie, collectors, buffering en SQL in één proces.</td>
+</tr>
+<tr>
+<td>Lokale configuratie</td>
+<td><code>dbsettings.txt</code>; nog geen centrale lokale settingsdatabase.</td>
+</tr>
+<tr>
+<td>Centrale database</td>
+<td>27 tabellen, 569 velden, 13 primary keys, slechts 2 fysieke foreign keys.</td>
+</tr>
+<tr>
+<td>Grootste historie</td>
+<td><code>DeviceBrowserLogging_Archive</code>: circa 2,47 miljoen rijen op het meetmoment.</td>
+</tr>
+<tr>
+<td>Beheerportaal</td>
+<td>PowerShell Universal-app voor gebruikersselectie, loggingdata, settings, uitsluitingen, applicatiematches, taken/planningen, errors en audit.</td>
+</tr>
+<tr>
+<td>Bronnen</td>
+<td>UAM-tabellen plus klantgebonden HR-/AD-structuren; veel relaties bestaan alleen impliciet in code en SQL.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wat-is-waardevol-en-moet-behouden-blijven">Wat is waardevol en moet behouden blijven?</h2>
+<ul>
+<li>Checkpoints per collector, deferred verwerking en herstel na tijdelijke storingen.</li>
+<li>Browser-tijdconversies, profiel-/bestandsstabiliteitscontroles en normalisatie van legacy settings.</li>
+<li>Een compacte minimale gebruiksregistratie naast detailgegevens.</li>
+<li>Doelgroep- en gebruikersafwijkingen, uitsluitingen/matches, foutcontext en auditinformatie.</li>
+<li>De bestaande functionele indeling van het PSU-portaal als vertrekpunt voor het nieuwe beheerportaal.</li>
+</ul>
+<h2 id="belangrijkste-knelpunten">Belangrijkste knelpunten</h2>
+<ul>
+<li>Eén groot proces combineert hosting, scheduling, collectors, SQL, foutafhandeling en self-restart.</li>
+<li>Endpoints schrijven direct naar MSSQL; de CSV bevat complete SQL-statements en is geen robuuste transactional outbox.</li>
+<li>Veel tekstkoppelingen, ontbrekende foreign keys en klantafhankelijke HR-/AD-tabellen maken wijziging en hergebruik lastig.</li>
+<li>Dubbele functies, dynamische SQL, handmatige garbage collection en een aangetroffen hardcoded <code>$Pwd</code> vragen om expliciete sanering; het geheim wordt niet meegeleverd.</li>
+<li>Het taken-/planningsdeel is functioneel nog niet af en arbitraire scripts vereisen strengere isolatie en autorisatie.</li>
+</ul>
+<p><strong>Bewijsstand:</strong> legacy agent, productie-DDL, rij-/veldprofielen, data dictionary en DEV-portaalschermen zijn vastgelegd. De laatste geautomatiseerde DEV-heropname en de PROD-browseropname vereisen nog een geldige handmatige PSU-login; bestaande DEV-beelden zijn privacygemaskeerd en uitsluitend via leesacties verkregen.</p>
+</section>
+</body></html>

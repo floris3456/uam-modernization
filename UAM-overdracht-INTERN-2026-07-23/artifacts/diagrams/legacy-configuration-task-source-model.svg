@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1110" viewBox="0 0 1800 1110" role="img" aria-label="Legacy UAM configuratie-, taak- en bronnenmodel">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.14"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+  <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+  <style>
+    .title{font:700 30px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.subtitle{font:400 15px 'Segoe UI',Arial,sans-serif;fill:#475569}
+    .panel-title{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.box-title{font:700 14px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.box-title-small{font:700 11px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+    .box-meta{font:400 12px 'Segoe UI',Arial,sans-serif;fill:#475569}.entity-field{font:400 13px Consolas,'Segoe UI',monospace;fill:#334155}
+    .entity-key{font:700 13px Consolas,'Segoe UI',monospace;fill:#0f172a}.label{font:600 12px 'Segoe UI',Arial,sans-serif;fill:#334155}
+    .small{font:400 11px 'Segoe UI',Arial,sans-serif;fill:#64748b}.zone{font:700 18px 'Segoe UI',Arial,sans-serif;fill:#1e293b}
+  </style>
+</defs>
+<rect width="1800" height="1110" fill="#f8fafc"/>
+<text x="40" y="48" class="title">Legacy UAM configuratie-, taak- en bronnenmodel</text>
+<text x="40" y="76" text-anchor="start" class="subtitle">Fysieke sleutels zijn expliciet gemarkeerd; overige koppelingen zijn functionele/logische contracten.</text>
+<g filter="url(#shadow)"><rect x="40" y="120" width="315" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="40" y="120" width="315" height="38" rx="12" fill="#e0e7ff"/><rect x="40" y="146" width="315" height="12" fill="#e0e7ff"/></g>
+<text x="54" y="145" text-anchor="start" class="panel-title">DeviceLoggingSettings</text>
+<text x="55" y="181" text-anchor="start" class="entity-key">PK Setting_code</text>
+<text x="55" y="203" text-anchor="start" class="entity-field">Setting_Value</text>
+<text x="55" y="225" text-anchor="start" class="entity-field">Setting_ValueType</text>
+<text x="55" y="247" text-anchor="start" class="entity-field">Setting_Enabled</text>
+<text x="55" y="277" text-anchor="start" class="small">Globale instelling</text>
+<g filter="url(#shadow)"><rect x="420" y="120" width="335" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="420" y="120" width="335" height="38" rx="12" fill="#e0e7ff"/><rect x="420" y="146" width="335" height="12" fill="#e0e7ff"/></g>
+<text x="434" y="145" text-anchor="start" class="panel-title">DeviceLoggingUserSettings</text>
+<text x="435" y="181" text-anchor="start" class="entity-key">PK DeviceLoggingUserSettingID</text>
+<text x="435" y="203" text-anchor="start" class="entity-field">username / domain / computer</text>
+<text x="435" y="225" text-anchor="start" class="entity-field">Setting_code</text>
+<text x="435" y="247" text-anchor="start" class="entity-field">Setting_Value</text>
+<text x="435" y="277" text-anchor="start" class="small">Override zonder fysieke FK</text>
+<g filter="url(#shadow)"><rect x="820" y="120" width="300" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="820" y="120" width="300" height="38" rx="12" fill="#ffedd5"/><rect x="820" y="146" width="300" height="12" fill="#ffedd5"/></g>
+<text x="834" y="145" text-anchor="start" class="panel-title">DeviceBrowserLogging2Exclude</text>
+<text x="835" y="181" text-anchor="start" class="entity-key">PK ...ExcludeID</text>
+<text x="835" y="203" text-anchor="start" class="entity-field">URL/domain/patroon</text>
+<text x="835" y="225" text-anchor="start" class="entity-field">Enabled</text>
+<text x="835" y="247" text-anchor="start" class="entity-field">Remarks</text>
+<text x="835" y="277" text-anchor="start" class="small">Legacy denylist</text>
+<g filter="url(#shadow)"><rect x="1170" y="120" width="280" height="146" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1170" y="120" width="280" height="38" rx="12" fill="#ffedd5"/><rect x="1170" y="146" width="280" height="12" fill="#ffedd5"/></g>
+<text x="1184" y="145" text-anchor="start" class="panel-title">DeviceProcess2Exclude</text>
+<text x="1185" y="181" text-anchor="start" class="entity-key">PK Process2ExcludeID</text>
+<text x="1185" y="203" text-anchor="start" class="entity-field">process / path / publisher</text>
+<text x="1185" y="225" text-anchor="start" class="entity-field">Enabled</text>
+<text x="1185" y="255" text-anchor="start" class="small">Legacy denylist</text>
+<g filter="url(#shadow)"><rect x="1500" y="120" width="270" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1500" y="120" width="270" height="38" rx="12" fill="#ffedd5"/><rect x="1500" y="146" width="270" height="12" fill="#ffedd5"/></g>
+<text x="1514" y="145" text-anchor="start" class="panel-title">DeviceApplicationMatches</text>
+<text x="1515" y="181" text-anchor="start" class="entity-key">PK ...MatchID</text>
+<text x="1515" y="203" text-anchor="start" class="entity-field">DeviceApplicationID</text>
+<text x="1515" y="225" text-anchor="start" class="entity-field">domain expression</text>
+<text x="1515" y="247" text-anchor="start" class="entity-field">process expression</text>
+<text x="1515" y="277" text-anchor="start" class="small">Logische CMDB-koppeling</text>
+<line x1="355" y1="220" x2="420" y2="220" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="388" y="213" text-anchor="middle" class="small">Setting_code</text>
+<g filter="url(#shadow)"><rect x="40" y="455" width="280" height="146" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="40" y="455" width="280" height="38" rx="12" fill="#f3e8ff"/><rect x="40" y="481" width="280" height="12" fill="#f3e8ff"/></g>
+<text x="54" y="480" text-anchor="start" class="panel-title">DeviceTypes</text>
+<text x="55" y="516" text-anchor="start" class="entity-key">PK DeviceTypeID</text>
+<text x="55" y="538" text-anchor="start" class="entity-field">type / description</text>
+<text x="55" y="560" text-anchor="start" class="entity-field">Enabled</text>
+<text x="55" y="590" text-anchor="start" class="small">Doelgroepcatalogus</text>
+<g filter="url(#shadow)"><rect x="385" y="410" width="330" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="385" y="410" width="330" height="38" rx="12" fill="#f3e8ff"/><rect x="385" y="436" width="330" height="12" fill="#f3e8ff"/></g>
+<text x="399" y="435" text-anchor="start" class="panel-title">DeviceScripts</text>
+<text x="400" y="471" text-anchor="start" class="entity-key">PK Script_GUID</text>
+<text x="400" y="493" text-anchor="start" class="entity-field">Script_Description_short</text>
+<text x="400" y="515" text-anchor="start" class="entity-field">Script_Code</text>
+<text x="400" y="537" text-anchor="start" class="entity-field">ScriptEnabled</text>
+<text x="400" y="559" text-anchor="start" class="entity-field">output/type hints</text>
+<text x="400" y="589" text-anchor="start" class="small">Uitvoerbare taakdefinitie</text>
+<g filter="url(#shadow)"><rect x="800" y="410" width="350" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="800" y="410" width="350" height="38" rx="12" fill="#f3e8ff"/><rect x="800" y="436" width="350" height="12" fill="#f3e8ff"/></g>
+<text x="814" y="435" text-anchor="start" class="panel-title">DeviceScriptSchedules</text>
+<text x="815" y="471" text-anchor="start" class="entity-key">PK ScheduleID</text>
+<text x="815" y="493" text-anchor="start" class="entity-key">FK Script_GUID</text>
+<text x="815" y="515" text-anchor="start" class="entity-field">ScheduleType</text>
+<text x="815" y="537" text-anchor="start" class="entity-field">CronExpression</text>
+<text x="815" y="559" text-anchor="start" class="entity-field">ScheduleEnabled</text>
+<text x="815" y="589" text-anchor="start" class="small">Planning; deels onaf</text>
+<g filter="url(#shadow)"><rect x="1235" y="455" width="270" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1235" y="455" width="270" height="38" rx="12" fill="#f3e8ff"/><rect x="1235" y="481" width="270" height="12" fill="#f3e8ff"/></g>
+<text x="1249" y="480" text-anchor="start" class="panel-title">SystemLookups</text>
+<text x="1250" y="516" text-anchor="start" class="entity-key">PK LookupID</text>
+<text x="1250" y="538" text-anchor="start" class="entity-field">LookupType</text>
+<text x="1250" y="560" text-anchor="start" class="entity-field">LookupCode</text>
+<text x="1250" y="582" text-anchor="start" class="entity-field">LookupValue</text>
+<text x="1250" y="612" text-anchor="start" class="small">Referentiewaarden</text>
+<g filter="url(#shadow)"><rect x="1540" y="455" width="230" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1540" y="455" width="230" height="38" rx="12" fill="#e2e8f0"/><rect x="1540" y="481" width="230" height="12" fill="#e2e8f0"/></g>
+<text x="1554" y="480" text-anchor="start" class="panel-title">ActionLog</text>
+<text x="1555" y="516" text-anchor="start" class="entity-key">PK LogID</text>
+<text x="1555" y="538" text-anchor="start" class="entity-field">TableName</text>
+<text x="1555" y="560" text-anchor="start" class="entity-field">RecordID</text>
+<text x="1555" y="582" text-anchor="start" class="entity-field">ChangedFields</text>
+<text x="1555" y="612" text-anchor="start" class="small">Polymorfe audit</text>
+<line x1="715" y1="505" x2="800" y2="505" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowBlue)"/>
+<text x="758" y="498" text-anchor="middle" class="small">FK Script_GUID</text>
+<line x1="320" y1="525" x2="385" y2="525" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="352" y="518" text-anchor="middle" class="small">doeltype</text>
+<line x1="1235" y1="535" x2="1150" y2="535" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="1192" y="528" text-anchor="middle" class="small">lookupcode</text>
+<g filter="url(#shadow)"><rect x="40" y="790" width="280" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="40" y="790" width="280" height="38" rx="12" fill="#fef9c3"/><rect x="40" y="816" width="280" height="12" fill="#fef9c3"/></g>
+<text x="54" y="815" text-anchor="start" class="panel-title">AdUsers</text>
+<text x="55" y="851" text-anchor="start" class="entity-field">ObjectGUID / SID</text>
+<text x="55" y="873" text-anchor="start" class="entity-field">SamAccountName</text>
+<text x="55" y="895" text-anchor="start" class="entity-field">HR-/AD-attributen</text>
+<text x="55" y="917" text-anchor="start" class="entity-field">235 velden</text>
+<text x="55" y="947" text-anchor="start" class="small">Externe bronstructuur</text>
+<g filter="url(#shadow)"><rect x="370" y="770" width="350" height="146" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="370" y="770" width="350" height="38" rx="12" fill="#fef9c3"/><rect x="370" y="796" width="350" height="12" fill="#fef9c3"/></g>
+<text x="384" y="795" text-anchor="start" class="panel-title">DeviceLoggingUserAdGroupMembers</text>
+<text x="385" y="831" text-anchor="start" class="entity-field">AdGroup metadata</text>
+<text x="385" y="853" text-anchor="start" class="entity-field">AdUser_ObjectGuid</text>
+<text x="385" y="875" text-anchor="start" class="entity-field">username / domain</text>
+<text x="385" y="905" text-anchor="start" class="small">Groepsselectie zonder FK</text>
+<g filter="url(#shadow)"><rect x="780" y="770" width="300" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="780" y="770" width="300" height="38" rx="12" fill="#dbeafe"/><rect x="780" y="796" width="300" height="12" fill="#dbeafe"/></g>
+<text x="794" y="795" text-anchor="start" class="panel-title">DeviceLoggingUsers</text>
+<text x="795" y="831" text-anchor="start" class="entity-key">PK LoggingUserID</text>
+<text x="795" y="853" text-anchor="start" class="entity-field">username / domain</text>
+<text x="795" y="875" text-anchor="start" class="entity-field">computername</text>
+<text x="795" y="897" text-anchor="start" class="entity-field">logging flags/checkpoints</text>
+<text x="795" y="927" text-anchor="start" class="small">Te loggen populatie/state</text>
+<g filter="url(#shadow)"><rect x="1150" y="755" width="315" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1150" y="755" width="315" height="38" rx="12" fill="#fef9c3"/><rect x="1150" y="781" width="315" height="12" fill="#fef9c3"/></g>
+<text x="1164" y="780" text-anchor="start" class="panel-title">HR-bronstructuren</text>
+<text x="1165" y="816" text-anchor="start" class="entity-field">GG_YF_Employments</text>
+<text x="1165" y="838" text-anchor="start" class="entity-field">GG_YF_EmploymentsExtensions</text>
+<text x="1165" y="860" text-anchor="start" class="entity-field">GG_YF_OrganizationUnits</text>
+<text x="1165" y="882" text-anchor="start" class="entity-field">vwt_hr_contracts</text>
+<text x="1165" y="904" text-anchor="start" class="entity-field">WIJ_AFAS_Employments</text>
+<text x="1165" y="934" text-anchor="start" class="small">Vervangen door configureerbare views</text>
+<g filter="url(#shadow)"><rect x="1530" y="790" width="240" height="146" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1530" y="790" width="240" height="38" rx="12" fill="#ecfccb"/><rect x="1530" y="816" width="240" height="12" fill="#ecfccb"/></g>
+<text x="1544" y="815" text-anchor="start" class="panel-title">ExternalApplicationCMDB</text>
+<text x="1545" y="851" text-anchor="start" class="entity-field">application key</text>
+<text x="1545" y="873" text-anchor="start" class="entity-field">naam / eigenaar</text>
+<text x="1545" y="895" text-anchor="start" class="entity-field">classificatie</text>
+<text x="1545" y="925" text-anchor="start" class="small">Doelcontract, niet fysiek aanwezig</text>
+<line x1="320" y1="880" x2="370" y2="880" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="345" y="873" text-anchor="middle" class="small">ObjectGuid</text>
+<line x1="720" y1="880" x2="780" y2="880" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="750" y="873" text-anchor="middle" class="small">username/domain</text>
+<line x1="1150" y1="880" x2="1080" y2="880" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="1115" y="873" text-anchor="middle" class="small">populatie</text>
+<path d="M1635 330 C1720 500 1720 700 1650 790" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="1715" y="575" text-anchor="middle" class="small">DeviceApplicationID</text>
+<path d="M1650 620 C1450 690 1120 700 950 770" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+<text x="1320" y="690" text-anchor="middle" class="small">TableName + RecordID</text>
+<text x="40" y="1078" text-anchor="start" class="small">Doelrichting: typed policies, expliciete bronadapters, CMDB-sleutels en referential integrity in plaats van impliciete tekstkoppelingen.</text>
+</svg>

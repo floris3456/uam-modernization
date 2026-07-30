@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1030" viewBox="0 0 1800 1030" role="img" aria-label="C# doelarchitectuur — endpoint, ingestie en control plane">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.14"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker>
+  <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+  <style>
+    .title{font:700 30px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.subtitle{font:400 15px 'Segoe UI',Arial,sans-serif;fill:#475569}
+    .panel-title{font:700 17px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.box-title{font:700 14px 'Segoe UI',Arial,sans-serif;fill:#0f172a}.box-title-small{font:700 11px 'Segoe UI',Arial,sans-serif;fill:#0f172a}
+    .box-meta{font:400 12px 'Segoe UI',Arial,sans-serif;fill:#475569}.entity-field{font:400 13px Consolas,'Segoe UI',monospace;fill:#334155}
+    .entity-key{font:700 13px Consolas,'Segoe UI',monospace;fill:#0f172a}.label{font:600 12px 'Segoe UI',Arial,sans-serif;fill:#334155}
+    .small{font:400 11px 'Segoe UI',Arial,sans-serif;fill:#64748b}.zone{font:700 18px 'Segoe UI',Arial,sans-serif;fill:#1e293b}
+  </style>
+</defs>
+<rect width="1800" height="1030" fill="#f8fafc"/>
+<text x="40" y="48" class="title">C# doelarchitectuur — endpoint, ingestie en control plane</text>
+<text x="40" y="76" text-anchor="start" class="subtitle">Kleine endpoint-agent, lokale duurzame buffer, idempotente HTTPS-ingestie en centraal beheer.</text>
+<rect x="35" y="105" width="570" height="845" rx="18" fill="#eef2ff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="55" y="136" text-anchor="start" class="panel-title">Endpoint (Windows)</text>
+<rect x="625" y="105" width="570" height="845" rx="18" fill="#ecfeff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="645" y="136" text-anchor="start" class="panel-title">Ingestie- en dataplatform</text>
+<rect x="1215" y="105" width="550" height="845" rx="18" fill="#f0fdf4" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1235" y="136" text-anchor="start" class="panel-title">Beheer en distributie</text>
+<g filter="url(#shadow)"><rect x="85" y="155" width="470" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="85" y="155" width="470" height="38" rx="12" fill="#dbeafe"/><rect x="85" y="181" width="470" height="12" fill="#dbeafe"/></g>
+<text x="99" y="180" text-anchor="start" class="panel-title">uam.exe bootstrapper</text>
+<text x="100" y="216" text-anchor="start" class="entity-field">signed manifest ophalen</text>
+<text x="100" y="238" text-anchor="start" class="entity-field">versie/hash/signature controleren</text>
+<text x="100" y="260" text-anchor="start" class="entity-field">atomic install/swap</text>
+<text x="100" y="282" text-anchor="start" class="entity-field">rollback en service-start</text>
+<text x="100" y="312" text-anchor="start" class="small">Geen collectorlogica</text>
+<g filter="url(#shadow)"><rect x="85" y="370" width="470" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="85" y="370" width="470" height="38" rx="12" fill="#dbeafe"/><rect x="85" y="396" width="470" height="12" fill="#dbeafe"/></g>
+<text x="99" y="395" text-anchor="start" class="panel-title">uam-agent.exe — Worker Service</text>
+<text x="100" y="431" text-anchor="start" class="entity-field">policy/schedule evaluator</text>
+<text x="100" y="453" text-anchor="start" class="entity-field">single-instance + health</text>
+<text x="100" y="475" text-anchor="start" class="entity-field">taskco&#246;rdinatie</text>
+<text x="100" y="497" text-anchor="start" class="entity-field">structured diagnostics</text>
+<text x="100" y="527" text-anchor="start" class="small">Kleine orchestrator</text>
+<g filter="url(#shadow)"><rect x="85" y="610" width="230" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="85" y="610" width="230" height="38" rx="12" fill="#e0e7ff"/><rect x="85" y="636" width="230" height="12" fill="#e0e7ff"/></g>
+<text x="99" y="635" text-anchor="start" class="panel-title">Lokale SQLite (WAL)</text>
+<text x="100" y="671" text-anchor="start" class="entity-field">settings snapshot</text>
+<text x="100" y="693" text-anchor="start" class="entity-field">user overrides</text>
+<text x="100" y="715" text-anchor="start" class="entity-field">task state</text>
+<text x="100" y="737" text-anchor="start" class="entity-field">checkpoints</text>
+<text x="100" y="759" text-anchor="start" class="entity-field">transactional outbox</text>
+<text x="100" y="789" text-anchor="start" class="small">Versleutelde/ACL-beveiligde opslag</text>
+<g filter="url(#shadow)"><rect x="335" y="610" width="220" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="335" y="610" width="220" height="38" rx="12" fill="#f3e8ff"/><rect x="335" y="636" width="220" height="12" fill="#f3e8ff"/></g>
+<text x="349" y="635" text-anchor="start" class="panel-title">Task runner / taskhost</text>
+<text x="350" y="671" text-anchor="start" class="entity-field">collectible ALC voor simpel</text>
+<text x="350" y="693" text-anchor="start" class="entity-field">out-of-process voor native</text>
+<text x="350" y="715" text-anchor="start" class="entity-field">timeouts en resource limits</text>
+<text x="350" y="737" text-anchor="start" class="entity-field">Browser / Recent / Process</text>
+<text x="350" y="759" text-anchor="start" class="entity-field">Extensions / PowerShell adapter</text>
+<text x="350" y="789" text-anchor="start" class="small">Expliciet taskcontract</text>
+<g filter="url(#shadow)"><rect x="675" y="180" width="470" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="675" y="180" width="470" height="38" rx="12" fill="#cffafe"/><rect x="675" y="206" width="470" height="12" fill="#cffafe"/></g>
+<text x="689" y="205" text-anchor="start" class="panel-title">HTTPS ingestion API</text>
+<text x="690" y="241" text-anchor="start" class="entity-field">device identity + scopes</text>
+<text x="690" y="263" text-anchor="start" class="entity-field">gzip batches</text>
+<text x="690" y="285" text-anchor="start" class="entity-field">schema- en omvangvalidatie</text>
+<text x="690" y="307" text-anchor="start" class="entity-field">idempotency key</text>
+<text x="690" y="329" text-anchor="start" class="entity-field">rate limits / backpressure</text>
+<text x="690" y="359" text-anchor="start" class="small">Geen endpoint-naar-databaseverbinding</text>
+<g filter="url(#shadow)"><rect x="675" y="455" width="470" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="675" y="455" width="470" height="38" rx="12" fill="#cffafe"/><rect x="675" y="481" width="470" height="12" fill="#cffafe"/></g>
+<text x="689" y="480" text-anchor="start" class="panel-title">Duurzame queue</text>
+<text x="690" y="516" text-anchor="start" class="entity-field">partition key</text>
+<text x="690" y="538" text-anchor="start" class="entity-field">retry / dead-letter</text>
+<text x="690" y="560" text-anchor="start" class="entity-field">watermarks</text>
+<text x="690" y="582" text-anchor="start" class="entity-field">horizontale schaal</text>
+<text x="690" y="612" text-anchor="start" class="small">Ontkoppelt piekbelasting</text>
+<g filter="url(#shadow)"><rect x="675" y="650" width="225" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="675" y="650" width="225" height="38" rx="12" fill="#cffafe"/><rect x="675" y="676" width="225" height="12" fill="#cffafe"/></g>
+<text x="689" y="675" text-anchor="start" class="panel-title">Ingestion workers</text>
+<text x="690" y="711" text-anchor="start" class="entity-field">batch insert</text>
+<text x="690" y="733" text-anchor="start" class="entity-field">deduplicatie</text>
+<text x="690" y="755" text-anchor="start" class="entity-field">retention/projectors</text>
+<text x="690" y="777" text-anchor="start" class="entity-field">OpenTelemetry</text>
+<text x="690" y="807" text-anchor="start" class="small">Stateless schaalbaar</text>
+<g filter="url(#shadow)"><rect x="920" y="650" width="225" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="920" y="650" width="225" height="38" rx="12" fill="#dcfce7"/><rect x="920" y="676" width="225" height="12" fill="#dcfce7"/></g>
+<text x="934" y="675" text-anchor="start" class="panel-title">PostgreSQL</text>
+<text x="935" y="711" text-anchor="start" class="entity-field">partitioned event facts</text>
+<text x="935" y="733" text-anchor="start" class="entity-field">policy/config revisions</text>
+<text x="935" y="755" text-anchor="start" class="entity-field">application registry</text>
+<text x="935" y="777" text-anchor="start" class="entity-field">audit/diagnostics</text>
+<text x="935" y="807" text-anchor="start" class="small">TimescaleDB alleen na benchmark</text>
+<g filter="url(#shadow)"><rect x="1260" y="180" width="455" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1260" y="180" width="455" height="38" rx="12" fill="#dcfce7"/><rect x="1260" y="206" width="455" height="12" fill="#dcfce7"/></g>
+<text x="1274" y="205" text-anchor="start" class="panel-title">Admin portal</text>
+<text x="1275" y="241" text-anchor="start" class="entity-field">loggingbeleid</text>
+<text x="1275" y="263" text-anchor="start" class="entity-field">URL-/procesallowlists</text>
+<text x="1275" y="285" text-anchor="start" class="entity-field">tasks en schedules</text>
+<text x="1275" y="307" text-anchor="start" class="entity-field">diagnostics per persoon/device</text>
+<text x="1275" y="329" text-anchor="start" class="entity-field">audit en operationele status</text>
+<text x="1275" y="359" text-anchor="start" class="small">Capability-RBAC; veilige defaults</text>
+<g filter="url(#shadow)"><rect x="1260" y="485" width="455" height="190" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1260" y="485" width="455" height="38" rx="12" fill="#dcfce7"/><rect x="1260" y="511" width="455" height="12" fill="#dcfce7"/></g>
+<text x="1274" y="510" text-anchor="start" class="panel-title">Control-plane API</text>
+<text x="1275" y="546" text-anchor="start" class="entity-field">typed policy revisions</text>
+<text x="1275" y="568" text-anchor="start" class="entity-field">optimistic concurrency</text>
+<text x="1275" y="590" text-anchor="start" class="entity-field">validation + four-eyes options</text>
+<text x="1275" y="612" text-anchor="start" class="entity-field">CMDB/HR/AD adapters</text>
+<text x="1275" y="634" text-anchor="start" class="entity-field">audit trail</text>
+<text x="1275" y="664" text-anchor="start" class="small">Enige mutatieroute</text>
+<g filter="url(#shadow)"><rect x="1260" y="735" width="455" height="168" rx="12" fill="#ffffff" stroke="#64748b"/><rect x="1260" y="735" width="455" height="38" rx="12" fill="#ecfccb"/><rect x="1260" y="761" width="455" height="12" fill="#ecfccb"/></g>
+<text x="1274" y="760" text-anchor="start" class="panel-title">Signed package/policy store</text>
+<text x="1275" y="796" text-anchor="start" class="entity-field">versioned agent packages</text>
+<text x="1275" y="818" text-anchor="start" class="entity-field">task DLL packages</text>
+<text x="1275" y="840" text-anchor="start" class="entity-field">ETag/delta policies</text>
+<text x="1275" y="862" text-anchor="start" class="entity-field">signatures + rollout rings</text>
+<text x="1275" y="892" text-anchor="start" class="small">Canary, rollback en provenance</text>
+<line x1="320" y1="315" x2="320" y2="370" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowBlue)"/>
+<text x="320" y="335" text-anchor="middle" class="small">install/start</text>
+<line x1="245" y1="555" x2="200" y2="610" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="222" y="575" text-anchor="middle" class="small">state/outbox</text>
+<line x1="400" y1="555" x2="445" y2="610" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="422" y="575" text-anchor="middle" class="small">run task</text>
+<path d="M315 735 C560 735 575 290 675 290" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowBlue)"/>
+<text x="570" y="520" text-anchor="middle" class="small">HTTPS gzip + idempotency</text>
+<line x1="910" y1="377" x2="910" y2="455" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="910" y="409" text-anchor="middle" class="small">enqueue</text>
+<line x1="910" y1="575" x2="790" y2="650" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="850" y="605" text-anchor="middle" class="small">consume</text>
+<line x1="900" y1="760" x2="920" y2="760" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="910" y="753" text-anchor="middle" class="small">batch write</text>
+<line x1="1487" y1="410" x2="1487" y2="485" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1487" y="441" text-anchor="middle" class="small">beheeractie</text>
+<line x1="1487" y1="655" x2="1487" y2="735" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1487" y="688" text-anchor="middle" class="small">publish</text>
+<path d="M1260 830 C850 1000 430 980 320 555" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#arrowBlue)"/>
+<text x="820" y="970" text-anchor="middle" class="small">poll/ETag + signature</text>
+<path d="M1260 570 C1180 570 1170 760 1145 760" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1190" y="670" text-anchor="middle" class="small">config/audit</text>
+<text x="40" y="995" text-anchor="start" class="small">OpenTelemetry en privacyredactie gelden end-to-end; secrets staan in een secret store en nooit in policy, log of pakket.</text>
+</svg>

@@ -1,0 +1,30 @@
+# Generated validation and packaging output
+UAM-overdracht-INTERN-*/deliverables/validation-report.json
+UAM-overdracht-INTERN-*/deliverables/package/
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.key
+*.pem
+secrets.json
+appsettings.*.local.json
+
+# IDE and operating-system files
+.idea/
+.vscode/
+.vs/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+
+# Build and test output for the future .NET implementation
+**/bin/
+**/obj/
+TestResults/
+coverage/
+

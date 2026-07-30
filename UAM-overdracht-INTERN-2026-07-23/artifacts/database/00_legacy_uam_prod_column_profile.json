@@ -1,0 +1,3985 @@
+[
+  {
+    "TableName": "ActionLog",
+    "ColumnName": "LogID",
+    "Ordinal": 1,
+    "TotalRows": 383,
+    "NonNullRows": 383
+  },
+  {
+    "TableName": "ActionLog",
+    "ColumnName": "ActionType",
+    "Ordinal": 2,
+    "TotalRows": 383,
+    "NonNullRows": 383
+  },
+  {
+    "TableName": "ActionLog",
+    "ColumnName": "TableName",
+    "Ordinal": 3,
+    "TotalRows": 383,
+    "NonNullRows": 383
+  },
+  {
+    "TableName": "ActionLog",
+    "ColumnName": "RecordID",
+    "Ordinal": 4,
+    "TotalRows": 383,
+    "NonNullRows": 383
+  },
+  {
+    "TableName": "ActionLog",
+    "ColumnName": "ChangedFields",
+    "Ordinal": 5,
+    "TotalRows": 383,
+    "NonNullRows": 383
+  },
+  {
+    "TableName": "ActionLog",
+    "ColumnName": "UserName",
+    "Ordinal": 6,
+    "TotalRows": 383,
+    "NonNullRows": 383
+  },
+  {
+    "TableName": "ActionLog",
+    "ColumnName": "Timestamp",
+    "Ordinal": 7,
+    "TotalRows": 383,
+    "NonNullRows": 383
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "SID",
+    "Ordinal": 1,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "SIDHistory",
+    "Ordinal": 2,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "LastKnownParent",
+    "Ordinal": 3,
+    "TotalRows": 15130,
+    "NonNullRows": 286
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ObjectCategory",
+    "Ordinal": 4,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "instanceType",
+    "Ordinal": 5,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ObjectClass",
+    "Ordinal": 6,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "employeeType",
+    "Ordinal": 7,
+    "TotalRows": 15130,
+    "NonNullRows": 7
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ObjectGUID",
+    "Ordinal": 8,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "objectSid",
+    "Ordinal": 9,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "servicePrincipalName",
+    "Ordinal": 10,
+    "TotalRows": 15130,
+    "NonNullRows": 5
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ServicePrincipalNames",
+    "Ordinal": 11,
+    "TotalRows": 15130,
+    "NonNullRows": 5
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "UserPrincipalName",
+    "Ordinal": 12,
+    "TotalRows": 15130,
+    "NonNullRows": 15126
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "DistinguishedName",
+    "Ordinal": 13,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "CN",
+    "Ordinal": 14,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "CanonicalName",
+    "Ordinal": 15,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ou",
+    "Ordinal": 16,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "PrimaryGroup",
+    "Ordinal": 17,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "primaryGroupID",
+    "Ordinal": 18,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "SamAccountName",
+    "Ordinal": 19,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Name",
+    "Ordinal": 20,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "sAMAccountType",
+    "Ordinal": 21,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "EmployeeID",
+    "Ordinal": 22,
+    "TotalRows": 15130,
+    "NonNullRows": 1492
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "EmployeeNumber",
+    "Ordinal": 23,
+    "TotalRows": 15130,
+    "NonNullRows": 7016
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "EmailAddress",
+    "Ordinal": 24,
+    "TotalRows": 15130,
+    "NonNullRows": 7651
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mail",
+    "Ordinal": 25,
+    "TotalRows": 15130,
+    "NonNullRows": 7651
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mailNickname",
+    "Ordinal": 26,
+    "TotalRows": 15130,
+    "NonNullRows": 7556
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Enabled",
+    "Ordinal": 27,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Manager",
+    "Ordinal": 28,
+    "TotalRows": 15130,
+    "NonNullRows": 7732
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "AccountExpirationDate",
+    "Ordinal": 29,
+    "TotalRows": 15130,
+    "NonNullRows": 1692
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "AccountLockoutTime",
+    "Ordinal": 30,
+    "TotalRows": 15130,
+    "NonNullRows": 177
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "AccountNotDelegated",
+    "Ordinal": 31,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "showInAddressBook",
+    "Ordinal": 32,
+    "TotalRows": 15130,
+    "NonNullRows": 7577
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "DisplayName",
+    "Ordinal": 33,
+    "TotalRows": 15130,
+    "NonNullRows": 15121
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "displayNamePrintable",
+    "Ordinal": 34,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Surname",
+    "Ordinal": 35,
+    "TotalRows": 15130,
+    "NonNullRows": 9515
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "GivenName",
+    "Ordinal": 36,
+    "TotalRows": 15130,
+    "NonNullRows": 9595
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Initials",
+    "Ordinal": 37,
+    "TotalRows": 15130,
+    "NonNullRows": 6357
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "State",
+    "Ordinal": 38,
+    "TotalRows": 15130,
+    "NonNullRows": 153
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "StreetAddress",
+    "Ordinal": 39,
+    "TotalRows": 15130,
+    "NonNullRows": 7322
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "physicalDeliveryOfficeName",
+    "Ordinal": 40,
+    "TotalRows": 15130,
+    "NonNullRows": 167
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Office",
+    "Ordinal": 41,
+    "TotalRows": 15130,
+    "NonNullRows": 167
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "roomNumber",
+    "Ordinal": 42,
+    "TotalRows": 15130,
+    "NonNullRows": 3916
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "PostalCode",
+    "Ordinal": 43,
+    "TotalRows": 15130,
+    "NonNullRows": 7366
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "City",
+    "Ordinal": 44,
+    "TotalRows": 15130,
+    "NonNullRows": 6799
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Country",
+    "Ordinal": 45,
+    "TotalRows": 15130,
+    "NonNullRows": 6343
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "countryCode",
+    "Ordinal": 46,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "st",
+    "Ordinal": 47,
+    "TotalRows": 15130,
+    "NonNullRows": 153
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "postOfficeBox",
+    "Ordinal": 48,
+    "TotalRows": 15130,
+    "NonNullRows": 131
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "POBox",
+    "Ordinal": 49,
+    "TotalRows": 15130,
+    "NonNullRows": 131
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "co",
+    "Ordinal": 50,
+    "TotalRows": 15130,
+    "NonNullRows": 41
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Company",
+    "Ordinal": 51,
+    "TotalRows": 15130,
+    "NonNullRows": 8413
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Department",
+    "Ordinal": 52,
+    "TotalRows": 15130,
+    "NonNullRows": 8416
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Title",
+    "Ordinal": 53,
+    "TotalRows": 15130,
+    "NonNullRows": 8382
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "homeMDB",
+    "Ordinal": 54,
+    "TotalRows": 15130,
+    "NonNullRows": 7555
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "HomedirRequired",
+    "Ordinal": 55,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "HomeDrive",
+    "Ordinal": 56,
+    "TotalRows": 15130,
+    "NonNullRows": 8738
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "HomeDirectory",
+    "Ordinal": 57,
+    "TotalRows": 15130,
+    "NonNullRows": 8764
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ScriptPath",
+    "Ordinal": 58,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ProfilePath",
+    "Ordinal": 59,
+    "TotalRows": 15130,
+    "NonNullRows": 3
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "proxyAddresses",
+    "Ordinal": 60,
+    "TotalRows": 15130,
+    "NonNullRows": 7557
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "telephoneNumber",
+    "Ordinal": 61,
+    "TotalRows": 15130,
+    "NonNullRows": 4505
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "MobilePhone",
+    "Ordinal": 62,
+    "TotalRows": 15130,
+    "NonNullRows": 5911
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ipPhone",
+    "Ordinal": 63,
+    "TotalRows": 15130,
+    "NonNullRows": 6
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "HomePhone",
+    "Ordinal": 64,
+    "TotalRows": 15130,
+    "NonNullRows": 31
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "OfficePhone",
+    "Ordinal": 65,
+    "TotalRows": 15130,
+    "NonNullRows": 4505
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "otherTelephone",
+    "Ordinal": 66,
+    "TotalRows": 15130,
+    "NonNullRows": 571
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "facsimileTelephoneNumber",
+    "Ordinal": 67,
+    "TotalRows": 15130,
+    "NonNullRows": 197
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Fax",
+    "Ordinal": 68,
+    "TotalRows": 15130,
+    "NonNullRows": 197
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "wWWHomePage",
+    "Ordinal": 69,
+    "TotalRows": 15130,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "HomePage",
+    "Ordinal": 70,
+    "TotalRows": 15130,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "Description",
+    "Ordinal": 71,
+    "TotalRows": 15130,
+    "NonNullRows": 9770
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "info",
+    "Ordinal": 72,
+    "TotalRows": 15130,
+    "NonNullRows": 4819
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchWhenMailboxCreated",
+    "Ordinal": 73,
+    "TotalRows": 15130,
+    "NonNullRows": 9476
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msTSExpireDate",
+    "Ordinal": 74,
+    "TotalRows": 15130,
+    "NonNullRows": 77
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "whenCreated",
+    "Ordinal": 75,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "whenChanged",
+    "Ordinal": 76,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "lastLogoff",
+    "Ordinal": 77,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "lastLogon",
+    "Ordinal": 78,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "LockedOut",
+    "Ordinal": 79,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "lockoutTime",
+    "Ordinal": 80,
+    "TotalRows": 15130,
+    "NonNullRows": 7224
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "PasswordExpired",
+    "Ordinal": 81,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "PasswordLastSet",
+    "Ordinal": 82,
+    "TotalRows": 15130,
+    "NonNullRows": 14337
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "PasswordNeverExpires",
+    "Ordinal": 83,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "PasswordNotRequired",
+    "Ordinal": 84,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "badPwdCount",
+    "Ordinal": 85,
+    "TotalRows": 15130,
+    "NonNullRows": 5130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "BadLogonCount",
+    "Ordinal": 86,
+    "TotalRows": 15130,
+    "NonNullRows": 5130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "CannotChangePassword",
+    "Ordinal": 87,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "AllowReversiblePasswordEncryption",
+    "Ordinal": 88,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "pwdLastSet",
+    "Ordinal": 89,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute1",
+    "Ordinal": 90,
+    "TotalRows": 15130,
+    "NonNullRows": 6955
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute2",
+    "Ordinal": 91,
+    "TotalRows": 15130,
+    "NonNullRows": 6291
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute3",
+    "Ordinal": 92,
+    "TotalRows": 15130,
+    "NonNullRows": 1642
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute4",
+    "Ordinal": 93,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute5",
+    "Ordinal": 94,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute6",
+    "Ordinal": 95,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute7",
+    "Ordinal": 96,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute8",
+    "Ordinal": 97,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute9",
+    "Ordinal": 98,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute10",
+    "Ordinal": 99,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute11",
+    "Ordinal": 100,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute12",
+    "Ordinal": 101,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute13",
+    "Ordinal": 102,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute14",
+    "Ordinal": 103,
+    "TotalRows": 15130,
+    "NonNullRows": 1356
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "extensionAttribute15",
+    "Ordinal": 104,
+    "TotalRows": 15130,
+    "NonNullRows": 1423
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "kostenplaats",
+    "Ordinal": 105,
+    "TotalRows": 15130,
+    "NonNullRows": 5313
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mAPIRecipient",
+    "Ordinal": 106,
+    "TotalRows": 15130,
+    "NonNullRows": 1917
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mDBOverQuotaLimit",
+    "Ordinal": 107,
+    "TotalRows": 15130,
+    "NonNullRows": 115
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mDBStorageQuota",
+    "Ordinal": 108,
+    "TotalRows": 15130,
+    "NonNullRows": 117
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mDBUseDefaults",
+    "Ordinal": 109,
+    "TotalRows": 15130,
+    "NonNullRows": 7576
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "MNSLogonAccount",
+    "Ordinal": 110,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msDS-KeyCredentialLink",
+    "Ordinal": 111,
+    "TotalRows": 15130,
+    "NonNullRows": 355
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msDS-LastKnownRDN",
+    "Ordinal": 112,
+    "TotalRows": 15130,
+    "NonNullRows": 286
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msDS-SupportedEncryptionTypes",
+    "Ordinal": 113,
+    "TotalRows": 15130,
+    "NonNullRows": 515
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msDS-User-Account-Control-Computed",
+    "Ordinal": 114,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchAddressBookFlags",
+    "Ordinal": 115,
+    "TotalRows": 15130,
+    "NonNullRows": 79
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchAddressBookPolicyLink",
+    "Ordinal": 116,
+    "TotalRows": 15130,
+    "NonNullRows": 6524
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchArchiveQuota",
+    "Ordinal": 117,
+    "TotalRows": 15130,
+    "NonNullRows": 4882
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchArchiveWarnQuota",
+    "Ordinal": 118,
+    "TotalRows": 15130,
+    "NonNullRows": 4882
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchBlockedSendersHash",
+    "Ordinal": 119,
+    "TotalRows": 15130,
+    "NonNullRows": 1873
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchBypassAudit",
+    "Ordinal": 120,
+    "TotalRows": 15130,
+    "NonNullRows": 81
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchCalendarLoggingQuota",
+    "Ordinal": 121,
+    "TotalRows": 15130,
+    "NonNullRows": 4879
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchDelegateListBL",
+    "Ordinal": 122,
+    "TotalRows": 15130,
+    "NonNullRows": 4606
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchDelegateListLink",
+    "Ordinal": 123,
+    "TotalRows": 15130,
+    "NonNullRows": 353
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchDumpsterQuota",
+    "Ordinal": 124,
+    "TotalRows": 15130,
+    "NonNullRows": 4898
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchDumpsterWarningQuota",
+    "Ordinal": 125,
+    "TotalRows": 15130,
+    "NonNullRows": 4898
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchELCMailboxFlags",
+    "Ordinal": 126,
+    "TotalRows": 15130,
+    "NonNullRows": 6865
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchGroupSecurityFlags",
+    "Ordinal": 127,
+    "TotalRows": 15130,
+    "NonNullRows": 5
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchHideFromAddressLists",
+    "Ordinal": 128,
+    "TotalRows": 15130,
+    "NonNullRows": 949
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchHomeServerName",
+    "Ordinal": 129,
+    "TotalRows": 15130,
+    "NonNullRows": 7576
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMailboxAuditEnable",
+    "Ordinal": 130,
+    "TotalRows": 15130,
+    "NonNullRows": 27
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMailboxAuditLastAdminAccess",
+    "Ordinal": 131,
+    "TotalRows": 15130,
+    "NonNullRows": 7
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMailboxAuditLastDelegateAccess",
+    "Ordinal": 132,
+    "TotalRows": 15130,
+    "NonNullRows": 5
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMailboxAuditLogAgeLimit",
+    "Ordinal": 133,
+    "TotalRows": 15130,
+    "NonNullRows": 9
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMailboxFolderSet",
+    "Ordinal": 134,
+    "TotalRows": 15130,
+    "NonNullRows": 6
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMailboxTemplateLink",
+    "Ordinal": 135,
+    "TotalRows": 15130,
+    "NonNullRows": 5160
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMDBRulesQuota",
+    "Ordinal": 136,
+    "TotalRows": 15130,
+    "NonNullRows": 9
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMobileMailboxFlags",
+    "Ordinal": 137,
+    "TotalRows": 15130,
+    "NonNullRows": 5945
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchModerationFlags",
+    "Ordinal": 138,
+    "TotalRows": 15130,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchPoliciesExcluded",
+    "Ordinal": 139,
+    "TotalRows": 15130,
+    "NonNullRows": 6285
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchPoliciesIncluded",
+    "Ordinal": 140,
+    "TotalRows": 15130,
+    "NonNullRows": 1271
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchPreviousRecipientTypeDetails",
+    "Ordinal": 141,
+    "TotalRows": 15130,
+    "NonNullRows": 1713
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchProvisioningFlags",
+    "Ordinal": 142,
+    "TotalRows": 15130,
+    "NonNullRows": 79
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchRBACPolicyLink",
+    "Ordinal": 143,
+    "TotalRows": 15130,
+    "NonNullRows": 7555
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchRecipientDisplayType",
+    "Ordinal": 144,
+    "TotalRows": 15130,
+    "NonNullRows": 7556
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchRecipientSoftDeletedStatus",
+    "Ordinal": 145,
+    "TotalRows": 15130,
+    "NonNullRows": 1720
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchRecipientTypeDetails",
+    "Ordinal": 146,
+    "TotalRows": 15130,
+    "NonNullRows": 7556
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchSafeRecipientsHash",
+    "Ordinal": 147,
+    "TotalRows": 15130,
+    "NonNullRows": 56
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowCountryCode",
+    "Ordinal": 148,
+    "TotalRows": 15130,
+    "NonNullRows": 23
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowDisplayName",
+    "Ordinal": 149,
+    "TotalRows": 15130,
+    "NonNullRows": 89
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowGivenName",
+    "Ordinal": 150,
+    "TotalRows": 15130,
+    "NonNullRows": 32
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowInfo",
+    "Ordinal": 151,
+    "TotalRows": 15130,
+    "NonNullRows": 6
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowMailNickname",
+    "Ordinal": 152,
+    "TotalRows": 15130,
+    "NonNullRows": 228
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowProxyAddresses",
+    "Ordinal": 153,
+    "TotalRows": 15130,
+    "NonNullRows": 468
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowSn",
+    "Ordinal": 154,
+    "TotalRows": 15130,
+    "NonNullRows": 21
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchTextMessagingState",
+    "Ordinal": 155,
+    "TotalRows": 15130,
+    "NonNullRows": 7555
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchThrottlingPolicyDN",
+    "Ordinal": 156,
+    "TotalRows": 15130,
+    "NonNullRows": 2476
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchTransportRecipientSettingsFlags",
+    "Ordinal": 157,
+    "TotalRows": 15130,
+    "NonNullRows": 88
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchUMDtmfMap",
+    "Ordinal": 158,
+    "TotalRows": 15130,
+    "NonNullRows": 9486
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchUMEnabledFlags2",
+    "Ordinal": 159,
+    "TotalRows": 15130,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchUserAccountControl",
+    "Ordinal": 160,
+    "TotalRows": 15130,
+    "NonNullRows": 7576
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchUserBL",
+    "Ordinal": 161,
+    "TotalRows": 15130,
+    "NonNullRows": 3
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchUserCulture",
+    "Ordinal": 162,
+    "TotalRows": 15130,
+    "NonNullRows": 4833
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchVersion",
+    "Ordinal": 163,
+    "TotalRows": 15130,
+    "NonNullRows": 7559
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mSMQDigests",
+    "Ordinal": 164,
+    "TotalRows": 15130,
+    "NonNullRows": 15
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mSMQSignCertificates",
+    "Ordinal": 165,
+    "TotalRows": 15130,
+    "NonNullRows": 15
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msTSLicenseVersion",
+    "Ordinal": 166,
+    "TotalRows": 15130,
+    "NonNullRows": 77
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msTSLicenseVersion2",
+    "Ordinal": 167,
+    "TotalRows": 15130,
+    "NonNullRows": 46
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msTSLicenseVersion3",
+    "Ordinal": 168,
+    "TotalRows": 15130,
+    "NonNullRows": 46
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msTSManagingLS",
+    "Ordinal": 169,
+    "TotalRows": 15130,
+    "NonNullRows": 77
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "publicDelegatesBL",
+    "Ordinal": 170,
+    "TotalRows": 15130,
+    "NonNullRows": 1834
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "sDRightsEffective",
+    "Ordinal": 171,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchCoManagedObjectsBL",
+    "Ordinal": 172,
+    "TotalRows": 15130,
+    "NonNullRows": 182
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "authOrigBL",
+    "Ordinal": 173,
+    "TotalRows": 15130,
+    "NonNullRows": 11
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "managedObjects",
+    "Ordinal": 174,
+    "TotalRows": 15130,
+    "NonNullRows": 154
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "altRecipientBL",
+    "Ordinal": 175,
+    "TotalRows": 15130,
+    "NonNullRows": 6
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchPreviousHomeMDB",
+    "Ordinal": 176,
+    "TotalRows": 15130,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "mDBOverHardQuotaLimit",
+    "Ordinal": 177,
+    "TotalRows": 15130,
+    "NonNullRows": 32
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchSenderHintTranslations",
+    "Ordinal": 178,
+    "TotalRows": 15130,
+    "NonNullRows": 5
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchSharingPolicyLink",
+    "Ordinal": 179,
+    "TotalRows": 15130,
+    "NonNullRows": 4
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchAuditOwner",
+    "Ordinal": 180,
+    "TotalRows": 15130,
+    "NonNullRows": 12
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchOmaAdminWirelessEnable",
+    "Ordinal": 181,
+    "TotalRows": 15130,
+    "NonNullRows": 9
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "deletedItemFlags",
+    "Ordinal": 182,
+    "TotalRows": 15130,
+    "NonNullRows": 4
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchSharingPartnerIdentities",
+    "Ordinal": 183,
+    "TotalRows": 15130,
+    "NonNullRows": 30
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "altRecipient",
+    "Ordinal": 184,
+    "TotalRows": 15130,
+    "NonNullRows": 11
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "deliverAndRedirect",
+    "Ordinal": 185,
+    "TotalRows": 15130,
+    "NonNullRows": 7
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchGenericForwardingAddress",
+    "Ordinal": 186,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowTitle",
+    "Ordinal": 187,
+    "TotalRows": 15130,
+    "NonNullRows": 7
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchAuditAdmin",
+    "Ordinal": 188,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchAuditDelegateAdmin",
+    "Ordinal": 189,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchMailboxMoveTargetUserBL",
+    "Ordinal": 190,
+    "TotalRows": 15130,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowDepartment",
+    "Ordinal": 191,
+    "TotalRows": 15130,
+    "NonNullRows": 4
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowMobile",
+    "Ordinal": 192,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowPostalCode",
+    "Ordinal": 193,
+    "TotalRows": 15130,
+    "NonNullRows": 3
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowStreetAddress",
+    "Ordinal": 194,
+    "TotalRows": 15130,
+    "NonNullRows": 3
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowTelephoneNumber",
+    "Ordinal": 195,
+    "TotalRows": 15130,
+    "NonNullRows": 4
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchResourceDisplay",
+    "Ordinal": 196,
+    "TotalRows": 15130,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchResourceMetaData",
+    "Ordinal": 197,
+    "TotalRows": 15130,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchResourceSearchProperties",
+    "Ordinal": 198,
+    "TotalRows": 15130,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchShadowPhysicalDeliveryOfficeName",
+    "Ordinal": 199,
+    "TotalRows": 15130,
+    "NonNullRows": 3
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchAuditDelegate",
+    "Ordinal": 200,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msRTCSIP-PrimaryUserAddress",
+    "Ordinal": 201,
+    "TotalRows": 15130,
+    "NonNullRows": 3
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msRTCSIP-UserEnabled",
+    "Ordinal": 202,
+    "TotalRows": 15130,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchResourceCapacity",
+    "Ordinal": 203,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchArchiveDatabaseLink",
+    "Ordinal": 204,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchArchiveName",
+    "Ordinal": 205,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msDS-ExternalDirectoryObjectId",
+    "Ordinal": 206,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchLitigationHoldDate",
+    "Ordinal": 207,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchLitigationHoldOwner",
+    "Ordinal": 208,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "msExchUserHoldPolicies",
+    "Ordinal": 209,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "legacyExchangeDN",
+    "Ordinal": 210,
+    "TotalRows": 15130,
+    "NonNullRows": 7557
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "SmartcardLogonRequired",
+    "Ordinal": 211,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "UseDESKeyOnly",
+    "Ordinal": 212,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "userAccountControl",
+    "Ordinal": 213,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "userCertificate",
+    "Ordinal": 214,
+    "TotalRows": 15130,
+    "NonNullRows": 6
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "TrustedForDelegation",
+    "Ordinal": 215,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "TrustedToAuthForDelegation",
+    "Ordinal": 216,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "KerberosEncryptionType",
+    "Ordinal": 217,
+    "TotalRows": 15130,
+    "NonNullRows": 515
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "PrincipalsAllowedToDelegateToAccount",
+    "Ordinal": 218,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "ProtectedFromAccidentalDeletion",
+    "Ordinal": 219,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "DoesNotRequirePreAuth",
+    "Ordinal": 220,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "targetAddress",
+    "Ordinal": 221,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "desktopProfile",
+    "Ordinal": 222,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "garbageCollPeriod",
+    "Ordinal": 223,
+    "TotalRows": 15130,
+    "NonNullRows": 10
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "codePage",
+    "Ordinal": 224,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "CompoundIdentitySupported",
+    "Ordinal": 225,
+    "TotalRows": 15130,
+    "NonNullRows": 515
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "directReports",
+    "Ordinal": 226,
+    "TotalRows": 15130,
+    "NonNullRows": 709
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "internetEncoding",
+    "Ordinal": 227,
+    "TotalRows": 15130,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "protocolSettings",
+    "Ordinal": 228,
+    "TotalRows": 15130,
+    "NonNullRows": 2660
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "publicDelegates",
+    "Ordinal": 229,
+    "TotalRows": 15130,
+    "NonNullRows": 1312
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "authOrig",
+    "Ordinal": 230,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "submissionContLength",
+    "Ordinal": 231,
+    "TotalRows": 15130,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "_rowno",
+    "Ordinal": 232,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "_firstdiscovered",
+    "Ordinal": 233,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "_lastdiscovered",
+    "Ordinal": 234,
+    "TotalRows": 15130,
+    "NonNullRows": 15130
+  },
+  {
+    "TableName": "AdUsers",
+    "ColumnName": "_remarks",
+    "Ordinal": 235,
+    "TotalRows": 15130,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceApplicationMatches",
+    "ColumnName": "DeviceApplicationMatchID",
+    "Ordinal": 1,
+    "TotalRows": 34,
+    "NonNullRows": 34
+  },
+  {
+    "TableName": "DeviceApplicationMatches",
+    "ColumnName": "DeviceApplicationID",
+    "Ordinal": 2,
+    "TotalRows": 34,
+    "NonNullRows": 33
+  },
+  {
+    "TableName": "DeviceApplicationMatches",
+    "ColumnName": "DeviceApplicationDomainExpression",
+    "Ordinal": 3,
+    "TotalRows": 34,
+    "NonNullRows": 34
+  },
+  {
+    "TableName": "DeviceApplicationMatches",
+    "ColumnName": "DeviceApplicationProcessnameExpression",
+    "Ordinal": 4,
+    "TotalRows": 34,
+    "NonNullRows": 33
+  },
+  {
+    "TableName": "DeviceApplicationMatches",
+    "ColumnName": "WhenCreated",
+    "Ordinal": 5,
+    "TotalRows": 34,
+    "NonNullRows": 34
+  },
+  {
+    "TableName": "DeviceApplicationMatches",
+    "ColumnName": "Enabled",
+    "Ordinal": 6,
+    "TotalRows": 34,
+    "NonNullRows": 34
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "datetimestamp",
+    "Ordinal": 1,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "computername",
+    "Ordinal": 2,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "username",
+    "Ordinal": 3,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "userdomain",
+    "Ordinal": 4,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "browser",
+    "Ordinal": 5,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "datetime",
+    "Ordinal": 6,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "domain",
+    "Ordinal": 7,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging",
+    "ColumnName": "url",
+    "Ordinal": 8,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "datetimestamp",
+    "Ordinal": 1,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "computername",
+    "Ordinal": 2,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "username",
+    "Ordinal": 3,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "userdomain",
+    "Ordinal": 4,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "browser",
+    "Ordinal": 5,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "datetime",
+    "Ordinal": 6,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "domain",
+    "Ordinal": 7,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging_Archive",
+    "ColumnName": "url",
+    "Ordinal": 8,
+    "TotalRows": 2474721,
+    "NonNullRows": 2474721
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "DeviceBrowserLogging2ExcludeID",
+    "Ordinal": 1,
+    "TotalRows": 4236,
+    "NonNullRows": 4236
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "DomainExpression",
+    "Ordinal": 2,
+    "TotalRows": 4236,
+    "NonNullRows": 4236
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "URLexpression",
+    "Ordinal": 3,
+    "TotalRows": 4236,
+    "NonNullRows": 5
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "Description",
+    "Ordinal": 4,
+    "TotalRows": 4236,
+    "NonNullRows": 4231
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "Group",
+    "Ordinal": 5,
+    "TotalRows": 4236,
+    "NonNullRows": 4231
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "Remarks",
+    "Ordinal": 6,
+    "TotalRows": 4236,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "CreateDate",
+    "Ordinal": 7,
+    "TotalRows": 4236,
+    "NonNullRows": 4236
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "CreateBy",
+    "Ordinal": 8,
+    "TotalRows": 4236,
+    "NonNullRows": 4231
+  },
+  {
+    "TableName": "DeviceBrowserLogging2Exclude",
+    "ColumnName": "Enabled",
+    "Ordinal": 9,
+    "TotalRows": 4236,
+    "NonNullRows": 4236
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "DatetimeStamp",
+    "Ordinal": 1,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "Computername",
+    "Ordinal": 2,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "UserName",
+    "Ordinal": 3,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "UserDNSDomain",
+    "Ordinal": 4,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "LogLevel",
+    "Ordinal": 5,
+    "TotalRows": 10278,
+    "NonNullRows": 10254
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "ErrorMessage",
+    "Ordinal": 6,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "Script",
+    "Ordinal": 7,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "Line",
+    "Ordinal": 8,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "Position",
+    "Ordinal": 9,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "CallStack",
+    "Ordinal": 10,
+    "TotalRows": 10278,
+    "NonNullRows": 10278
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "uam_commandline",
+    "Ordinal": 11,
+    "TotalRows": 10278,
+    "NonNullRows": 10254
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "UAM_CreationDate",
+    "Ordinal": 12,
+    "TotalRows": 10278,
+    "NonNullRows": 10254
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "UAM_Version",
+    "Ordinal": 13,
+    "TotalRows": 10278,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "UAM_Settings",
+    "Ordinal": 14,
+    "TotalRows": 10278,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceLoggingErrors",
+    "ColumnName": "WindowsVersion",
+    "Ordinal": 15,
+    "TotalRows": 10278,
+    "NonNullRows": 10254
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_code",
+    "Ordinal": 1,
+    "TotalRows": 33,
+    "NonNullRows": 33
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_Description_short",
+    "Ordinal": 2,
+    "TotalRows": 33,
+    "NonNullRows": 29
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_Description_long",
+    "Ordinal": 3,
+    "TotalRows": 33,
+    "NonNullRows": 16
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_Group",
+    "Ordinal": 4,
+    "TotalRows": 33,
+    "NonNullRows": 33
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_Value",
+    "Ordinal": 5,
+    "TotalRows": 33,
+    "NonNullRows": 33
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_measurement_unit",
+    "Ordinal": 6,
+    "TotalRows": 33,
+    "NonNullRows": 10
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_ValueType",
+    "Ordinal": 7,
+    "TotalRows": 33,
+    "NonNullRows": 33
+  },
+  {
+    "TableName": "DeviceLoggingSettings",
+    "ColumnName": "Setting_Enabled",
+    "Ordinal": 8,
+    "TotalRows": 33,
+    "NonNullRows": 33
+  },
+  {
+    "TableName": "DeviceLoggingUserAdGroupMembers",
+    "ColumnName": "DeviceLoggingUserAdGroupMemberID",
+    "Ordinal": 1,
+    "TotalRows": 115,
+    "NonNullRows": 115
+  },
+  {
+    "TableName": "DeviceLoggingUserAdGroupMembers",
+    "ColumnName": "UserName",
+    "Ordinal": 2,
+    "TotalRows": 115,
+    "NonNullRows": 115
+  },
+  {
+    "TableName": "DeviceLoggingUserAdGroupMembers",
+    "ColumnName": "AdUser_ObjectGuid",
+    "Ordinal": 3,
+    "TotalRows": 115,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceLoggingUserAdGroupMembers",
+    "ColumnName": "AdGroup_ObjectGuid",
+    "Ordinal": 4,
+    "TotalRows": 115,
+    "NonNullRows": 115
+  },
+  {
+    "TableName": "DeviceLoggingUserAdGroupMembers",
+    "ColumnName": "WhenCreated",
+    "Ordinal": 5,
+    "TotalRows": 115,
+    "NonNullRows": 115
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LoggingUserID",
+    "Ordinal": 1,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "username",
+    "Ordinal": 2,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "userdomain",
+    "Ordinal": 3,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "computername",
+    "Ordinal": 4,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "NonpersistentComputer",
+    "Ordinal": 5,
+    "TotalRows": 285,
+    "NonNullRows": 91
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "startlogging",
+    "Ordinal": 6,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastWindowsProcessesLogDateTime",
+    "Ordinal": 7,
+    "TotalRows": 285,
+    "NonNullRows": 229
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastRecentFilesLogDateTime",
+    "Ordinal": 8,
+    "TotalRows": 285,
+    "NonNullRows": 214
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastBrowserEdgeLogDateTime",
+    "Ordinal": 9,
+    "TotalRows": 285,
+    "NonNullRows": 254
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastBrowserFireFoxLogDateTime",
+    "Ordinal": 10,
+    "TotalRows": 285,
+    "NonNullRows": 116
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastBrowserChromeLogDateTime",
+    "Ordinal": 11,
+    "TotalRows": 285,
+    "NonNullRows": 254
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LoggingStartedDateTime",
+    "Ordinal": 12,
+    "TotalRows": 285,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LoggingStartedUAMprocessPID",
+    "Ordinal": 13,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LoggingEndedDateTime",
+    "Ordinal": 14,
+    "TotalRows": 285,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LoggingStatus",
+    "Ordinal": 15,
+    "TotalRows": 285,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "whencreated",
+    "Ordinal": 16,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "lastlogon",
+    "Ordinal": 17,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMProcessName",
+    "Ordinal": 18,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMVersion",
+    "Ordinal": 19,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMCreated",
+    "Ordinal": 20,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMInstallDate",
+    "Ordinal": 21,
+    "TotalRows": 285,
+    "NonNullRows": 284
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMStartedElevated",
+    "Ordinal": 22,
+    "TotalRows": 285,
+    "NonNullRows": 283
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMStartupDateTime",
+    "Ordinal": 23,
+    "TotalRows": 285,
+    "NonNullRows": 284
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMShutdownDateTime",
+    "Ordinal": 24,
+    "TotalRows": 285,
+    "NonNullRows": 79
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMprocessMaxMemoryMB",
+    "Ordinal": 25,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "UAMprocessLastMemoryMB",
+    "Ordinal": 26,
+    "TotalRows": 285,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "CsVPath",
+    "Ordinal": 27,
+    "TotalRows": 285,
+    "NonNullRows": 285
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastProcessLogDateTime",
+    "Ordinal": 28,
+    "TotalRows": 285,
+    "NonNullRows": 2
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastBrowserLogDateTime",
+    "Ordinal": 29,
+    "TotalRows": 285,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceLoggingUsers",
+    "ColumnName": "LastRecentFilesAndFoldersDateTime",
+    "Ordinal": 30,
+    "TotalRows": 285,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "DeviceLoggingUserSettingID",
+    "Ordinal": 1,
+    "TotalRows": 8,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "username",
+    "Ordinal": 2,
+    "TotalRows": 8,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "userdomain",
+    "Ordinal": 3,
+    "TotalRows": 8,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "computername",
+    "Ordinal": 4,
+    "TotalRows": 8,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "Setting_code",
+    "Ordinal": 5,
+    "TotalRows": 8,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "Setting_Value",
+    "Ordinal": 6,
+    "TotalRows": 8,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "Setting_Enabled",
+    "Ordinal": 7,
+    "TotalRows": 8,
+    "NonNullRows": 8
+  },
+  {
+    "TableName": "DeviceLoggingUserSettings",
+    "ColumnName": "Setting_ValueType",
+    "Ordinal": 8,
+    "TotalRows": 8,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "Process2ExcludeID",
+    "Ordinal": 1,
+    "TotalRows": 304,
+    "NonNullRows": 304
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "Processname",
+    "Ordinal": 2,
+    "TotalRows": 304,
+    "NonNullRows": 304
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "ProcessnameExpression",
+    "Ordinal": 3,
+    "TotalRows": 304,
+    "NonNullRows": 304
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "FullpathExecutable",
+    "Ordinal": 4,
+    "TotalRows": 304,
+    "NonNullRows": 244
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "FullpathExecutableExpression",
+    "Ordinal": 5,
+    "TotalRows": 304,
+    "NonNullRows": 244
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "Product",
+    "Ordinal": 6,
+    "TotalRows": 304,
+    "NonNullRows": 304
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "ProductExpression",
+    "Ordinal": 7,
+    "TotalRows": 304,
+    "NonNullRows": 304
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "Company",
+    "Ordinal": 8,
+    "TotalRows": 304,
+    "NonNullRows": 302
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "CompanyExpression",
+    "Ordinal": 9,
+    "TotalRows": 304,
+    "NonNullRows": 302
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "Description",
+    "Ordinal": 10,
+    "TotalRows": 304,
+    "NonNullRows": 274
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "group",
+    "Ordinal": 11,
+    "TotalRows": 304,
+    "NonNullRows": 273
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "enabled",
+    "Ordinal": 12,
+    "TotalRows": 304,
+    "NonNullRows": 304
+  },
+  {
+    "TableName": "DeviceProcess2Exclude",
+    "ColumnName": "createdate",
+    "Ordinal": 13,
+    "TotalRows": 304,
+    "NonNullRows": 271
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "datetimestamp",
+    "Ordinal": 1,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "computername",
+    "Ordinal": 2,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "username",
+    "Ordinal": 3,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "userdomain",
+    "Ordinal": 4,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "starttime",
+    "Ordinal": 5,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "processname",
+    "Ordinal": 10,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "FullpathExecutable",
+    "Ordinal": 11,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "product",
+    "Ordinal": 12,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging",
+    "ColumnName": "company",
+    "Ordinal": 13,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "datetimestamp",
+    "Ordinal": 1,
+    "TotalRows": 61747,
+    "NonNullRows": 61747
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "computername",
+    "Ordinal": 2,
+    "TotalRows": 61747,
+    "NonNullRows": 61747
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "username",
+    "Ordinal": 3,
+    "TotalRows": 61747,
+    "NonNullRows": 61747
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "userdomain",
+    "Ordinal": 4,
+    "TotalRows": 61747,
+    "NonNullRows": 61747
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "starttime",
+    "Ordinal": 5,
+    "TotalRows": 61747,
+    "NonNullRows": 61747
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "processname",
+    "Ordinal": 6,
+    "TotalRows": 61747,
+    "NonNullRows": 61747
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "FullpathExecutable",
+    "Ordinal": 7,
+    "TotalRows": 61747,
+    "NonNullRows": 50912
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "product",
+    "Ordinal": 8,
+    "TotalRows": 61747,
+    "NonNullRows": 50912
+  },
+  {
+    "TableName": "DeviceProcessLogging_Archive",
+    "ColumnName": "company",
+    "Ordinal": 9,
+    "TotalRows": 61747,
+    "NonNullRows": 50912
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "datetimestamp",
+    "Ordinal": 1,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "computername",
+    "Ordinal": 2,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "username",
+    "Ordinal": 3,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "userdomain",
+    "Ordinal": 4,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "LastWriteTime",
+    "Ordinal": 5,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "LnkLastOpenedDateTime",
+    "Ordinal": 6,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "LnkCreatedDateTime",
+    "Ordinal": 7,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "FileCreatedDateTime",
+    "Ordinal": 8,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "FileModifiedDateTime",
+    "Ordinal": 9,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "pathRecentfileandfolder",
+    "Ordinal": 10,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging",
+    "ColumnName": "attributes",
+    "Ordinal": 11,
+    "TotalRows": 0,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "datetimestamp",
+    "Ordinal": 1,
+    "TotalRows": 13037,
+    "NonNullRows": 13037
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "computername",
+    "Ordinal": 2,
+    "TotalRows": 13037,
+    "NonNullRows": 13037
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "username",
+    "Ordinal": 3,
+    "TotalRows": 13037,
+    "NonNullRows": 13037
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "userdomain",
+    "Ordinal": 4,
+    "TotalRows": 13037,
+    "NonNullRows": 13037
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "LastWriteTime",
+    "Ordinal": 5,
+    "TotalRows": 13037,
+    "NonNullRows": 26
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "LnkLastOpenedDateTime",
+    "Ordinal": 6,
+    "TotalRows": 13037,
+    "NonNullRows": 13011
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "LnkCreatedDateTime",
+    "Ordinal": 7,
+    "TotalRows": 13037,
+    "NonNullRows": 13011
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "FileCreatedDateTime",
+    "Ordinal": 8,
+    "TotalRows": 13037,
+    "NonNullRows": 5997
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "FileModifiedDateTime",
+    "Ordinal": 9,
+    "TotalRows": 13037,
+    "NonNullRows": 5997
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "pathRecentfileandfolder",
+    "Ordinal": 10,
+    "TotalRows": 13037,
+    "NonNullRows": 13037
+  },
+  {
+    "TableName": "DeviceRecentFileAndFolderLogging_Archive",
+    "ColumnName": "attributes",
+    "Ordinal": 11,
+    "TotalRows": 13037,
+    "NonNullRows": 13037
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "Script_GUID",
+    "Ordinal": 1,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "Script_Description_short",
+    "Ordinal": 2,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "Script_Description_long",
+    "Ordinal": 3,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "Script_Code",
+    "Ordinal": 4,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "Script_WorksOnComputerTypes",
+    "Ordinal": 5,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "Script_WhenCreated",
+    "Ordinal": 6,
+    "TotalRows": 1,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "Script_UserCreated",
+    "Ordinal": 7,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "ScriptOutputType",
+    "Ordinal": 8,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScripts",
+    "ColumnName": "ScriptEnabled",
+    "Ordinal": 9,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ScheduleID",
+    "Ordinal": 1,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "Script_GUID",
+    "Ordinal": 2,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ScheduleName",
+    "Ordinal": 3,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ScheduleType",
+    "Ordinal": 4,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "CronExpression",
+    "Ordinal": 5,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "IntervalMinutes",
+    "Ordinal": 6,
+    "TotalRows": 1,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "SpecificRunTime",
+    "Ordinal": 7,
+    "TotalRows": 1,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ValidFrom",
+    "Ordinal": 8,
+    "TotalRows": 1,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ValidUntil",
+    "Ordinal": 9,
+    "TotalRows": 1,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "NextRunTime",
+    "Ordinal": 10,
+    "TotalRows": 1,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "LastRunTime",
+    "Ordinal": 11,
+    "TotalRows": 1,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ExecuteOnTheseDeviceOUs",
+    "Ordinal": 12,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ExecuteOnTheseDevices",
+    "Ordinal": 13,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ExecuteNotOnTheseDevices",
+    "Ordinal": 14,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceScriptSchedules",
+    "ColumnName": "ScheduleEnabled",
+    "Ordinal": 15,
+    "TotalRows": 1,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "DeviceTypes",
+    "ColumnName": "DeviceTypeID",
+    "Ordinal": 1,
+    "TotalRows": 38,
+    "NonNullRows": 38
+  },
+  {
+    "TableName": "DeviceTypes",
+    "ColumnName": "DeviceTypeDescription",
+    "Ordinal": 2,
+    "TotalRows": 38,
+    "NonNullRows": 38
+  },
+  {
+    "TableName": "DeviceTypes",
+    "ColumnName": "DeviceType_OU",
+    "Ordinal": 3,
+    "TotalRows": 38,
+    "NonNullRows": 38
+  },
+  {
+    "TableName": "DeviceTypes",
+    "ColumnName": "DeviceTypeEnabled",
+    "Ordinal": 4,
+    "TotalRows": 38,
+    "NonNullRows": 38
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "id",
+    "Ordinal": 1,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "personCode",
+    "Ordinal": 2,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "personId",
+    "Ordinal": 3,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "contractCode",
+    "Ordinal": 4,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "contractId",
+    "Ordinal": 5,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "contractType",
+    "Ordinal": 6,
+    "TotalRows": 5876,
+    "NonNullRows": 4573
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "contractTypeName",
+    "Ordinal": 7,
+    "TotalRows": 5876,
+    "NonNullRows": 4573
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "emailAddresses",
+    "Ordinal": 8,
+    "TotalRows": 5876,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "employmentCode",
+    "Ordinal": 9,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "employmentType",
+    "Ordinal": 10,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "employmentTypeName",
+    "Ordinal": 11,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "workingAmount",
+    "Ordinal": 12,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "company",
+    "Ordinal": 13,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "organizationUnit",
+    "Ordinal": 14,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "organizationUnitCode",
+    "Ordinal": 15,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "organizationUnitName",
+    "Ordinal": 16,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "jobProfile",
+    "Ordinal": 17,
+    "TotalRows": 5876,
+    "NonNullRows": 5875
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "jobProfileName",
+    "Ordinal": 18,
+    "TotalRows": 5876,
+    "NonNullRows": 5875
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "phoneNumbers",
+    "Ordinal": 19,
+    "TotalRows": 5876,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "isActive",
+    "Ordinal": 20,
+    "TotalRows": 5876,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "validFrom",
+    "Ordinal": 21,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "validUntil",
+    "Ordinal": 22,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "originalHireDate",
+    "Ordinal": 23,
+    "TotalRows": 5876,
+    "NonNullRows": 2136
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "hireDate",
+    "Ordinal": 24,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "dischargeDate",
+    "Ordinal": 25,
+    "TotalRows": 5876,
+    "NonNullRows": 1470
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "terminationReason",
+    "Ordinal": 26,
+    "TotalRows": 5876,
+    "NonNullRows": 1470
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "terminationReasonName",
+    "Ordinal": 27,
+    "TotalRows": 5876,
+    "NonNullRows": 1470
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "classification",
+    "Ordinal": 28,
+    "TotalRows": 5876,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "classificationName",
+    "Ordinal": 29,
+    "TotalRows": 5876,
+    "NonNullRows": 1
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "latestSync",
+    "Ordinal": 30,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "payrollClientCode",
+    "Ordinal": 31,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "payrollInstitutionCode",
+    "Ordinal": 32,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "extensions",
+    "Ordinal": 33,
+    "TotalRows": 5876,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "_rowno",
+    "Ordinal": 34,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "_firstdiscovered",
+    "Ordinal": 35,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "_lastdiscovered",
+    "Ordinal": 36,
+    "TotalRows": 5876,
+    "NonNullRows": 5876
+  },
+  {
+    "TableName": "GG_YF_Employments",
+    "ColumnName": "_remarks",
+    "Ordinal": 37,
+    "TotalRows": 5876,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "id",
+    "Ordinal": 1,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "personCode",
+    "Ordinal": 2,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "employmentCode",
+    "Ordinal": 3,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "bo4FieldCode",
+    "Ordinal": 4,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "fieldNameAlias",
+    "Ordinal": 5,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "value",
+    "Ordinal": 6,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "description",
+    "Ordinal": 7,
+    "TotalRows": 23559,
+    "NonNullRows": 16729
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "latestSync",
+    "Ordinal": 8,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "_rowno",
+    "Ordinal": 9,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "_firstdiscovered",
+    "Ordinal": 10,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "_lastdiscovered",
+    "Ordinal": 11,
+    "TotalRows": 23559,
+    "NonNullRows": 23559
+  },
+  {
+    "TableName": "GG_YF_EmploymentsExtensions",
+    "ColumnName": "_remarks",
+    "Ordinal": 12,
+    "TotalRows": 23559,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "id",
+    "Ordinal": 1,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "parentOrgUnit",
+    "Ordinal": 2,
+    "TotalRows": 682,
+    "NonNullRows": 681
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "fullName",
+    "Ordinal": 3,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "shortName",
+    "Ordinal": 4,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "validFrom",
+    "Ordinal": 5,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "validUntil",
+    "Ordinal": 6,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "isBlocked",
+    "Ordinal": 7,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "address",
+    "Ordinal": 8,
+    "TotalRows": 682,
+    "NonNullRows": 370
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "costCenterCode",
+    "Ordinal": 9,
+    "TotalRows": 682,
+    "NonNullRows": 646
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "latestSync",
+    "Ordinal": 10,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "_rowno",
+    "Ordinal": 11,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "_firstdiscovered",
+    "Ordinal": 12,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "_lastdiscovered",
+    "Ordinal": 13,
+    "TotalRows": 682,
+    "NonNullRows": 682
+  },
+  {
+    "TableName": "GG_YF_OrganizationUnits",
+    "ColumnName": "_remarks",
+    "Ordinal": 14,
+    "TotalRows": 682,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "SystemLookups",
+    "ColumnName": "LookupID",
+    "Ordinal": 1,
+    "TotalRows": 11,
+    "NonNullRows": 11
+  },
+  {
+    "TableName": "SystemLookups",
+    "ColumnName": "Category",
+    "Ordinal": 2,
+    "TotalRows": 11,
+    "NonNullRows": 11
+  },
+  {
+    "TableName": "SystemLookups",
+    "ColumnName": "Code",
+    "Ordinal": 3,
+    "TotalRows": 11,
+    "NonNullRows": 11
+  },
+  {
+    "TableName": "SystemLookups",
+    "ColumnName": "Description_Short",
+    "Ordinal": 4,
+    "TotalRows": 11,
+    "NonNullRows": 11
+  },
+  {
+    "TableName": "SystemLookups",
+    "ColumnName": "Description_Long",
+    "Ordinal": 5,
+    "TotalRows": 11,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "SystemLookups",
+    "ColumnName": "IsEnabled",
+    "Ordinal": 6,
+    "TotalRows": 11,
+    "NonNullRows": 11
+  },
+  {
+    "TableName": "uam_log_minimal",
+    "ColumnName": "LogID",
+    "Ordinal": 1,
+    "TotalRows": 29575,
+    "NonNullRows": 29575
+  },
+  {
+    "TableName": "uam_log_minimal",
+    "ColumnName": "username",
+    "Ordinal": 2,
+    "TotalRows": 29575,
+    "NonNullRows": 29575
+  },
+  {
+    "TableName": "uam_log_minimal",
+    "ColumnName": "userdomain",
+    "Ordinal": 3,
+    "TotalRows": 29575,
+    "NonNullRows": 29575
+  },
+  {
+    "TableName": "uam_log_minimal",
+    "ColumnName": "data_collection_type",
+    "Ordinal": 4,
+    "TotalRows": 29575,
+    "NonNullRows": 29575
+  },
+  {
+    "TableName": "uam_log_minimal",
+    "ColumnName": "data",
+    "Ordinal": 5,
+    "TotalRows": 29575,
+    "NonNullRows": 29575
+  },
+  {
+    "TableName": "uam_log_minimal",
+    "ColumnName": "first_logged_datetime",
+    "Ordinal": 6,
+    "TotalRows": 29575,
+    "NonNullRows": 29575
+  },
+  {
+    "TableName": "uam_log_minimal_dates",
+    "ColumnName": "LogID",
+    "Ordinal": 1,
+    "TotalRows": 113100,
+    "NonNullRows": 113100
+  },
+  {
+    "TableName": "uam_log_minimal_dates",
+    "ColumnName": "UsedOnDate",
+    "Ordinal": 2,
+    "TotalRows": 113100,
+    "NonNullRows": 113100
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "company",
+    "Ordinal": 1,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "personeelsnr",
+    "Ordinal": 2,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "personeelsnr_orig",
+    "Ordinal": 3,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Volgnummer_contract",
+    "Ordinal": 4,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "remarks",
+    "Ordinal": 5,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Status_Contract",
+    "Ordinal": 6,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "DagenVoorBegindatum",
+    "Ordinal": 7,
+    "TotalRows": 7179,
+    "NonNullRows": 129
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "DagenNaEinddatum",
+    "Ordinal": 8,
+    "TotalRows": 7179,
+    "NonNullRows": 1930
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "DagenTotMaxEinddatum",
+    "Ordinal": 9,
+    "TotalRows": 7179,
+    "NonNullRows": 1850
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Last_Einddatum_contracts",
+    "Ordinal": 10,
+    "TotalRows": 7179,
+    "NonNullRows": 1850
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Begindatum_contract",
+    "Ordinal": 11,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Einddatum_contract",
+    "Ordinal": 12,
+    "TotalRows": 7179,
+    "NonNullRows": 1930
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "MeerdereContractenTegelijk",
+    "Ordinal": 13,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Naam",
+    "Ordinal": 14,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "initialen",
+    "Ordinal": 15,
+    "TotalRows": 7179,
+    "NonNullRows": 7021
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Roepnaam",
+    "Ordinal": 16,
+    "TotalRows": 7179,
+    "NonNullRows": 5773
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Tussenvoegsel",
+    "Ordinal": 17,
+    "TotalRows": 7179,
+    "NonNullRows": 1107
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Achternaam",
+    "Ordinal": 18,
+    "TotalRows": 7179,
+    "NonNullRows": 7025
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Tussenvoegsel_partner",
+    "Ordinal": 19,
+    "TotalRows": 7179,
+    "NonNullRows": 417
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Achternaam_partner",
+    "Ordinal": 20,
+    "TotalRows": 7179,
+    "NonNullRows": 2446
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Organisatorische_eenheid_omschrijving",
+    "Ordinal": 21,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "functie_omschrijving",
+    "Ordinal": 22,
+    "TotalRows": 7179,
+    "NonNullRows": 7066
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Organisatorische_eenheid_code",
+    "Ordinal": 23,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Functie_code",
+    "Ordinal": 24,
+    "TotalRows": 7179,
+    "NonNullRows": 7075
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ict_Voorzieningen",
+    "Ordinal": 25,
+    "TotalRows": 7179,
+    "NonNullRows": 6867
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_DisplayName",
+    "Ordinal": 26,
+    "TotalRows": 7179,
+    "NonNullRows": 6390
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "SamAccountName",
+    "Ordinal": 27,
+    "TotalRows": 7179,
+    "NonNullRows": 6390
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "entra_logon_hoursago",
+    "Ordinal": 28,
+    "TotalRows": 7179,
+    "NonNullRows": 5760
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_logon_hoursago",
+    "Ordinal": 29,
+    "TotalRows": 7179,
+    "NonNullRows": 6390
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_enabled",
+    "Ordinal": 30,
+    "TotalRows": 7179,
+    "NonNullRows": 6390
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_ou",
+    "Ordinal": 31,
+    "TotalRows": 7179,
+    "NonNullRows": 6390
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_email",
+    "Ordinal": 32,
+    "TotalRows": 7179,
+    "NonNullRows": 6379
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_mobile",
+    "Ordinal": 33,
+    "TotalRows": 7179,
+    "NonNullRows": 5042
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "Manager",
+    "Ordinal": 34,
+    "TotalRows": 7179,
+    "NonNullRows": 7099
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_whencreated",
+    "Ordinal": 35,
+    "TotalRows": 7179,
+    "NonNullRows": 6390
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "ad_import_data",
+    "Ordinal": 36,
+    "TotalRows": 7179,
+    "NonNullRows": 6390
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "contracts_import_data",
+    "Ordinal": 37,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "vwt_hr_contracts",
+    "ColumnName": "contracts_first_imported",
+    "Ordinal": 38,
+    "TotalRows": 7179,
+    "NonNullRows": 7179
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Persoonsnummer",
+    "Ordinal": 1,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Volgnummer_contract",
+    "Ordinal": 2,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "ExternalID",
+    "Ordinal": 3,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Medewerker",
+    "Ordinal": 4,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Persoonsnummer_leidinggevende",
+    "Ordinal": 5,
+    "TotalRows": 1321,
+    "NonNullRows": 1318
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Medewerkernummer_leidinggevende",
+    "Ordinal": 6,
+    "TotalRows": 1321,
+    "NonNullRows": 1318
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Persoonsnummer_VervangendLeidinggevende",
+    "Ordinal": 7,
+    "TotalRows": 1321,
+    "NonNullRows": 44
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Medewerkernummer_VervangendLeidinggevende",
+    "Ordinal": 8,
+    "TotalRows": 1321,
+    "NonNullRows": 0
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Naam",
+    "Ordinal": 9,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Begindatum_contract",
+    "Ordinal": 10,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Einddatum_contract",
+    "Ordinal": 11,
+    "TotalRows": 1321,
+    "NonNullRows": 461
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Dienstbetrekking",
+    "Ordinal": 12,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Dienstverband",
+    "Ordinal": 13,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Type_contract",
+    "Ordinal": 14,
+    "TotalRows": 1321,
+    "NonNullRows": 1319
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Begindatum_functie",
+    "Ordinal": 15,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Einddatum_functie",
+    "Ordinal": 16,
+    "TotalRows": 1321,
+    "NonNullRows": 522
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Functie_code",
+    "Ordinal": 17,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Functie_omschrijving",
+    "Ordinal": 18,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Organisatorische_eenheid_code",
+    "Ordinal": 19,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Organisatorische_eenheid_omschrijving",
+    "Ordinal": 20,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "FTE",
+    "Ordinal": 21,
+    "TotalRows": 1321,
+    "NonNullRows": 1319
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Uren_per_week",
+    "Ordinal": 22,
+    "TotalRows": 1321,
+    "NonNullRows": 1319
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Parttime_percentage",
+    "Ordinal": 23,
+    "TotalRows": 1321,
+    "NonNullRows": 1319
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Kostenplaats_code",
+    "Ordinal": 24,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Kostenplaats_omschrijving",
+    "Ordinal": 25,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Soort_medewerker",
+    "Ordinal": 26,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Soort_medewerker_code",
+    "Ordinal": 27,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Werkgever_code",
+    "Ordinal": 28,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "Werkgever_omschrijving",
+    "Ordinal": 29,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "ICT-voorziening",
+    "Ordinal": 30,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "_rowno",
+    "Ordinal": 31,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "_firstdiscovered",
+    "Ordinal": 32,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "_lastdiscovered",
+    "Ordinal": 33,
+    "TotalRows": 1321,
+    "NonNullRows": 1321
+  },
+  {
+    "TableName": "WIJ_AFAS_Employments",
+    "ColumnName": "_remarks",
+    "Ordinal": 34,
+    "TotalRows": 1321,
+    "NonNullRows": 0
+  }
+]

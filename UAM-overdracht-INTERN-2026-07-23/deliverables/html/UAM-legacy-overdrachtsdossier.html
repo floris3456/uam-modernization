@@ -1,0 +1,923 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>UAM legacy overdrachtsdossier</title><style>@page{size:A4 portrait;margin:15mm}:root{--ink:#0f172a;--muted:#475569;--line:#cbd5e1;--blue:#1d4ed8;--soft:#f8fafc;--warn:#fff7ed}
+*{box-sizing:border-box}body{font-family:"Segoe UI",Arial,sans-serif;color:var(--ink);line-height:1.36;margin:0;background:#fff;font-size:10pt}
+h1{font-size:24pt;line-height:1.08;color:#0f172a;margin:0 0 8mm;border-bottom:2.5pt solid #2563eb;padding-bottom:3mm}h2{font-size:15pt;margin:7mm 0 2.5mm;color:#1e3a8a;break-after:avoid}h3{font-size:12pt;margin:5mm 0 2mm;color:#1e293b;break-after:avoid}
+p{margin:0 0 3mm}ul,ol{margin:1.5mm 0 3mm;padding-left:6mm}li{margin:0 0 1.2mm}strong{color:#0f172a}a{color:#1d4ed8;text-decoration:none}
+code{font-family:Consolas,monospace;background:#f1f5f9;padding:.1em .25em;border-radius:3px}pre{font-family:Consolas,monospace;font-size:8pt;background:#0f172a;color:#e2e8f0;padding:4mm;border-radius:6px;white-space:pre-wrap;break-inside:avoid}
+table{width:100%;border-collapse:collapse;margin:3mm 0 5mm;font-size:8.3pt;break-inside:auto}thead{display:table-header-group}tr{break-inside:avoid}th{background:#dbeafe;color:#172554;text-align:left;font-weight:700}th,td{border:.5pt solid #cbd5e1;padding:1.6mm;vertical-align:top;overflow-wrap:anywhere}
+img{display:block;max-width:100%;max-height:175mm;object-fit:contain;margin:4mm auto 7mm;break-inside:avoid;border:.5pt solid #cbd5e1;border-radius:4px}
+blockquote{border-left:3pt solid #2563eb;margin:3mm 0;padding:2mm 4mm;background:#eff6ff}.document-section{position:relative}.document-section+.document-section{break-before:page}
+.cover{height:250mm;display:flex;flex-direction:column;justify-content:center;padding:18mm;background:linear-gradient(145deg,#eff6ff,#fff 48%,#ecfeff);border:1pt solid #bfdbfe}.cover h1{font-size:31pt;border:0;margin:0 0 8mm}.cover .subtitle{font-size:16pt;color:#334155;max-width:155mm}.cover .meta{margin-top:28mm;font-size:10pt;color:#64748b}.cover .mark{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:#1d4ed8;font-weight:700;margin-bottom:6mm}
+.summary{font-size:9.8pt;line-height:1.25}.summary h1{font-size:23pt;margin-bottom:5mm;padding-bottom:2.5mm}.summary h2{font-size:13pt;margin:4.2mm 0 1.8mm}.summary p{margin-bottom:2.4mm}.summary ul,.summary ol{margin:1.2mm 0 2.4mm;padding-left:5.5mm}.summary li{margin-bottom:.8mm}.summary table{font-size:8.2pt;margin:2.2mm 0 3mm}.summary th,.summary td{padding:1.2mm}.summary .document-section{break-before:auto}.summary code{font-size:8pt}
+.database{font-size:8pt;line-height:1.25}.database h1{font-size:20pt}.database h2{font-size:12pt;margin-top:4.5mm}.database h3{font-size:10pt}.database table{font-size:6.2pt;table-layout:auto}.database th,.database td{padding:.8mm}.database img{max-height:175mm}
+.portal{font-size:9pt}.portal h1{font-size:22pt}.portal h2{font-size:14pt}.portal h3{font-size:11pt}.portal img{max-height:155mm;break-before:auto;box-shadow:0 2px 8px rgba(15,23,42,.12)}
+@media print{.cover{break-after:page}a{color:inherit}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body class="standard"><section class="cover">
+  <div class="mark">UAM overdracht • intern technisch dossier</div>
+  <h1>UAM legacy overdrachtsdossier</h1>
+  <div class="subtitle">Legacy agent, IST/DOEL-samenvattingen, C#-doelarchitectuur en migratieroadmap</div>
+  <div class="meta">Versie 1.0 • 23 juli 2026<br>Bronnen gefixeerd met SHA-256 • geen tokens of wachtwoorden opgenomen</div>
+</section>
+<section class="document-section" data-source="docs\00a-uam-ist-samenvatting-a4.md"><h1 id="uam-ist-in-een-oogopslag">UAM IST in een oogopslag</h1>
+<p><strong>Doel van dit blad:</strong> in circa één A4 begrijpen wat de huidige UAM-oplossing doet, hoe zij technisch is opgebouwd en waar de belangrijkste overdrachtsrisico's zitten.</p>
+<h2 id="wat-draait-er-nu">Wat draait er nu?</h2>
+<p>De endpointagent is een PowerShell-script van <strong>4.805 regels</strong> dat met PS2EXE als <code>uam.exe</code> zonder console wordt uitgevoerd. Voor debugging bestaat een consolevariant. Naast de executable is <code>dbsettings.txt</code> nodig; daarin staat de MSSQL-connectieroute versleuteld. Tijdens de start haalt de agent globale instellingen, eventuele gebruikersafwijkingen, filters en eerder opgeslagen checkpoints uit de database.</p>
+<p>De agent voert hoofdzakelijk drie collectors uit: <strong>browserhistorie</strong>, <strong>Windows Recent/Quick Access</strong> en <strong>Windows-processen</strong>. Hij controleert per collector of deze actief is en opnieuw moet draaien, verzamelt gegevens, maakt detail- en minimale logging en actualiseert checkpoints. SQL-statements worden eerst in geheugen en CSV gebufferd en daarna transactiewijs rechtstreeks naar MSSQL verstuurd. Bij verbindingsproblemen wordt de CSV-buffer bij een volgende start hersteld.</p>
+<h2 id="huidige-componenten-en-gegevens">Huidige componenten en gegevens</h2>
+<table>
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>IST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td><code>uam.exe</code>, gecompileerde PowerShell; orchestratie, collectors, buffering en SQL in één proces.</td>
+</tr>
+<tr>
+<td>Lokale configuratie</td>
+<td><code>dbsettings.txt</code>; nog geen centrale lokale settingsdatabase.</td>
+</tr>
+<tr>
+<td>Centrale database</td>
+<td>27 tabellen, 569 velden, 13 primary keys, slechts 2 fysieke foreign keys.</td>
+</tr>
+<tr>
+<td>Grootste historie</td>
+<td><code>DeviceBrowserLogging_Archive</code>: circa 2,47 miljoen rijen op het meetmoment.</td>
+</tr>
+<tr>
+<td>Beheerportaal</td>
+<td>PowerShell Universal-app voor gebruikersselectie, loggingdata, settings, uitsluitingen, applicatiematches, taken/planningen, errors en audit.</td>
+</tr>
+<tr>
+<td>Bronnen</td>
+<td>UAM-tabellen plus klantgebonden HR-/AD-structuren; veel relaties bestaan alleen impliciet in code en SQL.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wat-is-waardevol-en-moet-behouden-blijven">Wat is waardevol en moet behouden blijven?</h2>
+<ul>
+<li>Checkpoints per collector, deferred verwerking en herstel na tijdelijke storingen.</li>
+<li>Browser-tijdconversies, profiel-/bestandsstabiliteitscontroles en normalisatie van legacy settings.</li>
+<li>Een compacte minimale gebruiksregistratie naast detailgegevens.</li>
+<li>Doelgroep- en gebruikersafwijkingen, uitsluitingen/matches, foutcontext en auditinformatie.</li>
+<li>De bestaande functionele indeling van het PSU-portaal als vertrekpunt voor het nieuwe beheerportaal.</li>
+</ul>
+<h2 id="belangrijkste-knelpunten">Belangrijkste knelpunten</h2>
+<ul>
+<li>Eén groot proces combineert hosting, scheduling, collectors, SQL, foutafhandeling en self-restart.</li>
+<li>Endpoints schrijven direct naar MSSQL; de CSV bevat complete SQL-statements en is geen robuuste transactional outbox.</li>
+<li>Veel tekstkoppelingen, ontbrekende foreign keys en klantafhankelijke HR-/AD-tabellen maken wijziging en hergebruik lastig.</li>
+<li>Dubbele functies, dynamische SQL, handmatige garbage collection en een aangetroffen hardcoded <code>$Pwd</code> vragen om expliciete sanering; het geheim wordt niet meegeleverd.</li>
+<li>Het taken-/planningsdeel is functioneel nog niet af en arbitraire scripts vereisen strengere isolatie en autorisatie.</li>
+</ul>
+<p><strong>Bewijsstand:</strong> legacy agent, productie-DDL, rij-/veldprofielen, data dictionary en DEV-portaalschermen zijn vastgelegd. De laatste geautomatiseerde DEV-heropname en de PROD-browseropname vereisen nog een geldige handmatige PSU-login; bestaande DEV-beelden zijn privacygemaskeerd en uitsluitend via leesacties verkregen.</p>
+</section>
+<section class="document-section" data-source="docs\00b-uam-doelbeeld-samenvatting-a4.md"><h1 id="uam-gewenst-doelbeeld-in-een-oogopslag">UAM gewenst doelbeeld in een oogopslag</h1>
+<p><strong>Doel van dit blad:</strong> in circa één A4 begrijpen hoe de gewenste C#-oplossing eruitziet en welke ontwerpkeuzes de legacyproblemen oplossen.</p>
+<h2 id="kern-van-het-doelbeeld">Kern van het doelbeeld</h2>
+<p>De nieuwe UAM wordt geen één-op-één vertaling van PowerShell naar C#. Er komt een kleine, ondertekende <strong><code>uam.exe</code> bootstrapper</strong> die controleert of de gewenste agentversie aanwezig is, pakketten veilig installeert, atomair wisselt en kan terugrollen. <strong><code>uam-agent.exe</code></strong> wordt een .NET Worker Service die alleen policy, planning, gezondheid en taakcoördinatie verzorgt.</p>
+<p>Collectors worden afzonderlijke, versieerbare taskpackages: Browser History, Recent Items/Quick Access, Process Inventory en Browser Extensions. Eenvoudige volledig managed taken kunnen tijdelijk in een collectible <code>AssemblyLoadContext</code> draaien. Taken met native dependencies, PowerShell of een groter storings-/geheugenrisico draaien geïsoleerd in <strong><code>uam-taskhost.exe</code></strong>, zodat afsluiten aantoonbaar geheugen vrijmaakt.</p>
+<h2 id="gewenste-componenten-en-gegevensstroom">Gewenste componenten en gegevensstroom</h2>
+<table>
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>Doelbeeld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lokale opslag</td>
+<td>SQLite in WAL-modus voor settingssnapshot, gebruikersafwijkingen, taskstate, checkpoints en transactional outbox.</td>
+</tr>
+<tr>
+<td>Upload</td>
+<td>Kleine idempotente HTTPS-batches, gecomprimeerd met gzip, met retries, jitter en backpressure.</td>
+</tr>
+<tr>
+<td>Centrale verwerking</td>
+<td>Ingestion API → duurzame queue → schaalbare workers; endpoints krijgen nooit directe databasetoegang.</td>
+</tr>
+<tr>
+<td>Centrale database</td>
+<td>PostgreSQL met partitionering als voorkeursbasis; TimescaleDB pas kiezen na een representatieve benchmark.</td>
+</tr>
+<tr>
+<td>Beheer</td>
+<td>Moderne adminportal via een control-plane API, typed policyrevisies, capability-RBAC en volledige audit.</td>
+</tr>
+<tr>
+<td>Integraties</td>
+<td>Configureerbare HR-/AD-views/adapters en een interne Application Registry met optionele FK naar de echte CMDB.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functionele-richting">Functionele richting</h2>
+<ul>
+<li>Maak <strong>alles een taak</strong> met een expliciet contract, versie, schedule, timeout, privacyclassificatie en uitvoerformaat.</li>
+<li>Vervang brede logging door configureerbare <strong>URL- en procesallowlists</strong>, rechtstreeks gekoppeld aan een applicatiesleutel uit de Application Registry/CMDB.</li>
+<li>Maak globale instellingen en afwijkingen typed, versioned en centraal publiceerbaar; de agent gebruikt een lokaal gevalideerd snapshot.</li>
+<li>Voeg structured logging, correlatie-ID's, OpenTelemetry en instelbare diagnostiek toe, tijdelijk en gericht per gebruiker/apparaat.</li>
+<li>Bouw privacy, minimale gegevensverwerking, retentie, redactie van secrets/PII en veilige standaardwaarden in het ontwerp in.</li>
+</ul>
+<h2 id="schaal-en-betrouwbaarheid">Schaal en betrouwbaarheid</h2>
+<p>Ontwerp en test voor minimaal <strong>6.000 gebruikers</strong> en gelijktijdige pieken. De SQLite-outbox voorkomt dat metingen verloren gaan; idempotency voorkomt dubbele verwerking; queue en workers vlakken pieken af. Meet batchgrootte, compressie, wachtrijduur, database-inserts, storagegroei en herstel na langdurige uitval voordat een database-extensie of cloudproduct wordt gekozen.</p>
+<h2 id="aanbevolen-migratievolgorde">Aanbevolen migratievolgorde</h2>
+<ol>
+<li>Leg gedrag, privacybeleid, eventcontracten en acceptatiematen vast.</li>
+<li>Bouw bootstrapper, Worker Service, SQLite/outbox en package signing.</li>
+<li>Lever Browser History als eerste verticale slice van endpoint tot portal.</li>
+<li>Voeg overige collectors en geïsoleerde taskhost toe.</li>
+<li>Bewijs schaal, retentie en herstel; bouw daarna het beheerportaal uit.</li>
+<li>Draai een gecontroleerde parallelle pilot, migreer alleen bruikbare configuratie en bouw legacy daarna gefaseerd af.</li>
+</ol>
+<p><strong>Beoogd resultaat:</strong> een kleine en herstelbare endpointagent, een portable/open platform waar mogelijk, een aantoonbaar schaalbare ingestieketen en een sneller, veiliger en beter configureerbaar beheerportaal.</p>
+</section>
+<section class="document-section" data-source="docs\01-legacy-agent-uam-ps1.md"><h1 id="legacy-agent-uam.ps1">Legacy agent <code>uam.ps1</code></h1>
+<h2 id="samenvatting">Samenvatting</h2>
+<p><code>uam.ps1</code> is een monolithische, sequentiële PowerShell-agent. Eén proces verzorgt procesbewaking, configuratie, databaseverkeer, drie datacollectors, lokale buffering, foutafhandeling, logrotatie en self-restart. De functionele waarde zit vooral in de verzamellogica, checkpoints, uitsluitingen en foutcontext. De technische koppeling tussen al die verantwoordelijkheden moet niet één-op-één naar C# worden vertaald.</p>
+<p>De productiebuild bestaat uit twee PS2EXE-varianten:</p>
+<ul>
+<li><code>UAM.exe</code>: x64, zonder console, output/errorvenster onderdrukt;</li>
+<li><code>UAM_console.exe</code>: x64 met console voor debugdoeleinden;</li>
+<li>bestandsversie: <code>0.7.0.0</code>;</li>
+<li>runtimebestanden: executable plus <code>DbSettings.txt</code>; voor SQLite kan daarnaast <code>winsqlite3.dll</code> of de fallback onder <code>sqlite\uam.exe</code> nodig zijn.</li>
+</ul>
+<p><code>DbSettings.txt</code> bevat de MSSQL-connectie-informatie via <code>ConvertTo/From-SecureString</code> met een vaste sleutel in de bron. Dat is obfuscatie, geen veilige secretopslag. De sleutel wordt bewust niet in dit document herhaald.</p>
+<h2 id="uitvoeringsflow">Uitvoeringsflow</h2>
+<p><img src="../../artifacts/diagrams/legacy-agent-execution-flow.svg" alt="Legacy uam.ps1 uitvoeringsflow" /></p>
+<p>De doorlopende hoofdlijn toont de lifecycle van het huidige proces. De drie
+zijtakken zijn de bestaande collectors. De gestippelde terugkoppeling maakt
+zichtbaar dat wachten, geheugencontrole en self-restart onderdeel zijn van de
+legacy lifecycle en niet van de toekomstige collectortaken horen te zijn.</p>
+<h2 id="functiekaart">Functiekaart</h2>
+<p>De regelnummers verwijzen naar de gefixeerde V0.7-bron.</p>
+<table>
+<thead>
+<tr>
+<th>Gebied</th>
+<th>Belangrijkste functies</th>
+<th style="text-align: right;">Regels</th>
+<th>Betekenis voor migratie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proces/start</td>
+<td><code>Get-CurrentExecutableName</code>, <code>Test-IsElevated</code>, <code>Set-ProcesGeheugenBescherming</code></td>
+<td style="text-align: right;">40-204</td>
+<td>Bootstrap-/hostverantwoordelijkheid; niet in collectors opnemen.</td>
+</tr>
+<tr>
+<td>Doelgroep/guards</td>
+<td><code>Test-GroupMembership</code>, <code>Test-HasContent</code>, <code>Test-HasRows</code>, <code>Test-IsTrue</code>, <code>Test-IsDateTime</code></td>
+<td style="text-align: right;">207-420</td>
+<td>Normalisatie van slordige legacy instellingstypen is functioneel waardevol.</td>
+</tr>
+<tr>
+<td>SQL-escaping</td>
+<td><code>Format-SqlString</code>, oude variant, <code>Get-SafeSqlString</code></td>
+<td style="text-align: right;">423-531, 1907-1941</td>
+<td>Alleen als migratiebewijs gebruiken; nieuwe code moet parameters gebruiken.</td>
+</tr>
+<tr>
+<td>Bestandslog</td>
+<td>twee <code>Manage-LogRotation</code>, <code>Write-Log</code></td>
+<td style="text-align: right;">534-852</td>
+<td>Duplicaat verwijderen; vervangen door structured logging en retention policy.</td>
+</tr>
+<tr>
+<td>Telemetrie</td>
+<td><code>Get-ProcessPerformance</code>, <code>Check-RAMandCPU</code></td>
+<td style="text-align: right;">854-913, 1298-1323</td>
+<td>Behoud signalen, niet de handmatige GC-/restartimplementatie.</td>
+</tr>
+<tr>
+<td>Tijd/paden</td>
+<td>browser-/epochconversies, <code>Get-SafeStoragePath</code>, waits</td>
+<td style="text-align: right;">933-1295</td>
+<td>Browser timestampconversies en profielbestandsstabiliteit blijven nodig.</td>
+</tr>
+<tr>
+<td>MSSQL</td>
+<td><code>Invoke-SqlQuery</code>, <code>Test-SqlConnection</code></td>
+<td style="text-align: right;">1325-1627</td>
+<td>Vervangen door parameterized API/outbox; endpoints schrijven niet direct naar SQL.</td>
+</tr>
+<tr>
+<td>Buffer</td>
+<td><code>Restore-DeferredQueriesFromCSV</code>, <code>Invoke-DeferredQueryProcessing</code></td>
+<td style="text-align: right;">1629-1737</td>
+<td>Functionele outbox behouden, complete SQL in CSV afschaffen.</td>
+</tr>
+<tr>
+<td>Settings</td>
+<td><code>Get-AppSetting</code></td>
+<td style="text-align: right;">1739-1904</td>
+<td>Typed settings, scope en defaults expliciet modelleren.</td>
+</tr>
+<tr>
+<td>Fouten</td>
+<td><code>Write-DetailedError</code>, twee <code>ErrorHandler</code>, <code>Write-Error2DB</code></td>
+<td style="text-align: right;">1944-2339</td>
+<td>Correlation/context behouden; secrets/PII redigeren en duplicaat verwijderen.</td>
+</tr>
+<tr>
+<td>Lokale SQLite</td>
+<td><code>Invoke-SQLiteQuery</code></td>
+<td style="text-align: right;">2341-2397</td>
+<td>Bewijst lokale SQLite-haalbaarheid; in C# <code>Microsoft.Data.Sqlite</code> gebruiken.</td>
+</tr>
+<tr>
+<td>Procescoördinatie</td>
+<td><code>Stop-OtherProcesses</code>, <code>Test-OtherProcessRunning</code></td>
+<td style="text-align: right;">2439-2650</td>
+<td>Vervangen door named mutex/service single-instance-contract.</td>
+</tr>
+<tr>
+<td>Minimal model</td>
+<td><code>New-MinimalLoggingQueryBlock</code></td>
+<td style="text-align: right;">2663-2694</td>
+<td>Functionele aggregatie behouden, maar server-side/idempotent uitvoeren.</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td><code>Export-BrowserHistory2DB</code>, <code>Get-BrowserHistory</code>, exclude update</td>
+<td style="text-align: right;">2700-2989</td>
+<td>Aparte BrowserHistory-taskplugin.</td>
+</tr>
+<tr>
+<td>Recent files</td>
+<td><code>Export-RecentFilesAndFolders2DB</code>, <code>Get-RecentFilesAndFolders</code></td>
+<td style="text-align: right;">2996-3232</td>
+<td>Aparte RecentItems-taskplugin.</td>
+</tr>
+<tr>
+<td>Processen</td>
+<td><code>Export-WindowsProcesses2DB</code>, <code>Get-WindowsProcesses</code>, exclude update</td>
+<td style="text-align: right;">3239-3504</td>
+<td>Aparte ProcessInventory-taskplugin.</td>
+</tr>
+<tr>
+<td>Orchestratie</td>
+<td><code>Invoke-PreStart</code>, <code>Start-Logging</code></td>
+<td style="text-align: right;">3511-4760</td>
+<td>Opsplitsen in bootstrapper, agent host, scheduler en task executor.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="collectors">Collectors</h2>
+<h3 id="browserhistorie">Browserhistorie</h3>
+<p>De agent ondersteunt Firefox, Edge en Chrome. Hij lokaliseert profielbestanden, wacht tot bestanden benaderbaar zijn, leest SQLite en vertaalt browser-eigen tijdstempels naar lokale tijd. Browsercheckpoints worden per browser in <code>DeviceLoggingUsers</code> bijgehouden. Er is ook een later geconsolideerd browsercheckpoint, waardoor dubbel modelleren is ontstaan.</p>
+<p>Behoud in C#:</p>
+<ul>
+<li>profiel- en browserdetectie;</li>
+<li>veilig lezen van gelockte databases via een tijdelijke snapshot/copy;</li>
+<li>expliciete timestampconversie;</li>
+<li>per taak/per gebruiker/per apparaat een checkpoint;</li>
+<li>normalisatie van domein, URL en applicatiematch.</li>
+</ul>
+<p>Wijzig in C#:</p>
+<ul>
+<li>log alleen URL-/domeinpatronen die op een centraal allowlist-item matchen;</li>
+<li>verwijder of hash querystring, fragment en gevoelige padsegmenten vóór opslag;</li>
+<li>koppel een match aan een interne <code>ApplicationId</code> en optioneel een externe CMDB-sleutel;</li>
+<li>gebruik parameterized SQLite en HTTPS-ingestie.</li>
+</ul>
+<h3 id="windows-recentquick-access">Windows Recent/Quick Access</h3>
+<p>De agent leest <code>.lnk</code>-bestanden en registreert meerdere bestandstijdstempels, doelpad en attributen. Dit levert nuttige gebruikssignalen op, maar paden kunnen persoons- of zaakgegevens bevatten.</p>
+<p>De nieuwe taak moet een expliciet dataminimalisatiebeleid hebben: wel applicatie-/shareclassificatie, niet standaard de volledige bestandsnaam of het volledige pad.</p>
+<h3 id="processen">Processen</h3>
+<p>De collector beperkt zich tot processen in de huidige Windows-sessie en registreert onder andere starttijd, executablepad, product en company. De bestaande uitsluitlijst is denylist-gebaseerd.</p>
+<p>De nieuwe variant moet allowlist-gebaseerd zijn en bij voorkeur op meerdere kenmerken matchen: genormaliseerde procesnaam, ondertekende publisher, productnaam, optioneel padpatroon en interne applicatiesleutel.</p>
+<h3 id="incidentele-taken">Incidentele taken</h3>
+<p>Browserextensie-inventarisatie past functioneel als aparte taskplugin. Een generieke “voer willekeurige PowerShell uit”-plugin vergroot het aanvalsoppervlak sterk. Als zo'n compatibiliteitstaak tijdelijk nodig is, voer hem dan out-of-process uit met een ondertekend manifest, expliciete capability allowlist, timeout, outputlimiet en centrale kill switch.</p>
+<h2 id="settings-en-checkpoints">Settings en checkpoints</h2>
+<p><code>DeviceLoggingSettings</code> is een globale key/value-store met beschrijving, groep, waarde, eenheid, type en enabled-vlag. <code>DeviceLoggingUserSettings</code> legt afwijkingen vast voor gebruiker/domein/apparaat. <code>DeviceLoggingUsers</code> combineert identiteit, runtimegegevens, installatieversie, loggingstatus, geheugenmetingen en veel taakcheckpoints.</p>
+<p>Deze semantiek moet in C# worden gescheiden:</p>
+<ul>
+<li>settings snapshot met schema- en revisienummer;</li>
+<li>user/device overrides met geldigheidsduur;</li>
+<li>task definition en task schedule;</li>
+<li>task checkpoint per <code>DeviceId + UserId + TaskId</code>;</li>
+<li>agent installation/runtime state;</li>
+<li>diagnostics policy.</li>
+</ul>
+<p>De lokale SQLite-database is een cache en outbox, niet de enige bron van globale waarheid. Iedere centrale snapshot krijgt een revision/hash; de agent wisselt atomisch naar een volledig gevalideerde snapshot.</p>
+<h2 id="legacy-buffer-en-mssql-write">Legacy buffer en MSSQL-write</h2>
+<p>De agent bouwt complete <code>INSERT</code>-/<code>UPDATE</code>-statements als strings op, bewaart die in memory en CSV en voert ze later in één transactie uit. Dit beperkt directe SQL-druk, maar mengt data en uitvoerbare code.</p>
+<p>Belangrijkste problemen:</p>
+<ul>
+<li>waarden worden via stringconcatenatie in SQL geplaatst;</li>
+<li>databaseacties gebruiken op plekken <code>Invoke-Expression</code>;</li>
+<li>de CSV kan complete SQL plus gevoelige pad-/URL-/foutwaarden bevatten;</li>
+<li>een foutpad verwijdert het CSV-bestand en kan daarmee data verliezen;</li>
+<li>replay/idempotency is niet formeel vastgelegd;</li>
+<li>endpoints hebben directe MSSQL-connectiviteit en databasecredentials nodig.</li>
+</ul>
+<p>De vervanger is een SQLite-outbox met records, niet SQL: immutable event-id, task-run-id, schema version, payload, created time, attempts en next-attempt. De server accepteert idempotente batches via HTTPS en verwerkt ze achter een queue.</p>
+<h2 id="minimal-logging">Minimal logging</h2>
+<p>Naast detailtabellen houdt de agent <code>uam_log_minimal</code> en <code>uam_log_minimal_dates</code> bij. De intentie is waardevol: één logisch datapunt plus de dagen waarop dat punt is gebruikt. De implementatie laadt echter eerder minimal-historie voor een gebruiker in geheugen en de natuurlijke uniciteit wordt niet door een unieke constraint beschermd.</p>
+<p>In het nieuwe model:</p>
+<ul>
+<li>bepaal een canonical key/hash uit tenant, user, application/data type en genormaliseerde waarde;</li>
+<li>gebruik server-side upsert met idempotency;</li>
+<li>maak de natuurlijke combinatie uniek;</li>
+<li>schrijf gebruiksdagen als unieke <code>(MinimalLogId, UsedOnDate)</code>-relatie of leid ze uit events af.</li>
+</ul>
+<h2 id="fouten-en-observability">Fouten en observability</h2>
+<p>De agent bewaart bruikbare context: computer, gebruiker, loglevel, fout, script, regel, positie, callstack, commandline, versie, settingssnapshot en Windowsversie. Die context moet behouden blijven, maar velden als commandline, settings, URL, path en callstack moeten vóór transport worden geredigeerd.</p>
+<p>Aanbevolen niveaus:</p>
+<ul>
+<li><code>Information</code>: lifecycle, taakstatus, batchaantallen;</li>
+<li><code>Debug</code>: timings en beslispaden zonder payload;</li>
+<li><code>Trace</code>: tijdelijk, centraal geautoriseerd per gebruiker/apparaat en automatisch vervallend;</li>
+<li><code>Warning/Error/Critical</code>: structured exception met correlation-, task-run- en device-id.</li>
+</ul>
+<p>Gebruik OpenTelemetry voor metrics/traces en structured JSON logs voor supportbundles.</p>
+<h2 id="concrete-technische-risicos">Concrete technische risico's</h2>
+<ol>
+<li>SQL-stringconcatenatie en dynamische uitvoering.</li>
+<li>Vaste SecureString-sleutel in de bron.</li>
+<li>Complete SQL-statements en gevoelige data in CSV.</li>
+<li>CSV-verwijdering in een foutpad met mogelijk dataverlies.</li>
+<li>Handmatige GC, vaste working-setlimieten van circa 50-200 MB en self-restart als geheugenbeheersing.</li>
+<li>Mogelijke <code>RunAs</code>/UAC-prompt bij self-restart.</li>
+<li>Dubbele definities van <code>Manage-LogRotation</code> en <code>ErrorHandler</code>; de laatste definitie wint stilzwijgend.</li>
+<li>Een browsercheckpointquery mist op één plek <code>userdomain</code> en kan de verkeerde samengestelde identiteit raken.</li>
+<li>Geen database-uniekheid voor de natuurlijke minimal-logcombinatie.</li>
+<li>Volledige eerdere minimal-historie per gebruiker wordt in geheugen geladen.</li>
+<li>Hardcoded klanttabellen en HR/AD-aannames.</li>
+<li>Eén proces bezit alle verantwoordelijkheden en native dependencies.</li>
+</ol>
+<h2 id="wat-zeker-behouden-moet-blijven">Wat zeker behouden moet blijven</h2>
+<ul>
+<li>expliciete taskcheckpoints en herstartbaarheid;</li>
+<li>local-first buffering bij netwerk- of serverstoringen;</li>
+<li>browser timestamp-/profielkennis;</li>
+<li>filtering vóór transport;</li>
+<li>per gebruiker/apparaat overrides;</li>
+<li>minimal/aggregated usage naast detaildata;</li>
+<li>rijke, centraal instelbare foutdiagnostiek;</li>
+<li>single-instance- en updatecontrole;</li>
+<li>duidelijke console- en stille productiemodus, vertaald naar service plus supporttool.</li>
+</ul>
+</section>
+<section class="document-section" data-source="docs\04-csharp-target-architecture.md"><h1 id="c-doelarchitectuur">C# doelarchitectuur</h1>
+<h2 id="ontwerpdoelen">Ontwerpdoelen</h2>
+<ul>
+<li>kleine, stabiele agent met laag idle-geheugen;</li>
+<li>tasks afzonderlijk kunnen versiebeheerden, uitvoeren en isoleren;</li>
+<li>offline-first zonder dataverlies;</li>
+<li>6.000 gebruikers zonder directe endpoint-naar-databasewrites;</li>
+<li>klantonafhankelijke HR/AD-/CMDB-contracten;</li>
+<li>allowlist en dataminimalisatie vóór transport;</li>
+<li>configureerbare diagnostics per gebruiker/apparaat;</li>
+<li>portable/open-source servercomponenten waar praktisch;</li>
+<li>veilige updates, rollback en aantoonbare audit.</li>
+</ul>
+<h2 id="componentmodel">Componentmodel</h2>
+<p><img src="../../artifacts/diagrams/csharp-target-component-architecture.svg" alt="C# doelarchitectuur" /></p>
+<p>De drie zones scheiden endpointverantwoordelijkheden, data-ingestie en centraal
+beheer. De agent schrijft niet rechtstreeks naar een centrale database. Alle
+uploads lopen als idempotente batches via HTTPS; beleid en taakpakketten worden
+getekend, geversioneerd en gecontroleerd uitgerold.</p>
+<h2 id="bootstrapper">1. Bootstrapper</h2>
+<p>Een kleine <code>uam.exe</code> bootstrapper doet alleen:</p>
+<ol>
+<li>installroot en channel bepalen;</li>
+<li>package manifest en digitale handtekening valideren;</li>
+<li>ontbrekende/nieuwere <code>uam-agent.exe</code> downloaden of kopiëren;</li>
+<li>uitpakken naar een versie-directory;</li>
+<li>self-test uitvoeren;</li>
+<li>atomisch de <code>current</code>-pointer wisselen;</li>
+<li>service starten/health controleren;</li>
+<li>bij failure naar vorige versie terugrollen.</li>
+</ol>
+<p>Nooit een in-place overwrite van een draaiende executable. Houd minimaal <code>current</code>, <code>previous</code> en een begrensde packagecache. Het manifest bevat version, SHA-256, signing key id, minimum OS/runtime, files en rollout channel.</p>
+<h2 id="agent-host">2. Agent host</h2>
+<p>Aanbevolen basis: .NET 10 LTS Worker Service als Windows Service.</p>
+<p>Verantwoordelijkheden:</p>
+<ul>
+<li>device identity en registratie;</li>
+<li>policy/settings snapshots ophalen;</li>
+<li>scheduler en concurrencylimieten;</li>
+<li>taskpackage verifiëren;</li>
+<li>task runner starten;</li>
+<li>SQLite transacties/outbox;</li>
+<li>upload met retry/backpressure;</li>
+<li>health, metrics en supportbundle;</li>
+<li>updatehandoff naar bootstrapper.</li>
+</ul>
+<p>Geen browserspecifieke SQL, HR-query's of portallogica in de host.</p>
+<h2 id="taskcontract-en-isolatie">3. Taskcontract en isolatie</h2>
+<p>Een taskpackage bevat een signed manifest en één of meer assemblies:</p>
+<pre><code class="language-csharp">public interface IUamTask
+{
+    Task&lt;UamTaskResult&gt; ExecuteAsync(
+        UamTaskContext context,
+        JsonElement settings,
+        CancellationToken cancellationToken);
+}
+</code></pre>
+<p><code>UamTaskContext</code> geeft alleen capabilities die de taak nodig heeft: read-only lokale bestandstoegang via helpers, checkpointstore, eventwriter, clock en logger. Geen databasecredential of willekeurige control-plane client.</p>
+<p>Een collectible <code>AssemblyLoadContext</code> kan managed taskassemblies ontladen. Dit is geen harde isolatie: static references, threads, timers en native libraries kunnen unload blokkeren. Daarom:</p>
+<ul>
+<li>eenvoudige volledig managed tasks: collectible ALC in de agent;</li>
+<li>tasks met native SQLite/browserdrivers, onbekende code of PowerShellcompatibiliteit: apart <code>uam-taskhost.exe</code>-proces;</li>
+<li>per task timeout, memory/CPUlimiet, outputlimiet en cancellation;</li>
+<li>kill het taskhostproces wanneer echte vrijgave vereist is.</li>
+</ul>
+<h2 id="lokale-sqlite">4. Lokale SQLite</h2>
+<p>Gebruik WAL-mode, korte transacties en één migratie-eigenaar. Encrypt gevoelige payloads waar het dreigingsmodel dat vraagt; bewaar geen serversecrets.</p>
+<p>Voorgestelde tabellen:</p>
+<table>
+<thead>
+<tr>
+<th>Tabel</th>
+<th>Sleutel/inhoud</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent_state</code></td>
+<td>device id, install/current/previous version, registration en last contact</td>
+</tr>
+<tr>
+<td><code>settings_snapshot</code></td>
+<td>scope, revision, ETag/hash, schema version, JSON, activated/expiry</td>
+</tr>
+<tr>
+<td><code>user_override</code></td>
+<td>user key, setting/task key, value, source, valid from/until</td>
+</tr>
+<tr>
+<td><code>task_definition</code></td>
+<td>task id/version, manifest, schedule, enabled, capabilityset</td>
+</tr>
+<tr>
+<td><code>task_checkpoint</code></td>
+<td>device + user + task, cursor/watermark, last success/run</td>
+</tr>
+<tr>
+<td><code>task_run</code></td>
+<td>immutable run id, timings, result, counts, error fingerprint</td>
+</tr>
+<tr>
+<td><code>outbox_batch</code></td>
+<td>batch id, state, attempts, next attempt, size, idempotency key</td>
+</tr>
+<tr>
+<td><code>outbox_event</code></td>
+<td>event id, batch id, task/schema, occurred time, minimized payload</td>
+</tr>
+<tr>
+<td><code>diagnostics_policy</code></td>
+<td>level, scope, expiry, issuer en reason</td>
+</tr>
+</tbody>
+</table>
+<p>De task schrijft events en checkpoint in één lokale transactie. Een checkpoint mag pas vooruit wanneer alle bijbehorende events duurzaam in de outbox staan.</p>
+<h2 id="ingestion-api">5. Ingestion API</h2>
+<p>Gebruik ASP.NET Core achter TLS. Endpoints authenticeren als device/tenant met korte tokens of mTLS; geen MSSQL-/PostgreSQL-credentials op endpoints.</p>
+<p>Voorbeeldcontract:</p>
+<pre><code class="language-http">POST /v1/ingestion/batches
+Authorization: Bearer &lt;device-token&gt;
+Content-Encoding: gzip
+Idempotency-Key: &lt;batch-uuid&gt;
+X-UAM-Schema-Version: 1
+</code></pre>
+<p>Response:</p>
+<pre><code class="language-json">{
+  &quot;batchId&quot;: &quot;...&quot;,
+  &quot;status&quot;: &quot;accepted&quot;,
+  &quot;acceptedEvents&quot;: 500,
+  &quot;retryAfterSeconds&quot;: 0
+}
+</code></pre>
+<p>Serverregels:</p>
+<ul>
+<li>maximum compressed/uncompressed size en event count;</li>
+<li>schema-/tenant-/devicevalidatie vóór queue;</li>
+<li>idempotency op tenant + device + key;</li>
+<li>geen PII in accesslogs;</li>
+<li><code>429</code> met jittered retry bij backpressure;</li>
+<li>poison batches isoleren met expliciete reden en support-id.</li>
+</ul>
+<p>Startwaarden om te meten, niet als harde waarheid: maximaal 500 events of 1 MiB uncompressed per batch, maximaal twee uploads per device, exponential backoff met full jitter en een centraal instelbaar ratebudget.</p>
+<h2 id="queue-en-workers">6. Queue en workers</h2>
+<p>De API bevestigt pas na duurzame queue-opslag. Geschikte portable opties zijn RabbitMQ of NATS JetStream; een PostgreSQL-backed inbox kan voor een eerste kleine installatie volstaan. Houd het queuecontract abstract zodat deploymentprofielen kunnen verschillen.</p>
+<p>Workers:</p>
+<ul>
+<li>valideren en normaliseren;</li>
+<li>matchen URL/proces naar <code>ApplicationId</code>;</li>
+<li>bulk-copy/upsert per eventtype;</li>
+<li>bewaken idempotency;</li>
+<li>vullen detailfeiten, minimal aggregates en diagnostics;</li>
+<li>schrijven dead-letter metadata zonder ongeredigeerde payload in algemene logs.</li>
+</ul>
+<h2 id="databasekeuze">7. Databasekeuze</h2>
+<p>Aanbevolen default: PostgreSQL, omdat het open source, portable en geschikt voor partitionering/bulk ingestie is.</p>
+<ul>
+<li>partitioneer grote eventtabellen op tijd en tenant;</li>
+<li>gebruik BRIN voor lange tijdreeksen en gerichte B-tree-indexen voor tenant/device/application/time;</li>
+<li>scheid control-plane tabellen van high-volume facts;</li>
+<li>bewaar ruwe detaildata korter dan aggregaties;</li>
+<li>gebruik <code>COPY</code>/batch insert en voorkom row-by-row writes.</li>
+</ul>
+<p>TimescaleDB kan nuttig zijn voor compressie, retention policies en time-bucket queries, maar voeg de extensie pas toe nadat echte loadtests aantonen dat standaard PostgreSQL-partitionering onvoldoende of operationeel onhandig is. MSSQL kan een deploymentadapter blijven, maar is geen vereiste voor de endpointarchitectuur.</p>
+<h2 id="schaal-naar-6.000-gebruikers">8. Schaal naar 6.000 gebruikers</h2>
+<p>De architectuur voorkomt thundering herds:</p>
+<ul>
+<li>schedules krijgen stabiele device-jitter;</li>
+<li>policy kan per task globale concurrency/rate windows publiceren;</li>
+<li>lokale outbox absorbeert netwerk- en serveruitval;</li>
+<li>API geeft backpressure terug;</li>
+<li>queue ontkoppelt HTTP-latency van databasewrites;</li>
+<li>workers schalen horizontaal;</li>
+<li>databasewrites gebeuren in bulk.</li>
+</ul>
+<p>Capaciteit moet worden berekend uit gemeten events per user/task/dag, gemiddelde payload, piekfactor, retention en query-SLA. Test minimaal:</p>
+<ol>
+<li>steady state 6.000 actieve agents;</li>
+<li>ochtendpiek en reconnect na één uur outage;</li>
+<li>server/queue 30 minuten unavailable;</li>
+<li>poison batch en schema mismatch;</li>
+<li>agentupdate tijdens backlog;</li>
+<li>databasepartition rollover en retention.</li>
+</ol>
+<h2 id="hrad-cmdb-contracten">9. HR/AD-/CMDB-contracten</h2>
+<p>Definieer smalle contractviews in plaats van klanttabellen:</p>
+<pre><code class="language-text">PersonSourceView
+- ExternalPersonId
+- AccountName
+- Domain
+- IsActive
+- OrganizationUnitId
+- ManagerExternalPersonId
+- ValidFrom / ValidUntil
+
+ApplicationSourceView
+- ExternalApplicationId
+- Name
+- Owner
+- LifecycleStatus
+- SourceSystem
+</code></pre>
+<p>De connection/providerconfiguratie staat centraal en secrets zitten in een secret store. Een import registreert source system, schema version, batch id, row counts en kwaliteit. De interne application registry krijgt een eigen stabiele <code>ApplicationId</code> en optionele externe sleutels.</p>
+<h2 id="url-en-procesallowlists">10. URL- en procesallowlists</h2>
+<p>Voorgesteld model:</p>
+<ul>
+<li><code>application</code>;</li>
+<li><code>application_external_key</code>;</li>
+<li><code>url_match_rule</code> met host/padpattern, query policy en priority;</li>
+<li><code>process_match_rule</code> met normalized name, publisher, product en padpolicy;</li>
+<li><code>rule_revision</code>/audit;</li>
+<li><code>match_conflict</code> voor ambiguïteit.</li>
+</ul>
+<p>Match op het endpoint zodat niet-toegestane URL's/processen nooit in de outbox komen. Publiceer een compacte, gesigneerde rule snapshot. Test rules centraal met voorbeeldinput zonder echte gebruikersdata.</p>
+<h2 id="diagnostics-en-privacy">11. Diagnostics en privacy</h2>
+<ul>
+<li>structured logs met event id, task run, device, appversion en correlation;</li>
+<li>OpenTelemetry metrics/traces;</li>
+<li>levels centraal en tijdelijk per user/device instelbaar;</li>
+<li>tracepolicy heeft issuer, reason en automatische expiry;</li>
+<li>redactie vóór lokale persistence en transport;</li>
+<li>supportbundle bevat configuratiehashes/counts, geen secrets/cookies/ruwe browserhistorie;</li>
+<li>retention en detailtoegang per tenant/purpose.</li>
+</ul>
+<h2 id="admin-portal">12. Admin portal</h2>
+<p>ASP.NET Core API plus een moderne webclient, met capability-RBAC:</p>
+<ul>
+<li>Viewer;</li>
+<li>Policy Administrator;</li>
+<li>Task Publisher;</li>
+<li>Task Operator;</li>
+<li>Diagnostics Operator;</li>
+<li>Auditor.</li>
+</ul>
+<p>Portalmodules:</p>
+<ul>
+<li>fleet/agent health;</li>
+<li>population/policy editor met impact preview;</li>
+<li>task catalog, schedules en staged rollout;</li>
+<li>application registry en allowlists;</li>
+<li>usage explorer met aggregatie-first detail drilldown;</li>
+<li>errors/fingerprints en supportacties;</li>
+<li>immutable auditlog.</li>
+</ul>
+<p>Iedere mutatie gebruikt optimistic concurrency, reason, actor en revision. Productieacties worden nooit verstopt in generieke tabel-row-actions.</p>
+<h2 id="niet-doen">Niet doen</h2>
+<ul>
+<li>geen directe endpoint-naar-databaseconnectie;</li>
+<li>geen complete SQL-statements in SQLite/CSV;</li>
+<li>geen fixed-key secretversleuteling;</li>
+<li>geen willekeurige task-DLL zonder signature/capabilities;</li>
+<li>niet aannemen dat <code>AssemblyLoadContext</code> native resources hard isoleert;</li>
+<li>geen volledige URL/pad/processen verzamelen en later pas filteren;</li>
+<li>geen klanttabellen hardcoden;</li>
+<li>geen “Timescale omdat het time series heet” zonder benchmark.</li>
+</ul>
+</section>
+<section class="document-section" data-source="docs\05-migration-map-roadmap.md"><h1 id="migratiekaart-en-roadmap">Migratiekaart en roadmap</h1>
+<h2 id="legacy-naar-doelcomponent">Legacy naar doelcomponent</h2>
+<table>
+<thead>
+<tr>
+<th>Legacy</th>
+<th>Nieuwe verantwoordelijkheid</th>
+<th>Migratievorm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PS2EXE <code>UAM.exe</code></td>
+<td><code>uam.exe</code> bootstrapper + Windows Service <code>uam-agent.exe</code></td>
+<td>Nieuwe implementatie; legacy alleen als gedragsspecificatie.</td>
+</tr>
+<tr>
+<td><code>Invoke-PreStart</code></td>
+<td>bootstrap/install/policy initialization</td>
+<td>Opsplitsen in idempotente lifecyclestappen.</td>
+</tr>
+<tr>
+<td><code>Start-Logging</code></td>
+<td>scheduler + task orchestrator</td>
+<td>Nieuwe state machine.</td>
+</tr>
+<tr>
+<td>Browserfuncties</td>
+<td><code>Uam.Task.BrowserHistory</code></td>
+<td>Vertical slice als eerste collector.</td>
+</tr>
+<tr>
+<td>Recent-itemfuncties</td>
+<td><code>Uam.Task.RecentItems</code></td>
+<td>Privacybeleid vóór eventwrite.</td>
+</tr>
+<tr>
+<td>Procesfuncties</td>
+<td><code>Uam.Task.ProcessInventory</code></td>
+<td>Allowlist/publisher matching.</td>
+</tr>
+<tr>
+<td>Browserextensiewens</td>
+<td><code>Uam.Task.BrowserExtensions</code></td>
+<td>Aparte incidentele/periodieke plugin.</td>
+</tr>
+<tr>
+<td><code>DeviceLoggingSettings</code></td>
+<td>centrale typed policy + lokale snapshot</td>
+<td>Migreren met schema/revision.</td>
+</tr>
+<tr>
+<td><code>DeviceLoggingUserSettings</code></td>
+<td>scoped override policy</td>
+<td>Normaliseren op user/device/task.</td>
+</tr>
+<tr>
+<td><code>DeviceLoggingUsers</code></td>
+<td>device/user identity, task checkpoint, runtime health</td>
+<td>Opsplitsen in meerdere tabellen/entities.</td>
+</tr>
+<tr>
+<td>Deferred SQL CSV</td>
+<td>SQLite transactional outbox</td>
+<td>Niet converteren naar SQL; alleen records/events.</td>
+</tr>
+<tr>
+<td><code>Invoke-SqlQuery</code> endpoint</td>
+<td>HTTPS ingestion client</td>
+<td>Databasecredentials verwijderen.</td>
+</tr>
+<tr>
+<td>Active/archive logtabellen</td>
+<td>gepartitioneerde eventfacts + retention</td>
+<td>Dual-write/backfill waar nodig.</td>
+</tr>
+<tr>
+<td>Minimal tables</td>
+<td>idempotente aggregate projector</td>
+<td>Natuurlijke unique key toevoegen.</td>
+</tr>
+<tr>
+<td><code>DeviceScripts</code></td>
+<td>signed task package catalog</td>
+<td>PowerShell alleen als begrensde compatibiliteit.</td>
+</tr>
+<tr>
+<td><code>DeviceScriptSchedules</code></td>
+<td>scheduler policy + target relations + run history</td>
+<td>Gedenormaliseerde lijsten vervangen.</td>
+</tr>
+<tr>
+<td><code>DeviceApplicationMatches</code></td>
+<td>application registry + URL/process rule revisions</td>
+<td>Externe CMDB-key behouden.</td>
+</tr>
+<tr>
+<td><code>DeviceLoggingErrors</code></td>
+<td>structured diagnostics/fingerprint store</td>
+<td>Redactie en correlation.</td>
+</tr>
+<tr>
+<td><code>ActionLog</code></td>
+<td>immutable typed audit events</td>
+<td>Polymorf TableName/RecordID afbouwen.</td>
+</tr>
+<tr>
+<td>PSU-app</td>
+<td>nieuwe admin portal/control-plane API</td>
+<td>Capability-RBAC en revisions.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fases">Fases</h2>
+<h3 id="fase-0-baseline-en-governance">Fase 0 — baseline en governance</h3>
+<ul>
+<li>bronhashes en database-DDL bevriezen;</li>
+<li>event-/setting-/taskcontracten vastleggen;</li>
+<li>gegevensclassificatie, doeleinden en retention goedkeuren;</li>
+<li>20-50 representatieve pilotdevices kiezen;</li>
+<li>legacy metrics verzamelen: eventvolume, backlog, memory, foutpercentages.</li>
+</ul>
+<p>Exit: goedgekeurde contracts v1 en meetbare legacybaseline.</p>
+<h3 id="fase-1-platform-skeleton">Fase 1 — platform skeleton</h3>
+<ul>
+<li>repository/CI, signing en package manifest;</li>
+<li>bootstrapper met atomic install/rollback;</li>
+<li>agent Windows Service;</li>
+<li>SQLite migrations, task state en outbox;</li>
+<li>control-plane heartbeat/settings endpoint;</li>
+<li>structured logs en supportbundle.</li>
+</ul>
+<p>Exit: agent kan veilig installeren/updaten, policy ophalen en offline events vasthouden.</p>
+<h3 id="fase-2-verticale-browserhistory-slice">Fase 2 — verticale BrowserHistory-slice</h3>
+<ul>
+<li>Chromium/Firefox reader;</li>
+<li>URL-allowlist en redactie op endpoint;</li>
+<li>task checkpoint + outbox in één transactie;</li>
+<li>HTTPS batch ingestie, queue en PostgreSQL worker;</li>
+<li>minimale portalview voor fleet/ingestion.</li>
+</ul>
+<p>Exit: end-to-end pilot zonder directe SQL-connectie en zonder dataverlies bij outage.</p>
+<h3 id="fase-3-overige-collectors">Fase 3 — overige collectors</h3>
+<ul>
+<li>ProcessInventory met publisher/product matching;</li>
+<li>RecentItems met padminimalisatie;</li>
+<li>BrowserExtensions als aparte task;</li>
+<li>taskhostproces voor native/risicovolle tasks;</li>
+<li>centraal taskcatalogus-/schedulecontract.</li>
+</ul>
+<p>Exit: functionele pariteit voor de drie actieve legacy collectors plus extensie-inventarisatie.</p>
+<h3 id="fase-4-schaal-en-datamodel">Fase 4 — schaal en datamodel</h3>
+<ul>
+<li>6.000-agent load/reconnecttests;</li>
+<li>databasepartitionering, indexes en retention;</li>
+<li>queue/worker autoscaling en dead-letter flow;</li>
+<li>idempotent minimal aggregate;</li>
+<li>HR/AD-/CMDB-viewadapters.</li>
+</ul>
+<p>Exit: capaciteitstest voldoet aan overeengekomen ingestie-, backlog- en query-SLA.</p>
+<h3 id="fase-5-beheerportal">Fase 5 — beheerportal</h3>
+<ul>
+<li>population/policy editor;</li>
+<li>agent health en diagnostics;</li>
+<li>task catalog/schedules/targeting;</li>
+<li>application registry en allowlists;</li>
+<li>usage explorer, errors en audit;</li>
+<li>impact preview, approval en rollback.</li>
+</ul>
+<p>Exit: alle normale beheerhandelingen kunnen zonder PSU en met capability-RBAC.</p>
+<h3 id="fase-6-parallel-pilot-en-uitrol">Fase 6 — parallel pilot en uitrol</h3>
+<ul>
+<li>legacy en nieuw naast elkaar op pilots;</li>
+<li>compare aggregates, niet klakkeloos gevoelige detailregels;</li>
+<li>canarygroepen 1%, 5%, 20%, 50%, 100%;</li>
+<li>automatische rollbackgrenzen;</li>
+<li>support/runbooks en eigenaarsoverdracht.</li>
+</ul>
+<p>Exit: datakwaliteit, performance, privacy en operationele acceptatie zijn ondertekend.</p>
+<h3 id="fase-7-legacy-afbouw">Fase 7 — legacy afbouw</h3>
+<ul>
+<li>endpoint-MSSQL-credentials intrekken;</li>
+<li>legacy schedules/PSU-writefuncties uitschakelen;</li>
+<li>dataretentie/backfillbesluit uitvoeren;</li>
+<li>oude executables, CSV-buffer en fixed-key DbSettings verwijderen;</li>
+<li>legacy portal read-only maken en daarna uitfaseren.</li>
+</ul>
+<h2 id="datamigratie">Datamigratie</h2>
+<p>Niet alle detailhistorie hoeft naar het nieuwe operationele model. Beslis per dataset:</p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Voorkeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global settings en geldige overrides</td>
+<td>Transformeren naar typed policy v1, met bron/provenance.</td>
+</tr>
+<tr>
+<td>Application matches</td>
+<td>Opschonen en migreren naar application/rule revisions.</td>
+</tr>
+<tr>
+<td>Process/browser excludes</td>
+<td>Alleen als input voor allowlistontwerp; niet blind kopiëren.</td>
+</tr>
+<tr>
+<td>Task/scripts/schedules</td>
+<td>Handmatig reviewen; geen arbitraire scriptcode automatisch activeren.</td>
+</tr>
+<tr>
+<td>Minimal logs/dates</td>
+<td>Backfill naar aggregate model indien rapportagehistorie nodig is.</td>
+</tr>
+<tr>
+<td>Detail archives</td>
+<td>Bij voorkeur read-only legacy/archive store; selectieve backfill na businesscase.</td>
+</tr>
+<tr>
+<td>Errors/audit</td>
+<td>Bewaren volgens compliance; eventueel in apart legacy auditarchief.</td>
+</tr>
+<tr>
+<td>HR/AD tabellen</td>
+<td>Niet migreren als UAM-data; vervangen door broncontracten/views.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="veldreview">Veldreview</h2>
+<p>De dictionary markeert vier kandidaten, geen verwijderbesluiten:</p>
+<ul>
+<li><code>DeviceBrowserLogging2Exclude.Remarks</code>;</li>
+<li><code>DeviceScriptSchedules.IntervalMinutes</code>;</li>
+<li><code>DeviceScriptSchedules.SpecificRunTime</code>;</li>
+<li><code>DeviceScriptSchedules.LastRunTime</code>.</li>
+</ul>
+<p>Beslis na controle op externe rapporten, ad-hoc SQL en gewenst nieuw schedulercontract. De vele externe <code>AdUsers</code>-/HR-velden worden niet individueel “verwijderd”; de nieuwe bronview projecteert uitsluitend benodigde velden.</p>
+<h2 id="acceptatiecriteria">Acceptatiecriteria</h2>
+<h3 id="agent">Agent</h3>
+<ul>
+<li>idle- en piekgeheugen binnen afgesproken budget;</li>
+<li>crash/reboot verliest geen geaccepteerde lokale events;</li>
+<li>taskcheckpoint loopt nooit vooruit op outboxcommit;</li>
+<li>update kan automatisch rollbacken;</li>
+<li>tasks kunnen worden gestopt en native taskhostresources verdwijnen.</li>
+</ul>
+<h3 id="ingestie">Ingestie</h3>
+<ul>
+<li>duplicate batch levert geen duplicate facts;</li>
+<li>outage/reconnect voldoet aan backlog recovery SLA;</li>
+<li><code>429</code>/retry veroorzaakt geen thundering herd;</li>
+<li>ongeldige schema-/tenant-/devicepayload wordt deterministisch afgewezen;</li>
+<li>geen raw payload/secrets in platformlogs.</li>
+</ul>
+<h3 id="dataprivacy">Data/privacy</h3>
+<ul>
+<li>niet-allowlisted URLs/processen verlaten het endpoint niet;</li>
+<li>URL query/fragment en paden volgen redactiebeleid;</li>
+<li>retention/partition purge is aantoonbaar;</li>
+<li>detailtoegang is scoped en geaudit;</li>
+<li>aggregates vergelijken binnen overeengekomen tolerantie met legacy.</li>
+</ul>
+<h3 id="portal">Portal</h3>
+<ul>
+<li>read en write capabilities zijn gescheiden;</li>
+<li>iedere mutatie heeft actor/reason/revision;</li>
+<li>impact preview en rollback zijn beschikbaar;</li>
+<li>diagnosticsbeleid verloopt automatisch;</li>
+<li>audit is immutable en doorzoekbaar.</li>
+</ul>
+<h2 id="open-ontwerpbesluiten">Open ontwerpbesluiten</h2>
+<ol>
+<li>PostgreSQL-only basis of optionele TimescaleDB deployment.</li>
+<li>Queuekeuze per deploymentprofiel.</li>
+<li>Deviceauthenticatie: mTLS, managed certificate of korte tokenflow.</li>
+<li>Exacte URL-/padminimalisatie per businessdoel.</li>
+<li>Retentie detail versus aggregates.</li>
+<li>In-process ALC versus out-of-process per tasktype.</li>
+<li>Portaltechnologie en hostingmodel.</li>
+<li>Welke legacy historie aantoonbaar moet worden gebackfilled.</li>
+<li>Wie eigenaar is van de centrale application registry voor andere IAM-modules.</li>
+</ol>
+<h2 id="eerste-backlog">Eerste backlog</h2>
+<ol>
+<li>ADR's voor agent/service, SQLite/outbox, ingestion en database.</li>
+<li>Contractpackages <code>Uam.Contracts</code>, <code>Uam.TaskSdk</code>, <code>Uam.Ingestion.Contracts</code>.</li>
+<li>Bootstrapper prototype met signed package en rollback.</li>
+<li>SQLite schema/migration en power-loss tests.</li>
+<li>BrowserHistory vertical slice met allowlist.</li>
+<li>Ingestion API + idempotency + queue worker.</li>
+<li>6.000-agent synthetic load harness.</li>
+<li>Portal read-only fleet/usage prototype.</li>
+<li>Policy revision/approval/audit flow.</li>
+<li>Pilotrunbook en legacy comparison dashboard.</li>
+</ol>
+</section>
+</body></html>

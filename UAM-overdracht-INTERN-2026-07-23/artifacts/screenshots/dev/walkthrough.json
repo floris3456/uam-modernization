@@ -1,0 +1,27 @@
+{
+  "Environment": "DEV",
+  "AppUri": "http://localhost:5000/uam-logging",
+  "Browser": "Chrome",
+  "StartedAtUtc": "2026-07-23T21:15:35.1638654Z",
+  "Safety": {
+    "Navigation": "role=tab only",
+    "Interactions": [
+      "search/filter input",
+      "sortable column header",
+      "previous/next pagination"
+    ],
+    "MutatingActions": "not permitted",
+    "ScreenshotMasking": [
+      "table bodies",
+      "grid rows",
+      "input values",
+      "canvas labels",
+      "account labels"
+    ]
+  },
+  "Screens": [],
+  "CompletedAtUtc": "2026-07-23T21:20:37.3926567Z",
+  "Result": "Failed",
+  "ErrorType": "System.Management.Automation.RuntimeException",
+  "ErrorMessage": "De UAM-app werd niet tijdig gereed (origin=http://localhost:5000; pad=/login; ready=True; login=True; body=True; expected=False)."
+}

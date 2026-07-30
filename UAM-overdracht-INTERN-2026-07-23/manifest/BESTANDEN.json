@@ -1,0 +1,412 @@
+﻿[
+  {
+    "RelativePath": "artifacts/database/00_legacy_uam_prod_column_profile.json",
+    "Bytes": 87930,
+    "LastWriteTimeUtc": "2026-07-23T20:41:55.1641762Z"
+  },
+  {
+    "RelativePath": "artifacts/database/00_legacy_uam_prod_inventory.csv",
+    "Bytes": 1902,
+    "LastWriteTimeUtc": "2026-07-23T19:41:12.6600619Z"
+  },
+  {
+    "RelativePath": "artifacts/database/00_legacy_uam_prod_inventory.json",
+    "Bytes": 5802,
+    "LastWriteTimeUtc": "2026-07-23T19:41:12.6550606Z"
+  },
+  {
+    "RelativePath": "artifacts/database/00_legacy_uam_schema_metadata.json",
+    "Bytes": 314168,
+    "LastWriteTimeUtc": "2026-07-23T20:43:33.5844821Z"
+  },
+  {
+    "RelativePath": "artifacts/database/01_legacy_uam_prod_schema.sql",
+    "Bytes": 52523,
+    "LastWriteTimeUtc": "2026-07-23T19:37:17.2354086Z"
+  },
+  {
+    "RelativePath": "artifacts/database/02_legacy_uam_reference_data.sql",
+    "Bytes": 1793394,
+    "LastWriteTimeUtc": "2026-07-23T22:12:57.4025264Z"
+  },
+  {
+    "RelativePath": "artifacts/database/03_legacy_uam_sanitized_samples.sql",
+    "Bytes": 100547,
+    "LastWriteTimeUtc": "2026-07-23T22:12:57.4206286Z"
+  },
+  {
+    "RelativePath": "artifacts/database/04_legacy_uam_data_dictionary.csv",
+    "Bytes": 211021,
+    "LastWriteTimeUtc": "2026-07-23T20:49:47.9456676Z"
+  },
+  {
+    "RelativePath": "artifacts/database/04_legacy_uam_data_dictionary.json",
+    "Bytes": 557815,
+    "LastWriteTimeUtc": "2026-07-23T20:49:47.8354751Z"
+  },
+  {
+    "RelativePath": "artifacts/database/README.md",
+    "Bytes": 2914,
+    "LastWriteTimeUtc": "2026-07-23T22:12:36.2865154Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/csharp-target-component-architecture.png",
+    "Bytes": 156804,
+    "LastWriteTimeUtc": "2026-07-23T22:04:03.7216857Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/csharp-target-component-architecture.svg",
+    "Bytes": 13969,
+    "LastWriteTimeUtc": "2026-07-23T22:04:00.9118768Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-agent-execution-flow.png",
+    "Bytes": 90898,
+    "LastWriteTimeUtc": "2026-07-23T22:04:07.4081973Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-agent-execution-flow.svg",
+    "Bytes": 7727,
+    "LastWriteTimeUtc": "2026-07-23T22:04:00.9270039Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-configuration-task-source-model.png",
+    "Bytes": 128194,
+    "LastWriteTimeUtc": "2026-07-23T22:04:10.5952359Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-configuration-task-source-model.svg",
+    "Bytes": 15418,
+    "LastWriteTimeUtc": "2026-07-23T22:04:00.8828753Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-logical-logging-model.png",
+    "Bytes": 138978,
+    "LastWriteTimeUtc": "2026-07-23T22:04:14.1648361Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-logical-logging-model.svg",
+    "Bytes": 12107,
+    "LastWriteTimeUtc": "2026-07-23T22:04:00.8588760Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-physical-data-model.png",
+    "Bytes": 131714,
+    "LastWriteTimeUtc": "2026-07-23T22:04:17.2815070Z"
+  },
+  {
+    "RelativePath": "artifacts/diagrams/legacy-physical-data-model.svg",
+    "Bytes": 18692,
+    "LastWriteTimeUtc": "2026-07-23T22:04:00.8066540Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/00-start.png",
+    "Bytes": 46677,
+    "LastWriteTimeUtc": "2026-07-23T20:12:49.6244768Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/01-logging-users-read-interaction.png",
+    "Bytes": 83731,
+    "LastWriteTimeUtc": "2026-07-23T20:12:56.1473744Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/01-logging-users.png",
+    "Bytes": 82719,
+    "LastWriteTimeUtc": "2026-07-23T20:12:54.4163040Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/02-user-grids-read-interaction.png",
+    "Bytes": 84380,
+    "LastWriteTimeUtc": "2026-07-23T20:13:00.3839308Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/02-user-grids.png",
+    "Bytes": 186529,
+    "LastWriteTimeUtc": "2026-07-23T20:12:58.5867145Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/03-organogram.png",
+    "Bytes": 47098,
+    "LastWriteTimeUtc": "2026-07-23T20:13:03.4184393Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/04-logging-data-read-interaction.png",
+    "Bytes": 67416,
+    "LastWriteTimeUtc": "2026-07-23T20:13:09.5446654Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/04-logging-data.png",
+    "Bytes": 67711,
+    "LastWriteTimeUtc": "2026-07-23T20:13:07.8715445Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/05-device-scripts-schedules-read-interaction.png",
+    "Bytes": 59645,
+    "LastWriteTimeUtc": "2026-07-23T20:13:14.3176199Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/05-device-scripts-schedules.png",
+    "Bytes": 211867,
+    "LastWriteTimeUtc": "2026-07-23T20:13:12.5686980Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/10-uam-settings.png",
+    "Bytes": 53872,
+    "LastWriteTimeUtc": "2026-07-23T20:13:17.1766895Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/11-global-settings.png",
+    "Bytes": 53872,
+    "LastWriteTimeUtc": "2026-07-23T20:13:18.1337133Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/12-process-exclusions-read-interaction.png",
+    "Bytes": 83496,
+    "LastWriteTimeUtc": "2026-07-23T20:13:33.8401377Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/12-process-exclusions.png",
+    "Bytes": 217865,
+    "LastWriteTimeUtc": "2026-07-23T20:13:32.0900966Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/13-browser-logging-exclusions-read-interaction.png",
+    "Bytes": 81245,
+    "LastWriteTimeUtc": "2026-07-23T20:13:38.4562675Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/13-browser-logging-exclusions.png",
+    "Bytes": 84865,
+    "LastWriteTimeUtc": "2026-07-23T20:13:36.7332268Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/14-application-matches-read-interaction.png",
+    "Bytes": 67681,
+    "LastWriteTimeUtc": "2026-07-23T20:13:42.9619351Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/14-application-matches.png",
+    "Bytes": 203305,
+    "LastWriteTimeUtc": "2026-07-23T20:13:41.2113587Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/15-errors.png",
+    "Bytes": 45093,
+    "LastWriteTimeUtc": "2026-07-23T20:13:45.2369389Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/16-audit-log.png",
+    "Bytes": 50232,
+    "LastWriteTimeUtc": "2026-07-23T20:13:46.3219628Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/README.md",
+    "Bytes": 941,
+    "LastWriteTimeUtc": "2026-07-23T22:08:04.0294123Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/dev/walkthrough.json",
+    "Bytes": 841,
+    "LastWriteTimeUtc": "2026-07-23T21:20:38.8847027Z"
+  },
+  {
+    "RelativePath": "artifacts/screenshots/prod/walkthrough.json",
+    "Bytes": 766,
+    "LastWriteTimeUtc": "2026-07-23T20:26:08.5993266Z"
+  },
+  {
+    "RelativePath": "deliverables/html/UAM-databasemodel-en-data-dictionary.html",
+    "Bytes": 218085,
+    "LastWriteTimeUtc": "2026-07-23T22:17:54.4326101Z"
+  },
+  {
+    "RelativePath": "deliverables/html/UAM-doelbeeld-samenvatting-A4.html",
+    "Bytes": 7679,
+    "LastWriteTimeUtc": "2026-07-23T22:17:44.8429211Z"
+  },
+  {
+    "RelativePath": "deliverables/html/UAM-IST-samenvatting-A4.html",
+    "Bytes": 7278,
+    "LastWriteTimeUtc": "2026-07-23T22:17:41.3599703Z"
+  },
+  {
+    "RelativePath": "deliverables/html/UAM-legacy-overdrachtsdossier.html",
+    "Bytes": 49337,
+    "LastWriteTimeUtc": "2026-07-23T22:17:48.5140660Z"
+  },
+  {
+    "RelativePath": "deliverables/html/UAM-PSU-app-IST.html",
+    "Bytes": 15377,
+    "LastWriteTimeUtc": "2026-07-23T22:18:02.3563333Z"
+  },
+  {
+    "RelativePath": "deliverables/pdf/README.md",
+    "Bytes": 663,
+    "LastWriteTimeUtc": "2026-07-23T22:11:10.8335529Z"
+  },
+  {
+    "RelativePath": "deliverables/pdf/UAM-databasemodel-en-data-dictionary.pdf",
+    "Bytes": 2494578,
+    "LastWriteTimeUtc": "2026-07-23T22:18:01.6335946Z"
+  },
+  {
+    "RelativePath": "deliverables/pdf/UAM-doelbeeld-samenvatting-A4.pdf",
+    "Bytes": 90395,
+    "LastWriteTimeUtc": "2026-07-23T22:17:47.8499944Z"
+  },
+  {
+    "RelativePath": "deliverables/pdf/UAM-IST-samenvatting-A4.pdf",
+    "Bytes": 84366,
+    "LastWriteTimeUtc": "2026-07-23T22:17:44.3608449Z"
+  },
+  {
+    "RelativePath": "deliverables/pdf/UAM-legacy-overdrachtsdossier.pdf",
+    "Bytes": 675143,
+    "LastWriteTimeUtc": "2026-07-23T22:17:52.9675842Z"
+  },
+  {
+    "RelativePath": "deliverables/pdf/UAM-PSU-app-IST.pdf",
+    "Bytes": 1836115,
+    "LastWriteTimeUtc": "2026-07-23T22:18:08.7778685Z"
+  },
+  {
+    "RelativePath": "deliverables/video/README.md",
+    "Bytes": 884,
+    "LastWriteTimeUtc": "2026-07-23T22:11:12.0678774Z"
+  },
+  {
+    "RelativePath": "deliverables/video/UAM-PSU-app-walkthrough-transcript.md",
+    "Bytes": 3441,
+    "LastWriteTimeUtc": "2026-07-23T22:00:27.7633666Z"
+  },
+  {
+    "RelativePath": "deliverables/video/UAM-PSU-app-walkthrough.mp4",
+    "Bytes": 9194505,
+    "LastWriteTimeUtc": "2026-07-23T22:01:36.5200529Z"
+  },
+  {
+    "RelativePath": "deliverables/video/UAM-PSU-app-walkthrough.pptx",
+    "Bytes": 1617678,
+    "LastWriteTimeUtc": "2026-07-23T22:00:27.2187579Z"
+  },
+  {
+    "RelativePath": "deliverables/video/UAM-PSU-app-walkthrough.srt",
+    "Bytes": 3580,
+    "LastWriteTimeUtc": "2026-07-23T22:00:27.8515897Z"
+  },
+  {
+    "RelativePath": "docs/00a-uam-ist-samenvatting-a4.md",
+    "Bytes": 3349,
+    "LastWriteTimeUtc": "2026-07-23T21:30:47.5870136Z"
+  },
+  {
+    "RelativePath": "docs/00b-uam-doelbeeld-samenvatting-a4.md",
+    "Bytes": 3674,
+    "LastWriteTimeUtc": "2026-07-23T21:30:47.5880138Z"
+  },
+  {
+    "RelativePath": "docs/01-legacy-agent-uam-ps1.md",
+    "Bytes": 10833,
+    "LastWriteTimeUtc": "2026-07-23T21:30:27.9140149Z"
+  },
+  {
+    "RelativePath": "docs/02-legacy-database-model.md",
+    "Bytes": 7227,
+    "LastWriteTimeUtc": "2026-07-23T21:30:30.1778762Z"
+  },
+  {
+    "RelativePath": "docs/03-psu-app-ist.md",
+    "Bytes": 9624,
+    "LastWriteTimeUtc": "2026-07-23T22:08:04.0334132Z"
+  },
+  {
+    "RelativePath": "docs/04-csharp-target-architecture.md",
+    "Bytes": 9965,
+    "LastWriteTimeUtc": "2026-07-23T21:30:32.0167409Z"
+  },
+  {
+    "RelativePath": "docs/05-migration-map-roadmap.md",
+    "Bytes": 8347,
+    "LastWriteTimeUtc": "2026-07-23T21:00:52.3915354Z"
+  },
+  {
+    "RelativePath": "docs/appendices/legacy-data-dictionary.md",
+    "Bytes": 112483,
+    "LastWriteTimeUtc": "2026-07-23T20:49:48.9002119Z"
+  },
+  {
+    "RelativePath": "docs/README.md",
+    "Bytes": 4008,
+    "LastWriteTimeUtc": "2026-07-23T22:14:36.9200471Z"
+  },
+  {
+    "RelativePath": "manifest/VALIDATIERAPPORT.md",
+    "Bytes": 1833,
+    "LastWriteTimeUtc": "2026-07-23T22:20:10.9480734Z"
+  },
+  {
+    "RelativePath": "README-OVERDRACHT.md",
+    "Bytes": 2866,
+    "LastWriteTimeUtc": "2026-07-23T22:19:52.5502461Z"
+  },
+  {
+    "RelativePath": "scripts/Install-LegacyUamDocumentationSchema.ps1",
+    "Bytes": 4634,
+    "LastWriteTimeUtc": "2026-07-23T19:57:53.4269638Z"
+  },
+  {
+    "RelativePath": "scripts/Invoke-UamReadOnlyBrowserWalkthrough.ps1",
+    "Bytes": 37308,
+    "LastWriteTimeUtc": "2026-07-23T20:26:41.4618449Z"
+  },
+  {
+    "RelativePath": "scripts/New-LegacyUamDataDictionary.ps1",
+    "Bytes": 18562,
+    "LastWriteTimeUtc": "2026-07-23T20:48:46.9370241Z"
+  },
+  {
+    "RelativePath": "scripts/New-UamDocumentationDiagrams.ps1",
+    "Bytes": 24082,
+    "LastWriteTimeUtc": "2026-07-23T21:29:23.3252135Z"
+  },
+  {
+    "RelativePath": "scripts/New-UamDocumentationPdfs.ps1",
+    "Bytes": 9674,
+    "LastWriteTimeUtc": "2026-07-23T22:12:16.0738194Z"
+  },
+  {
+    "RelativePath": "scripts/New-UamHandoverPackage.ps1",
+    "Bytes": 13224,
+    "LastWriteTimeUtc": "2026-07-23T22:19:53.7359295Z"
+  },
+  {
+    "RelativePath": "scripts/New-UamWalkthroughVideo.ps1",
+    "Bytes": 11951,
+    "LastWriteTimeUtc": "2026-07-23T21:48:39.5693272Z"
+  },
+  {
+    "RelativePath": "scripts/Test-UamDocumentationDeliverables.ps1",
+    "Bytes": 9386,
+    "LastWriteTimeUtc": "2026-07-23T22:12:36.2825165Z"
+  },
+  {
+    "RelativePath": "sources/legacy/README.md",
+    "Bytes": 972,
+    "LastWriteTimeUtc": "2026-07-23T21:34:18.8297044Z"
+  },
+  {
+    "RelativePath": "sources/legacy/uam.redacted.ps1",
+    "Bytes": 240087,
+    "LastWriteTimeUtc": "2026-07-23T21:36:45.5455352Z"
+  },
+  {
+    "RelativePath": "sources/README.md",
+    "Bytes": 1143,
+    "LastWriteTimeUtc": "2026-07-23T22:10:39.6090908Z"
+  },
+  {
+    "RelativePath": "uam-logging.ps1",
+    "Bytes": 105434,
+    "LastWriteTimeUtc": "2026-07-10T18:27:47.9405312Z"
+  }
+]
