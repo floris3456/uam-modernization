@@ -22,6 +22,8 @@ The ChatGPT Project may contain all suite attachments. For this chat, you are al
 
 Do not open, search, quote, summarize, or use any other Project file, even if it appears relevant. A file being present in the Project is not permission to use it. If an allowed file is missing, report the missing filename instead of substituting another file.
 
+Earlier batch-review results in this allowlist are accepted predecessor decisions. Treat them as stronger project context than the original shared baseline; report any conflict explicitly rather than silently reverting to an older assumption.
+
 Treat attachments according to their classification and limitations. Do not reproduce internal evidence unnecessarily. Do not request raw SSH configuration, credentials, internal addresses, personal data, production activity, or confidential reference data.
 
 ## Project context

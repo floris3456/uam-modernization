@@ -26,6 +26,8 @@ The ChatGPT Project may contain every suite attachment and earlier result. For t
 
 Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
 
+Earlier batch-review results in this allowlist are accepted predecessor decisions. Preserve their accepted invariants unless stronger evidence justifies an explicit change proposal.
+
 ## Accepted baseline
 
 - Windows endpoints use a low-privilege machine Coordinator Service, one ordinary-token User Host per eligible interactive session, and short-lived restricted Task Hosts for risky collection.

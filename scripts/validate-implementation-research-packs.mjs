@@ -93,9 +93,18 @@ if (!fs.existsSync(manifestPath)) {
   }
 
   for (const batchReview of batchReviews) {
-    const expected = topicPrompts.filter((item) => item.batchId === batchReview.batchId).map((item) => item.result).sort();
+    const expected = [
+      ...topicPrompts.filter((item) => item.batchId === batchReview.batchId).map((item) => item.result),
+      ...batchReviews.filter((item) => item.batchId < batchReview.batchId).map((item) => item.result),
+    ].sort();
     const actual = [...(batchReview.consumes ?? [])].sort();
-    if (expected.join("|") !== actual.join("|")) fail(`Batch ${batchReview.batchId} reviewer does not consume exactly its topic results`);
+    if (expected.join("|") !== actual.join("|")) fail(`Batch ${batchReview.batchId} reviewer does not consume its topic results and all predecessor reviews`);
+  }
+
+  for (const topicPrompt of topicPrompts) {
+    const expected = batchReviews.filter((item) => item.batchId < topicPrompt.batchId).map((item) => item.result).sort();
+    const actual = [...(topicPrompt.consumes ?? [])].sort();
+    if (expected.join("|") !== actual.join("|")) fail(`Topic ${topicPrompt.topicId} does not consume all predecessor batch reviews`);
   }
 
   if (finalSyntheses.length === 1) {

@@ -55,10 +55,18 @@ function openSourceSection(topic) {
   return `Actively search GitHub and official open-source sources for ${topic.oss.join(", ")}. For every repository used, report:\n\n- repository URL and relevant files/directories;\n- exact tag, release, or commit reviewed, preferably with stable permalinks;\n- license and compatibility concerns;\n- recent maintenance and release activity;\n- testing quality and security posture;\n- architectural similarities and threat-model differences;\n- reusable ideas and ideas that must not be copied;\n- suitability as a dependency, reference only, or neither.\n\nPopularity alone is not evidence. Do not recommend copying an architecture without fit, maintenance, licensing, testing, and security analysis.`;
 }
 
+function priorBatchReviewNames(batchId) {
+  return batches.filter((batch) => batch.id < batchId).map((batch) => `batch-${pad(batch.id)}-review-result.md`);
+}
+
+function priorBatchReviewPaths(batchId) {
+  return batches.filter((batch) => batch.id < batchId).map((batch) => path.join(resultRoot, batch.slug, `batch-${pad(batch.id)}-review-result.md`));
+}
+
 function topicPrompt(topic) {
   const batch = batches.find((item) => item.id === topic.batch);
   const resultPath = `results/${batch.slug}/${pad(topic.id)}-${topic.slug}-result.md`;
-  const attachmentList = topic.attachments.map((name) => `- \`${name}\``).join("\n");
+  const allowedFiles = [...topic.attachments, ...priorBatchReviewNames(topic.batch)].map((name) => `- \`${name}\``).join("\n");
   return `# Prompt ${pad(topic.id)} — ${topic.title}
 
 ## Expert role
@@ -75,9 +83,11 @@ Save the complete response as \`${resultPath}\`.
 
 The ChatGPT Project may contain all suite attachments. For this chat, you are allowed to read exactly these project files:
 
-${attachmentList}
+${allowedFiles}
 
 Do not open, search, quote, summarize, or use any other Project file, even if it appears relevant. A file being present in the Project is not permission to use it. If an allowed file is missing, report the missing filename instead of substituting another file.
+
+Earlier batch-review results in this allowlist are accepted predecessor decisions. Treat them as stronger project context than the original shared baseline; report any conflict explicitly rather than silently reverting to an older assumption.
 
 Treat attachments according to their classification and limitations. Do not reproduce internal evidence unnecessarily. Do not request raw SSH configuration, credentials, internal addresses, personal data, production activity, or confidential reference data.
 
@@ -461,6 +471,10 @@ function executionMapDocument() {
 | --- | --- | --- | --- | --- |
 ${rows}
 
+## Dependency handoff
+
+After accepting each batch review, add its named result file to the ChatGPT Project. Every topic and reviewer in later batches explicitly includes all earlier batch-review results in its Project-file allowlist. This is how accepted decisions flow forward; shared attachments alone are not the evolving baseline.
+
 ## Human-only decision lane
 
 Across all batches, named humans must approve purpose, prohibited uses, field/identity scope, role ownership, retention, access, consultation/legal assessment, budget/licensing, SLO/RPO/RTO, production support, risk acceptance, migration/cutover, and decommissioning. Research supplies options and consequences; CLI supplies evidence; neither supplies authority.
@@ -484,12 +498,14 @@ function projectFileAllowlistDocument() {
   const topicRows = topics.map((topic) => {
     const batch = batches.find((item) => item.id === topic.batch);
     const prompt = `${batch.slug}/${pad(topic.id)}-PROMPT-${topic.slug}.md`;
-    return `| ${pad(topic.id)} | [${topic.title}](${prompt}) | ${topic.attachments.map((name) => `\`${name}\``).join("<br>")} |`;
+    const allowed = [...topic.attachments, ...priorBatchReviewNames(topic.batch)];
+    return `| ${pad(topic.id)} | [${topic.title}](${prompt}) | ${allowed.map((name) => `\`${name}\``).join("<br>")} |`;
   }).join("\n");
   const reviewerRows = batches.map((batch) => {
     const resultNames = topics.filter((topic) => topic.batch === batch.id).map((topic) => `\`${pad(topic.id)}-${topic.slug}-result.md\``);
+    const predecessorNames = priorBatchReviewNames(batch.id).map((name) => `\`${name}\``);
     const common = ["`00-accepted-baseline-attachment.md`", "`05-decisions-contradictions-and-gates.md`", "`06-research-evidence-rules.md`"];
-    return `| ${pad(batch.id)} | [Batch reviewer](${batch.slug}/90-BATCH-${pad(batch.id)}-REVIEW-PROMPT.md) | ${[...resultNames, ...common].join("<br>")} |`;
+    return `| ${pad(batch.id)} | [Batch reviewer](${batch.slug}/90-BATCH-${pad(batch.id)}-REVIEW-PROMPT.md) | ${[...resultNames, ...predecessorNames, ...common].join("<br>")} |`;
   }).join("\n");
   const finalFiles = [...batches.map((batch) => `\`batch-${pad(batch.id)}-review-result.md\``), "`00-accepted-baseline-attachment.md`", "`06-research-evidence-rules.md`"];
   return `# ChatGPT Project files and per-chat allowlists
@@ -512,7 +528,7 @@ ${topicRows}
 
 ## Batch-review allowlists
 
-Before each batch review, add that batch's completed result files to the Project. The reviewer may read only the files in its row.
+Before each batch review, add that batch's completed result files to the Project. Reviews from earlier batches remain available as accepted predecessor decisions. The reviewer may read only the files in its row.
 
 | Batch | Prompt | Only Project files this reviewer may read |
 | ---: | --- | --- |
@@ -529,7 +545,10 @@ Individual topic results are deliberately excluded: each batch reviewer is the e
 }
 
 function batchReviewPrompt(batch, batchTopics) {
-  const inputs = batchTopics.map((topic) => `- \`${pad(topic.id)}-${topic.slug}-result.md\``).join("\n");
+  const inputs = [
+    ...batchTopics.map((topic) => `${pad(topic.id)}-${topic.slug}-result.md`),
+    ...priorBatchReviewNames(batch.id),
+  ].map((name) => `- \`${name}\``).join("\n");
   const resultPath = `results/${batch.slug}/batch-${pad(batch.id)}-review-result.md`;
   return `# Batch ${pad(batch.id)} reviewer — ${batch.title}
 
@@ -553,6 +572,8 @@ ${inputs}
 - \`06-research-evidence-rules.md\`
 
 Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
+
+Earlier batch-review results in this allowlist are accepted predecessor decisions. Preserve their accepted invariants unless stronger evidence justifies an explicit change proposal.
 
 ## Accepted baseline
 
@@ -726,7 +747,7 @@ for (const topic of topics) {
   const resultRelative = `${batch.slug}/${pad(topic.id)}-${topic.slug}-result.md`;
   const resultPath = path.join(resultRoot, resultRelative);
   register(promptPath, topicPrompt(topic));
-  manifestPrompts.push({ kind: "topic", topicId: topic.id, batchId: topic.batch, prompt: rel(promptPath), result: rel(resultPath), attachments: topic.attachments.map((name) => rel(path.join(attachmentRoot, name))), consumes: [] });
+  manifestPrompts.push({ kind: "topic", topicId: topic.id, batchId: topic.batch, prompt: rel(promptPath), result: rel(resultPath), attachments: topic.attachments.map((name) => rel(path.join(attachmentRoot, name))), consumes: priorBatchReviewPaths(topic.batch).map(rel) });
 }
 
 for (const batch of batches) {
@@ -734,7 +755,7 @@ for (const batch of batches) {
   const promptPath = path.join(packageRoot, batch.slug, `90-BATCH-${pad(batch.id)}-REVIEW-PROMPT.md`);
   const resultPath = path.join(resultRoot, batch.slug, `batch-${pad(batch.id)}-review-result.md`);
   register(promptPath, batchReviewPrompt(batch, batchTopics));
-  manifestPrompts.push({ kind: "batch-review", batchId: batch.id, prompt: rel(promptPath), result: rel(resultPath), attachments: ["00-accepted-baseline-attachment.md", "05-decisions-contradictions-and-gates.md", "06-research-evidence-rules.md"].map((name) => rel(path.join(attachmentRoot, name))), consumes: batchTopics.map((topic) => rel(path.join(resultRoot, batch.slug, `${pad(topic.id)}-${topic.slug}-result.md`))) });
+  manifestPrompts.push({ kind: "batch-review", batchId: batch.id, prompt: rel(promptPath), result: rel(resultPath), attachments: ["00-accepted-baseline-attachment.md", "05-decisions-contradictions-and-gates.md", "06-research-evidence-rules.md"].map((name) => rel(path.join(attachmentRoot, name))), consumes: [...batchTopics.map((topic) => path.join(resultRoot, batch.slug, `${pad(topic.id)}-${topic.slug}-result.md`)), ...priorBatchReviewPaths(batch.id)].map(rel) });
 }
 
 const finalPromptPath = path.join(packageRoot, "final-synthesis/99-FINAL-SYNTHESIS-PROMPT.md");
@@ -785,9 +806,10 @@ Do not upload the older full code reference, raw application catalogue, SSH file
 1. Use a fresh Pro research chat per topic.
 2. Save the complete result at the named target.
 3. Run one batch reviewer only after all results in that batch are present.
-4. Convert accepted findings into ADRs/specifications and validate them through CLI experiments.
-5. Feed measured evidence to later reviewers; do not replace it with online claims.
-6. Research supplies options and evidence. Humans approve policy/risk/business decisions. CLI/lab work proves behavior and performance.
+4. Add each accepted batch-review result to the Project before starting the next batch; later prompt allowlists name it explicitly.
+5. Convert accepted findings into ADRs/specifications and validate them through CLI experiments.
+6. Feed measured evidence to later reviewers; do not replace it with online claims.
+7. Research supplies options and evidence. Humans approve policy/risk/business decisions. CLI/lab work proves behavior and performance.
 
 See [Project file allowlists](00-chatgpt-project-file-allowlists.md), [lessons](00-lessons-from-previous-research.md), [accepted baseline](00-shared-accepted-baseline.md), [evidence map](00-evidence-and-attachment-map.md), and [execution map](00-research-and-cli-execution-map.md).
 `;

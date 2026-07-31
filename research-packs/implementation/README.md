@@ -65,8 +65,9 @@ Do not upload the older full code reference, raw application catalogue, SSH file
 1. Use a fresh Pro research chat per topic.
 2. Save the complete result at the named target.
 3. Run one batch reviewer only after all results in that batch are present.
-4. Convert accepted findings into ADRs/specifications and validate them through CLI experiments.
-5. Feed measured evidence to later reviewers; do not replace it with online claims.
-6. Research supplies options and evidence. Humans approve policy/risk/business decisions. CLI/lab work proves behavior and performance.
+4. Add each accepted batch-review result to the Project before starting the next batch; later prompt allowlists name it explicitly.
+5. Convert accepted findings into ADRs/specifications and validate them through CLI experiments.
+6. Feed measured evidence to later reviewers; do not replace it with online claims.
+7. Research supplies options and evidence. Humans approve policy/risk/business decisions. CLI/lab work proves behavior and performance.
 
 See [Project file allowlists](00-chatgpt-project-file-allowlists.md), [lessons](00-lessons-from-previous-research.md), [accepted baseline](00-shared-accepted-baseline.md), [evidence map](00-evidence-and-attachment-map.md), and [execution map](00-research-and-cli-execution-map.md).

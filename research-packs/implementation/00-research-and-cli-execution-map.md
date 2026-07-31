@@ -9,6 +9,10 @@
 | 05 | Portal authorization, workflows, and audit | Run once control-plane concepts and data classifications are stable. Prompts 19–21 may run in parallel. | Prepare API authorization test scaffolding, synthetic personas, accessibility tooling, and audit fixtures; do not encode final roles before owners approve them. | Capability authorization, purpose-bound access, transactional audit, accessibility, and break-glass controls must pass before administrative production use. |
 | 06 | Legacy discovery, parallel validation, cutover, and decommissioning | Run after the new contracts and first vertical slice are understood. Prompts 22–24 may run in parallel, then reconcile them. | Inventory consumers and credentials read-only; build comparison digests with synthetic fixtures; monitor legacy paths; never execute deferred legacy SQL or disable production paths during research. | Named owners must approve every consumer/configuration disposition, reconciliation result, rollback boundary, credential removal, and final decommission action. |
 
+## Dependency handoff
+
+After accepting each batch review, add its named result file to the ChatGPT Project. Every topic and reviewer in later batches explicitly includes all earlier batch-review results in its Project-file allowlist. This is how accepted decisions flow forward; shared attachments alone are not the evolving baseline.
+
 ## Human-only decision lane
 
 Across all batches, named humans must approve purpose, prohibited uses, field/identity scope, role ownership, retention, access, consultation/legal assessment, budget/licensing, SLO/RPO/RTO, production support, risk acceptance, migration/cutover, and decommissioning. Research supplies options and consequences; CLI supplies evidence; neither supplies authority.

@@ -17,11 +17,18 @@ The ChatGPT Project may contain every suite attachment and earlier result. For t
 - `22-legacy-discovery-result.md`
 - `23-parallel-run-reconciliation-result.md`
 - `24-cutover-decommission-result.md`
+- `batch-01-review-result.md`
+- `batch-02-review-result.md`
+- `batch-03-review-result.md`
+- `batch-04-review-result.md`
+- `batch-05-review-result.md`
 - `00-accepted-baseline-attachment.md`
 - `05-decisions-contradictions-and-gates.md`
 - `06-research-evidence-rules.md`
 
 Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
+
+Earlier batch-review results in this allowlist are accepted predecessor decisions. Preserve their accepted invariants unless stronger evidence justifies an explicit change proposal.
 
 ## Accepted baseline
 

@@ -149,7 +149,9 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -163,7 +165,9 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -177,7 +181,10 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -191,7 +198,10 @@
         "research-packs/implementation/attachments/03-sanitized-windows-lab-capability.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -205,7 +215,10 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -219,7 +232,10 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -233,7 +249,10 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -247,7 +266,10 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -261,7 +283,11 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -275,7 +301,11 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -289,7 +319,11 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -303,7 +337,11 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -316,7 +354,12 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -330,7 +373,12 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -344,7 +392,12 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -359,7 +412,13 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
+        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -374,7 +433,13 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
+        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md"
+      ]
     },
     {
       "kind": "topic",
@@ -388,7 +453,13 @@
         "research-packs/implementation/attachments/05-decisions-contradictions-and-gates.md",
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
-      "consumes": []
+      "consumes": [
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
+        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md"
+      ]
     },
     {
       "kind": "batch-review",
@@ -421,7 +492,8 @@
       ],
       "consumes": [
         "research-packs/implementation/results/batch-02-endpoint-data/07-g2-g3-edge-acquisition-cursor-result.md",
-        "research-packs/implementation/results/batch-02-endpoint-data/08-g4-url-privacy-transformation-result.md"
+        "research-packs/implementation/results/batch-02-endpoint-data/08-g4-url-privacy-transformation-result.md",
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md"
       ]
     },
     {
@@ -440,7 +512,9 @@
         "research-packs/implementation/results/batch-03-durability-release-identity/11-release-updater-supply-chain-result.md",
         "research-packs/implementation/results/batch-03-durability-release-identity/12-device-identity-network-result.md",
         "research-packs/implementation/results/batch-03-durability-release-identity/13-diagnostics-support-result.md",
-        "research-packs/implementation/results/batch-03-durability-release-identity/14-windows-compatibility-policy-result.md"
+        "research-packs/implementation/results/batch-03-durability-release-identity/14-windows-compatibility-policy-result.md",
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
       ]
     },
     {
@@ -457,7 +531,10 @@
         "research-packs/implementation/results/batch-04-server-platform/15-ingestion-relational-inbox-result.md",
         "research-packs/implementation/results/batch-04-server-platform/16-database-comparison-experiment-result.md",
         "research-packs/implementation/results/batch-04-server-platform/17-capacity-fleet-simulator-result.md",
-        "research-packs/implementation/results/batch-04-server-platform/18-retention-deletion-restore-result.md"
+        "research-packs/implementation/results/batch-04-server-platform/18-retention-deletion-restore-result.md",
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md"
       ]
     },
     {
@@ -473,7 +550,11 @@
       "consumes": [
         "research-packs/implementation/results/batch-05-portal-governance/19-portal-authorization-result.md",
         "research-packs/implementation/results/batch-05-portal-governance/20-portal-information-workflows-result.md",
-        "research-packs/implementation/results/batch-05-portal-governance/21-transactional-audit-result.md"
+        "research-packs/implementation/results/batch-05-portal-governance/21-transactional-audit-result.md",
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md"
       ]
     },
     {
@@ -489,7 +570,12 @@
       "consumes": [
         "research-packs/implementation/results/batch-06-migration/22-legacy-discovery-result.md",
         "research-packs/implementation/results/batch-06-migration/23-parallel-run-reconciliation-result.md",
-        "research-packs/implementation/results/batch-06-migration/24-cutover-decommission-result.md"
+        "research-packs/implementation/results/batch-06-migration/24-cutover-decommission-result.md",
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
+        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md"
       ]
     },
     {
