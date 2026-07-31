@@ -11,6 +11,7 @@ const requiredSections = [
   "## Expert role",
   "## Result target",
   "## Attachments",
+  "### Project-file allowlist",
   "## Accepted baseline",
   "## Provisional matters",
   "## Research questions",
@@ -57,6 +58,18 @@ if (!fs.existsSync(manifestPath)) {
     for (const section of requiredSections) {
       if (!content.includes(section)) fail(`${item.prompt} lacks required section: ${section}`);
     }
+    if (!content.includes("Do not open, search, quote, summarize, or use any other Project file")) {
+      fail(`${item.prompt} does not enforce its Project-file allowlist`);
+    }
+    const allowlistBlock = content.split("### Project-file allowlist")[1]?.split("Do not open, search, quote, summarize, or use any other Project file")[0] ?? "";
+    const actualAllowedFiles = [...allowlistBlock.matchAll(/`([^`/]+\.md)`/g)].map((match) => match[1]).sort();
+    const expectedAllowedFiles = [
+      ...(item.attachments ?? []).map((file) => path.basename(file)),
+      ...(item.consumes ?? []).map((file) => path.basename(file)),
+    ].sort();
+    if (actualAllowedFiles.join("|") !== expectedAllowedFiles.join("|")) {
+      fail(`${item.prompt} Project-file allowlist differs from its manifest inputs`);
+    }
     const resultRelativeToPackage = path.relative(packageRoot, resultPath).split(path.sep).join("/");
     if (!content.includes(`\`${resultRelativeToPackage}\``)) fail(`${item.prompt} does not state its exact result target ${resultRelativeToPackage}`);
     for (const attachment of item.attachments ?? []) {
@@ -67,7 +80,7 @@ if (!fs.existsSync(manifestPath)) {
     for (const consumed of item.consumes ?? []) {
       if (!allResultTargets.has(consumed)) fail(`${item.prompt} consumes unknown result: ${consumed}`);
       const consumedRelative = path.relative(packageRoot, repoPath(consumed)).split(path.sep).join("/");
-      if (!content.includes(`\`${consumedRelative}\``)) fail(`${item.prompt} does not name consumed result: ${consumedRelative}`);
+      if (!content.includes(`\`${path.basename(consumedRelative)}\``)) fail(`${item.prompt} does not name consumed result: ${consumedRelative}`);
     }
     if (item.kind === "topic") {
       const research = content.split("## Research questions")[1]?.split("## Constraints")[0] ?? "";

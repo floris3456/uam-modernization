@@ -10,16 +10,21 @@ Save the complete response as `results/batch-03-durability-release-identity/batc
 
 ## Attachments
 
-Attach and read these result files completely:
+### Project-file allowlist
 
-- `results/batch-03-durability-release-identity/09-g5-sqlite-outbox-state-machines-result.md`
-- `results/batch-03-durability-release-identity/10-invariant-fault-testing-result.md`
-- `results/batch-03-durability-release-identity/11-release-updater-supply-chain-result.md`
-- `results/batch-03-durability-release-identity/12-device-identity-network-result.md`
-- `results/batch-03-durability-release-identity/13-diagnostics-support-result.md`
-- `results/batch-03-durability-release-identity/14-windows-compatibility-policy-result.md`
+The ChatGPT Project may contain every suite attachment and earlier result. For this reviewer chat, you are allowed to read exactly these project files:
 
-Also attach `00-accepted-baseline-attachment.md`, `05-decisions-contradictions-and-gates.md`, and `06-research-evidence-rules.md`.
+- `09-g5-sqlite-outbox-state-machines-result.md`
+- `10-invariant-fault-testing-result.md`
+- `11-release-updater-supply-chain-result.md`
+- `12-device-identity-network-result.md`
+- `13-diagnostics-support-result.md`
+- `14-windows-compatibility-policy-result.md`
+- `00-accepted-baseline-attachment.md`
+- `05-decisions-contradictions-and-gates.md`
+- `06-research-evidence-rules.md`
+
+Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
 
 ## Accepted baseline
 

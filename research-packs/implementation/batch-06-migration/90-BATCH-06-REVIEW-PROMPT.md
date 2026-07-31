@@ -10,13 +10,18 @@ Save the complete response as `results/batch-06-migration/batch-06-review-result
 
 ## Attachments
 
-Attach and read these result files completely:
+### Project-file allowlist
 
-- `results/batch-06-migration/22-legacy-discovery-result.md`
-- `results/batch-06-migration/23-parallel-run-reconciliation-result.md`
-- `results/batch-06-migration/24-cutover-decommission-result.md`
+The ChatGPT Project may contain every suite attachment and earlier result. For this reviewer chat, you are allowed to read exactly these project files:
 
-Also attach `00-accepted-baseline-attachment.md`, `05-decisions-contradictions-and-gates.md`, and `06-research-evidence-rules.md`.
+- `22-legacy-discovery-result.md`
+- `23-parallel-run-reconciliation-result.md`
+- `24-cutover-decommission-result.md`
+- `00-accepted-baseline-attachment.md`
+- `05-decisions-contradictions-and-gates.md`
+- `06-research-evidence-rules.md`
+
+Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
 
 ## Accepted baseline
 

@@ -10,16 +10,22 @@ Save the complete response as `results/final-synthesis/next-generation-technical
 
 ## Attachments
 
-Read all accepted batch-review results completely:
+### Project-file allowlist
 
-- `results/batch-01-foundations/batch-01-review-result.md`
-- `results/batch-02-endpoint-data/batch-02-review-result.md`
-- `results/batch-03-durability-release-identity/batch-03-review-result.md`
-- `results/batch-04-server-platform/batch-04-review-result.md`
-- `results/batch-05-portal-governance/batch-05-review-result.md`
-- `results/batch-06-migration/batch-06-review-result.md`
+The ChatGPT Project may contain every suite attachment and result. For this final-synthesis chat, you are allowed to read exactly these project files:
 
-Also attach `00-accepted-baseline-attachment.md`, `06-research-evidence-rules.md`, and any approved measured CLI evidence produced during the batches. Do not accept a claim merely because it appears in more than one chat.
+- `batch-01-review-result.md`
+- `batch-02-review-result.md`
+- `batch-03-review-result.md`
+- `batch-04-review-result.md`
+- `batch-05-review-result.md`
+- `batch-06-review-result.md`
+- `00-accepted-baseline-attachment.md`
+- `06-research-evidence-rules.md`
+
+Do not open, search, quote, summarize, or use any other Project file, including individual topic results. Optional measured CLI evidence is forbidden by default. Before running this prompt, a human may add exact sanitized CLI-evidence filenames to this allowlist; only those explicitly added files then become readable. If an allowed file is missing, report the missing filename instead of substituting another file.
+
+Do not accept a claim merely because it appears in more than one chat.
 
 ## Accepted baseline
 

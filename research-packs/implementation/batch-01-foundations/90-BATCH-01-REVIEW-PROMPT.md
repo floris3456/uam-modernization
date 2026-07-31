@@ -10,16 +10,21 @@ Save the complete response as `results/batch-01-foundations/batch-01-review-resu
 
 ## Attachments
 
-Attach and read these result files completely:
+### Project-file allowlist
 
-- `results/batch-01-foundations/01-g0-dummy-data-test-oracle-result.md`
-- `results/batch-01-foundations/02-g1-windows-runtime-ipc-result.md`
-- `results/batch-01-foundations/03-contract-versioning-result.md`
-- `results/batch-01-foundations/04-application-registry-matching-result.md`
-- `results/batch-01-foundations/05-privacy-ceiling-tenant-policy-result.md`
-- `results/batch-01-foundations/06-repository-build-ci-result.md`
+The ChatGPT Project may contain every suite attachment and earlier result. For this reviewer chat, you are allowed to read exactly these project files:
 
-Also attach `00-accepted-baseline-attachment.md`, `05-decisions-contradictions-and-gates.md`, and `06-research-evidence-rules.md`.
+- `01-g0-dummy-data-test-oracle-result.md`
+- `02-g1-windows-runtime-ipc-result.md`
+- `03-contract-versioning-result.md`
+- `04-application-registry-matching-result.md`
+- `05-privacy-ceiling-tenant-policy-result.md`
+- `06-repository-build-ci-result.md`
+- `00-accepted-baseline-attachment.md`
+- `05-decisions-contradictions-and-gates.md`
+- `06-research-evidence-rules.md`
+
+Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
 
 ## Accepted baseline
 

@@ -56,7 +56,9 @@ While they run, the CLI may profile evidence, prepare ADR/specification director
 
 ## Attachments
 
-Upload only the attachments named by each prompt from [attachments](attachments/). They are small sanitized summaries. Do not automatically upload the older full code reference, raw application catalogue, SSH files, internal configuration, production data, or confidential reference data.
+For the one-time ChatGPT Project setup, upload the seven files listed in the [Project file and per-chat allowlist](00-chatgpt-project-file-allowlists.md). Every prompt contains a strict allowlist telling the web researcher which of those shared Project files it may read. A file being present in the Project is not permission to use it.
+
+Do not upload the older full code reference, raw application catalogue, SSH files, internal configuration, production data, confidential SQL, or confidential reference data.
 
 ## Operating rules
 
@@ -67,4 +69,4 @@ Upload only the attachments named by each prompt from [attachments](attachments/
 5. Feed measured evidence to later reviewers; do not replace it with online claims.
 6. Research supplies options and evidence. Humans approve policy/risk/business decisions. CLI/lab work proves behavior and performance.
 
-See [lessons](00-lessons-from-previous-research.md), [accepted baseline](00-shared-accepted-baseline.md), [evidence map](00-evidence-and-attachment-map.md), and [execution map](00-research-and-cli-execution-map.md).
+See [Project file allowlists](00-chatgpt-project-file-allowlists.md), [lessons](00-lessons-from-previous-research.md), [accepted baseline](00-shared-accepted-baseline.md), [evidence map](00-evidence-and-attachment-map.md), and [execution map](00-research-and-cli-execution-map.md).

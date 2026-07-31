@@ -5,6 +5,7 @@
   "batchCount": 6,
   "promptCount": 31,
   "generatedFiles": [
+    "research-packs/implementation/00-chatgpt-project-file-allowlists.md",
     "research-packs/implementation/00-evidence-and-attachment-map.md",
     "research-packs/implementation/00-lessons-from-previous-research.md",
     "research-packs/implementation/00-research-and-cli-execution-map.md",

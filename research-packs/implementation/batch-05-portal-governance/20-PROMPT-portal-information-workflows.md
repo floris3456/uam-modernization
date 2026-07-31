@@ -10,12 +10,16 @@ Save the complete response as `results/batch-05-portal-governance/20-portal-info
 
 ## Attachments
 
-Read every supplied attachment completely before researching:
+### Project-file allowlist
 
-- `00-accepted-baseline-attachment.md` — from the implementation package's `attachments/` directory
-- `02-sanitized-application-catalogue-report.md` — from the implementation package's `attachments/` directory
-- `05-decisions-contradictions-and-gates.md` — from the implementation package's `attachments/` directory
-- `06-research-evidence-rules.md` — from the implementation package's `attachments/` directory
+The ChatGPT Project may contain all suite attachments. For this chat, you are allowed to read exactly these project files:
+
+- `00-accepted-baseline-attachment.md`
+- `02-sanitized-application-catalogue-report.md`
+- `05-decisions-contradictions-and-gates.md`
+- `06-research-evidence-rules.md`
+
+Do not open, search, quote, summarize, or use any other Project file, even if it appears relevant. A file being present in the Project is not permission to use it. If an allowed file is missing, report the missing filename instead of substituting another file.
 
 Treat attachments according to their classification and limitations. Do not reproduce internal evidence unnecessarily. Do not request raw SSH configuration, credentials, internal addresses, personal data, production activity, or confidential reference data.
 

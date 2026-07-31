@@ -58,7 +58,7 @@ function openSourceSection(topic) {
 function topicPrompt(topic) {
   const batch = batches.find((item) => item.id === topic.batch);
   const resultPath = `results/${batch.slug}/${pad(topic.id)}-${topic.slug}-result.md`;
-  const attachmentList = topic.attachments.map((name) => `- \`${name}\` — from the implementation package's \`attachments/\` directory`).join("\n");
+  const attachmentList = topic.attachments.map((name) => `- \`${name}\``).join("\n");
   return `# Prompt ${pad(topic.id)} — ${topic.title}
 
 ## Expert role
@@ -71,9 +71,13 @@ Save the complete response as \`${resultPath}\`.
 
 ## Attachments
 
-Read every supplied attachment completely before researching:
+### Project-file allowlist
+
+The ChatGPT Project may contain all suite attachments. For this chat, you are allowed to read exactly these project files:
 
 ${attachmentList}
+
+Do not open, search, quote, summarize, or use any other Project file, even if it appears relevant. A file being present in the Project is not permission to use it. If an allowed file is missing, report the missing filename instead of substituting another file.
 
 Treat attachments according to their classification and limitations. Do not reproduce internal evidence unnecessarily. Do not request raw SSH configuration, credentials, internal addresses, personal data, production activity, or confidential reference data.
 
@@ -467,8 +471,65 @@ Windows/session/browser behavior, SQLite fault safety, updater recovery, PKI/pro
 `;
 }
 
+function projectFileAllowlistDocument() {
+  const projectAttachments = [
+    "00-accepted-baseline-attachment.md",
+    "01-existing-system-evidence-summary.md",
+    "02-sanitized-application-catalogue-report.md",
+    "03-sanitized-windows-lab-capability.md",
+    "04-data-and-schema-evidence-summary.md",
+    "05-decisions-contradictions-and-gates.md",
+    "06-research-evidence-rules.md",
+  ];
+  const topicRows = topics.map((topic) => {
+    const batch = batches.find((item) => item.id === topic.batch);
+    const prompt = `${batch.slug}/${pad(topic.id)}-PROMPT-${topic.slug}.md`;
+    return `| ${pad(topic.id)} | [${topic.title}](${prompt}) | ${topic.attachments.map((name) => `\`${name}\``).join("<br>")} |`;
+  }).join("\n");
+  const reviewerRows = batches.map((batch) => {
+    const resultNames = topics.filter((topic) => topic.batch === batch.id).map((topic) => `\`${pad(topic.id)}-${topic.slug}-result.md\``);
+    const common = ["`00-accepted-baseline-attachment.md`", "`05-decisions-contradictions-and-gates.md`", "`06-research-evidence-rules.md`"];
+    return `| ${pad(batch.id)} | [Batch reviewer](${batch.slug}/90-BATCH-${pad(batch.id)}-REVIEW-PROMPT.md) | ${[...resultNames, ...common].join("<br>")} |`;
+  }).join("\n");
+  const finalFiles = [...batches.map((batch) => `\`batch-${pad(batch.id)}-review-result.md\``), "`00-accepted-baseline-attachment.md`", "`06-research-evidence-rules.md`"];
+  return `# ChatGPT Project files and per-chat allowlists
+
+## One-time Project setup
+
+Upload exactly these seven sanitized files from \`research-packs/implementation/attachments/\` to the ChatGPT Project:
+
+${projectAttachments.map((name) => `- [\`${name}\`](attachments/${name})`).join("\n")}
+
+Do not upload the raw application catalogue, \`.ssh\` files, the older full code reference, source files, production data, confidential SQL, or internal configuration. The prompts themselves may be pasted into their chats; they do not need to be Project attachments.
+
+The Project contains a shared pool, but each prompt has a strict file allowlist. The web researcher must not use a Project file merely because it is available.
+
+## Topic-chat allowlists
+
+| Topic | Prompt | Only Project files this chat may read |
+| ---: | --- | --- |
+${topicRows}
+
+## Batch-review allowlists
+
+Before each batch review, add that batch's completed result files to the Project. The reviewer may read only the files in its row.
+
+| Batch | Prompt | Only Project files this reviewer may read |
+| ---: | --- | --- |
+${reviewerRows}
+
+## Final-synthesis allowlist
+
+Before final synthesis, add the six accepted batch-review results. The final chat may read only:
+
+${finalFiles.map((name) => `- ${name}`).join("\n")}
+
+Individual topic results are deliberately excluded: each batch reviewer is the evidence-quality boundary. Measured CLI evidence is excluded by default. If approved sanitized CLI evidence is needed, add its exact filename to the final prompt's allowlist before running it.
+`;
+}
+
 function batchReviewPrompt(batch, batchTopics) {
-  const inputs = batchTopics.map((topic) => `- \`results/${batch.slug}/${pad(topic.id)}-${topic.slug}-result.md\``).join("\n");
+  const inputs = batchTopics.map((topic) => `- \`${pad(topic.id)}-${topic.slug}-result.md\``).join("\n");
   const resultPath = `results/${batch.slug}/batch-${pad(batch.id)}-review-result.md`;
   return `# Batch ${pad(batch.id)} reviewer — ${batch.title}
 
@@ -482,11 +543,16 @@ Save the complete response as \`${resultPath}\`.
 
 ## Attachments
 
-Attach and read these result files completely:
+### Project-file allowlist
+
+The ChatGPT Project may contain every suite attachment and earlier result. For this reviewer chat, you are allowed to read exactly these project files:
 
 ${inputs}
+- \`00-accepted-baseline-attachment.md\`
+- \`05-decisions-contradictions-and-gates.md\`
+- \`06-research-evidence-rules.md\`
 
-Also attach \`00-accepted-baseline-attachment.md\`, \`05-decisions-contradictions-and-gates.md\`, and \`06-research-evidence-rules.md\`.
+Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
 
 ## Accepted baseline
 
@@ -549,7 +615,7 @@ End with unresolved risks, blocked dependencies, and the exact conditions under 
 }
 
 function finalPrompt() {
-  const inputs = batches.map((batch) => `- \`results/${batch.slug}/batch-${pad(batch.id)}-review-result.md\``).join("\n");
+  const inputs = batches.map((batch) => `- \`batch-${pad(batch.id)}-review-result.md\``).join("\n");
   return `# Final synthesis — next-generation UAM technical baseline
 
 ## Expert role
@@ -562,11 +628,17 @@ Save the complete response as \`results/final-synthesis/next-generation-technica
 
 ## Attachments
 
-Read all accepted batch-review results completely:
+### Project-file allowlist
+
+The ChatGPT Project may contain every suite attachment and result. For this final-synthesis chat, you are allowed to read exactly these project files:
 
 ${inputs}
+- \`00-accepted-baseline-attachment.md\`
+- \`06-research-evidence-rules.md\`
 
-Also attach \`00-accepted-baseline-attachment.md\`, \`06-research-evidence-rules.md\`, and any approved measured CLI evidence produced during the batches. Do not accept a claim merely because it appears in more than one chat.
+Do not open, search, quote, summarize, or use any other Project file, including individual topic results. Optional measured CLI evidence is forbidden by default. Before running this prompt, a human may add exact sanitized CLI-evidence filenames to this allowlist; only those explicitly added files then become readable. If an allowed file is missing, report the missing filename instead of substituting another file.
+
+Do not accept a claim merely because it appears in more than one chat.
 
 ## Accepted baseline
 
@@ -639,6 +711,7 @@ register(path.join(packageRoot, "00-lessons-from-previous-research.md"), lessons
 register(path.join(packageRoot, "00-shared-accepted-baseline.md"), baselineDocument());
 register(path.join(packageRoot, "00-evidence-and-attachment-map.md"), evidenceMapDocument());
 register(path.join(packageRoot, "00-research-and-cli-execution-map.md"), executionMapDocument());
+register(path.join(packageRoot, "00-chatgpt-project-file-allowlists.md"), projectFileAllowlistDocument());
 register(path.join(attachmentRoot, "00-accepted-baseline-attachment.md"), baselineDocument());
 register(path.join(attachmentRoot, "01-existing-system-evidence-summary.md"), evidenceSummary());
 register(path.join(attachmentRoot, "02-sanitized-application-catalogue-report.md"), sanitizedAppAttachment(appProfile));
@@ -703,7 +776,9 @@ ${batches.map((batch) => `- Batch ${pad(batch.id)}: run \`${batch.slug}/90-BATCH
 
 ## Attachments
 
-Upload only the attachments named by each prompt from [attachments](attachments/). They are small sanitized summaries. Do not automatically upload the older full code reference, raw application catalogue, SSH files, internal configuration, production data, or confidential reference data.
+For the one-time ChatGPT Project setup, upload the seven files listed in the [Project file and per-chat allowlist](00-chatgpt-project-file-allowlists.md). Every prompt contains a strict allowlist telling the web researcher which of those shared Project files it may read. A file being present in the Project is not permission to use it.
+
+Do not upload the older full code reference, raw application catalogue, SSH files, internal configuration, production data, confidential SQL, or confidential reference data.
 
 ## Operating rules
 
@@ -714,7 +789,7 @@ Upload only the attachments named by each prompt from [attachments](attachments/
 5. Feed measured evidence to later reviewers; do not replace it with online claims.
 6. Research supplies options and evidence. Humans approve policy/risk/business decisions. CLI/lab work proves behavior and performance.
 
-See [lessons](00-lessons-from-previous-research.md), [accepted baseline](00-shared-accepted-baseline.md), [evidence map](00-evidence-and-attachment-map.md), and [execution map](00-research-and-cli-execution-map.md).
+See [Project file allowlists](00-chatgpt-project-file-allowlists.md), [lessons](00-lessons-from-previous-research.md), [accepted baseline](00-shared-accepted-baseline.md), [evidence map](00-evidence-and-attachment-map.md), and [execution map](00-research-and-cli-execution-map.md).
 `;
 register(path.join(packageRoot, "README.md"), readme);
 

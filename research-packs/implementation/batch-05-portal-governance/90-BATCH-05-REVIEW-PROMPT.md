@@ -10,13 +10,18 @@ Save the complete response as `results/batch-05-portal-governance/batch-05-revie
 
 ## Attachments
 
-Attach and read these result files completely:
+### Project-file allowlist
 
-- `results/batch-05-portal-governance/19-portal-authorization-result.md`
-- `results/batch-05-portal-governance/20-portal-information-workflows-result.md`
-- `results/batch-05-portal-governance/21-transactional-audit-result.md`
+The ChatGPT Project may contain every suite attachment and earlier result. For this reviewer chat, you are allowed to read exactly these project files:
 
-Also attach `00-accepted-baseline-attachment.md`, `05-decisions-contradictions-and-gates.md`, and `06-research-evidence-rules.md`.
+- `19-portal-authorization-result.md`
+- `20-portal-information-workflows-result.md`
+- `21-transactional-audit-result.md`
+- `00-accepted-baseline-attachment.md`
+- `05-decisions-contradictions-and-gates.md`
+- `06-research-evidence-rules.md`
+
+Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
 
 ## Accepted baseline
 
