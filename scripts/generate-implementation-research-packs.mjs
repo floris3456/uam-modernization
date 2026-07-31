@@ -270,7 +270,7 @@ function sanitizedAppAttachment(profile) {
 | Names containing non-ASCII characters | ${profile.quality.namesContainingNonAsciiCharacters} |
 | Names ending in a possible truncation marker | ${profile.quality.namesEndingInPossibleTruncationMarker} |
 
-The raw values are deliberately absent. The source contains no role, organization-unit, owner, lifecycle, sensitivity, URL/domain rule, process/publisher/product rule, alias, entitlement, or observed-usage dimension. Do not infer these from names. Legacy correlation IDs are nullable and not unique; treat them as external references, not UAM primary keys.
+The raw values are deliberately absent. The source contains no role, organization-unit, owner, lifecycle, sensitivity, URL/domain rule, process/publisher/product rule, alias, entitlement, or observed-usage dimension. Do not infer these from names. The populated legacy correlation IDs are unique in this measured snapshot, but five are missing and no durable uniqueness contract is supplied; treat them as external references, not UAM primary keys.
 
 ## Safe use
 

@@ -3,8 +3,8 @@
   "classification": "Internal source profile; sanitized for approved web research",
   "source": {
     "basename": "applicaties_transcriptie.csv",
-    "sha256": "c1e186edfff01ef21bbd728e953e3c62242c88e8fffb5c4879a15c3191a0e4ed",
-    "byteCount": 4223,
+    "sha256": "b1f665fb2d381bd220e95b5158d3d84ceed97772cc3dda940a7ac4ed70f2b2e4",
+    "byteCount": 4222,
     "encoding": "UTF-8 with optional BOM",
     "delimiter": "comma",
     "profiledOn": "2026-07-31"
@@ -22,9 +22,9 @@
     "uniqueApplicationNamesCaseInsensitive": 173,
     "missingApplicationNames": 0,
     "missingExternalCorrelationIds": 5,
-    "distinctNonEmptyExternalCorrelationIds": 167,
-    "duplicatedNonEmptyExternalIdValues": 1,
-    "recordsUsingDuplicatedNonEmptyExternalIds": 2,
+    "distinctNonEmptyExternalCorrelationIds": 168,
+    "duplicatedNonEmptyExternalIdValues": 0,
+    "recordsUsingDuplicatedNonEmptyExternalIds": 0,
     "duplicatedApplicationNamesCaseInsensitive": 0,
     "namesContainingIpv4Literal": 1,
     "namesContainingNonAsciiCharacters": 10,

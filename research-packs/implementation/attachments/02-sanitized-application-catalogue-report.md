@@ -3,7 +3,7 @@
 **Classification:** internal summary sanitized for an approved research chat.
 **Source:** internal CSV catalogue, profiled locally on 2026-07-31.
 **Generation:** deterministic aggregate profiling by `scripts/profile-application-catalogue.mjs`.
-**Source SHA-256:** `c1e186edfff01ef21bbd728e953e3c62242c88e8fffb5c4879a15c3191a0e4ed`.
+**Source SHA-256:** `b1f665fb2d381bd220e95b5158d3d84ceed97772cc3dda940a7ac4ed70f2b2e4`.
 
 ## Safe structural facts
 
@@ -13,14 +13,14 @@
 | Unique application names, case-insensitive | 173 |
 | Missing application names | 0 |
 | Missing external correlation IDs | 5 |
-| Distinct non-empty external correlation IDs | 167 |
-| Duplicated non-empty ID values | 1 |
-| Records sharing duplicated non-empty IDs | 2 |
+| Distinct non-empty external correlation IDs | 168 |
+| Duplicated non-empty ID values | 0 |
+| Records sharing duplicated non-empty IDs | 0 |
 | Names containing an address-like IPv4 literal in the raw source | 1 |
 | Names containing non-ASCII characters | 10 |
 | Names ending in a possible truncation marker | 9 |
 
-The raw values are deliberately absent. The source contains no role, organization-unit, owner, lifecycle, sensitivity, URL/domain rule, process/publisher/product rule, alias, entitlement, or observed-usage dimension. Do not infer these from names. Legacy correlation IDs are nullable and not unique; treat them as external references, not UAM primary keys.
+The raw values are deliberately absent. The source contains no role, organization-unit, owner, lifecycle, sensitivity, URL/domain rule, process/publisher/product rule, alias, entitlement, or observed-usage dimension. Do not infer these from names. The populated legacy correlation IDs are unique in this measured snapshot, but five are missing and no durable uniqueness contract is supplied; treat them as external references, not UAM primary keys.
 
 ## Safe use
 
