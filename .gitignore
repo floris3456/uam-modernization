@@ -4,6 +4,7 @@ UAM-overdracht-INTERN-*/deliverables/package/
 
 # Local secrets and environment configuration
 .ssh/
+applicaties_transcriptie.csv
 .env
 .env.*
 !.env.example

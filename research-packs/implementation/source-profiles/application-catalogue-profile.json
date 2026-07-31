@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "classification": "Internal source profile; sanitized for approved web research",
+  "source": {
+    "basename": "applicaties_transcriptie.csv",
+    "sha256": "c1e186edfff01ef21bbd728e953e3c62242c88e8fffb5c4879a15c3191a0e4ed",
+    "byteCount": 4223,
+    "encoding": "UTF-8 with optional BOM",
+    "delimiter": "comma",
+    "profiledOn": "2026-07-31"
+  },
+  "structure": {
+    "columns": [
+      "row_sequence",
+      "external_correlation_id",
+      "application_name"
+    ],
+    "recordCount": 173,
+    "sequentialRowNumbers": true
+  },
+  "quality": {
+    "uniqueApplicationNamesCaseInsensitive": 173,
+    "missingApplicationNames": 0,
+    "missingExternalCorrelationIds": 5,
+    "distinctNonEmptyExternalCorrelationIds": 167,
+    "duplicatedNonEmptyExternalIdValues": 1,
+    "recordsUsingDuplicatedNonEmptyExternalIds": 2,
+    "duplicatedApplicationNamesCaseInsensitive": 0,
+    "namesContainingIpv4Literal": 1,
+    "namesContainingNonAsciiCharacters": 10,
+    "namesEndingInPossibleTruncationMarker": 9
+  },
+  "absentDimensions": [
+    "role or persona",
+    "organization unit",
+    "user or account",
+    "application owner",
+    "lifecycle status",
+    "sensitivity classification",
+    "URL/domain match rules",
+    "process/publisher/product match rules",
+    "aliases",
+    "entitlements or observed usage"
+  ],
+  "safety": {
+    "rawNamesIncluded": false,
+    "rawExternalIdsIncluded": false,
+    "internalAddressesIncluded": false,
+    "personalDataIncluded": false,
+    "guidance": "Treat legacy correlation IDs as nullable, non-authoritative external references. Assign new UAM-owned stable identifiers only after import validation."
+  }
+}

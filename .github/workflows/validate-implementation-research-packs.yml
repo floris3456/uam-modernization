@@ -1,0 +1,25 @@
+name: Validate implementation research packs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Confirm generated package is current
+        run: node scripts/generate-implementation-research-packs.mjs --check
+
+      - name: Validate prompts, results, attachments, and confidentiality
+        run: node scripts/validate-implementation-research-packs.mjs
