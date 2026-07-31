@@ -2,6 +2,10 @@
 
 This suite turns the July 2026 technical baseline into focused implementation research. It contains 24 topic prompts, six batch reviewers, one final synthesis, safe generated attachments, matching result targets, and automated validation.
 
+## Current optimized launch order
+
+Use the [optimized execution-wave README](execution-waves/README.md). It starts from the current position where Batch 2 research is nearly complete and safely overlaps independent Topics 11, 12, 13, and 22.
+
 ## First batch to run
 
 Run these six chats in parallel, then run `batch-01-foundations/90-BATCH-01-REVIEW-PROMPT.md`:

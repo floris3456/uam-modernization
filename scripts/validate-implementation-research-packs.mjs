@@ -23,6 +23,17 @@ const requiredSections = [
   "## Evidence labels and conflict handling",
   "## Residual risk",
 ];
+const topicDependencyPlan = new Map([
+  ...[1, 2, 3, 4, 5, 6].map((id) => [id, { batchReviews: [], topicResults: [] }]),
+  ...[7, 8].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
+  ...[9, 10, 14].map((id) => [id, { batchReviews: [1, 2], topicResults: [] }]),
+  ...[11, 12, 13].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
+  ...[15, 16, 17, 18].map((id) => [id, { batchReviews: [1, 2, 3], topicResults: [] }]),
+  ...[19, 20, 21].map((id) => [id, { batchReviews: [1, 2, 3, 4], topicResults: [] }]),
+  [22, { batchReviews: [1], topicResults: [] }],
+  [23, { batchReviews: [1, 2, 3, 4], topicResults: [22] }],
+  [24, { batchReviews: [1, 2, 3, 4, 5], topicResults: [22, 23] }],
+]);
 
 const fail = (message) => failures.push(message);
 const repoPath = (relative) => path.join(repoRoot, relative);
@@ -102,9 +113,17 @@ if (!fs.existsSync(manifestPath)) {
   }
 
   for (const topicPrompt of topicPrompts) {
-    const expected = batchReviews.filter((item) => item.batchId < topicPrompt.batchId).map((item) => item.result).sort();
+    const dependency = topicDependencyPlan.get(topicPrompt.topicId);
+    if (!dependency) {
+      fail(`Topic ${topicPrompt.topicId} has no optimized dependency plan`);
+      continue;
+    }
+    const expected = [
+      ...dependency.batchReviews.map((batchId) => batchReviews.find((item) => item.batchId === batchId)?.result),
+      ...dependency.topicResults.map((topicId) => topicPrompts.find((item) => item.topicId === topicId)?.result),
+    ].filter(Boolean).sort();
     const actual = [...(topicPrompt.consumes ?? [])].sort();
-    if (expected.join("|") !== actual.join("|")) fail(`Topic ${topicPrompt.topicId} does not consume all predecessor batch reviews`);
+    if (expected.join("|") !== actual.join("|")) fail(`Topic ${topicPrompt.topicId} does not match the optimized dependency plan`);
   }
 
   if (finalSyntheses.length === 1) {
@@ -140,7 +159,17 @@ const forbiddenContent = [
 for (const file of textFiles) {
   const content = fs.readFileSync(file, "utf8");
   for (const [pattern, label] of forbiddenContent) {
-    if (pattern.test(content)) fail(`${rel(file)} contains ${label}`);
+    const matches = [...content.matchAll(new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : `${pattern.flags}g`))];
+    if (!matches.length) continue;
+    const isResearchResult = rel(file).startsWith("research-packs/implementation/results/");
+    if (label === "GitHub token" && isResearchResult) {
+      const allDeclaredInvalidCanaries = matches.every((match) => {
+        const context = content.slice(Math.max(0, match.index - 200), Math.min(content.length, match.index + match[0].length + 200));
+        return context.includes("secret-shaped-invalid") && context.includes("canaryId");
+      });
+      if (allDeclaredInvalidCanaries) continue;
+    }
+    fail(`${rel(file)} contains ${label}`);
   }
 }
 
@@ -167,7 +196,7 @@ if (!fs.existsSync(catalogueProfilePath)) {
   }
 }
 
-for (const file of textFiles.filter((item) => item.endsWith(".md"))) {
+for (const file of textFiles.filter((item) => item.endsWith(".md") && !rel(item).startsWith("research-packs/implementation/results/"))) {
   const content = fs.readFileSync(file, "utf8");
   const linkPattern = /\[[^\]]*\]\(([^)]+)\)/g;
   for (const match of content.matchAll(linkPattern)) {

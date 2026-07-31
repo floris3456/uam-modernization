@@ -48,6 +48,13 @@
     "research-packs/implementation/batch-06-migration/23-PROMPT-parallel-run-reconciliation.md",
     "research-packs/implementation/batch-06-migration/24-PROMPT-cutover-decommission.md",
     "research-packs/implementation/batch-06-migration/90-BATCH-06-REVIEW-PROMPT.md",
+    "research-packs/implementation/execution-waves/01-current-batch-02-and-independent-work.md",
+    "research-packs/implementation/execution-waves/02-after-batch-02-review.md",
+    "research-packs/implementation/execution-waves/03-after-batch-03-review.md",
+    "research-packs/implementation/execution-waves/04-after-batch-04-review.md",
+    "research-packs/implementation/execution-waves/05-after-batch-05-review.md",
+    "research-packs/implementation/execution-waves/06-final-synthesis.md",
+    "research-packs/implementation/execution-waves/README.md",
     "research-packs/implementation/final-synthesis/99-FINAL-SYNTHESIS-PROMPT.md"
   ],
   "prompts": [
@@ -216,8 +223,7 @@
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
       "consumes": [
-        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
-        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md"
       ]
     },
     {
@@ -233,8 +239,7 @@
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
       "consumes": [
-        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
-        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md"
       ]
     },
     {
@@ -250,8 +255,7 @@
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
       "consumes": [
-        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
-        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md"
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md"
       ]
     },
     {
@@ -413,11 +417,7 @@
         "research-packs/implementation/attachments/06-research-evidence-rules.md"
       ],
       "consumes": [
-        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
-        "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
-        "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
-        "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
-        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md"
+        "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md"
       ]
     },
     {
@@ -438,7 +438,7 @@
         "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
         "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
         "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
-        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md"
+        "research-packs/implementation/results/batch-06-migration/22-legacy-discovery-result.md"
       ]
     },
     {
@@ -458,7 +458,9 @@
         "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
         "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
         "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
-        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md"
+        "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md",
+        "research-packs/implementation/results/batch-06-migration/22-legacy-discovery-result.md",
+        "research-packs/implementation/results/batch-06-migration/23-parallel-run-reconciliation-result.md"
       ]
     },
     {

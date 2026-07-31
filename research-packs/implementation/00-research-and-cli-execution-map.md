@@ -11,7 +11,7 @@
 
 ## Dependency handoff
 
-After accepting each batch review, add its named result file to the ChatGPT Project. Every topic and reviewer in later batches explicitly includes all earlier batch-review results in its Project-file allowlist. This is how accepted decisions flow forward; shared attachments alone are not the evolving baseline.
+After accepting each batch review, add its named result file to the ChatGPT Project. Later topic prompts include the accepted reviews they materially depend on; every later batch reviewer remains cumulative. Topics 22, 23, and 24 also form an explicit evidence chain. This is how accepted decisions flow forward; shared attachments alone are not the evolving baseline.
 
 ## Human-only decision lane
 

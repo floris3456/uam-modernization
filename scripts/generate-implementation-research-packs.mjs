@@ -63,10 +63,46 @@ function priorBatchReviewPaths(batchId) {
   return batches.filter((batch) => batch.id < batchId).map((batch) => path.join(resultRoot, batch.slug, `batch-${pad(batch.id)}-review-result.md`));
 }
 
+const topicDependencyPlan = new Map([
+  ...[1, 2, 3, 4, 5, 6].map((id) => [id, { batchReviews: [], topicResults: [] }]),
+  ...[7, 8].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
+  ...[9, 10, 14].map((id) => [id, { batchReviews: [1, 2], topicResults: [] }]),
+  ...[11, 12, 13].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
+  ...[15, 16, 17, 18].map((id) => [id, { batchReviews: [1, 2, 3], topicResults: [] }]),
+  ...[19, 20, 21].map((id) => [id, { batchReviews: [1, 2, 3, 4], topicResults: [] }]),
+  [22, { batchReviews: [1], topicResults: [] }],
+  [23, { batchReviews: [1, 2, 3, 4], topicResults: [22] }],
+  [24, { batchReviews: [1, 2, 3, 4, 5], topicResults: [22, 23] }],
+]);
+
+function batchReviewPath(batchId) {
+  const batch = batches.find((item) => item.id === batchId);
+  return path.join(resultRoot, batch.slug, `batch-${pad(batch.id)}-review-result.md`);
+}
+
+function topicResultPath(topicId) {
+  const topic = topics.find((item) => item.id === topicId);
+  const batch = batches.find((item) => item.id === topic.batch);
+  return path.join(resultRoot, batch.slug, `${pad(topic.id)}-${topic.slug}-result.md`);
+}
+
+function topicDependencyPaths(topic) {
+  const dependency = topicDependencyPlan.get(topic.id);
+  if (!dependency) throw new Error(`Missing dependency plan for topic ${topic.id}`);
+  return [
+    ...dependency.batchReviews.map(batchReviewPath),
+    ...dependency.topicResults.map(topicResultPath),
+  ];
+}
+
+function topicDependencyNames(topic) {
+  return topicDependencyPaths(topic).map((file) => path.basename(file));
+}
+
 function topicPrompt(topic) {
   const batch = batches.find((item) => item.id === topic.batch);
   const resultPath = `results/${batch.slug}/${pad(topic.id)}-${topic.slug}-result.md`;
-  const allowedFiles = [...topic.attachments, ...priorBatchReviewNames(topic.batch)].map((name) => `- \`${name}\``).join("\n");
+  const allowedFiles = [...topic.attachments, ...topicDependencyNames(topic)].map((name) => `- \`${name}\``).join("\n");
   return `# Prompt ${pad(topic.id)} — ${topic.title}
 
 ## Expert role
@@ -87,7 +123,7 @@ ${allowedFiles}
 
 Do not open, search, quote, summarize, or use any other Project file, even if it appears relevant. A file being present in the Project is not permission to use it. If an allowed file is missing, report the missing filename instead of substituting another file.
 
-Earlier batch-review results in this allowlist are accepted predecessor decisions. Treat them as stronger project context than the original shared baseline; report any conflict explicitly rather than silently reverting to an older assumption.
+Batch-review results in this allowlist are accepted predecessor decisions. Explicitly listed topic results are required same-stream evidence that has not yet passed its eventual batch reviewer. Treat accepted reviews as stronger project context than the original shared baseline, keep unreviewed topic conclusions provisional, and report conflicts explicitly.
 
 Treat attachments according to their classification and limitations. Do not reproduce internal evidence unnecessarily. Do not request raw SSH configuration, credentials, internal addresses, personal data, production activity, or confidential reference data.
 
@@ -473,7 +509,7 @@ ${rows}
 
 ## Dependency handoff
 
-After accepting each batch review, add its named result file to the ChatGPT Project. Every topic and reviewer in later batches explicitly includes all earlier batch-review results in its Project-file allowlist. This is how accepted decisions flow forward; shared attachments alone are not the evolving baseline.
+After accepting each batch review, add its named result file to the ChatGPT Project. Later topic prompts include the accepted reviews they materially depend on; every later batch reviewer remains cumulative. Topics 22, 23, and 24 also form an explicit evidence chain. This is how accepted decisions flow forward; shared attachments alone are not the evolving baseline.
 
 ## Human-only decision lane
 
@@ -498,7 +534,7 @@ function projectFileAllowlistDocument() {
   const topicRows = topics.map((topic) => {
     const batch = batches.find((item) => item.id === topic.batch);
     const prompt = `${batch.slug}/${pad(topic.id)}-PROMPT-${topic.slug}.md`;
-    const allowed = [...topic.attachments, ...priorBatchReviewNames(topic.batch)];
+    const allowed = [...topic.attachments, ...topicDependencyNames(topic)];
     return `| ${pad(topic.id)} | [${topic.title}](${prompt}) | ${allowed.map((name) => `\`${name}\``).join("<br>")} |`;
   }).join("\n");
   const reviewerRows = batches.map((batch) => {
@@ -542,6 +578,147 @@ ${finalFiles.map((name) => `- ${name}`).join("\n")}
 
 Individual topic results are deliberately excluded: each batch reviewer is the evidence-quality boundary. Measured CLI evidence is excluded by default. If approved sanitized CLI evidence is needed, add its exact filename to the final prompt's allowlist before running it.
 `;
+}
+
+function topicLaunchCard(topicId) {
+  const topic = topics.find((item) => item.id === topicId);
+  const batch = batches.find((item) => item.id === topic.batch);
+  const dependencies = topicDependencyNames(topic);
+  return `### Chat ${pad(topic.id)} — ${topic.title}
+
+- Copy/paste prompt: [\`${pad(topic.id)}-PROMPT-${topic.slug}.md\`](../${batch.slug}/${pad(topic.id)}-PROMPT-${topic.slug}.md)
+- Additional Project context beyond the seven shared attachments: ${dependencies.length ? dependencies.map((name) => `\`${name}\``).join(", ") : "none"}
+- Save answer as: \`${pad(topic.id)}-${topic.slug}-result.md\`
+`;
+}
+
+function reviewLaunchCard(batchId) {
+  const batch = batches.find((item) => item.id === batchId);
+  const ownResults = topics.filter((topic) => topic.batch === batch.id).map((topic) => `${pad(topic.id)}-${topic.slug}-result.md`);
+  const dependencies = [...ownResults, ...priorBatchReviewNames(batch.id)];
+  return `### Batch ${pad(batch.id)} reviewer
+
+- Copy/paste prompt: [\`90-BATCH-${pad(batch.id)}-REVIEW-PROMPT.md\`](../${batch.slug}/90-BATCH-${pad(batch.id)}-REVIEW-PROMPT.md)
+- Additional Project context beyond the seven shared attachments: ${dependencies.map((name) => `\`${name}\``).join(", ")}
+- Save answer as: \`batch-${pad(batch.id)}-review-result.md\`
+`;
+}
+
+function launchWaveReadme() {
+  return `# Optimized research launch waves
+
+These launch lists replace the coarse rule that every topic must wait for every earlier batch. They preserve result quality by using topic-level dependencies and cumulative batch reviewers.
+
+## How to use each chat
+
+1. Keep the seven sanitized shared attachments in the ChatGPT Project.
+2. Add only the additional result/review files named on the launch card.
+3. Open a new chat inside the Project and copy/paste the linked prompt.
+4. Save the complete answer under the exact result filename.
+5. Do not add an unlisted result file to a prompt's allowlist.
+
+Batch-review results are accepted context. Individual topic results are provisional until reviewed. Topic 22 feeds 23, and both feed 24, so migration planning follows discovered evidence rather than assumptions.
+
+## Run order from the current position
+
+1. [Wave 1 — finish Batch 2 and start independent work](01-current-batch-02-and-independent-work.md)
+2. [Wave 2 — endpoint durability and compatibility](02-after-batch-02-review.md)
+3. [Wave 3 — server and platform](03-after-batch-03-review.md)
+4. [Wave 4 — portal/governance plus migration comparison](04-after-batch-04-review.md)
+5. [Wave 5 — cutover and migration review](05-after-batch-05-review.md)
+6. [Wave 6 — final synthesis](06-final-synthesis.md)
+
+Do not wait for Topic 23 before running the Batch 5 reviewer: they are separate parallel branches. Do wait for both the Batch 5 review and Topic 23 before starting Topic 24.
+`;
+}
+
+function launchWaveDocuments() {
+  return new Map([
+    ["01-current-batch-02-and-independent-work.md", `# Wave 1 — current Batch 2 and independent work
+
+## Already running
+
+Allow chats 07 and 08 to finish. Do not restart them. They use \`batch-01-review-result.md\` as their additional accepted context.
+
+## Start now in parallel
+
+${[11, 12, 13, 22].map(topicLaunchCard).join("\n")}
+
+These four topics do not depend materially on Edge acquisition or URL transformation. Their later batch reviewers will still reconcile them against the accepted Batch 2 review.
+
+## When chats 07 and 08 finish
+
+${reviewLaunchCard(2)}
+
+Wave 2 may begin only after \`batch-02-review-result.md\` is saved in the Project. Chats 11–13 and 22 may continue running in parallel.
+`],
+    ["02-after-batch-02-review.md", `# Wave 2 — after the Batch 2 review
+
+## Start in parallel
+
+${[9, 10, 14].map(topicLaunchCard).join("\n")}
+
+## Then run the Batch 3 reviewer
+
+Wait until chats 09–14 are all complete, including early-start chats 11–13.
+
+${reviewLaunchCard(3)}
+
+Wave 3 begins only after \`batch-03-review-result.md\` is saved.
+`],
+    ["03-after-batch-03-review.md", `# Wave 3 — after the Batch 3 review
+
+## Start in parallel
+
+${[15, 16, 17, 18].map(topicLaunchCard).join("\n")}
+
+## Then run the Batch 4 reviewer
+
+${reviewLaunchCard(4)}
+
+Wave 4 begins only after \`batch-04-review-result.md\` is saved.
+`],
+    ["04-after-batch-04-review.md", `# Wave 4 — after the Batch 4 review
+
+## Start these four chats in parallel
+
+${[19, 20, 21, 23].map(topicLaunchCard).join("\n")}
+
+Topic 23 also requires the already completed \`22-legacy-discovery-result.md\`. If Topic 22 has not finished, start chats 19–21 now and delay only Topic 23.
+
+## Run the Batch 5 reviewer when chats 19–21 finish
+
+${reviewLaunchCard(5)}
+
+The Batch 5 reviewer does not consume Topic 23, so it may run while Topic 23 is still finishing.
+`],
+    ["05-after-batch-05-review.md", `# Wave 5 — cutover and migration review
+
+## Start Topic 24
+
+This requires both \`batch-05-review-result.md\` and \`23-parallel-run-reconciliation-result.md\`.
+
+${topicLaunchCard(24)}
+
+## Then run the Batch 6 reviewer
+
+Wait until Topics 22, 23, and 24 are complete.
+
+${reviewLaunchCard(6)}
+
+Wave 6 begins only after \`batch-06-review-result.md\` is saved.
+`],
+    ["06-final-synthesis.md", `# Wave 6 — final synthesis
+
+## Start the final chat
+
+- Copy/paste prompt: [\`99-FINAL-SYNTHESIS-PROMPT.md\`](../final-synthesis/99-FINAL-SYNTHESIS-PROMPT.md)
+- Additional Project context beyond the seven shared attachments: ${batches.map((batch) => `\`batch-${pad(batch.id)}-review-result.md\``).join(", ")}
+- Save answer as: \`next-generation-technical-baseline-result.md\`
+
+The final prompt may read only the six batch-review results plus its named shared control attachments. It must not read the 24 individual topic results.
+`],
+  ]);
 }
 
 function batchReviewPrompt(batch, batchTopics) {
@@ -733,6 +910,8 @@ register(path.join(packageRoot, "00-shared-accepted-baseline.md"), baselineDocum
 register(path.join(packageRoot, "00-evidence-and-attachment-map.md"), evidenceMapDocument());
 register(path.join(packageRoot, "00-research-and-cli-execution-map.md"), executionMapDocument());
 register(path.join(packageRoot, "00-chatgpt-project-file-allowlists.md"), projectFileAllowlistDocument());
+register(path.join(packageRoot, "execution-waves/README.md"), launchWaveReadme());
+for (const [name, content] of launchWaveDocuments()) register(path.join(packageRoot, "execution-waves", name), content);
 register(path.join(attachmentRoot, "00-accepted-baseline-attachment.md"), baselineDocument());
 register(path.join(attachmentRoot, "01-existing-system-evidence-summary.md"), evidenceSummary());
 register(path.join(attachmentRoot, "02-sanitized-application-catalogue-report.md"), sanitizedAppAttachment(appProfile));
@@ -747,7 +926,7 @@ for (const topic of topics) {
   const resultRelative = `${batch.slug}/${pad(topic.id)}-${topic.slug}-result.md`;
   const resultPath = path.join(resultRoot, resultRelative);
   register(promptPath, topicPrompt(topic));
-  manifestPrompts.push({ kind: "topic", topicId: topic.id, batchId: topic.batch, prompt: rel(promptPath), result: rel(resultPath), attachments: topic.attachments.map((name) => rel(path.join(attachmentRoot, name))), consumes: priorBatchReviewPaths(topic.batch).map(rel) });
+  manifestPrompts.push({ kind: "topic", topicId: topic.id, batchId: topic.batch, prompt: rel(promptPath), result: rel(resultPath), attachments: topic.attachments.map((name) => rel(path.join(attachmentRoot, name))), consumes: topicDependencyPaths(topic).map(rel) });
 }
 
 for (const batch of batches) {
@@ -775,6 +954,10 @@ const firstBatchPrompts = topics.filter((topic) => topic.batch === 1).map((topic
 const readme = `# Next-generation UAM implementation research suite
 
 This suite turns the July 2026 technical baseline into focused implementation research. It contains 24 topic prompts, six batch reviewers, one final synthesis, safe generated attachments, matching result targets, and automated validation.
+
+## Current optimized launch order
+
+Use the [optimized execution-wave README](execution-waves/README.md). It starts from the current position where Batch 2 research is nearly complete and safely overlaps independent Topics 11, 12, 13, and 22.
 
 ## First batch to run
 
