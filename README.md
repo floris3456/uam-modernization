@@ -11,6 +11,7 @@ This repository captures the current PowerShell-based endpoint agent, its SQL da
 3. Review the [target-state summary](UAM-overdracht-INTERN-2026-07-23/docs/00b-uam-doelbeeld-samenvatting-a4.md).
 4. Use the [migration roadmap](UAM-overdracht-INTERN-2026-07-23/docs/05-migration-map-roadmap.md) for implementation planning.
 5. Review the [initial architecture decisions](docs/adr/README.md) before starting implementation.
+6. Use the [plain-language implementation scope](docs/plain-language/implementation-scope.md) to distinguish current preparation from later product features.
 
 ## Repository status
 
