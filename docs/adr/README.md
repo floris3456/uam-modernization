@@ -23,4 +23,4 @@ An ADR records a decision; it does not prove that the design works. A decision m
 - `Accepted`: approved by the accountable owner with its required evidence.
 - `Deferred`, `Rejected`, or `Superseded`: not currently active.
 
-The source baseline is the [final research synthesis](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+The source baseline is the [final research synthesis](../../research/implementation/synthesis/result-implementation-technical-baseline.md).

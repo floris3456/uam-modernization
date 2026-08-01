@@ -4,9 +4,12 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-./scripts/generate-code-reference.sh
-git diff --exit-code -- research-packs/attachments/UAM-CODE-REFERENCE.md
-node scripts/validate-implementation-research-packs.mjs
+./scripts/generate-research-code-reference.sh
+git diff --exit-code -- research/baseline/attachments/code-reference.md
+node scripts/generate-implementation-research.mjs --check
+node scripts/generate-research-index.mjs --check
+node scripts/generate-research-evidence-manifest.mjs --check
+node scripts/validate-research.mjs
 node scripts/validate-preimplementation.mjs
 
 if command -v pwsh >/dev/null 2>&1; then

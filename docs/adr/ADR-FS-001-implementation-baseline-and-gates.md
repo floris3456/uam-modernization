@@ -39,4 +39,4 @@ New primary evidence or a reproducible CLI experiment shows that two accepted in
 
 ## Source
 
-[Final synthesis, sections 1, 8, 10 and 19](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+[Final synthesis, sections 1, 8, 10 and 19](../../research/implementation/synthesis/result-implementation-technical-baseline.md).

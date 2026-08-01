@@ -11,15 +11,16 @@ const required = [
   "docs/architecture/repository-layout.md", "docs/architecture/source-register.md", "docs/governance/ownership.md",
   "docs/milestones/G0-fictional-evidence-foundation.md", "docs/work/README.md",
   "docs/work/current/G0-001-foundation-decisions.md", "evidence/sanitized/application-catalogue-profile.json",
-  "evidence/sanitized/application-catalogue-summary.md", "evidence/manifests/research-baseline.json",
-  "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
+  "evidence/sanitized/application-catalogue-summary.md", "evidence/manifests/research-evidence.json",
+  "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
 ];
 for (const file of required) if (!fs.existsSync(path.join(root, file))) failures.push(`Missing ${file}`);
-if (fs.existsSync(path.join(root, "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result (1).md"))) failures.push("Duplicate Batch 4 review exists");
+if (fs.existsSync(path.join(root, "research-packs"))) failures.push("Legacy research-packs directory exists");
 
 const generatedChecks = [
-  ["scripts/generate-research-baseline-manifest.mjs", ["--check"]],
-  ["scripts/generate-implementation-research-packs.mjs", ["--check"]],
+  ["scripts/generate-implementation-research.mjs", ["--check"]],
+  ["scripts/generate-research-index.mjs", ["--check"]],
+  ["scripts/generate-research-evidence-manifest.mjs", ["--check"]],
 ];
 if (fs.existsSync(path.join(root, "applicaties_alle_zichtbare_informatie.csv"))) {
   generatedChecks.unshift(["scripts/profile-detailed-application-catalogue.mjs", ["--check"]]);

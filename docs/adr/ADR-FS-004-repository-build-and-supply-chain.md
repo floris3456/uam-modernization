@@ -41,4 +41,4 @@ Repository scale, team ownership, release isolation, or security evidence shows 
 
 ## Source
 
-[Final synthesis, sections 4, 11, 16 and 17](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+[Final synthesis, sections 4, 11, 16 and 17](../../research/implementation/synthesis/result-implementation-technical-baseline.md).

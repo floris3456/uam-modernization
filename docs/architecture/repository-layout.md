@@ -25,7 +25,7 @@ A new person or agent should find purpose, current scope, the next task, governi
 ├── evidence/
 │   ├── manifests/               hashes and provenance
 │   └── sanitized/               safe derived measurements
-├── research-packs/              prompts, accepted research, attachments
+├── research/                    colocated studies, reviews, syntheses, evidence
 ├── UAM-overdracht-INTERN-*/     preserved legacy handover evidence
 ├── scripts/                     deterministic generation/validation
 └── .github/                     CI, task forms, and review template

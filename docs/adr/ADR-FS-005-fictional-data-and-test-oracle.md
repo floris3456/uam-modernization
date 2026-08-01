@@ -44,4 +44,4 @@ A required scenario cannot be represented fictionally, the generator or oracle s
 
 ## Source
 
-[Final synthesis, section 11](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+[Final synthesis, section 11](../../research/implementation/synthesis/result-implementation-technical-baseline.md).

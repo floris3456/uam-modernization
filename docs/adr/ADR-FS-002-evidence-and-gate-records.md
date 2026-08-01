@@ -39,4 +39,4 @@ The evidence format cannot represent a required gate, an incident exposes a miss
 
 ## Source
 
-[Final synthesis, sections 10, 11 and 14](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+[Final synthesis, sections 10, 11 and 14](../../research/implementation/synthesis/result-implementation-technical-baseline.md).

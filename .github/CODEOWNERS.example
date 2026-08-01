@@ -4,5 +4,5 @@
 *                         @organization/repository-maintainers
 /docs/adr/                @organization/architecture-owners
 /.github/workflows/       @organization/security-and-platform-owners
-/research-packs/          @organization/research-evidence-owners
+/research/                @organization/research-evidence-owners
 /evidence/                @organization/data-and-privacy-owners

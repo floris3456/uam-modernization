@@ -1,0 +1,32 @@
+name: Validate research
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          persist-credentials: false
+
+      - name: Confirm generated research is current
+        run: |
+          ./scripts/generate-research-code-reference.sh
+          git diff --exit-code -- research/baseline/attachments/code-reference.md
+          node scripts/generate-implementation-research.mjs --check
+          node scripts/generate-research-index.mjs --check
+          node scripts/generate-research-evidence-manifest.mjs --check
+
+      - name: Validate structure, prompts, results, attachments, and confidentiality
+        run: node scripts/validate-research.mjs

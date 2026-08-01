@@ -27,7 +27,7 @@ The small set of decisions that controls G0 is explicitly accepted or amended, s
 - [Initial ADRs](../../adr/README.md)
 - [G0 milestone](../../milestones/G0-fictional-evidence-foundation.md)
 - [Implementation scope](../../plain-language/implementation-scope.md)
-- [Final research baseline](../../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md)
+- [Final research baseline](../../../research/implementation/synthesis/result-implementation-technical-baseline.md)
 
 ## Acceptance evidence
 

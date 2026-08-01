@@ -48,4 +48,4 @@ Interoperability evidence, a contract migration, or a security finding shows tha
 
 ## Source
 
-[Final synthesis, sections 5, 9 and 11](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+[Final synthesis, sections 5, 9 and 11](../../research/implementation/synthesis/result-implementation-technical-baseline.md).

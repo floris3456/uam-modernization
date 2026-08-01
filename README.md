@@ -10,7 +10,7 @@ This repository captures the current PowerShell-based endpoint agent, its SQL da
 2. Check [current, next, and later](docs/plain-language/01-current-next-later.md).
 3. Open the [current milestone](docs/milestones/G0-fictional-evidence-foundation.md).
 4. Before changing files, follow [AGENTS.md](AGENTS.md) and the [repeatable task workflow](docs/work/README.md).
-5. Use the [architecture decisions](docs/adr/README.md) and [research baseline](research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md) when more detail is needed.
+5. Use the [architecture decisions](docs/adr/README.md) and [research baseline](research/implementation/synthesis/result-implementation-technical-baseline.md) when more detail is needed.
 
 The [repository map](docs/architecture/repository-layout.md) explains where everything belongs.
 
@@ -25,8 +25,6 @@ Run all repository checks:
 ```bash
 ./scripts/validate-repository.sh
 ```
-
-The original handover validation can also be run from PowerShell 7.2 or newer:
 
 Run the documentation validation from PowerShell 7.2 or newer:
 

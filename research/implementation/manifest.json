@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 2,
+  "suite": "implementation",
+  "status": "complete",
+  "topicCount": 24,
+  "batchCount": 6,
+  "promptCount": 31,
+  "generatedFiles": [
+    "research/implementation/README.md",
+    "research/implementation/attachments/README.md",
+    "research/implementation/attachments/accepted-baseline.md",
+    "research/implementation/attachments/application-catalogue.md",
+    "research/implementation/attachments/data-schema.md",
+    "research/implementation/attachments/decisions-and-gates.md",
+    "research/implementation/attachments/evidence-rules.md",
+    "research/implementation/attachments/existing-system.md",
+    "research/implementation/attachments/windows-lab.md",
+    "research/implementation/batches/01-foundations/01-g0-dummy-data-test-oracle/README.md",
+    "research/implementation/batches/01-foundations/01-g0-dummy-data-test-oracle/prompt.md",
+    "research/implementation/batches/01-foundations/02-g1-windows-runtime-ipc/README.md",
+    "research/implementation/batches/01-foundations/02-g1-windows-runtime-ipc/prompt.md",
+    "research/implementation/batches/01-foundations/03-contract-versioning/README.md",
+    "research/implementation/batches/01-foundations/03-contract-versioning/prompt.md",
+    "research/implementation/batches/01-foundations/04-application-registry-matching/README.md",
+    "research/implementation/batches/01-foundations/04-application-registry-matching/prompt.md",
+    "research/implementation/batches/01-foundations/05-privacy-ceiling-tenant-policy/README.md",
+    "research/implementation/batches/01-foundations/05-privacy-ceiling-tenant-policy/prompt.md",
+    "research/implementation/batches/01-foundations/06-repository-build-ci/README.md",
+    "research/implementation/batches/01-foundations/06-repository-build-ci/prompt.md",
+    "research/implementation/batches/01-foundations/README.md",
+    "research/implementation/batches/01-foundations/review/README.md",
+    "research/implementation/batches/01-foundations/review/prompt.md",
+    "research/implementation/batches/02-endpoint-data/07-g2-g3-edge-acquisition-cursor/README.md",
+    "research/implementation/batches/02-endpoint-data/07-g2-g3-edge-acquisition-cursor/prompt.md",
+    "research/implementation/batches/02-endpoint-data/08-g4-url-privacy-transformation/README.md",
+    "research/implementation/batches/02-endpoint-data/08-g4-url-privacy-transformation/prompt.md",
+    "research/implementation/batches/02-endpoint-data/README.md",
+    "research/implementation/batches/02-endpoint-data/review/README.md",
+    "research/implementation/batches/02-endpoint-data/review/prompt.md",
+    "research/implementation/batches/03-durability-release-identity/09-g5-sqlite-outbox-state-machines/README.md",
+    "research/implementation/batches/03-durability-release-identity/09-g5-sqlite-outbox-state-machines/prompt.md",
+    "research/implementation/batches/03-durability-release-identity/10-invariant-fault-testing/README.md",
+    "research/implementation/batches/03-durability-release-identity/10-invariant-fault-testing/prompt.md",
+    "research/implementation/batches/03-durability-release-identity/11-release-updater-supply-chain/README.md",
+    "research/implementation/batches/03-durability-release-identity/11-release-updater-supply-chain/prompt.md",
+    "research/implementation/batches/03-durability-release-identity/12-device-identity-network/README.md",
+    "research/implementation/batches/03-durability-release-identity/12-device-identity-network/prompt.md",
+    "research/implementation/batches/03-durability-release-identity/13-diagnostics-support/README.md",
+    "research/implementation/batches/03-durability-release-identity/13-diagnostics-support/prompt.md",
+    "research/implementation/batches/03-durability-release-identity/14-windows-compatibility-policy/README.md",
+    "research/implementation/batches/03-durability-release-identity/14-windows-compatibility-policy/prompt.md",
+    "research/implementation/batches/03-durability-release-identity/README.md",
+    "research/implementation/batches/03-durability-release-identity/review/README.md",
+    "research/implementation/batches/03-durability-release-identity/review/prompt.md",
+    "research/implementation/batches/04-server-platform/15-ingestion-relational-inbox/README.md",
+    "research/implementation/batches/04-server-platform/15-ingestion-relational-inbox/prompt.md",
+    "research/implementation/batches/04-server-platform/16-database-comparison-experiment/README.md",
+    "research/implementation/batches/04-server-platform/16-database-comparison-experiment/prompt.md",
+    "research/implementation/batches/04-server-platform/17-capacity-fleet-simulator/README.md",
+    "research/implementation/batches/04-server-platform/17-capacity-fleet-simulator/prompt.md",
+    "research/implementation/batches/04-server-platform/18-retention-deletion-restore/README.md",
+    "research/implementation/batches/04-server-platform/18-retention-deletion-restore/prompt.md",
+    "research/implementation/batches/04-server-platform/README.md",
+    "research/implementation/batches/04-server-platform/review/README.md",
+    "research/implementation/batches/04-server-platform/review/prompt.md",
+    "research/implementation/batches/05-portal-governance/19-portal-authorization/README.md",
+    "research/implementation/batches/05-portal-governance/19-portal-authorization/prompt.md",
+    "research/implementation/batches/05-portal-governance/20-portal-information-workflows/README.md",
+    "research/implementation/batches/05-portal-governance/20-portal-information-workflows/prompt.md",
+    "research/implementation/batches/05-portal-governance/21-transactional-audit/README.md",
+    "research/implementation/batches/05-portal-governance/21-transactional-audit/prompt.md",
+    "research/implementation/batches/05-portal-governance/README.md",
+    "research/implementation/batches/05-portal-governance/review/README.md",
+    "research/implementation/batches/05-portal-governance/review/prompt.md",
+    "research/implementation/batches/06-migration/22-legacy-discovery/README.md",
+    "research/implementation/batches/06-migration/22-legacy-discovery/prompt.md",
+    "research/implementation/batches/06-migration/23-parallel-run-reconciliation/README.md",
+    "research/implementation/batches/06-migration/23-parallel-run-reconciliation/prompt.md",
+    "research/implementation/batches/06-migration/24-cutover-decommission/README.md",
+    "research/implementation/batches/06-migration/24-cutover-decommission/prompt.md",
+    "research/implementation/batches/06-migration/README.md",
+    "research/implementation/batches/06-migration/review/README.md",
+    "research/implementation/batches/06-migration/review/prompt.md",
+    "research/implementation/batches/README.md",
+    "research/implementation/context/README.md",
+    "research/implementation/context/accepted-baseline.md",
+    "research/implementation/context/evidence-map.md",
+    "research/implementation/context/lessons.md",
+    "research/implementation/context/project-file-allowlists.md",
+    "research/implementation/context/workflow.md",
+    "research/implementation/evidence/README.md",
+    "research/implementation/manifest.json",
+    "research/implementation/synthesis/README.md",
+    "research/implementation/synthesis/prompt.md"
+  ],
+  "prompts": [
+    {
+      "kind": "topic",
+      "topicId": 1,
+      "batchId": 1,
+      "prompt": "research/implementation/batches/01-foundations/01-g0-dummy-data-test-oracle/prompt.md",
+      "result": "research/implementation/batches/01-foundations/01-g0-dummy-data-test-oracle/result-01-g0-dummy-data-test-oracle.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/application-catalogue.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": []
+    },
+    {
+      "kind": "topic",
+      "topicId": 2,
+      "batchId": 1,
+      "prompt": "research/implementation/batches/01-foundations/02-g1-windows-runtime-ipc/prompt.md",
+      "result": "research/implementation/batches/01-foundations/02-g1-windows-runtime-ipc/result-02-g1-windows-runtime-ipc.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/existing-system.md",
+        "research/implementation/attachments/windows-lab.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": []
+    },
+    {
+      "kind": "topic",
+      "topicId": 3,
+      "batchId": 1,
+      "prompt": "research/implementation/batches/01-foundations/03-contract-versioning/prompt.md",
+      "result": "research/implementation/batches/01-foundations/03-contract-versioning/result-03-contract-versioning.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": []
+    },
+    {
+      "kind": "topic",
+      "topicId": 4,
+      "batchId": 1,
+      "prompt": "research/implementation/batches/01-foundations/04-application-registry-matching/prompt.md",
+      "result": "research/implementation/batches/01-foundations/04-application-registry-matching/result-04-application-registry-matching.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/application-catalogue.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": []
+    },
+    {
+      "kind": "topic",
+      "topicId": 5,
+      "batchId": 1,
+      "prompt": "research/implementation/batches/01-foundations/05-privacy-ceiling-tenant-policy/prompt.md",
+      "result": "research/implementation/batches/01-foundations/05-privacy-ceiling-tenant-policy/result-05-privacy-ceiling-tenant-policy.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/application-catalogue.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": []
+    },
+    {
+      "kind": "topic",
+      "topicId": 6,
+      "batchId": 1,
+      "prompt": "research/implementation/batches/01-foundations/06-repository-build-ci/prompt.md",
+      "result": "research/implementation/batches/01-foundations/06-repository-build-ci/result-06-repository-build-ci.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/existing-system.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": []
+    },
+    {
+      "kind": "topic",
+      "topicId": 7,
+      "batchId": 2,
+      "prompt": "research/implementation/batches/02-endpoint-data/07-g2-g3-edge-acquisition-cursor/prompt.md",
+      "result": "research/implementation/batches/02-endpoint-data/07-g2-g3-edge-acquisition-cursor/result-07-g2-g3-edge-acquisition-cursor.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/existing-system.md",
+        "research/implementation/attachments/windows-lab.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 8,
+      "batchId": 2,
+      "prompt": "research/implementation/batches/02-endpoint-data/08-g4-url-privacy-transformation/prompt.md",
+      "result": "research/implementation/batches/02-endpoint-data/08-g4-url-privacy-transformation/result-08-g4-url-privacy-transformation.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/application-catalogue.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 9,
+      "batchId": 3,
+      "prompt": "research/implementation/batches/03-durability-release-identity/09-g5-sqlite-outbox-state-machines/prompt.md",
+      "result": "research/implementation/batches/03-durability-release-identity/09-g5-sqlite-outbox-state-machines/result-09-g5-sqlite-outbox-state-machines.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 10,
+      "batchId": 3,
+      "prompt": "research/implementation/batches/03-durability-release-identity/10-invariant-fault-testing/prompt.md",
+      "result": "research/implementation/batches/03-durability-release-identity/10-invariant-fault-testing/result-10-invariant-fault-testing.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/windows-lab.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 11,
+      "batchId": 3,
+      "prompt": "research/implementation/batches/03-durability-release-identity/11-release-updater-supply-chain/prompt.md",
+      "result": "research/implementation/batches/03-durability-release-identity/11-release-updater-supply-chain/result-11-release-updater-supply-chain.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/windows-lab.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 12,
+      "batchId": 3,
+      "prompt": "research/implementation/batches/03-durability-release-identity/12-device-identity-network/prompt.md",
+      "result": "research/implementation/batches/03-durability-release-identity/12-device-identity-network/result-12-device-identity-network.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/windows-lab.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 13,
+      "batchId": 3,
+      "prompt": "research/implementation/batches/03-durability-release-identity/13-diagnostics-support/prompt.md",
+      "result": "research/implementation/batches/03-durability-release-identity/13-diagnostics-support/result-13-diagnostics-support.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/existing-system.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 14,
+      "batchId": 3,
+      "prompt": "research/implementation/batches/03-durability-release-identity/14-windows-compatibility-policy/prompt.md",
+      "result": "research/implementation/batches/03-durability-release-identity/14-windows-compatibility-policy/result-14-windows-compatibility-policy.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/windows-lab.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 15,
+      "batchId": 4,
+      "prompt": "research/implementation/batches/04-server-platform/15-ingestion-relational-inbox/prompt.md",
+      "result": "research/implementation/batches/04-server-platform/15-ingestion-relational-inbox/result-15-ingestion-relational-inbox.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 16,
+      "batchId": 4,
+      "prompt": "research/implementation/batches/04-server-platform/16-database-comparison-experiment/prompt.md",
+      "result": "research/implementation/batches/04-server-platform/16-database-comparison-experiment/result-16-database-comparison-experiment.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 17,
+      "batchId": 4,
+      "prompt": "research/implementation/batches/04-server-platform/17-capacity-fleet-simulator/prompt.md",
+      "result": "research/implementation/batches/04-server-platform/17-capacity-fleet-simulator/result-17-capacity-fleet-simulator.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 18,
+      "batchId": 4,
+      "prompt": "research/implementation/batches/04-server-platform/18-retention-deletion-restore/prompt.md",
+      "result": "research/implementation/batches/04-server-platform/18-retention-deletion-restore/result-18-retention-deletion-restore.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 19,
+      "batchId": 5,
+      "prompt": "research/implementation/batches/05-portal-governance/19-portal-authorization/prompt.md",
+      "result": "research/implementation/batches/05-portal-governance/19-portal-authorization/result-19-portal-authorization.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 20,
+      "batchId": 5,
+      "prompt": "research/implementation/batches/05-portal-governance/20-portal-information-workflows/prompt.md",
+      "result": "research/implementation/batches/05-portal-governance/20-portal-information-workflows/result-20-portal-information-workflows.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/application-catalogue.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 21,
+      "batchId": 5,
+      "prompt": "research/implementation/batches/05-portal-governance/21-transactional-audit/prompt.md",
+      "result": "research/implementation/batches/05-portal-governance/21-transactional-audit/result-21-transactional-audit.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 22,
+      "batchId": 6,
+      "prompt": "research/implementation/batches/06-migration/22-legacy-discovery/prompt.md",
+      "result": "research/implementation/batches/06-migration/22-legacy-discovery/result-22-legacy-discovery.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/existing-system.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 23,
+      "batchId": 6,
+      "prompt": "research/implementation/batches/06-migration/23-parallel-run-reconciliation/prompt.md",
+      "result": "research/implementation/batches/06-migration/23-parallel-run-reconciliation/result-23-parallel-run-reconciliation.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/existing-system.md",
+        "research/implementation/attachments/data-schema.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
+        "research/implementation/batches/06-migration/22-legacy-discovery/result-22-legacy-discovery.md"
+      ]
+    },
+    {
+      "kind": "topic",
+      "topicId": 24,
+      "batchId": 6,
+      "prompt": "research/implementation/batches/06-migration/24-cutover-decommission/prompt.md",
+      "result": "research/implementation/batches/06-migration/24-cutover-decommission/result-24-cutover-decommission.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/existing-system.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
+        "research/implementation/batches/05-portal-governance/review/result-review-05-portal-governance.md",
+        "research/implementation/batches/06-migration/22-legacy-discovery/result-22-legacy-discovery.md",
+        "research/implementation/batches/06-migration/23-parallel-run-reconciliation/result-23-parallel-run-reconciliation.md"
+      ]
+    },
+    {
+      "kind": "batch-review",
+      "batchId": 1,
+      "prompt": "research/implementation/batches/01-foundations/review/prompt.md",
+      "result": "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/01-g0-dummy-data-test-oracle/result-01-g0-dummy-data-test-oracle.md",
+        "research/implementation/batches/01-foundations/02-g1-windows-runtime-ipc/result-02-g1-windows-runtime-ipc.md",
+        "research/implementation/batches/01-foundations/03-contract-versioning/result-03-contract-versioning.md",
+        "research/implementation/batches/01-foundations/04-application-registry-matching/result-04-application-registry-matching.md",
+        "research/implementation/batches/01-foundations/05-privacy-ceiling-tenant-policy/result-05-privacy-ceiling-tenant-policy.md",
+        "research/implementation/batches/01-foundations/06-repository-build-ci/result-06-repository-build-ci.md"
+      ]
+    },
+    {
+      "kind": "batch-review",
+      "batchId": 2,
+      "prompt": "research/implementation/batches/02-endpoint-data/review/prompt.md",
+      "result": "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/02-endpoint-data/07-g2-g3-edge-acquisition-cursor/result-07-g2-g3-edge-acquisition-cursor.md",
+        "research/implementation/batches/02-endpoint-data/08-g4-url-privacy-transformation/result-08-g4-url-privacy-transformation.md",
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md"
+      ]
+    },
+    {
+      "kind": "batch-review",
+      "batchId": 3,
+      "prompt": "research/implementation/batches/03-durability-release-identity/review/prompt.md",
+      "result": "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/03-durability-release-identity/09-g5-sqlite-outbox-state-machines/result-09-g5-sqlite-outbox-state-machines.md",
+        "research/implementation/batches/03-durability-release-identity/10-invariant-fault-testing/result-10-invariant-fault-testing.md",
+        "research/implementation/batches/03-durability-release-identity/11-release-updater-supply-chain/result-11-release-updater-supply-chain.md",
+        "research/implementation/batches/03-durability-release-identity/12-device-identity-network/result-12-device-identity-network.md",
+        "research/implementation/batches/03-durability-release-identity/13-diagnostics-support/result-13-diagnostics-support.md",
+        "research/implementation/batches/03-durability-release-identity/14-windows-compatibility-policy/result-14-windows-compatibility-policy.md",
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md"
+      ]
+    },
+    {
+      "kind": "batch-review",
+      "batchId": 4,
+      "prompt": "research/implementation/batches/04-server-platform/review/prompt.md",
+      "result": "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/04-server-platform/15-ingestion-relational-inbox/result-15-ingestion-relational-inbox.md",
+        "research/implementation/batches/04-server-platform/16-database-comparison-experiment/result-16-database-comparison-experiment.md",
+        "research/implementation/batches/04-server-platform/17-capacity-fleet-simulator/result-17-capacity-fleet-simulator.md",
+        "research/implementation/batches/04-server-platform/18-retention-deletion-restore/result-18-retention-deletion-restore.md",
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md"
+      ]
+    },
+    {
+      "kind": "batch-review",
+      "batchId": 5,
+      "prompt": "research/implementation/batches/05-portal-governance/review/prompt.md",
+      "result": "research/implementation/batches/05-portal-governance/review/result-review-05-portal-governance.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/05-portal-governance/19-portal-authorization/result-19-portal-authorization.md",
+        "research/implementation/batches/05-portal-governance/20-portal-information-workflows/result-20-portal-information-workflows.md",
+        "research/implementation/batches/05-portal-governance/21-transactional-audit/result-21-transactional-audit.md",
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md"
+      ]
+    },
+    {
+      "kind": "batch-review",
+      "batchId": 6,
+      "prompt": "research/implementation/batches/06-migration/review/prompt.md",
+      "result": "research/implementation/batches/06-migration/review/result-review-06-migration.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/decisions-and-gates.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/06-migration/22-legacy-discovery/result-22-legacy-discovery.md",
+        "research/implementation/batches/06-migration/23-parallel-run-reconciliation/result-23-parallel-run-reconciliation.md",
+        "research/implementation/batches/06-migration/24-cutover-decommission/result-24-cutover-decommission.md",
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
+        "research/implementation/batches/05-portal-governance/review/result-review-05-portal-governance.md"
+      ]
+    },
+    {
+      "kind": "final-synthesis",
+      "prompt": "research/implementation/synthesis/prompt.md",
+      "result": "research/implementation/synthesis/result-implementation-technical-baseline.md",
+      "attachments": [
+        "research/implementation/attachments/accepted-baseline.md",
+        "research/implementation/attachments/evidence-rules.md"
+      ],
+      "consumes": [
+        "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
+        "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
+        "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
+        "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
+        "research/implementation/batches/05-portal-governance/review/result-review-05-portal-governance.md",
+        "research/implementation/batches/06-migration/review/result-review-06-migration.md"
+      ]
+    }
+  ]
+}

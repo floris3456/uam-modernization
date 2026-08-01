@@ -39,4 +39,4 @@ New environments, incidents, workload changes, lifecycle changes, or expired evi
 
 ## Source
 
-[Final synthesis, sections 5, 8 and 14](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+[Final synthesis, sections 5, 8 and 14](../../research/implementation/synthesis/result-implementation-technical-baseline.md).

@@ -47,4 +47,4 @@ A dependency becomes unsupported, changes license or ownership, suffers a releva
 
 ## Source
 
-[Final synthesis, sections 16 and 17](../../research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md).
+[Final synthesis, sections 16 and 17](../../research/implementation/synthesis/result-implementation-technical-baseline.md).
