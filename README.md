@@ -10,6 +10,7 @@ This repository captures the current PowerShell-based endpoint agent, its SQL da
 2. Review the [current-state summary](UAM-overdracht-INTERN-2026-07-23/docs/00a-uam-ist-samenvatting-a4.md).
 3. Review the [target-state summary](UAM-overdracht-INTERN-2026-07-23/docs/00b-uam-doelbeeld-samenvatting-a4.md).
 4. Use the [migration roadmap](UAM-overdracht-INTERN-2026-07-23/docs/05-migration-map-roadmap.md) for implementation planning.
+5. Review the [initial architecture decisions](docs/adr/README.md) before starting implementation.
 
 ## Repository status
 
@@ -28,4 +29,3 @@ The same validation runs automatically for pushes and pull requests through GitH
 ## Confidentiality
 
 This repository contains internal technical information, including internal application and URL configuration. Keep the GitHub repository private and do not redistribute its contents without a security and privacy review. See [`SECURITY.md`](SECURITY.md).
-
