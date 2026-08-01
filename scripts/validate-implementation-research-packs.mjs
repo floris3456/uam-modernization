@@ -153,6 +153,8 @@ const forbiddenContent = [
   [/BEGIN (?:RSA|OPENSSH|EC|DSA) PRIVATE KEY/, "private key material"],
   [/\b(?:github_pat_|ghp_)[A-Za-z0-9_]{16,}/, "GitHub token"],
   [/\b(?:password|passwd|secret|token)\s*[:=]\s*["'][^<\n"']{6,}["']/i, "obvious credential literal"],
+  [/\b(?:10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})\b/, "private IPv4 address"],
+  [/https?:\/\/[^\s`)<>]*(?:\.internal|\.local|\.lan)(?=[\s/:`)<>]|$)/i, "internal URL"],
   [/02_legacy_uam_reference_data\.sql/i, "confidential reference-data SQL filename"],
 ];
 

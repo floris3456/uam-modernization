@@ -6,18 +6,27 @@ This repository captures the current PowerShell-based endpoint agent, its SQL da
 
 ## Start here
 
-1. Read [`README-OVERDRACHT.md`](UAM-overdracht-INTERN-2026-07-23/README-OVERDRACHT.md).
-2. Review the [current-state summary](UAM-overdracht-INTERN-2026-07-23/docs/00a-uam-ist-samenvatting-a4.md).
-3. Review the [target-state summary](UAM-overdracht-INTERN-2026-07-23/docs/00b-uam-doelbeeld-samenvatting-a4.md).
-4. Use the [migration roadmap](UAM-overdracht-INTERN-2026-07-23/docs/05-migration-map-roadmap.md) for implementation planning.
-5. Review the [initial architecture decisions](docs/adr/README.md) before starting implementation.
-6. Use the [plain-language implementation scope](docs/plain-language/implementation-scope.md) to distinguish current preparation from later product features.
+1. Read [what we are building](docs/plain-language/00-what-we-are-building.md).
+2. Check [current, next, and later](docs/plain-language/01-current-next-later.md).
+3. Open the [current milestone](docs/milestones/G0-fictional-evidence-foundation.md).
+4. Before changing files, follow [AGENTS.md](AGENTS.md) and the [repeatable task workflow](docs/work/README.md).
+5. Use the [architecture decisions](docs/adr/README.md) and [research baseline](research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md) when more detail is needed.
+
+The [repository map](docs/architecture/repository-layout.md) explains where everything belongs.
 
 ## Repository status
 
-The current contents are a validated handover package and migration specification. They are not yet the implementation repository for the replacement C# platform. The included legacy source is redacted reference material and must not be deployed.
+The current contents are a validated handover package, completed implementation research, proposed ADRs, and a G0 pre-implementation foundation. Production implementation of the replacement C# platform has not started. The included legacy source is redacted reference material and must not be deployed.
 
 ## Validation
+
+Run all repository checks:
+
+```bash
+./scripts/validate-repository.sh
+```
+
+The original handover validation can also be run from PowerShell 7.2 or newer:
 
 Run the documentation validation from PowerShell 7.2 or newer:
 

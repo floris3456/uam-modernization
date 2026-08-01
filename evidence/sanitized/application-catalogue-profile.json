@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "classification": "Internal sanitized aggregate; safe for repository review, not automatically approved for public distribution",
+  "generation": "node scripts/profile-detailed-application-catalogue.mjs",
+  "source": {
+    "basename": "applicaties_alle_zichtbare_informatie.csv",
+    "sha256": "8356990630e2a7dcce2972bafb5ac572c886e2f976532b17cd892f74357110af",
+    "byteCount": 77624,
+    "encoding": "UTF-8 with BOM",
+    "delimiter": "comma"
+  },
+  "structure": {
+    "recordCount": 173,
+    "columnCount": 22,
+    "sequentialRowNumbers": true
+  },
+  "quality": {
+    "fields": {
+      "Rij": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 173
+      },
+      "Guid": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 2
+      },
+      "GuidRawOCR_ongeverifieerd": {
+        "populated": 171,
+        "missing": 2,
+        "distinctNonEmpty": 171
+      },
+      "GuidStatus": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 2
+      },
+      "CorrelationID": {
+        "populated": 168,
+        "missing": 5,
+        "distinctNonEmpty": 168
+      },
+      "Naam": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 173
+      },
+      "Beschrijving": {
+        "populated": 167,
+        "missing": 6,
+        "distinctNonEmpty": 167
+      },
+      "Versie": {
+        "populated": 168,
+        "missing": 5,
+        "distinctNonEmpty": 85
+      },
+      "OperationeleStatus": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 1
+      },
+      "ApplicatieComplexiteit": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 6
+      },
+      "AlmMatrix": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 6
+      },
+      "AlmStatus": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 3
+      },
+      "RbacObjectw": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 1
+      },
+      "Chargeable": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 1
+      },
+      "Vendor": {
+        "populated": 168,
+        "missing": 5,
+        "distinctNonEmpty": 130
+      },
+      "Bedrijf": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 5
+      },
+      "RequiredAccess": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 4
+      },
+      "OwnershipCompany": {
+        "populated": 173,
+        "missing": 0,
+        "distinctNonEmpty": 3
+      },
+      "BeheerdDoor": {
+        "populated": 7,
+        "missing": 166,
+        "distinctNonEmpty": 2
+      },
+      "FunctioneelBeheer": {
+        "populated": 171,
+        "missing": 2,
+        "distinctNonEmpty": 53
+      },
+      "Toewijzingsgroep": {
+        "populated": 172,
+        "missing": 1,
+        "distinctNonEmpty": 4
+      },
+      "TranscriptieOpmerking": {
+        "populated": 170,
+        "missing": 3,
+        "distinctNonEmpty": 7
+      }
+    },
+    "uniqueApplicationNamesCaseInsensitive": 173,
+    "duplicatedApplicationNameRecordsCaseInsensitive": 0,
+    "distinctNonEmptyCorrelationIds": 168,
+    "duplicatedCorrelationIdRecords": 0,
+    "syntacticallyValidValuesInGuidColumn": 0,
+    "cellsContainingIpv4Literal": 11,
+    "cellsContainingUrl": 1,
+    "requestedCatalogueCorrectionsVerified": true
+  },
+  "interpretationLimits": [
+    "Counts describe transcription completeness, not source-system correctness.",
+    "The Guid column is not usable as a stable identifier; raw OCR values remain unverified.",
+    "Populated ownership or management text does not prove accountable ownership.",
+    "No row values, application names, addresses, URLs, external IDs, or personal information are copied into this profile."
+  ],
+  "safety": {
+    "rawRowsIncluded": false,
+    "rawApplicationNamesIncluded": false,
+    "rawExternalIdsIncluded": false,
+    "addressesIncluded": false,
+    "urlsIncluded": false,
+    "personalDataIncluded": false
+  }
+}

@@ -16,7 +16,9 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          persist-credentials: false
 
       - name: Regenerate code reference
         run: ./scripts/generate-code-reference.sh
@@ -34,4 +36,6 @@ jobs:
       - name: Reject obvious credential material
         shell: bash
         run: |
-          ! grep -REn 'BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY|github_pat_|ghp_[A-Za-z0-9]{20,}' research-packs
+          ! find research-packs -type f \
+            ! -path 'research-packs/implementation/results/*' -print0 \
+            | xargs -0 grep -En 'BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY|github_pat_|ghp_[A-Za-z0-9]{20,}'

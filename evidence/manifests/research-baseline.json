@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "classification": "Internal research evidence manifest; contains paths, sizes, and hashes but no research content",
+  "generation": "node scripts/generate-research-baseline-manifest.mjs",
+  "sourceManifest": "research-packs/implementation/manifest.json",
+  "canonicalBatch4Review": "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
+  "resultCount": 31,
+  "results": [
+    {
+      "kind": "topic",
+      "topicId": 1,
+      "batchId": 1,
+      "path": "research-packs/implementation/results/batch-01-foundations/01-g0-dummy-data-test-oracle-result.md",
+      "byteCount": 269979,
+      "sha256": "0e2cfb7320d97cc784a032636513c35bcf6974372aa9974bbc5df143a351e3ca"
+    },
+    {
+      "kind": "topic",
+      "topicId": 2,
+      "batchId": 1,
+      "path": "research-packs/implementation/results/batch-01-foundations/02-g1-windows-runtime-ipc-result.md",
+      "byteCount": 280626,
+      "sha256": "2da27adabb4038f06c3db95ac2699ea77e88abd8d96a31025416a8908c535ea1"
+    },
+    {
+      "kind": "topic",
+      "topicId": 3,
+      "batchId": 1,
+      "path": "research-packs/implementation/results/batch-01-foundations/03-contract-versioning-result.md",
+      "byteCount": 298078,
+      "sha256": "34d6284fc2dd46cdf1af479cc8e2fb53510fa48f236f5b19597ab13788d31967"
+    },
+    {
+      "kind": "topic",
+      "topicId": 4,
+      "batchId": 1,
+      "path": "research-packs/implementation/results/batch-01-foundations/04-application-registry-matching-result.md",
+      "byteCount": 262293,
+      "sha256": "c677fbaa1a0e3d3d7b5d2f5c3e0c2fc1868bb926d1a6e4fb10a95295d90ea6a5"
+    },
+    {
+      "kind": "topic",
+      "topicId": 5,
+      "batchId": 1,
+      "path": "research-packs/implementation/results/batch-01-foundations/05-privacy-ceiling-tenant-policy-result.md",
+      "byteCount": 259639,
+      "sha256": "55966752695939f0c9efe110338b55fcad80739936a0ab1f10f62b280e9cefc2"
+    },
+    {
+      "kind": "topic",
+      "topicId": 6,
+      "batchId": 1,
+      "path": "research-packs/implementation/results/batch-01-foundations/06-repository-build-ci-result.md",
+      "byteCount": 222160,
+      "sha256": "07f23bad9fcb13b897a365e6c2a32b8a082b04d3ce000f267d7ccfa34a3ba116"
+    },
+    {
+      "kind": "topic",
+      "topicId": 7,
+      "batchId": 2,
+      "path": "research-packs/implementation/results/batch-02-endpoint-data/07-g2-g3-edge-acquisition-cursor-result.md",
+      "byteCount": 228615,
+      "sha256": "d839aa76a7fc73fba7dba02c26635746a5babdc059cd1eeaa36e32a9913ce384"
+    },
+    {
+      "kind": "topic",
+      "topicId": 8,
+      "batchId": 2,
+      "path": "research-packs/implementation/results/batch-02-endpoint-data/08-g4-url-privacy-transformation-result.md",
+      "byteCount": 228488,
+      "sha256": "8c6d2893258ba80bbcccb4e4d53acbf2ad211043966d0b6251e66cd7b82a7909"
+    },
+    {
+      "kind": "topic",
+      "topicId": 9,
+      "batchId": 3,
+      "path": "research-packs/implementation/results/batch-03-durability-release-identity/09-g5-sqlite-outbox-state-machines-result.md",
+      "byteCount": 281919,
+      "sha256": "e5ec42682267ffb2e97a3abe18d4bf74f366ae1b0766ae3b8d1a318b6e94068e"
+    },
+    {
+      "kind": "topic",
+      "topicId": 10,
+      "batchId": 3,
+      "path": "research-packs/implementation/results/batch-03-durability-release-identity/10-invariant-fault-testing-result.md",
+      "byteCount": 238481,
+      "sha256": "865d19103219002cfca1a510f80139c2fea27fdd0ddefc391cd7b6e9be9b7bb9"
+    },
+    {
+      "kind": "topic",
+      "topicId": 11,
+      "batchId": 3,
+      "path": "research-packs/implementation/results/batch-03-durability-release-identity/11-release-updater-supply-chain-result.md",
+      "byteCount": 245486,
+      "sha256": "c95dd4ec636e9572bc822757e18d4bcb261af011477586cc089a6209bfd78906"
+    },
+    {
+      "kind": "topic",
+      "topicId": 12,
+      "batchId": 3,
+      "path": "research-packs/implementation/results/batch-03-durability-release-identity/12-device-identity-network-result.md",
+      "byteCount": 312242,
+      "sha256": "711e1b030358fef7c01815a9b1c92ad0327b4b8a93f582e0a94ebaa3bfdcfaaa"
+    },
+    {
+      "kind": "topic",
+      "topicId": 13,
+      "batchId": 3,
+      "path": "research-packs/implementation/results/batch-03-durability-release-identity/13-diagnostics-support-result.md",
+      "byteCount": 206731,
+      "sha256": "5fa3f03bf01896aa99e25a926bd47354d663fcb3c0a3e7f01f592cc24b0f03b8"
+    },
+    {
+      "kind": "topic",
+      "topicId": 14,
+      "batchId": 3,
+      "path": "research-packs/implementation/results/batch-03-durability-release-identity/14-windows-compatibility-policy-result.md",
+      "byteCount": 251656,
+      "sha256": "71a285d493e69796a1a9660f3c3f9f7439ecdeb96c17d9d906320169aff2427a"
+    },
+    {
+      "kind": "topic",
+      "topicId": 15,
+      "batchId": 4,
+      "path": "research-packs/implementation/results/batch-04-server-platform/15-ingestion-relational-inbox-result.md",
+      "byteCount": 280809,
+      "sha256": "f9138ddc9971b7a829c665c55475a9fa034ba579c7ff39b30ee1d97787fad94a"
+    },
+    {
+      "kind": "topic",
+      "topicId": 16,
+      "batchId": 4,
+      "path": "research-packs/implementation/results/batch-04-server-platform/16-database-comparison-experiment-result.md",
+      "byteCount": 259914,
+      "sha256": "ff84e40e5096d82129feaf6d8f595598bd59647d60763b47b5030fb49b0faa8d"
+    },
+    {
+      "kind": "topic",
+      "topicId": 17,
+      "batchId": 4,
+      "path": "research-packs/implementation/results/batch-04-server-platform/17-capacity-fleet-simulator-result.md",
+      "byteCount": 227356,
+      "sha256": "a863b6a9d5b5c4b9bc256b87fbf0703752babe8225884e67fca09464442c9675"
+    },
+    {
+      "kind": "topic",
+      "topicId": 18,
+      "batchId": 4,
+      "path": "research-packs/implementation/results/batch-04-server-platform/18-retention-deletion-restore-result.md",
+      "byteCount": 159359,
+      "sha256": "be1ecbd6752f74baf2eb8bb7a29508cbbcebbd3a4561af6a6d5a43ad8d0dae9b"
+    },
+    {
+      "kind": "topic",
+      "topicId": 19,
+      "batchId": 5,
+      "path": "research-packs/implementation/results/batch-05-portal-governance/19-portal-authorization-result.md",
+      "byteCount": 245294,
+      "sha256": "9375ba44492369a43c9109d70980b5cc07f7b8b5450ba3f4f42f13777f6b80cb"
+    },
+    {
+      "kind": "topic",
+      "topicId": 20,
+      "batchId": 5,
+      "path": "research-packs/implementation/results/batch-05-portal-governance/20-portal-information-workflows-result.md",
+      "byteCount": 230802,
+      "sha256": "f8b75878b3108424c40b8c296a5df3861e0cc29739ce3190720bb9d313be92e6"
+    },
+    {
+      "kind": "topic",
+      "topicId": 21,
+      "batchId": 5,
+      "path": "research-packs/implementation/results/batch-05-portal-governance/21-transactional-audit-result.md",
+      "byteCount": 262650,
+      "sha256": "769502a491ece4182f8757c3535e5a6ac05cf52596bf9c9f6e80817e5892d722"
+    },
+    {
+      "kind": "topic",
+      "topicId": 22,
+      "batchId": 6,
+      "path": "research-packs/implementation/results/batch-06-migration/22-legacy-discovery-result.md",
+      "byteCount": 248338,
+      "sha256": "d96c2ad36f2c45228caf18aa95f0f01d2b626c60dd72c2136d282cba20df07f7"
+    },
+    {
+      "kind": "topic",
+      "topicId": 23,
+      "batchId": 6,
+      "path": "research-packs/implementation/results/batch-06-migration/23-parallel-run-reconciliation-result.md",
+      "byteCount": 177288,
+      "sha256": "de32b260938206a0a2a0dc61bae4b3974d0bb0b7aa5213a0f93a4a273b5c4152"
+    },
+    {
+      "kind": "topic",
+      "topicId": 24,
+      "batchId": 6,
+      "path": "research-packs/implementation/results/batch-06-migration/24-cutover-decommission-result.md",
+      "byteCount": 189639,
+      "sha256": "9ad389aed0ccb6035bfcc41e9612821825effb1b1fbbd8e64994bc8e68f0f06b"
+    },
+    {
+      "kind": "batch-review",
+      "topicId": null,
+      "batchId": 1,
+      "path": "research-packs/implementation/results/batch-01-foundations/batch-01-review-result.md",
+      "byteCount": 135455,
+      "sha256": "10d5e1e73fa7e63156ddc942c8f63156d29b7cff238ea7d4e128587b47f4c75b"
+    },
+    {
+      "kind": "batch-review",
+      "topicId": null,
+      "batchId": 2,
+      "path": "research-packs/implementation/results/batch-02-endpoint-data/batch-02-review-result.md",
+      "byteCount": 178488,
+      "sha256": "98aace500e7af551a1b024118ee52935643bd61c45ea9afc5b67c49967c301ef"
+    },
+    {
+      "kind": "batch-review",
+      "topicId": null,
+      "batchId": 3,
+      "path": "research-packs/implementation/results/batch-03-durability-release-identity/batch-03-review-result.md",
+      "byteCount": 194262,
+      "sha256": "76854c3d6a12b9b717da90d4e368273bd88a672fc64a315afaeacfb3d701a785"
+    },
+    {
+      "kind": "batch-review",
+      "topicId": null,
+      "batchId": 4,
+      "path": "research-packs/implementation/results/batch-04-server-platform/batch-04-review-result.md",
+      "byteCount": 255245,
+      "sha256": "232fec004ae866a59e37bad4d0c2e06dd920d1211919ec538aee23ac28305ed4"
+    },
+    {
+      "kind": "batch-review",
+      "topicId": null,
+      "batchId": 5,
+      "path": "research-packs/implementation/results/batch-05-portal-governance/batch-05-review-result.md",
+      "byteCount": 315669,
+      "sha256": "38dc40cc0e07b560da4bcf477d3a0c20e01e2d2aba430e3187eddf21742bed99"
+    },
+    {
+      "kind": "batch-review",
+      "topicId": null,
+      "batchId": 6,
+      "path": "research-packs/implementation/results/batch-06-migration/batch-06-review-result.md",
+      "byteCount": 240249,
+      "sha256": "da2f40b339bcb08f1ad791967e883de640a29024bd4b34150ff4322fa6699119"
+    },
+    {
+      "kind": "final-synthesis",
+      "topicId": null,
+      "batchId": null,
+      "path": "research-packs/implementation/results/final-synthesis/next-generation-technical-baseline-result.md",
+      "byteCount": 266162,
+      "sha256": "ae0eef90423f56b33158a18163c868be091161f559437233f3d6769712bdfd2c"
+    }
+  ],
+  "limitations": [
+    "A hash proves file identity, not correctness or human acceptance.",
+    "Research conclusions remain subject to experiments, gates, and current primary-source verification."
+  ]
+}
