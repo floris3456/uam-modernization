@@ -209,6 +209,27 @@ export function renderD2(model) {
   return `${lines.join('\n')}\n`;
 }
 
+function wrapSvgText(value, maxCharacters, maxLines) {
+  let remaining = value.trim().replace(/\s+/g, ' ');
+  const lines = [];
+  while (remaining && lines.length < maxLines) {
+    if (remaining.length <= maxCharacters) {
+      lines.push(remaining);
+      remaining = '';
+      break;
+    }
+    let splitAt = remaining.lastIndexOf(' ', maxCharacters);
+    if (splitAt < 1) splitAt = maxCharacters;
+    lines.push(remaining.slice(0, splitAt).trimEnd());
+    remaining = remaining.slice(splitAt).trimStart();
+  }
+  if (remaining) {
+    const last = lines.length - 1;
+    lines[last] = `${lines[last].slice(0, maxCharacters - 1).trimEnd()}…`;
+  }
+  return lines;
+}
+
 export function renderSvgPreview(model) {
   const byId = new Map(model.gates.map(gate => [gate.id, gate]));
   const levels = new Map();
@@ -243,8 +264,14 @@ export function renderSvgPreview(model) {
     edge.push(`<path d="M ${x1} ${y1} C ${mid} ${y1}, ${mid} ${y2}, ${x2} ${y2}" fill="none" stroke="#657180" stroke-width="2" marker-end="url(#arrow)"/>`);
   }
   const nodes = model.gates.map(gate => {
-    const {x,y} = positions.get(gate.id); const claim = gate.proofClaim.length > 88 ? `${gate.proofClaim.slice(0, 85)}…` : gate.proofClaim;
-    return `<a href="gates/${escapeHtml(gate.id)}.html" tabindex="0" aria-label="${escapeHtml(`${gate.id} ${gate.name}; gate ${gate.statuses.gate.value}; owner ${gate.owner.value}`)}"><g><title>${escapeHtml(gate.proofClaim)} Research ${escapeHtml(gate.statuses.research.value)}; ADR ${escapeHtml(gate.statuses.adr.value)}; implementation ${escapeHtml(gate.statuses.implementation.value)}</title><rect x="${x}" y="${y}" width="${nodeWidth}" height="${nodeHeight}" rx="10" fill="#f5f7fa" stroke="#566273" stroke-width="2" stroke-dasharray="7 5"/><text x="${x+16}" y="${y+28}" fill="#17202a" font-family="system-ui,Segoe UI,sans-serif"><tspan x="${x+16}" font-size="18" font-weight="700">${escapeHtml(gate.id)} · ${escapeHtml(gate.name)}</tspan><tspan x="${x+16}" dy="25" font-size="14" font-weight="700">Gate: ${escapeHtml(gate.statuses.gate.value)}</tspan><tspan x="${x+16}" dy="21" font-size="14">Owner: ${escapeHtml(gate.owner.value)}</tspan><tspan x="${x+16}" dy="25" font-size="13">${escapeHtml(claim.slice(0, 44))}</tspan><tspan x="${x+16}" dy="19" font-size="13">${escapeHtml(claim.slice(44))}</tspan></text></g></a>`;
+    const {x,y} = positions.get(gate.id);
+    const titleLines = wrapSvgText(`${gate.id} · ${gate.name}`, 25, 2);
+    const claimLines = wrapSvgText(gate.proofClaim, 36, 2);
+    const titleSpans = titleLines.map((line, index) => `<tspan x="${x+16}"${index ? ' dy="20"' : ''} font-size="18" font-weight="700">${escapeHtml(line)}</tspan>`).join('');
+    const statusOffset = titleLines.length === 1 ? 25 : 22;
+    const claimSpans = claimLines.map((line, index) => `<tspan x="${x+16}" dy="${index ? 18 : 23}" font-size="13">${escapeHtml(line)}</tspan>`).join('');
+    const clipId = `card-${gate.id.replace(/[^A-Za-z0-9_-]/g, '-')}`;
+    return `<a href="gates/${escapeHtml(gate.id)}.html" tabindex="0" aria-label="${escapeHtml(`${gate.id} ${gate.name}; gate ${gate.statuses.gate.value}; owner ${gate.owner.value}`)}"><g><title>${escapeHtml(gate.proofClaim)} Research ${escapeHtml(gate.statuses.research.value)}; ADR ${escapeHtml(gate.statuses.adr.value)}; implementation ${escapeHtml(gate.statuses.implementation.value)}</title><clipPath id="${clipId}"><rect x="${x+4}" y="${y+4}" width="${nodeWidth-8}" height="${nodeHeight-8}" rx="7"/></clipPath><rect x="${x}" y="${y}" width="${nodeWidth}" height="${nodeHeight}" rx="10" fill="#f5f7fa" stroke="#566273" stroke-width="2" stroke-dasharray="7 5"/><text x="${x+16}" y="${y+28}" fill="#17202a" font-family="system-ui,Segoe UI,sans-serif" clip-path="url(#${clipId})">${titleSpans}<tspan x="${x+16}" dy="${statusOffset}" font-size="14" font-weight="700">Gate: ${escapeHtml(gate.statuses.gate.value)}</tspan><tspan x="${x+16}" dy="20" font-size="14">Owner: ${escapeHtml(gate.owner.value)}</tspan>${claimSpans}</text></g></a>`;
   });
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title description"><title id="title">UAM proof-gate dependency map</title><desc id="description">All sixteen aggregate proof gates. Arrows show hard pass dependencies. Every gate is open and every owner is unassigned.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#657180"/></marker></defs><rect width="100%" height="100%" fill="#ffffff"/>${edge.join('')}${nodes.join('')}</svg>\n`;
 }

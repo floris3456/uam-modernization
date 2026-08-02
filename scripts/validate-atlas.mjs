@@ -49,6 +49,11 @@ export async function validateGenerated(outDir, options = {}) {
   for (const id of expected.filter(file => file.startsWith('gates/')).map(file => file.slice(6, -5))) {
     if (!d2.includes(`gates/${id}.html`)) throw new Error(`D2 map does not link ${id}.`);
   }
+  const svg = await readFile(join(outDir, 'gate-map.svg'), 'utf8');
+  if (!svg.includes('<clipPath id="card-') || !svg.includes('clip-path="url(#card-')) throw new Error('SVG cards do not clip their text safely.');
+  const svgLines = [...svg.matchAll(/<tspan[^>]*>(.*?)<\/tspan>/g)].map(match => match[1].replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&quot;', '"'));
+  const overlongLine = svgLines.find(line => line.length > 36);
+  if (overlongLine) throw new Error(`SVG card text exceeds its line limit: ${overlongLine}`);
   if (options.renderCheck !== false) {
     const renderDir = await mkdtemp(join(tmpdir(), 'uam-atlas-render-'));
     try {
