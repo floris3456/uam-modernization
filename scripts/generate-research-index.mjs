@@ -1,19 +1,14 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { loadResearchCatalog } from "./research-catalog.mjs";
 
 const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const researchRoot = path.join(repoRoot, "research");
 const checkOnly = process.argv.includes("--check");
 const generated = new Map();
-const baselineStudies = [
-  [1, "architecture-validation", "Architecture validation"],
-  [2, "language-stack", "Language and stack selection"],
-  [3, "security-privacy", "Security and privacy"],
-  [4, "windows-feasibility", "Windows feasibility"],
-  [5, "scale-reliability", "Scale and reliability"],
-  [6, "requirements-migration", "Requirements and migration"],
-];
+const catalog = loadResearchCatalog();
+const baselineStudies = catalog.suites.baseline.studies.map(({ id, slug, title }) => [id, slug, title]);
 const pad = (value) => String(value).padStart(2, "0");
 const rel = (file) => path.relative(repoRoot, file).split(path.sep).join("/");
 const register = (file, content) => generated.set(file, content.endsWith("\n") ? content : `${content}\n`);
@@ -72,10 +67,10 @@ This result is historical. The implementation synthesis is the current research 
 `);
 register(path.join(researchRoot, "templates/README.md"), `# Research templates
 
-- Copy [the study template](study/) for one bounded research topic.
+- The [study files](study/) show the generated shape for one bounded topic; do not copy them manually.
 - Use [the review checklist](review-checklist.md) before accepting a result.
 
-After adding a study, declare it in the relevant suite manifest and generator; do not rely on folder discovery alone.
+Create a study with \`node scripts/research.mjs add ...\`. Define it once in \`research/catalog.json\`; the generator creates its folder, prompt, result target, indexes, allowlists, and manifest entries.
 `);
 
 register(path.join(researchRoot, "README.md"), `# UAM research
@@ -96,6 +91,7 @@ research/
 ├── README.md                 this index
 ├── WORKFLOW.md               repeatable research lifecycle
 ├── AGENTS.md                 local safety and maintenance rules
+├── catalog.json              authoritative research definition
 ├── manifest.json             machine-readable suite index
 ├── templates/                new-study and review templates
 ├── baseline/                 completed first research cycle
@@ -120,13 +116,19 @@ research/
 - Shared context and uploadable attachments are separate.
 - A batch review consumes its studies and earlier reviews; the final synthesis consumes batch reviews, not every topic.
 - Generated material is changed through its generator and checked in CI.
+- Batches, studies, attachments, and dependencies are declared once in \`catalog.json\`.
 - Research evidence cannot approve policy, risk, ownership, or production use.
+
+## Repeat the workflow
+
+Use \`node scripts/research.mjs help\`. The normal loop is \`add\`, edit the one catalogue entry, \`generate\`, run the web research, save its result beside the prompt, then \`validate\`.
 `);
 
 const implementationManifest = JSON.parse(fs.readFileSync(path.join(researchRoot, "implementation/manifest.json"), "utf8"));
 const manifestPath = path.join(researchRoot, "manifest.json");
 const manifest = {
   schemaVersion: 1,
+  catalog: "research/catalog.json",
   suites: [
     {
       id: "baseline",

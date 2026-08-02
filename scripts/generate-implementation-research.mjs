@@ -2,7 +2,11 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { batches, topics } from "./implementation-research-topics.mjs";
+import { implementationDefinition, loadResearchCatalog } from "./research-catalog.mjs";
+
+const catalog = loadResearchCatalog();
+const implementation = implementationDefinition(catalog);
+const { batches, studies: topics, reviewAttachments, synthesisAttachments } = implementation;
 
 const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const researchRoot = path.join(repoRoot, "research");
@@ -97,24 +101,10 @@ function priorBatchReviewPaths(batchId) {
   return batches.filter((batch) => batch.id < batchId).map((batch) => batchReviewPath(batch.id));
 }
 
-const topicDependencyPlan = new Map([
-  ...[1, 2, 3, 4, 5, 6].map((id) => [id, { batchReviews: [], topicResults: [] }]),
-  ...[7, 8].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
-  ...[9, 10, 14].map((id) => [id, { batchReviews: [1, 2], topicResults: [] }]),
-  ...[11, 12, 13].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
-  ...[15, 16, 17, 18].map((id) => [id, { batchReviews: [1, 2, 3], topicResults: [] }]),
-  ...[19, 20, 21].map((id) => [id, { batchReviews: [1, 2, 3, 4], topicResults: [] }]),
-  [22, { batchReviews: [1], topicResults: [] }],
-  [23, { batchReviews: [1, 2, 3, 4], topicResults: [22] }],
-  [24, { batchReviews: [1, 2, 3, 4, 5], topicResults: [22, 23] }],
-]);
-
 function topicDependencyPaths(topic) {
-  const dependency = topicDependencyPlan.get(topic.id);
-  if (!dependency) throw new Error(`Missing dependency plan for topic ${topic.id}`);
   return [
-    ...dependency.batchReviews.map(batchReviewPath),
-    ...dependency.topicResults.map(topicResultPath),
+    ...topic.dependsOn.batchReviews.map(batchReviewPath),
+    ...topic.dependsOn.topicResults.map(topicResultPath),
   ];
 }
 
@@ -321,7 +311,7 @@ function sanitizedAppAttachment(profile) {
 
 **Classification:** internal summary sanitized for an approved research chat.
 **Source:** internal CSV catalogue, profiled locally on ${profile.source.profiledOn}.
-**Generation:** deterministic aggregate profiling by \`scripts/profile-application-catalogue.mjs\`.
+**Generation:** deterministic aggregate profiling by \`scripts/profile-original-application-catalogue.mjs\`.
 **Source SHA-256:** \`${profile.source.sha256}\`.
 
 ## Safe structural facts
@@ -545,15 +535,7 @@ Windows/session/browser behavior, SQLite fault safety, updater recovery, PKI/pro
 }
 
 function projectFileAllowlistDocument() {
-  const projectAttachments = [
-    "accepted-baseline.md",
-    "existing-system.md",
-    "application-catalogue.md",
-    "windows-lab.md",
-    "data-schema.md",
-    "decisions-and-gates.md",
-    "evidence-rules.md",
-  ];
+  const projectAttachments = catalog.attachments;
   const topicRows = topics.map((topic) => {
     const batch = batches.find((item) => item.id === topic.batch);
     const prompt = `../batches/${batch.slug}/${pad(topic.id)}-${topic.slug}/prompt.md`;
@@ -563,15 +545,15 @@ function projectFileAllowlistDocument() {
   const reviewerRows = batches.map((batch) => {
     const resultNames = topics.filter((topic) => topic.batch === batch.id).map((topic) => `\`${topicResultName(topic)}\``);
     const predecessorNames = priorBatchReviewNames(batch.id).map((name) => `\`${name}\``);
-    const common = ["`accepted-baseline.md`", "`decisions-and-gates.md`", "`evidence-rules.md`"];
+    const common = reviewAttachments.map((name) => `\`${name}\``);
     return `| ${pad(batch.id)} | [Batch reviewer](../batches/${batch.slug}/review/prompt.md) | ${[...resultNames, ...predecessorNames, ...common].join("<br>")} |`;
   }).join("\n");
-  const finalFiles = [...batches.map((batch) => `\`${batchReviewName(batch.id)}\``), "`accepted-baseline.md`", "`evidence-rules.md`"];
+  const finalFiles = [...batches.map((batch) => `\`${batchReviewName(batch.id)}\``), ...synthesisAttachments.map((name) => `\`${name}\``)];
   return `# ChatGPT Project files and per-chat allowlists
 
 ## One-time Project setup
 
-Upload exactly these seven sanitized files from \`research/implementation/attachments/\` to the ChatGPT Project:
+Upload exactly these ${projectAttachments.length} sanitized files from \`research/implementation/attachments/\` to the ChatGPT Project:
 
 ${projectAttachments.map((name) => `- [\`${name}\`](../attachments/${name})`).join("\n")}
 
@@ -626,9 +608,7 @@ Save the complete response as \`${resultPath}\`.
 The ChatGPT Project may contain every suite attachment and earlier result. For this reviewer chat, you are allowed to read exactly these project files:
 
 ${inputs}
-- \`accepted-baseline.md\`
-- \`decisions-and-gates.md\`
-- \`evidence-rules.md\`
+${reviewAttachments.map((name) => `- \`${name}\``).join("\n")}
 
 Do not open, search, quote, summarize, or use any other Project file, including topic results from another batch. If an allowed file is missing, report the missing filename instead of substituting another file.
 
@@ -713,8 +693,7 @@ Save the complete response as \`synthesis/result-implementation-technical-baseli
 The ChatGPT Project may contain every suite attachment and result. For this final-synthesis chat, you are allowed to read exactly these project files:
 
 ${inputs}
-- \`accepted-baseline.md\`
-- \`evidence-rules.md\`
+${synthesisAttachments.map((name) => `- \`${name}\``).join("\n")}
 
 Do not open, search, quote, summarize, or use any other Project file, including individual topic results. Optional measured CLI evidence is forbidden by default. Before running this prompt, a human may add exact sanitized CLI-evidence filenames to this allowlist; only those explicitly added files then become readable. If an allowed file is missing, report the missing filename instead of substituting another file.
 
@@ -805,7 +784,7 @@ register(path.join(attachmentRoot, "decisions-and-gates.md"), decisionAttachment
 register(path.join(attachmentRoot, "evidence-rules.md"), researchRulesAttachment());
 register(path.join(attachmentRoot, "README.md"), `# Implementation research attachments
 
-These seven sanitized files form the shared ChatGPT Project attachment set. Individual prompts may read only the filenames in their explicit allowlist.
+These ${catalog.attachments.length} sanitized files form the shared ChatGPT Project attachment set. Individual prompts may read only the filenames in their explicit allowlist.
 
 See [the attachment map](../context/evidence-map.md) for classification, source, generation, use, and limitations.
 `);
@@ -827,7 +806,7 @@ for (const topic of topics) {
   register(promptPath, topicPrompt(topic));
   register(path.join(topicDirectory(topic), "README.md"), `# ${pad(topic.id)} — ${topic.title}
 
-**Status:** complete
+**Status:** ${topic.status ?? "complete"}
 **Batch:** [${batch.title}](../README.md)
 
 ## Files
@@ -873,7 +852,7 @@ Topic results remain evidence. The batch review is the accepted research handoff
 
 The reviewer consumes every topic in this batch and all earlier batch reviews listed in the manifest.
 `);
-  manifestPrompts.push({ kind: "batch-review", batchId: batch.id, prompt: rel(promptPath), result: rel(resultPath), attachments: ["accepted-baseline.md", "decisions-and-gates.md", "evidence-rules.md"].map((name) => rel(path.join(attachmentRoot, name))), consumes: [...batchTopics.map((topic) => topicResultPath(topic.id)), ...priorBatchReviewPaths(batch.id)].map(rel) });
+  manifestPrompts.push({ kind: "batch-review", batchId: batch.id, prompt: rel(promptPath), result: rel(resultPath), attachments: reviewAttachments.map((name) => rel(path.join(attachmentRoot, name))), consumes: [...batchTopics.map((topic) => topicResultPath(topic.id)), ...priorBatchReviewPaths(batch.id)].map(rel) });
 }
 
 const finalPromptPath = path.join(suiteRoot, "synthesis/prompt.md");
@@ -886,7 +865,7 @@ register(path.join(suiteRoot, "synthesis/README.md"), `# Final implementation sy
 
 Start with the result. Open batch reviews or individual studies only when more evidence or detail is needed.
 `);
-manifestPrompts.push({ kind: "final-synthesis", prompt: rel(finalPromptPath), result: rel(finalResultPath), attachments: [rel(path.join(attachmentRoot, "accepted-baseline.md")), rel(path.join(attachmentRoot, "evidence-rules.md"))], consumes: batches.map((batch) => rel(batchReviewPath(batch.id))) });
+manifestPrompts.push({ kind: "final-synthesis", prompt: rel(finalPromptPath), result: rel(finalResultPath), attachments: synthesisAttachments.map((name) => rel(path.join(attachmentRoot, name))), consumes: batches.map((batch) => rel(batchReviewPath(batch.id))) });
 
 const promptRows = topics.map((topic) => {
   const batch = batches.find((item) => item.id === topic.batch);
@@ -895,7 +874,7 @@ const promptRows = topics.map((topic) => {
 
 register(path.join(suiteRoot, "README.md"), `# Implementation research
 
-**Status:** complete — 24 studies, six batch reviews, and one final synthesis are populated and validated.
+**Status:** ${catalog.suites.implementation.status} — ${topics.length} studies, ${batches.length} batch reviews, and one final synthesis.
 
 ## Read in this order
 
@@ -922,8 +901,8 @@ Each study keeps its prompt, result, and short index together. Each batch keeps 
 ## Regenerate and validate
 
 \`\`\`bash
-node scripts/generate-implementation-research.mjs --check
-node scripts/validate-research.mjs
+node scripts/research.mjs check
+node scripts/research.mjs validate
 \`\`\`
 
 Research recommends and explains. ADRs record human decisions. CLI experiments provide project-specific proof.
@@ -933,7 +912,7 @@ const manifestPath = path.join(suiteRoot, "manifest.json");
 const manifest = {
   schemaVersion: 2,
   suite: "implementation",
-  status: "complete",
+  status: catalog.suites.implementation.status,
   topicCount: topics.length,
   batchCount: batches.length,
   promptCount: manifestPrompts.length,

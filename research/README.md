@@ -16,6 +16,7 @@ research/
 ├── README.md                 this index
 ├── WORKFLOW.md               repeatable research lifecycle
 ├── AGENTS.md                 local safety and maintenance rules
+├── catalog.json              authoritative research definition
 ├── manifest.json             machine-readable suite index
 ├── templates/                new-study and review templates
 ├── baseline/                 completed first research cycle
@@ -40,4 +41,9 @@ research/
 - Shared context and uploadable attachments are separate.
 - A batch review consumes its studies and earlier reviews; the final synthesis consumes batch reviews, not every topic.
 - Generated material is changed through its generator and checked in CI.
+- Batches, studies, attachments, and dependencies are declared once in `catalog.json`.
 - Research evidence cannot approve policy, risk, ownership, or production use.
+
+## Repeat the workflow
+
+Use `node scripts/research.mjs help`. The normal loop is `add`, edit the one catalogue entry, `generate`, run the web research, save its result beside the prompt, then `validate`.

@@ -1,5 +1,6 @@
 {
   "schemaVersion": 1,
+  "catalog": "research/catalog.json",
   "suites": [
     {
       "id": "baseline",

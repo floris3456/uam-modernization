@@ -14,12 +14,12 @@ const resultEntries = [
   { kind: "baseline-synthesis", topicId: null, batchId: null, path: baselineSuite.synthesis.result },
   ...implementationManifest.prompts.map((prompt) => ({ kind: prompt.kind, topicId: prompt.topicId ?? null, batchId: prompt.batchId ?? null, path: prompt.result })),
 ];
-const results = resultEntries.map((entry) => {
+const results = resultEntries.flatMap((entry) => {
   const fullPath = path.join(repoRoot, entry.path);
   if (!fs.existsSync(fullPath)) throw new Error(`Missing research result: ${entry.path}`);
   const bytes = fs.readFileSync(fullPath);
-  if (bytes.length < 100) throw new Error(`Research result is empty or too small: ${entry.path}`);
-  return { ...entry, byteCount: bytes.length, sha256: crypto.createHash("sha256").update(bytes).digest("hex") };
+  if (bytes.length < 100) return [];
+  return [{ ...entry, byteCount: bytes.length, sha256: crypto.createHash("sha256").update(bytes).digest("hex") }];
 });
 const manifest = {
   schemaVersion: 2,
@@ -29,7 +29,7 @@ const manifest = {
   canonicalBatch4Review: "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
   resultCount: results.length,
   results,
-  limitations: ["A hash proves file identity, not correctness or human acceptance.", "Research conclusions remain subject to experiments, gates, and current primary-source verification."],
+  limitations: ["Only populated results of at least 100 bytes are recorded; structural validation separately rejects missing required evidence.", "A hash proves file identity, not correctness or human acceptance.", "Research conclusions remain subject to experiments, gates, and current primary-source verification."],
 };
 const content = `${JSON.stringify(manifest, null, 2)}\n`;
 if (checkOnly) {

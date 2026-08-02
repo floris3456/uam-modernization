@@ -2,7 +2,7 @@
 
 **Classification:** internal summary sanitized for an approved research chat.
 **Source:** internal CSV catalogue, profiled locally on 2026-07-31.
-**Generation:** deterministic aggregate profiling by `scripts/profile-application-catalogue.mjs`.
+**Generation:** deterministic aggregate profiling by `scripts/profile-original-application-catalogue.mjs`.
 **Source SHA-256:** `b1f665fb2d381bd220e95b5158d3d84ceed97772cc3dda940a7ac4ed70f2b2e4`.
 
 ## Safe structural facts

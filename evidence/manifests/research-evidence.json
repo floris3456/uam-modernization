@@ -315,6 +315,7 @@
     }
   ],
   "limitations": [
+    "Only populated results of at least 100 bytes are recorded; structural validation separately rejects missing required evidence.",
     "A hash proves file identity, not correctness or human acceptance.",
     "Research conclusions remain subject to experiments, gates, and current primary-source verification."
   ]

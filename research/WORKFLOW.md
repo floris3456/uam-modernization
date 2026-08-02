@@ -4,9 +4,19 @@
 
 Create a study only when research can reduce a real uncertainty. State the decision informed, boundaries, accepted inputs, provisional matters, human decisions, and measurements that research cannot replace.
 
-## 2. Create one study folder
+## 2. Scaffold one study
 
-Copy `templates/study/` into the correct suite and batch. Use a two-digit ID and a short lowercase slug:
+Use the CLI. It assigns the next global study ID, records the batch and dependencies once, and creates the standard folder:
+
+```bash
+node scripts/research.mjs add \
+  --batch 6 \
+  --slug example-topic \
+  --title "Example topic" \
+  --role "principal example-domain architect" \
+  --reviews 1,2,3 \
+  --topics 22
+```
 
 ```text
 NN-short-topic/
@@ -15,11 +25,11 @@ NN-short-topic/
 └── result-NN-short-topic.md
 ```
 
-The unique result filename is required because multiple results may be uploaded to the same ChatGPT Project.
+The new entry is deliberately marked `draft`. Replace every `TODO` in `catalog.json`, check the attachment allowlist and dependencies, then set its status. The unique result filename lets multiple results coexist in one ChatGPT Project.
 
 ## 3. Declare inputs before running
 
-Add the prompt, result target, permitted attachments, and predecessor results to the suite manifest. The prompt’s Project-file allowlist must match the manifest exactly. Never give a chat implicit access to every project file.
+Edit only the study entry in `catalog.json`. The generator derives the prompt, result target, Project-file allowlist, suite manifest, dependency handoff, and navigation. Never edit those generated copies to change study metadata.
 
 ## 4. Run and preserve
 
@@ -36,10 +46,37 @@ Research outputs become proposed ADR changes, human-decision workshops, or falsi
 ## 7. Validate
 
 ```bash
-node scripts/generate-implementation-research.mjs --check
-node scripts/generate-research-index.mjs --check
-node scripts/generate-research-evidence-manifest.mjs --check
-node scripts/validate-research.mjs
+node scripts/research.mjs check
+node scripts/research.mjs validate
 ```
 
 Validation checks structure, unique names, manifests, allowlists, links, generated state, secrets, private addresses, and synthesis dependencies.
+
+## Common commands
+
+```bash
+node scripts/research.mjs list       # show batches, studies, and status
+node scripts/research.mjs next       # print the next global study ID
+node scripts/research.mjs generate   # rebuild all derived research files
+node scripts/research.mjs check      # fast deterministic and safety checks
+node scripts/research.mjs validate   # complete repository validation
+```
+
+`catalog.json` is authoritative. `research/manifest.json` and `implementation/manifest.json` are generated indexes for tools and must never become competing sources of truth.
+
+## Catalogue field guide
+
+| Field | Meaning |
+| --- | --- |
+| `attachments` | Complete safe attachment inventory for the implementation suite. |
+| `reviewAttachments` / `synthesisAttachments` | Shared files allowed in reviewer and final-synthesis chats. |
+| `batches[]` | Human title, timing, parallel CLI lane, and stop/go gate for one research stage. |
+| `studies[].id` / `batch` / `slug` | Stable global ID, owning batch, and filesystem-safe name. Never recycle an ID. |
+| `role` / `questions` / `deliverables` | Exact researcher role, bounded questions, and mandatory implementation-ready outputs. |
+| `human` / `cli` / `gate` | What research cannot decide, what must be measured, and what stops dependent work. |
+| `oss` | Open-source implementation families the researcher must inspect critically. |
+| `dependsOn.batchReviews` | Accepted earlier batch reviews this topic may read. |
+| `dependsOn.topicResults` | Exceptional same-stream topic evidence this topic may read before batch review. |
+| `status` | `draft`, `in-progress`, or `complete`; omitted historical entries default to complete. |
+
+Every batch reviewer automatically consumes all studies in its batch and all earlier batch reviews. The final synthesis automatically consumes every batch review. These are workflow invariants, so they are derived rather than copied into every entry.

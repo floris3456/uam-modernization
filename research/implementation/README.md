@@ -1,6 +1,6 @@
 # Implementation research
 
-**Status:** complete — 24 studies, six batch reviews, and one final synthesis are populated and validated.
+**Status:** complete — 24 studies, 6 batch reviews, and one final synthesis.
 
 ## Read in this order
 
@@ -50,8 +50,8 @@ Each study keeps its prompt, result, and short index together. Each batch keeps 
 ## Regenerate and validate
 
 ```bash
-node scripts/generate-implementation-research.mjs --check
-node scripts/validate-research.mjs
+node scripts/research.mjs check
+node scripts/research.mjs validate
 ```
 
 Research recommends and explains. ADRs record human decisions. CLI experiments provide project-specific proof.

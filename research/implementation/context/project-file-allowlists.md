@@ -2,7 +2,7 @@
 
 ## One-time Project setup
 
-Upload exactly these seven sanitized files from `research/implementation/attachments/` to the ChatGPT Project:
+Upload exactly these 7 sanitized files from `research/implementation/attachments/` to the ChatGPT Project:
 
 - [`accepted-baseline.md`](../attachments/accepted-baseline.md)
 - [`existing-system.md`](../attachments/existing-system.md)

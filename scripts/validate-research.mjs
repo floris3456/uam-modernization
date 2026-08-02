@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { implementationDefinition, loadResearchCatalog } from "./research-catalog.mjs";
 
 const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const researchRoot = path.join(repoRoot, "research");
@@ -24,19 +25,14 @@ const requiredSections = [
   "## Evidence labels and conflict handling",
   "## Residual risk",
 ];
-const topicDependencyPlan = new Map([
-  ...[1, 2, 3, 4, 5, 6].map((id) => [id, { batchReviews: [], topicResults: [] }]),
-  ...[7, 8].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
-  ...[9, 10, 14].map((id) => [id, { batchReviews: [1, 2], topicResults: [] }]),
-  ...[11, 12, 13].map((id) => [id, { batchReviews: [1], topicResults: [] }]),
-  ...[15, 16, 17, 18].map((id) => [id, { batchReviews: [1, 2, 3], topicResults: [] }]),
-  ...[19, 20, 21].map((id) => [id, { batchReviews: [1, 2, 3, 4], topicResults: [] }]),
-  [22, { batchReviews: [1], topicResults: [] }],
-  [23, { batchReviews: [1, 2, 3, 4], topicResults: [22] }],
-  [24, { batchReviews: [1, 2, 3, 4, 5], topicResults: [22, 23] }],
-]);
-
 const fail = (message) => failures.push(message);
+const catalog = loadResearchCatalog();
+const definition = implementationDefinition(catalog);
+for (const study of definition.studies) {
+  if ((study.status ?? "complete") === "draft") fail(`Study ${study.id} is still draft in research/catalog.json`);
+  if (JSON.stringify(study).includes("TODO:")) fail(`Study ${study.id} contains unfinished TODO fields in research/catalog.json`);
+}
+
 const repoPath = (relative) => path.join(repoRoot, relative);
 
 if (fs.existsSync(path.join(repoRoot, "research-packs"))) fail("Legacy research-packs directory still exists");
@@ -50,13 +46,15 @@ if (!fs.existsSync(manifestPath)) {
   const batchReviews = manifest.prompts.filter((item) => item.kind === "batch-review");
   const finalSyntheses = manifest.prompts.filter((item) => item.kind === "final-synthesis");
 
-  if (manifest.topicCount !== 24 || topicPrompts.length !== 24) fail(`Expected 24 topic prompts; found ${topicPrompts.length}`);
-  if (manifest.batchCount !== 6 || batchReviews.length !== 6) fail(`Expected 6 batch reviews; found ${batchReviews.length}`);
-  if (manifest.promptCount !== 31 || manifest.prompts.length !== 31) fail(`Expected 31 total prompts; found ${manifest.prompts.length}`);
+  if (manifest.topicCount !== definition.studies.length || topicPrompts.length !== definition.studies.length) fail(`Expected ${definition.studies.length} topic prompts; found ${topicPrompts.length}`);
+  if (manifest.batchCount !== definition.batches.length || batchReviews.length !== definition.batches.length) fail(`Expected ${definition.batches.length} batch reviews; found ${batchReviews.length}`);
+  const expectedPromptCount = definition.studies.length + definition.batches.length + 1;
+  if (manifest.promptCount !== expectedPromptCount || manifest.prompts.length !== expectedPromptCount) fail(`Expected ${expectedPromptCount} total prompts; found ${manifest.prompts.length}`);
   if (finalSyntheses.length !== 1) fail(`Expected one final synthesis; found ${finalSyntheses.length}`);
 
   const topicIds = topicPrompts.map((item) => item.topicId).sort((a, b) => a - b);
-  if (topicIds.join(",") !== Array.from({ length: 24 }, (_, index) => index + 1).join(",")) fail("Topic IDs are not exactly 1 through 24");
+  const declaredTopicIds = definition.studies.map((study) => study.id).sort((a, b) => a - b);
+  if (topicIds.join(",") !== declaredTopicIds.join(",")) fail("Manifest topic IDs differ from research/catalog.json");
 
   const allResultTargets = new Set(manifest.prompts.map((item) => item.result));
   const seenQuestionLines = new Map();
@@ -69,6 +67,7 @@ if (!fs.existsSync(manifestPath)) {
       continue;
     }
     if (!fs.existsSync(resultPath)) fail(`Missing result target: ${item.result}`);
+    else if (fs.statSync(resultPath).size < 100) fail(`Result is empty or too small: ${item.result}`);
     const content = fs.readFileSync(promptPath, "utf8");
     for (const section of requiredSections) {
       if (!content.includes(section)) fail(`${item.prompt} lacks required section: ${section}`);
@@ -117,23 +116,23 @@ if (!fs.existsSync(manifestPath)) {
   }
 
   for (const topicPrompt of topicPrompts) {
-    const dependency = topicDependencyPlan.get(topicPrompt.topicId);
-    if (!dependency) {
-      fail(`Topic ${topicPrompt.topicId} has no optimized dependency plan`);
+    const study = definition.studies.find((item) => item.id === topicPrompt.topicId);
+    if (!study) {
+      fail(`Topic ${topicPrompt.topicId} is absent from research/catalog.json`);
       continue;
     }
     const expected = [
-      ...dependency.batchReviews.map((batchId) => batchReviews.find((item) => item.batchId === batchId)?.result),
-      ...dependency.topicResults.map((topicId) => topicPrompts.find((item) => item.topicId === topicId)?.result),
+      ...study.dependsOn.batchReviews.map((batchId) => batchReviews.find((item) => item.batchId === batchId)?.result),
+      ...study.dependsOn.topicResults.map((topicId) => topicPrompts.find((item) => item.topicId === topicId)?.result),
     ].filter(Boolean).sort();
     const actual = [...(topicPrompt.consumes ?? [])].sort();
-    if (expected.join("|") !== actual.join("|")) fail(`Topic ${topicPrompt.topicId} does not match the optimized dependency plan`);
+    if (expected.join("|") !== actual.join("|")) fail(`Topic ${topicPrompt.topicId} dependencies differ from research/catalog.json`);
   }
 
   if (finalSyntheses.length === 1) {
     const expected = batchReviews.map((item) => item.result).sort();
     const actual = [...(finalSyntheses[0].consumes ?? [])].sort();
-    if (expected.join("|") !== actual.join("|")) fail("Final synthesis does not consume all and only the six batch-review results");
+    if (expected.join("|") !== actual.join("|")) fail("Final synthesis does not consume all and only the declared batch-review results");
   }
 
   for (const generatedFile of manifest.generatedFiles) {
@@ -242,7 +241,7 @@ for (const directory of forbiddenDirectories) if (fs.existsSync(directory)) fail
 const baselineStudies = fs.existsSync(path.join(researchRoot, "baseline/studies"))
   ? fs.readdirSync(path.join(researchRoot, "baseline/studies"), { withFileTypes: true }).filter((entry) => entry.isDirectory())
   : [];
-if (baselineStudies.length !== 6) fail(`Expected 6 baseline study directories; found ${baselineStudies.length}`);
+if (baselineStudies.length !== catalog.suites.baseline.studies.length) fail(`Expected ${catalog.suites.baseline.studies.length} baseline study directories; found ${baselineStudies.length}`);
 for (const entry of baselineStudies) {
   const directory = path.join(researchRoot, "baseline/studies", entry.name);
   const expected = ["README.md", "prompt.md", `result-${entry.name}.md`];
@@ -250,7 +249,7 @@ for (const entry of baselineStudies) {
 }
 
 const topicPromptsOnDisk = researchFiles.filter((file) => /\/implementation\/batches\/\d{2}-[^/]+\/\d{2}-[^/]+\/prompt\.md$/.test(file));
-if (topicPromptsOnDisk.length !== 24) fail(`Expected 24 colocated implementation topic prompts; found ${topicPromptsOnDisk.length}`);
+if (topicPromptsOnDisk.length !== definition.studies.length) fail(`Expected ${definition.studies.length} colocated implementation topic prompts; found ${topicPromptsOnDisk.length}`);
 for (const prompt of topicPromptsOnDisk) {
   const directory = path.dirname(prompt);
   const slug = path.basename(directory);
@@ -273,7 +272,8 @@ if (failures.length) {
   for (const failure of failures) console.error(`- ${failure}`);
   process.exitCode = 1;
 } else {
-  console.log(`Research validation passed: ${researchFiles.length} files, 2 suites, 30 studies, 6 batch reviews, and 2 syntheses.`);
+  const totalStudies = catalog.suites.baseline.studies.length + definition.studies.length;
+  console.log(`Research validation passed: ${researchFiles.length} files, 2 suites, ${totalStudies} studies, ${definition.batches.length} batch reviews, and 2 syntheses.`);
 }
 for (const warning of warnings) console.warn(`Warning: ${warning}`);
 
