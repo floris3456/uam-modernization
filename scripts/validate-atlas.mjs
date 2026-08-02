@@ -38,7 +38,7 @@ export async function validateGenerated(outDir, options = {}) {
     }
   }
   const index = await readFile(join(outDir, 'index.html'), 'utf8');
-  for (const required of ['What UAM is', 'Immediate blockers', 'Human decisions needed now', 'Work allowed now', 'Work prohibited now', 'Next proof', 'Research:', 'ADR:', 'Implementation:', 'Gate:']) {
+  for (const required of ['What UAM is', 'Immediate blockers', 'Human decisions needed now', 'Work allowed now', 'Work prohibited now', 'Next proof', 'Research:', 'ADR:', 'Implementation:', 'Gate:', 'map-viewport', 'map-zoom-out', 'map-zoom-reset', 'map-zoom-in', 'onMapWheel', 'Use the scroll wheel']) {
     if (!index.includes(required)) throw new Error(`Dashboard is missing ${required}.`);
   }
   const g0 = await readFile(join(outDir, 'gates/G0.html'), 'utf8');
