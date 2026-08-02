@@ -1,0 +1,133 @@
+direction: right
+classes: {
+  open: {
+    style: {
+      fill: "#f5f7fa"
+      stroke: "#566273"
+      stroke-dash: 4
+    }
+  }
+  hold: {
+    style: {
+      fill: "#fff4cf"
+      stroke: "#805b00"
+    }
+  }
+  passed: {
+    style: {
+      fill: "#e8f5ec"
+      stroke: "#176b38"
+    }
+  }
+}
+G0: "G0 · Fictional evidence foundation\nGate: open · Owner: UNASSIGNED\nDeterministic classified fictional evidence, strict contracts, an independent oracle, mutation detection, privacy-canary containment, cleanup, and independently recomputable gate evidence all work together." {
+  class: open
+  link: "gates/G0.html"
+  tooltip: "Research complete; ADR experimenting; implementation not-started"
+}
+G1: "G1 · Windows session and process isolation\nGate: open · Owner: UNASSIGNED\nThe correct User Host starts in each session, identity and release are bound to every message, IPC rejects peers and other sessions, and hostile Task Host work stays contained." {
+  class: open
+  link: "gates/G1.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+G2: "G2 · Safe Edge acquisition\nGate: open · Owner: UNASSIGNED\nDirect read, SQLite backup, or safe defer is selected correctly with zero source writes, bounded impact, and no raw-data escape." {
+  class: open
+  link: "gates/G2.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+G3: "G3 · Source and cursor correctness\nGate: open · Owner: UNASSIGNED\nDiscovery is bounded, source replacement is detected, native identifiers control progress, and duplicates have one effect." {
+  class: open
+  link: "gates/G3.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+G4: "G4 · Privacy transformation\nGate: open · Owner: UNASSIGNED\nThe host applies a strict ceiling, hard denies, deterministic matching, realm isolation, and canary scanning before data crosses its trust boundary." {
+  class: open
+  link: "gates/G4.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+G5: "G5 · Crash-safe endpoint outbox\nGate: open · Owner: UNASSIGNED\nOne writer atomically records effect and progress, sealed batches replay unchanged, and cleanup waits for a valid receipt." {
+  class: open
+  link: "gates/G5.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_06: "AG-06 · Authorized release and rollback\nGate: open · Owner: UNASSIGNED\nThe same digest is authorized end to end; install, repair, update, downgrade denial, and N/N-1 rollback leave no mixed or privileged residue." {
+  class: open
+  link: "gates/AG-06.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_07: "AG-07 · Device identity and network\nGate: open · Owner: UNASSIGNED\nEnrollment, renewal, cloning, revocation, wrong-realm denial, proxy/VPN behavior, and direct mTLS fail safely." {
+  class: open
+  link: "gates/AG-07.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_08: "AG-08 · Safe diagnostics and platform tuple\nGate: open · Owner: UNASSIGNED\nOnly bounded structured signals are emitted; temporary diagnostics expire; no arbitrary command/file access exists; compatibility claims name exact evidence." {
+  class: open
+  link: "gates/AG-08.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_09: "AG-09 · Durable server inbox\nGate: open · Owner: UNASSIGNED\nReceipt follows atomic durable bytes, leases are fenced, duplicate events have one effect, and poison handling is bounded." {
+  class: open
+  link: "gates/AG-09.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_10: "AG-10 · Database and capacity\nGate: open · Owner: UNASSIGNED\nCandidate databases preserve required semantics and recovery while the measured workload stays within explicit objectives and headroom." {
+  class: open
+  link: "gates/AG-10.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_11: "AG-11 · Backpressure and long outage\nGate: open · Owner: UNASSIGNED\nPressure causes bounded pause and visible recovery, not unacknowledged drop, corruption, uncontrolled growth, or false health." {
+  class: open
+  link: "gates/AG-11.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_12: "AG-12 · Lifecycle, restore, and extended Windows\nGate: open · Owner: UNASSIGNED\nTombstones and acknowledgements reconcile before reads resume, and no unsupported platform tuple is claimed." {
+  class: open
+  link: "gates/AG-12.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_13: "AG-13 · Portal authorization and audit\nGate: open · Owner: UNASSIGNED\nThe complete route catalogue enforces approved capability rules, JIT and approval state, audit-before-disclosure, tamper evidence, and accessible critical workflows." {
+  class: open
+  link: "gates/AG-13.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_14: "AG-14 · Migration discovery and comparison\nGate: open · Owner: UNASSIGNED\nThe estate is bounded, mismatches have owned dispositions, configuration is explicit, and shadow data cannot become ordinary output." {
+  class: open
+  link: "gates/AG-14.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+AG_15: "AG-15 · Cutover and decommissioning\nGate: open · Owner: UNASSIGNED\nThere is one unambiguous writer at every stage, rollback boundaries are explicit, legacy credentials and write paths are removed, and residual attempts are detected and handled." {
+  class: open
+  link: "gates/AG-15.html"
+  tooltip: "Research complete; ADR not-created; implementation blocked"
+}
+G0 -> G1
+G1 -> G2
+G2 -> G3
+G0 -> G4
+G2 -> G4
+G3 -> G5
+G4 -> G5
+G1 -> AG_06
+G5 -> AG_06
+AG_06 -> AG_07
+G1 -> AG_08
+G4 -> AG_08
+AG_06 -> AG_08
+AG_07 -> AG_08
+G5 -> AG_09
+AG_07 -> AG_09
+AG_09 -> AG_10
+G5 -> AG_11
+AG_09 -> AG_11
+AG_10 -> AG_11
+AG_09 -> AG_12
+AG_10 -> AG_12
+AG_11 -> AG_12
+AG_09 -> AG_13
+AG_12 -> AG_13
+G5 -> AG_14
+AG_09 -> AG_14
+AG_12 -> AG_14
+AG_12 -> AG_15
+AG_13 -> AG_15
+AG_14 -> AG_15

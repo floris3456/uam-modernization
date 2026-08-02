@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "atlasId": "uam-plan-atlas",
+  "title": "UAM Plan Atlas",
+  "authority": "Visualization and navigation only. This model cannot accept an ADR, pass a gate, assign an owner, approve policy, approve production work, or replace measured evidence.",
+  "project": {
+    "plainName": "User Activity Monitoring modernization",
+    "whatItIs": "UAM is a planned replacement for an old Windows activity-monitoring system. The future Windows client would collect only approved application and browser activity, remove or transform information according to approved privacy rules, keep allowed events safely while offline, and send them to a server that accepts each event once.",
+    "repositoryToday": "This is a planning and evidence repository. Production code and production approval do not exist.",
+    "currentPosition": "Preparation before G0 implementation",
+    "currentGateId": "G0",
+    "nextProof": "Show that classified fictional evidence can be generated deterministically, checked by an independent oracle, challenged by mutations and privacy canaries, cleaned up, and recorded as independently recomputable gate evidence.",
+    "dashboard": {
+      "immediateBlockers": ["No accountable G0 owner or named reviewers.", "The fictional privacy ceiling is not confirmed.", "Required initial ADRs are not accepted or amended.", "Contract vocabulary and required experiments are unresolved."],
+      "humanDecisions": ["Name the G0 owner and reviewers.", "Confirm the fictional privacy ceiling.", "Accept or amend the seven initial ADRs.", "Confirm contract words and experiments."],
+      "allowedNow": ["Read, review, and prepare fictional examples.", "After the decisions, implement only the deterministic G0 evidence foundation.", "Use repository-only tests with no VM, live profile, or real data."],
+      "prohibitedNow": ["No live browser profile or real activity data.", "No Windows service, VM, server, or network integration.", "No real roles, realms, policies, keys, signing, or deployment."]
+    },
+    "invalidators": [
+      "An unresolved human decision is turned into a production default.",
+      "Real, personal, internal, credential, or unclassified data enters G0.",
+      "The generator or oracle is nondeterministic or shares the implementation logic it is meant to check.",
+      "A required canary, mutation, cleanup check, owner, or evidence binding is missing at gate closure."
+    ]
+  },
+  "statusVocabulary": {
+    "research": ["not-created", "in-progress", "complete"],
+    "adr": ["not-created", "proposed", "experimenting", "accepted"],
+    "implementation": ["not-started", "experimenting", "blocked", "complete"],
+    "gate": ["open", "hold", "passed"]
+  },
+  "sourceDocuments": [
+    {"id": "PLAIN-WHAT", "path": "docs/plain-language/00-what-we-are-building.md", "label": "What we are building", "authority": "Current plain-language project description"},
+    {"id": "PLAIN-ROUTE", "path": "docs/plain-language/01-current-next-later.md", "label": "Current, next, and later", "authority": "Current delivery boundary"},
+    {"id": "SCOPE", "path": "docs/plain-language/implementation-scope.md", "label": "Implementation scope", "authority": "Current early implementation boundary"},
+    {"id": "MILESTONES", "path": "docs/milestones/README.md", "label": "Milestone workflow", "authority": "Current milestone rules"},
+    {"id": "G0-MILESTONE", "path": "docs/milestones/G0-fictional-evidence-foundation.md", "label": "G0 milestone", "authority": "Current G0 scope and evidence requirements"},
+    {"id": "G0-TASK", "path": "docs/work/current/G0-001-foundation-decisions.md", "label": "G0 foundation decisions task", "authority": "Current G0 blockers and task status"},
+    {"id": "ATLAS-TASK", "path": "docs/work/current/REPO-003-generated-plan-atlas.md", "label": "Plan Atlas task brief", "authority": "Repository preparation task; changes no delivery gate"},
+    {"id": "ADR-INDEX", "path": "docs/adr/README.md", "label": "ADR register", "authority": "Current local ADR statuses"},
+    {"id": "ADR-001", "path": "docs/adr/ADR-FS-001-implementation-baseline-and-gates.md", "label": "Implementation baseline and gates", "authority": "Proposed ADR"},
+    {"id": "ADR-002", "path": "docs/adr/ADR-FS-002-evidence-and-gate-records.md", "label": "Evidence and gate records", "authority": "Proposed ADR"},
+    {"id": "ADR-003", "path": "docs/adr/ADR-FS-003-contract-and-identifier-rules.md", "label": "Contract and identifier rules", "authority": "Experimenting ADR"},
+    {"id": "ADR-004", "path": "docs/adr/ADR-FS-004-repository-build-and-supply-chain.md", "label": "Repository, build, and supply chain", "authority": "Experimenting ADR"},
+    {"id": "ADR-005", "path": "docs/adr/ADR-FS-005-fictional-data-and-test-oracle.md", "label": "Fictional data and independent oracle", "authority": "Experimenting ADR"},
+    {"id": "ADR-030", "path": "docs/adr/ADR-FS-030-measured-numeric-settings.md", "label": "Measured numeric settings", "authority": "Proposed ADR"},
+    {"id": "ADR-032", "path": "docs/adr/ADR-FS-032-external-dependency-admission.md", "label": "External dependency admission", "authority": "Proposed ADR"},
+    {"id": "SYNTHESIS", "path": "research/implementation/synthesis/result-implementation-technical-baseline.md", "label": "Implementation technical baseline", "authority": "Research evidence and working baseline; not gate proof"}
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "order": 0,
+      "name": "Fictional evidence foundation",
+      "baselineName": "purpose/source/dummy-data contract and oracle",
+      "purpose": "Create trustworthy fictional evidence before any live source or production-shaped implementation is allowed.",
+      "proofClaim": "Deterministic classified fictional evidence, strict contracts, an independent oracle, mutation detection, privacy-canary containment, cleanup, and independently recomputable gate evidence all work together.",
+      "whyNow": "Every later gate needs known inputs, known answers, reproducible failures, and strict contracts. Starting with live Windows or browser behavior would make mistakes harder to see and could expose real data.",
+      "dependsOn": [],
+      "parallelPreparation": ["Read and review the initial ADRs.", "Draft fictional examples for human review.", "Keep repository validation and documentation healthy."],
+      "statuses": {
+        "research": {"value": "complete", "source": "SYNTHESIS"},
+        "adr": {"value": "experimenting", "source": "ADR-005", "note": "The primary G0 ADR is experimenting; several required related ADRs remain proposed."},
+        "implementation": {"value": "not-started", "source": "G0-TASK"},
+        "gate": {"value": "open", "source": "SYNTHESIS"}
+      },
+      "owner": {"value": "UNASSIGNED", "source": "G0-TASK"},
+      "ownerGaps": [
+        "Accountable G0 gate owner and architecture, security, privacy, and test-quality reviewers.",
+        "Contract authority, fictional test-data steward, independent-oracle reviewer, privacy-canary scanner, build/release evidence, incident response, and repository support accountability."
+      ],
+      "conservativeState": {
+        "productionPurposeState": "UNDECIDED",
+        "liveSourceEnabled": false,
+        "allowedDatasetTier": "T1_FICTIONAL_ONLY",
+        "realRealmMappings": "empty",
+        "productionFields": "empty",
+        "productionRetention": "unset"
+      },
+      "humanDecisions": [
+        "Name the accountable G0 gate owner and reviewers for architecture, security, privacy, and test quality.",
+        "Confirm the initial product privacy ceiling as testable fictional transformations.",
+        "Accept or amend ADR-FS-001 through ADR-FS-005, ADR-FS-030, and ADR-FS-032.",
+        "Confirm the initial contract vocabulary and decide which open contradictions need experiments before fixture design."
+      ],
+      "allowedWork": [
+        "Review sources, ADRs, terminology, and fictional examples.",
+        "After the required human decisions: implement versioned strict contracts, fictional T1 models, deterministic generators, an independent oracle, canary scanners, mutation tests, cleanup, and gate-evidence tooling.",
+        "Use reserved fictional names, fixed clocks, explicit seeds, local schemas, and stable failure codes.",
+        "Run repository-only experiments that use no VM, live browser profile, production service, real identity, or network data source."
+      ],
+      "prohibitedWork": [
+        "Read a live browser profile or any real activity data.",
+        "Install or test a Windows service, scheduled task, Coordinator, User Host, or Task Host.",
+        "Connect to the Windows VM or a server.",
+        "Create real realm, role, purpose, field, retention, owner, or access mappings.",
+        "Use production keys, credentials, signing, deployment, support access, or data transfer.",
+        "Treat fictional success as proof of Windows, browser, database, capacity, restore, security, or operational fitness."
+      ],
+      "cliEvidence": [
+        "Two clean-checkout generation runs produce byte-identical canonical packages and matching SHA-256 roots.",
+        "Strict valid, boundary, invalid, and adversarial contract vectors produce stable bounded results with network access disabled.",
+        "Architecture checks prove the oracle cannot call production decision code and deterministic code cannot use ambient time or randomness.",
+        "Mandatory mutations all fail at the expected boundary; no mandatory survivor remains.",
+        "Every required canary is detected in every declared sink and encoding without leaking the canary value into logs.",
+        "Classification and lineage are complete, cross-realm and privacy-negative cases fail closed, and temporary artifacts are deleted.",
+        "A machine-readable evidence manifest binds exact inputs, versions, commands, results, limitations, owners, and cleanup receipts."
+      ],
+      "evidenceRequired": [
+        "Input, toolchain, schema, fixture, oracle-rule, mutation, canary, scan, cleanup, and generated-package digests.",
+        "Sanitized reproducible failure bundles with scenario ID, seed, expected result, actual result, and stable error category.",
+        "An independently recomputable gate record and repository validation report.",
+        "Named accountable acceptance; `UNASSIGNED` prevents closure."
+      ],
+      "passCondition": "All required G0 scenarios and falsification checks pass reproducibly from a clean checkout; required artifacts are classified, independently checked, canary-clean, deletable, and hash-bound; residual risks are recorded; all blocking owners are named; and an accountable human accepts the gate record.",
+      "stopCondition": "Stop on nondeterminism, unclassified or real input, oracle coupling, a mandatory mutation survivor, a mandatory canary miss, an undeletable artifact, evidence that cannot be independently recomputed, or any blocking owner still UNASSIGNED at closure.",
+      "failureRecovery": [
+        "Preserve a sanitized failure bundle containing the stable scenario ID, seed, canonical fictional inputs, expected output, actual output, and stable error category.",
+        "Rerun from a clean workspace and require the same failure. Reject corrupt or unknown fixture versions rather than guessing.",
+        "Delete every ephemeral generated browser, SQLite, source, scan, and mutation artifact and record cleanup. A cleanup failure is itself a gate stop.",
+        "Fix the authoritative contract, generator, oracle, or test source; regenerate evidence. Never edit generated evidence to make a test pass."
+      ],
+      "unlocks": [
+        "Codec-neutral contracts and pure domain or state models.",
+        "Production-shaped but synthetic endpoint shell work after the rest of the foundation decisions close.",
+        "T1 fixtures for later Windows, browser, server, portal, lifecycle, and migration proofs.",
+        "Deterministic fault histories and evidence envelopes consumed by later gates."
+      ],
+      "neverUnlocks": ["Live source access.", "Real organizational mappings or production policy.", "Production credentials, signing, deployment, or transfer.", "A claim that any later platform or operational gate has passed."],
+      "sources": ["PLAIN-WHAT", "PLAIN-ROUTE", "SCOPE", "G0-MILESTONE", "G0-TASK", "ATLAS-TASK", "ADR-001", "ADR-002", "ADR-003", "ADR-004", "ADR-005", "ADR-030", "ADR-032", "SYNTHESIS"]
+    },
+    {
+      "id": "G1", "order": 1, "name": "Windows session and process isolation", "baselineName": "session launch, identity, IPC and Task Host isolation",
+      "purpose": "Prove the planned Windows process boundaries work in real sessions without crossing users or granting prohibited privilege.",
+      "proofClaim": "The correct User Host starts in each session, identity and release are bound to every message, IPC rejects peers and other sessions, and hostile Task Host work stays contained.",
+      "whyNow": "It is the first Windows-specific proof after trustworthy fictional contracts exist.", "dependsOn": ["G0"],
+      "parallelPreparation": ["Prepare a harmless lab runbook and threat model.", "Review official Windows APIs and draft falsifying tests without connecting to the VM."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
+      "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Name endpoint, security, and operations owners.", "Approve the exact supported lab tuple and prohibited privileges."],
+      "allowedWork": ["Documentation, threat modelling, API review, fictional contracts, and a lab plan."], "prohibitedWork": ["Implement or run the Windows prototype before G0 passes.", "Connect to the lab under the current preparation task.", "Claim broad Windows compatibility from one tuple."],
+      "cliEvidence": ["Measured session, token, process-tree, pipe ACL, peer-authentication, hostile-task, cleanup, upgrade, and rollback traces on the approved lab tuple."],
+      "evidenceRequired": ["Exact OS/build/runtime/tool versions, commands, sanitized traces, negative-test results, cleanup receipts, and residual risks."],
+      "passCondition": "Every session, identity, IPC, release, privilege, hostile-task, and cleanup invariant passes on the named tuple with reproducible evidence and accountable acceptance.",
+      "stopCondition": "Stop on a cross-session accepted message, Coordinator profile access, prohibited privilege, peer bypass, sandbox escape, unbounded hostile impact, or residue.",
+      "failureRecovery": ["Stop the prototype, preserve sanitized traces, remove scheduled tasks/services/processes/files created by the experiment, verify cleanup, and reproduce only on the lab."],
+      "unlocks": ["Carefully bounded live Edge acquisition experiments for G2."], "neverUnlocks": ["Production rollout or general Windows compatibility."],
+      "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
+    },
+    {
+      "id": "G2", "order": 2, "name": "Safe Edge acquisition", "baselineName": "live Edge acquisition safety",
+      "purpose": "Prove that reading Edge history never changes the source and never treats an incomplete copy as valid.",
+      "proofClaim": "Direct read, SQLite backup, or safe defer is selected correctly with zero source writes, bounded impact, and no raw-data escape.",
+      "whyNow": "Live acquisition is too risky until Windows isolation is proven.", "dependsOn": ["G1"],
+      "parallelPreparation": ["Build fictional SQLite histories and acquisition test cases from G0 fixtures.", "Review Edge and SQLite documentation."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
+      "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Approve the exact Edge/Windows tuples and live-lab safety procedure."],
+      "allowedWork": ["Fictional database tests and read-only acquisition prototypes after G0; live lab work only after G1."], "prohibitedWork": ["Write to a source profile.", "Use real activity outside the approved isolated lab proof.", "Send or log raw acquired values."],
+      "cliEvidence": ["Before/after source hashes, filesystem and SQLite write monitoring, backup-integrity checks, lock/crash cases, bounded resource measurements, and cleanup."],
+      "evidenceRequired": ["Exact browser/database tuple, selected read path, negative results, source integrity proof, raw-containment scan, and cleanup receipt."],
+      "passCondition": "All supported read paths preserve source bytes and metadata as specified, incomplete backups defer, impact stays bounded, and raw values remain contained.",
+      "stopCondition": "Stop on any source mutation, incomplete backup accepted, attributable corruption or crash, raw escape, progress after non-success, or residue.",
+      "failureRecovery": ["Stop reading, preserve only sanitized evidence, compare source state, clean copies, and do not retry until the cause is understood."],
+      "unlocks": ["Profile, source-generation, and cursor proof in G3."], "neverUnlocks": ["Production collection."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
+    },
+    {
+      "id": "G3", "order": 3, "name": "Source and cursor correctness", "baselineName": "profile/source/generation/cursor correctness",
+      "purpose": "Prove every profile and history generation has stable identity and progress never skips or mixes records.",
+      "proofClaim": "Discovery is bounded, source replacement is detected, native identifiers control progress, and duplicates have one effect.",
+      "whyNow": "Safe bytes are not useful if records can be assigned to the wrong source or skipped.", "dependsOn": ["G2"],
+      "parallelPreparation": ["Exercise fictional replacement, regression, duplicate, rename, and cursor-boundary histories."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
+      "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Approve supported discovery bounds and source-discontinuity handling."],
+      "allowedWork": ["Fictional discovery and cursor models after G0; lab measurement after G2."], "prohibitedWork": ["Use path, profile name, or timestamp alone as source identity or cursor.", "Silently retain progress across a discontinuity."],
+      "cliEvidence": ["Exact-recall suites for discovery bounds, rename/replacement, generation change, ID regression, ties, duplicates, crashes, and replays."],
+      "evidenceRequired": ["Source identity vectors, cursor ledger, actual-versus-oracle report, discontinuity traces, and cleanup."],
+      "passCondition": "All bounded discovery, continuity, native-ID cursor, and duplicate-effect cases match the independent truth ledger.",
+      "stopCondition": "Stop on source, session, or realm mixing; path/name identity; timestamp cursor; retained discontinuity; or duplicate effect.",
+      "failureRecovery": ["Quarantine the source generation, keep the prior checkpoint, reproduce from a fictional copy, and require an explicit reset path."],
+      "unlocks": ["Crash-safe endpoint progress and batching together with G4."], "neverUnlocks": ["Unbounded profile discovery."], "sources": ["SYNTHESIS"]
+    },
+    {
+      "id": "G4", "order": 4, "name": "Privacy transformation", "baselineName": "privacy transformation and canary containment",
+      "purpose": "Prove forbidden values are removed before IPC and ambiguous application matches fail closed.",
+      "proofClaim": "The host applies a strict ceiling, hard denies, deterministic matching, realm isolation, and canary scanning before data crosses its trust boundary.",
+      "whyNow": "Privacy must be proven before acquired records can enter the durable pipeline.", "dependsOn": ["G0", "G2"],
+      "parallelPreparation": ["Build transformation, matcher, Unicode, encoding, derivative, and canary cases using fictional G0 data."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
+      "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Define and approve the product privacy ceiling and tenant-narrowing rules.", "Approve application ownership and ambiguous-match handling."],
+      "allowedWork": ["Fictional transformations and canary scanners after G0."], "prohibitedWork": ["Invent production fields or purpose.", "Allow tenant policy to broaden the product ceiling.", "Guess an ambiguous match."],
+      "cliEvidence": ["Property and adversarial tests across URL forms, encodings, aliases, ambiguity, derivatives, realms, policy versions, and every declared sink."],
+      "evidenceRequired": ["Versioned fictional rules, decision traces without forbidden values, canary matrix, scan report, and oracle comparison."],
+      "passCondition": "Every allowed result is minimized before IPC; every forbidden value or derivative is contained; ambiguity, broadening, and cross-realm cases fail closed.",
+      "stopCondition": "Stop on forbidden value or derivative escape, guessed ambiguity, tenant broadening, cross-realm result, scanner miss, or mixed rule interpretation.",
+      "failureRecovery": ["Disable the affected transformation release, preserve sanitized rule IDs and hashes, remove escaped test artifacts, and rerun all sinks."],
+      "unlocks": ["Privacy-safe events for the endpoint outbox proof."], "neverUnlocks": ["Unapproved production collection fields."], "sources": ["SCOPE", "G0-MILESTONE", "SYNTHESIS"]
+    },
+    {
+      "id": "G5", "order": 5, "name": "Crash-safe endpoint outbox", "baselineName": "endpoint outbox/checkpoint crash invariant",
+      "purpose": "Prove a crash or retry cannot move progress ahead of durable effects, lose an event, or change its identity.",
+      "proofClaim": "One writer atomically records effect and progress, sealed batches replay unchanged, and cleanup waits for a valid receipt.",
+      "whyNow": "The endpoint must survive disconnection and interruption before any server custody claim is meaningful.", "dependsOn": ["G3", "G4"],
+      "parallelPreparation": ["Model SQLite states, faults, batches, receipts, pressure, and migrations with fictional data."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
+      "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Approve endpoint data-at-rest and operational pressure policy after measurements."],
+      "allowedWork": ["Fictional state-machine and SQLite experiments after G0; integration only after G3 and G4."], "prohibitedWork": ["Advance a cursor without the matching durable effect.", "Rebuild an ambiguous batch or delete before a valid receipt."],
+      "cliEvidence": ["Crash-point enumeration, model comparison, power-loss/corruption simulation, sealed retry identity, migration, pressure, and receipt cleanup tests."],
+      "evidenceRequired": ["State-transition ledger, SQLite settings and version, fault schedule, page/batch digests, receipt proofs, and recovery traces."],
+      "passCondition": "All enumerated crashes and retries preserve one durable effect per event, correct progress, identical retry bytes, valid receipt cleanup, and recoverable state.",
+      "stopCondition": "Stop on cursor-ahead, missing or double effect, changed retry identity, silent loss, cleanup before valid receipt, or corrupt/mixed state accepted.",
+      "failureRecovery": ["Stop the writer, preserve the fictional database and fault point, restore the last proven state, and replay the same sealed bytes."],
+      "unlocks": ["Release, identity, diagnostics, and server-custody integration proofs."], "neverUnlocks": ["Production retention or capacity claims."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
+    },
+    {
+      "id": "AG-06", "order": 6, "name": "Authorized release and rollback", "baselineName": "release/update authorization and rollback",
+      "purpose": "Prove only complete, authorized, immutable releases run and a known-good version can be restored safely.",
+      "proofClaim": "The same digest is authorized end to end; install, repair, update, downgrade denial, and N/N-1 rollback leave no mixed or privileged residue.",
+      "whyNow": "Later device and server proofs must bind behavior to a known release.", "dependsOn": ["G1", "G5"], "parallelPreparation": ["Research signing, MSI, metadata, rollback, and supply-chain controls; build fictional release manifests after G0."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Choose signing authority, deployment channel, updater ownership, supported rollback window, licensing, and risk acceptance."],
+      "allowedWork": ["Manifest, threat-model, and fictional package tests after G0."], "prohibitedWork": ["Use production signing keys or deploy to real devices.", "Execute an unsigned, stale, mixed, or downgraded release."],
+      "cliEvidence": ["Tamper, partial install, repair, update, rollback, revocation, stale metadata, downgrade, power-loss, and residue tests."], "evidenceRequired": ["Pinned tool and package identities, signed-test metadata, install logs, before/after state, rollback and cleanup proof."],
+      "passCondition": "Every supported lifecycle path executes only the authorized same-digest release and restores known-good state without data loss or privileged residue.", "stopCondition": "Stop if an unauthorized, incomplete, mixed, stale, or downgraded release executes; known-good is absent; repair loses data; or privileged residue remains.",
+      "failureRecovery": ["Disable the channel, preserve sanitized installer state, restore known-good test release, revoke test authorization, and verify residue removal."], "unlocks": ["Release-bound device identity and platform qualification."], "neverUnlocks": ["Approval of a production signing service."], "sources": ["ADR-004", "ADR-032", "SYNTHESIS"]
+    },
+    {
+      "id": "AG-07", "order": 7, "name": "Device identity and network", "baselineName": "device identity and enterprise network compatibility",
+      "purpose": "Prove each device has a unique realm-bound credential and works safely through the approved enterprise network paths.",
+      "proofClaim": "Enrollment, renewal, cloning, revocation, wrong-realm denial, proxy/VPN behavior, and direct mTLS fail safely.",
+      "whyNow": "The server cannot trust endpoint claims without proven device identity and network behavior.", "dependsOn": ["AG-06"], "parallelPreparation": ["Research certificate enrollment, TPM, cloning, proxy, VPN, and revocation; use fictional identities."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Choose certificate authority, enrollment ownership, TPM requirements, supported proxy/VPN paths, and incident response."],
+      "allowedWork": ["Fictional certificate and protocol models; isolated lab experiments after release proof."], "prohibitedWork": ["Use shared/exported production keys.", "Trust payload realm claims or bypass TLS verification."],
+      "cliEvidence": ["Enrollment, renewal, loss, clone race, revoke, wrong realm, duplicate device, proxy, VPN, offline, clock, and TLS interception tests."], "evidenceRequired": ["Test certificate chain, device/release binding, network tuple, denial traces, revocation timing, cleanup, and residual risk."],
+      "passCondition": "Unique realm-bound credentials, revocation, clone handling, network compatibility, and direct mTLS satisfy approved negative and recovery tests.", "stopCondition": "Stop on shared/exported key, payload-derived realm, revoked or duplicate authorization, clone winner, or TLS bypass.",
+      "failureRecovery": ["Revoke test credentials, quarantine the duplicate identity, restore network policy, verify denial, and remove all lab certificates."], "unlocks": ["Authenticated server ingestion and broader platform qualification."], "neverUnlocks": ["Production enrollment approval."], "sources": ["SYNTHESIS"]
+    },
+    {
+      "id": "AG-08", "order": 8, "name": "Safe diagnostics and platform tuple", "baselineName": "diagnostics and exact platform qualification",
+      "purpose": "Prove support data is closed and privacy-safe, and qualify one exact Windows/browser/virtualization/security tuple at a time.",
+      "proofClaim": "Only bounded structured signals are emitted; temporary diagnostics expire; no arbitrary command/file access exists; compatibility claims name exact evidence.",
+      "whyNow": "Operations need safe evidence before a wider endpoint rollout can be considered.", "dependsOn": ["G1", "G4", "AG-06", "AG-07"], "parallelPreparation": ["Define fictional diagnostic schemas, cardinality budgets, support bundles, and a compatibility evidence template."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Approve diagnostic fields, temporary-access controls, support ownership, platform matrix, EDR coordination, and incident response."],
+      "allowedWork": ["Fictional schema and support-bundle tests; one approved lab tuple after predecessor gates."], "prohibitedWork": ["Collect dumps, arbitrary files, commands, or high-cardinality identifiers.", "Generalize one tuple to all Windows environments."],
+      "cliEvidence": ["Schema allowlist, privacy scans, cardinality bounds, expiry/revocation, cross-realm denial, sleep/RDP/RDS/FSLogix/Citrix/ARM64/EDR cases per exact tuple."], "evidenceRequired": ["Exact tuple, structured logs, metric catalogue, bundle manifest, access audit, expiry proof, and unsupported list."],
+      "passCondition": "Closed diagnostic signals and temporary access pass privacy, isolation, expiry, and cardinality tests, and every compatibility claim is tied to one exact measured tuple.", "stopCondition": "Stop on a forbidden value, arbitrary field/command/file, dump, cross-realm access, expired permit still active, unbounded series, or stale/broad tuple claim.",
+      "failureRecovery": ["Disable the diagnostic feature, revoke permits, delete bundles, scan sinks, and retract unsupported compatibility claims."], "unlocks": ["A supportable endpoint pilot boundary after later approvals."], "neverUnlocks": ["Broad compatibility or support approval."], "sources": ["SYNTHESIS"]
+    },
+    {
+      "id": "AG-09", "order": 9, "name": "Durable server inbox", "baselineName": "durable inbox/idempotency/poison handling",
+      "purpose": "Prove the server acknowledges only durable custody and produces one realm-isolated effect despite retries, leases, crashes, and poison input.",
+      "proofClaim": "Receipt follows atomic durable bytes, leases are fenced, duplicate events have one effect, and poison handling is bounded.",
+      "whyNow": "Endpoint deletion is unsafe until server custody has exact meaning.", "dependsOn": ["G5", "AG-07"], "parallelPreparation": ["Build fictional inbox, receipt, lease, quarantine, and materialization models after G0."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Choose service ownership, hosting boundary, durability objective, quarantine access, and incident response."],
+      "allowedWork": ["Fictional relational state models and failure experiments."], "prohibitedWork": ["Acknowledge before durable custody.", "Commit under a stale lease or expose one realm to another."],
+      "cliEvidence": ["Crash/fault injection at every custody and lease boundary, retry storms, duplicate IDs, stale workers, poison bounds, quarantine, realm isolation, and recovery."], "evidenceRequired": ["Protocol contracts, relational schema, transition ledger, transaction traces, lease tokens, quarantine bounds, and oracle comparison."],
+      "passCondition": "Receipts bind durable custody; fencing prevents stale commits; retries yield one ordinary effect; poison and realm behavior stay bounded and isolated.", "stopCondition": "Stop on receipt without bytes, stale lease commit, duplicate effect, cross-realm access, or unbounded poison handling.",
+      "failureRecovery": ["Stop receipts for the affected partition, preserve fictional custody state, fence workers, quarantine poison, and replay from the last durable boundary."], "unlocks": ["Database, capacity, lifecycle, and portal server proofs."], "neverUnlocks": ["A database product choice without experiments."], "sources": ["SYNTHESIS"]
+    },
+    {
+      "id": "AG-10", "order": 10, "name": "Database and capacity", "baselineName": "database and capacity evidence",
+      "purpose": "Measure database semantics, recovery, operations, and 6,000-device demand before selecting limits or a product.",
+      "proofClaim": "Candidate databases preserve required semantics and recovery while the measured workload stays within explicit objectives and headroom.",
+      "whyNow": "Research cannot decide numeric settings, capacity, or PostgreSQL versus SQL Server for the real workload.", "dependsOn": ["AG-09"], "parallelPreparation": ["Define the simulator, workload envelopes, semantic corpus, objectives, and experiment protocol without choosing a winner."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Set service objectives, cost/licensing boundary, staff/operations constraints, and acceptable headroom before selecting a database."],
+      "allowedWork": ["Build a synthetic fleet simulator and identical database experiments after contracts stabilize."], "prohibitedWork": ["Choose a database from research preference alone.", "Invent throughput, latency, retention, outage, or cost targets."],
+      "cliEvidence": ["Semantic parity, backup/restore, failover, index/migration, 6,000-device steady load, reconnect storm, backlog drain, fairness, saturation, and broker break-even measurements."], "evidenceRequired": ["Workload generator version and limits, hardware/software tuple, raw sanitized metrics, objective cards, cost/license assumptions, runbooks, and reproducible reports."],
+      "passCondition": "At least the chosen candidate passes semantic and recovery parity and meets named demand, recovery, fairness, and headroom objectives on a reproducible measured tuple.", "stopCondition": "Stop on semantic divergence, acknowledged loss, deleted visibility, generator saturation, backlog that cannot drain, starvation, or unknown objectives.",
+      "failureRecovery": ["Mark the run invalid, preserve configs and measurements, restore the database fixture, verify generator headroom, and rerun without tuning away failed semantics."], "unlocks": ["Measured operational settings and long-outage proof."], "neverUnlocks": ["Unmeasured production scale or budget approval."], "sources": ["ADR-030", "ADR-032", "SYNTHESIS"]
+    },
+    {
+      "id": "AG-11", "order": 11, "name": "Backpressure and long outage", "baselineName": "disk/backpressure/long-outage behaviour",
+      "purpose": "Prove endpoint and server storage respond predictably to full disks, long disconnection, reconnect storms, and recovery without silent loss.",
+      "proofClaim": "Pressure causes bounded pause and visible recovery, not unacknowledged drop, corruption, uncontrolled growth, or false health.",
+      "whyNow": "Capacity averages do not prove failure behavior during prolonged outages.", "dependsOn": ["G5", "AG-09", "AG-10"], "parallelPreparation": ["Define fictional outage histories, pressure states, alerts, and recovery invariants."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Approve pressure policy, alert ownership, outage objective, storage limits, and data-loss risk boundary."],
+      "allowedWork": ["Synthetic disk, queue, network, and recovery fault injection after capacity objectives exist."], "prohibitedWork": ["Silently discard unacknowledged data or claim recovery from a health flag alone."],
+      "cliEvidence": ["Disk-full thresholds, long offline accumulation, reconnect storm, partial recovery, repeated crash, corruption, pause/resume, alert, and drain tests."], "evidenceRequired": ["Measured storage curves, state transitions, alert traces, recovery duration, integrity hashes, and capacity assumptions."],
+      "passCondition": "Every pressure and outage path either preserves acknowledged invariants or enters a visible bounded hold and recovers within approved measured objectives.", "stopCondition": "Stop on unacknowledged drop, store corruption, uncontrolled growth, or false recovery.",
+      "failureRecovery": ["Hold acquisition or receipts safely, preserve store integrity evidence, restore capacity, resume from durable checkpoints, and verify exact backlog drain."], "unlocks": ["Lifecycle and restore proofs under realistic failure pressure."], "neverUnlocks": ["An invented retention exception during pressure."], "sources": ["ADR-030", "SYNTHESIS"]
+    },
+    {
+      "id": "AG-12", "order": 12, "name": "Lifecycle, restore, and extended Windows", "baselineName": "deletion, restore, acknowledged replay and extended Windows fidelity",
+      "purpose": "Prove deletion remains effective through backup/restore and replay, then qualify additional Windows environment profiles individually.",
+      "proofClaim": "Tombstones and acknowledgements reconcile before reads resume, and no unsupported platform tuple is claimed.",
+      "whyNow": "Restore and later platform variants can reopen deleted data or break earlier invariants.", "dependsOn": ["AG-09", "AG-10", "AG-11"], "parallelPreparation": ["Model tombstones, exports, backups, restore barriers, integration deletion, and later Windows fixtures."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Approve retention/deletion policy, legal holds, export/integration obligations, restore authority, and extended platform priorities."],
+      "allowedWork": ["Fictional lifecycle state machines; isolated restore and platform experiments after predecessors."], "prohibitedWork": ["Make restored data readable before reconciliation.", "Invent retention or legal conclusions.", "Claim an untested Windows tuple."],
+      "cliEvidence": ["Delete/export/integration tombstones, backup, restore, fork/gap, acknowledged replay, pre-ready denial, and per-tuple Windows regression tests."], "evidenceRequired": ["Lifecycle contracts, tombstone and ACK ledgers, backup/restore IDs, readiness barrier proof, visibility queries, and exact tuple reports."],
+      "passCondition": "Deleted data stays unavailable across backup, restore, replay, export, and integrations; ACKs remain exact; reads wait for reconciliation; each later tuple passes its named profile.", "stopCondition": "Stop on deleted data visible, ACK missing or duplicated, tombstone gap/fork, pre-ready authority, or unsupported tuple claimed.",
+      "failureRecovery": ["Keep reads disabled, quarantine the restore, reconcile tombstone/ACK history, re-delete derivatives, and independently verify before readiness."], "unlocks": ["Lifecycle-safe portal workflows and migration comparison."], "neverUnlocks": ["A production retention policy without human approval."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
+    },
+    {
+      "id": "AG-13", "order": 13, "name": "Portal authorization and audit", "baselineName": "portal authorization, workflows, audit and accessibility",
+      "purpose": "Prove every portal action is purpose-bound, realm-isolated, current, audited transactionally, independently verifiable, and usable accessibly.",
+      "proofClaim": "The complete route catalogue enforces approved capability rules, JIT and approval state, audit-before-disclosure, tamper evidence, and accessible critical workflows.",
+      "whyNow": "Real roles and access cannot be invented during endpoint work and depend on server and lifecycle meaning.", "dependsOn": ["AG-09", "AG-12"], "parallelPreparation": ["Use T1 fictional prototypes to catalogue routes, capabilities, workflows, audit events, and accessibility risks after G0."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "SCOPE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "SCOPE"},
+      "humanDecisions": ["Define purpose, roles/capabilities, realm administration, approvals, JIT, break-glass, audit access, accessibility acceptance, and support ownership."],
+      "allowedWork": ["T1 capability vocabulary, route catalogue, wireframes, and audit/accessibility test models after G0."], "prohibitedWork": ["Create real organizational roles or permissions early.", "Disclose before access audit or permit cross-realm/action leakage."],
+      "cliEvidence": ["Complete route/action matrix, policy mutation, stale/revoked/JIT/approval/break-glass cases, transactional audit fault injection, external verification, keyboard and accessibility tests."], "evidenceRequired": ["Approved capability model, route catalogue, decision/audit schemas, transaction traces, verifier output, accessibility report, and exception register."],
+      "passCondition": "Every route and action enforces current purpose and capability state, realm isolation, transactional audit and independent verification; critical workflows meet approved accessibility criteria.", "stopCondition": "Stop on cross-realm/action leak, stale/revoked authority, effect without audit, disclosure before audit, undetected tamper, or inaccessible critical workflow.",
+      "failureRecovery": ["Disable the affected route/capability, revoke temporary access, preserve audit evidence, repair atomically, notify named incident owners, and retest the whole route class."], "unlocks": ["Governed administration and migration disposition workflows after approval."], "neverUnlocks": ["Organizational access policy invented by engineering."], "sources": ["SCOPE", "SYNTHESIS"]
+    },
+    {
+      "id": "AG-14", "order": 14, "name": "Migration discovery and comparison", "baselineName": "migration discovery, shadow comparison, reconciliation and configuration",
+      "purpose": "Discover every legacy writer, consumer, report, script, schedule, credential, buffer, and integration, then compare old and new without dual authority or shadow egress.",
+      "proofClaim": "The estate is bounded, mismatches have owned dispositions, configuration is explicit, and shadow data cannot become ordinary output.",
+      "whyNow": "Cutover is unsafe while a hidden legacy dependency or unexplained mismatch remains.", "dependsOn": ["G5", "AG-09", "AG-12"], "parallelPreparation": ["Prepare discovery questionnaires, inventories, fictional comparison projections, and reconciliation categories; real parallel run waits for approval and predecessor proof."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Name owners for every legacy dependency and mismatch disposition.", "Approve the comparison window, privacy boundary, compatibility projection, and cutover criteria."],
+      "allowedWork": ["Sanitized inventory templates and fictional comparison tooling; approved bounded discovery later."], "prohibitedWork": ["Run a real shadow or parallel collection now.", "Let one endpoint reach both systems or let shadow facts enter ordinary egress."],
+      "cliEvidence": ["Estate scans, schedule/credential/buffer inventories, controlled compatibility projections, shadow isolation, range completeness, mismatch classification, and reconciliation replay."], "evidenceRequired": ["Bounded inventory, evidence method and limitations, owner/disposition register, comparison contracts, range fences, mismatch reports, and cleanup."],
+      "passCondition": "No material writer or consumer remains hidden; endpoints have one authority; shadow output is isolated; compared ranges close exactly; every material mismatch has an approved owned disposition.", "stopCondition": "Stop on a hidden material writer/consumer, endpoint reaching both systems, shadow egress, open range, unknown mismatch, or unowned disposition.",
+      "failureRecovery": ["Stop the comparison, close shadow egress, preserve range and mismatch evidence, return to one authority, and expand discovery before retry."], "unlocks": ["A reversible cutover plan with known consumers and acceptance criteria."], "neverUnlocks": ["Decommissioning from research confidence alone."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
+    },
+    {
+      "id": "AG-15", "order": 15, "name": "Cutover and decommissioning", "baselineName": "cutover, read-only operation, trust removal, residual monitoring and decommissioning",
+      "purpose": "Transfer authority once, keep rollback safe, remove legacy trust in layers, observe residue, and decommission only after independent acceptance.",
+      "proofClaim": "There is one unambiguous writer at every stage, rollback boundaries are explicit, legacy credentials and write paths are removed, and residual attempts are detected and handled.",
+      "whyNow": "It is the final proof after the replacement and the migration evidence are accepted.", "dependsOn": ["AG-12", "AG-13", "AG-14"], "parallelPreparation": ["Draft fictional cutover, rollback, read-only, credential-removal, residual-monitoring, exception, and cleanup runbooks."],
+      "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "SYNTHESIS"}, "gate": {"value": "open", "source": "SYNTHESIS", "note": "The synthesis describes this as OPEN/BLOCKED; the Atlas keeps gate state open and implementation state blocked."}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
+      "humanDecisions": ["Approve cutover authority, maintenance and rollback boundaries, archive policy, exception expiry, residual observation period, trust removal, and independent final acceptance."],
+      "allowedWork": ["Runbook and fictional state-machine preparation; staged real execution only after all dependencies and approvals."], "prohibitedWork": ["Permit two writers, ambiguous authority, unsafe rollback, valid legacy trust, or decommissioning with missing owners or cleanup."],
+      "cliEvidence": ["Authority-fence transitions, read-only enforcement, rollback rehearsal, credential and network trust removal, residual-write detection, exception expiry, archive validation, uninstall, and cleanup verification."], "evidenceRequired": ["Signed authority state, exact fences and commands, before/after inventories, rollback evidence, credential revocations, residual observations, exception register, archive proof, and independent acceptance."],
+      "passCondition": "Every stage has one accepted authority; rollback is safe within its declared fence; legacy writes and trust are removed; residual monitoring closes; exceptions expire; archive and cleanup are independently accepted.", "stopCondition": "Stop on two writers, ambiguous fence, unsafe rollback, valid legacy trust remaining, successful residual write, expired exception, or missing owner/cleanup.",
+      "failureRecovery": ["Freeze authority changes, return to the last explicit safe fence when permitted, revoke exposed trust, restore read-only controls, investigate residue, and do not decommission."], "unlocks": ["Independent approval to retire the legacy system when every acceptance record exists."], "neverUnlocks": ["Automatic decommissioning or deletion of legacy evidence."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
+    }
+  ]
+}

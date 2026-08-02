@@ -30,3 +30,6 @@ Thumbs.db
 **/obj/
 TestResults/
 coverage/
+
+# Repository-local Atlas tools bootstrapped from pinned release artifacts
+.tools/atlas/

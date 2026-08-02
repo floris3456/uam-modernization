@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "docs/atlas/atlas.json",
+  "modelSha256": "bc4909e31683ec5e01940359a163be7f8f9295fac0f4c04940ee362cfc8d5a09",
+  "sources": [
+    {
+      "id": "PLAIN-WHAT",
+      "path": "docs/plain-language/00-what-we-are-building.md",
+      "label": "What we are building",
+      "authority": "Current plain-language project description",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "ccd5706287fe80f58aa5ec653a15e4cc3f0753193b8c47d229a82f35331ae336",
+      "limitations": "Current plain-language project description"
+    },
+    {
+      "id": "PLAIN-ROUTE",
+      "path": "docs/plain-language/01-current-next-later.md",
+      "label": "Current, next, and later",
+      "authority": "Current delivery boundary",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "6a3bfbffccdc3f66d5aee1bf41a821116f36005c865b5e0b700048b38902b36c",
+      "limitations": "Current delivery boundary"
+    },
+    {
+      "id": "SCOPE",
+      "path": "docs/plain-language/implementation-scope.md",
+      "label": "Implementation scope",
+      "authority": "Current early implementation boundary",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "ad79947dc75ce892fe81a060b3c69bc0d70c838312bf6c2b4a4ae1b5d7748683",
+      "limitations": "Current early implementation boundary"
+    },
+    {
+      "id": "MILESTONES",
+      "path": "docs/milestones/README.md",
+      "label": "Milestone workflow",
+      "authority": "Current milestone rules",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "b6bd87b9cb0cdc1fbdd91cbeb366080d11346b48892360807340bbf05f4392ed",
+      "limitations": "Current milestone rules"
+    },
+    {
+      "id": "G0-MILESTONE",
+      "path": "docs/milestones/G0-fictional-evidence-foundation.md",
+      "label": "G0 milestone",
+      "authority": "Current G0 scope and evidence requirements",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "0fc6c00282b28f202b3560b0c929d030be84b79871343db5d911d729481912ae",
+      "limitations": "Current G0 scope and evidence requirements"
+    },
+    {
+      "id": "G0-TASK",
+      "path": "docs/work/current/G0-001-foundation-decisions.md",
+      "label": "G0 foundation decisions task",
+      "authority": "Current G0 blockers and task status",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "32236306ee953f5d4a29385c71b750d42ecedfcfcfb1858548fd5ad59262cdc8",
+      "limitations": "Current G0 blockers and task status"
+    },
+    {
+      "id": "ATLAS-TASK",
+      "path": "docs/work/current/REPO-003-generated-plan-atlas.md",
+      "label": "Plan Atlas task brief",
+      "authority": "Repository preparation task; changes no delivery gate",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "4cf8d46173f8244117962003de6769e7a2b20bcfe3ad66aeed39abe407d9bd51",
+      "limitations": "Repository preparation task; changes no delivery gate"
+    },
+    {
+      "id": "ADR-INDEX",
+      "path": "docs/adr/README.md",
+      "label": "ADR register",
+      "authority": "Current local ADR statuses",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "52a6cefe2ee0866c0946713bfcc7b6cec176cdd0401ef3ac764529904e400b57",
+      "limitations": "Current local ADR statuses"
+    },
+    {
+      "id": "ADR-001",
+      "path": "docs/adr/ADR-FS-001-implementation-baseline-and-gates.md",
+      "label": "Implementation baseline and gates",
+      "authority": "Proposed ADR",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "0d5a9d3ab17dd543afea7ed8708e72cdb28184b635f3bfaf93474dd768a8218c",
+      "limitations": "Proposed ADR"
+    },
+    {
+      "id": "ADR-002",
+      "path": "docs/adr/ADR-FS-002-evidence-and-gate-records.md",
+      "label": "Evidence and gate records",
+      "authority": "Proposed ADR",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "22834cd73454ba139d013279442129ccb22ae76fe98ac34419bc26768816f416",
+      "limitations": "Proposed ADR"
+    },
+    {
+      "id": "ADR-003",
+      "path": "docs/adr/ADR-FS-003-contract-and-identifier-rules.md",
+      "label": "Contract and identifier rules",
+      "authority": "Experimenting ADR",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "6094b7f1c98f6ef68f56da7fc5aab3e4f869f08c2fa797cfcea6e9096aeebbd8",
+      "limitations": "Experimenting ADR"
+    },
+    {
+      "id": "ADR-004",
+      "path": "docs/adr/ADR-FS-004-repository-build-and-supply-chain.md",
+      "label": "Repository, build, and supply chain",
+      "authority": "Experimenting ADR",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "d661dd3f40cf651c111f0e12624e92e65e50d6e2a9d1a6537d2fac815c4eda16",
+      "limitations": "Experimenting ADR"
+    },
+    {
+      "id": "ADR-005",
+      "path": "docs/adr/ADR-FS-005-fictional-data-and-test-oracle.md",
+      "label": "Fictional data and independent oracle",
+      "authority": "Experimenting ADR",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "17f8db17888083caa3b79d8071ca7974ff02997f179c5f2601b252337724b573",
+      "limitations": "Experimenting ADR"
+    },
+    {
+      "id": "ADR-030",
+      "path": "docs/adr/ADR-FS-030-measured-numeric-settings.md",
+      "label": "Measured numeric settings",
+      "authority": "Proposed ADR",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "c9dfcea0c3a696b7df5e5029210de030c1028daa54b39c7245f21e885379996a",
+      "limitations": "Proposed ADR"
+    },
+    {
+      "id": "ADR-032",
+      "path": "docs/adr/ADR-FS-032-external-dependency-admission.md",
+      "label": "External dependency admission",
+      "authority": "Proposed ADR",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "180f122f18aefffd9e89daa116b4ab94b503a4a2c5d8246930f55483348c5ea0",
+      "limitations": "Proposed ADR"
+    },
+    {
+      "id": "SYNTHESIS",
+      "path": "research/implementation/synthesis/result-implementation-technical-baseline.md",
+      "label": "Implementation technical baseline",
+      "authority": "Research evidence and working baseline; not gate proof",
+      "classification": "Internal repository documentation; sanitize before external sharing",
+      "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
+      "sha256": "40ac82fcc88942a203df5daad4328bc088a3a37a72682f5b815d25a28bc9d522",
+      "limitations": "Research evidence and working baseline; not gate proof"
+    }
+  ]
+}

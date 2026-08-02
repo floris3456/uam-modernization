@@ -6,11 +6,12 @@ This repository captures the current PowerShell-based endpoint agent, its SQL da
 
 ## Start here
 
-1. Read [what we are building](docs/plain-language/00-what-we-are-building.md).
-2. Check [current, next, and later](docs/plain-language/01-current-next-later.md).
-3. Open the [current milestone](docs/milestones/G0-fictional-evidence-foundation.md).
-4. Before changing files, follow [AGENTS.md](AGENTS.md) and the [repeatable task workflow](docs/work/README.md).
-5. Use the [architecture decisions](docs/adr/README.md) and [research baseline](research/implementation/synthesis/result-implementation-technical-baseline.md) when more detail is needed.
+1. Open the generated [one-minute Plan Atlas](docs/atlas/generated/index.html).
+2. Read [what we are building](docs/plain-language/00-what-we-are-building.md).
+3. Check [current, next, and later](docs/plain-language/01-current-next-later.md).
+4. Open the [current milestone](docs/milestones/G0-fictional-evidence-foundation.md).
+5. Before changing files, follow [AGENTS.md](AGENTS.md) and the [repeatable task workflow](docs/work/README.md).
+6. Use the [architecture decisions](docs/adr/README.md) and [research baseline](research/implementation/synthesis/result-implementation-technical-baseline.md) when more detail is needed.
 
 The [repository map](docs/architecture/repository-layout.md) explains where everything belongs.
 
@@ -23,6 +24,7 @@ The current contents are a validated handover package, completed implementation 
 Run all repository checks:
 
 ```bash
+node scripts/atlas.mjs bootstrap
 ./scripts/validate-repository.sh
 ```
 
