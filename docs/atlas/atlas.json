@@ -52,9 +52,11 @@
       "id": "G0",
       "order": 0,
       "name": "Fictional evidence foundation",
+      "diagramName": "Fictional test foundation",
       "baselineName": "purpose/source/dummy-data contract and oracle",
       "purpose": "Create trustworthy fictional evidence before any live source or production-shaped implementation is allowed.",
       "proofClaim": "Deterministic classified fictional evidence, strict contracts, an independent oracle, mutation detection, privacy-canary containment, cleanup, and independently recomputable gate evidence all work together.",
+      "diagramSummary": "Create safe fictional test data and independently check every result.",
       "whyNow": "Every later gate needs known inputs, known answers, reproducible failures, and strict contracts. Starting with live Windows or browser behavior would make mistakes harder to see and could expose real data.",
       "dependsOn": [],
       "parallelPreparation": ["Read and review the initial ADRs.", "Draft fictional examples for human review.", "Keep repository validation and documentation healthy."],
@@ -130,9 +132,10 @@
       "sources": ["PLAIN-WHAT", "PLAIN-ROUTE", "SCOPE", "G0-MILESTONE", "G0-TASK", "ATLAS-TASK", "ADR-001", "ADR-002", "ADR-003", "ADR-004", "ADR-005", "ADR-030", "ADR-032", "SYNTHESIS"]
     },
     {
-      "id": "G1", "order": 1, "name": "Windows session and process isolation", "baselineName": "session launch, identity, IPC and Task Host isolation",
+      "id": "G1", "order": 1, "name": "Windows session and process isolation", "diagramName": "Windows session safety", "baselineName": "session launch, identity, IPC and Task Host isolation",
       "purpose": "Prove the planned Windows process boundaries work in real sessions without crossing users or granting prohibited privilege.",
       "proofClaim": "The correct User Host starts in each session, identity and release are bound to every message, IPC rejects peers and other sessions, and hostile Task Host work stays contained.",
+      "diagramSummary": "Start the right user process and keep every session safely separate.",
       "whyNow": "It is the first Windows-specific proof after trustworthy fictional contracts exist.", "dependsOn": ["G0"],
       "parallelPreparation": ["Prepare a harmless lab runbook and threat model.", "Review official Windows APIs and draft falsifying tests without connecting to the VM."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -148,9 +151,10 @@
       "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
     },
     {
-      "id": "G2", "order": 2, "name": "Safe Edge acquisition", "baselineName": "live Edge acquisition safety",
+      "id": "G2", "order": 2, "name": "Safe Edge acquisition", "diagramName": "Safe Edge reading", "baselineName": "live Edge acquisition safety",
       "purpose": "Prove that reading Edge history never changes the source and never treats an incomplete copy as valid.",
       "proofClaim": "Direct read, SQLite backup, or safe defer is selected correctly with zero source writes, bounded impact, and no raw-data escape.",
+      "diagramSummary": "Read Edge history safely without changing its live profile.",
       "whyNow": "Live acquisition is too risky until Windows isolation is proven.", "dependsOn": ["G1"],
       "parallelPreparation": ["Build fictional SQLite histories and acquisition test cases from G0 fixtures.", "Review Edge and SQLite documentation."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -165,9 +169,10 @@
       "unlocks": ["Profile, source-generation, and cursor proof in G3."], "neverUnlocks": ["Production collection."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
     },
     {
-      "id": "G3", "order": 3, "name": "Source and cursor correctness", "baselineName": "profile/source/generation/cursor correctness",
+      "id": "G3", "order": 3, "name": "Source and cursor correctness", "diagramName": "Source and cursor tracking", "baselineName": "profile/source/generation/cursor correctness",
       "purpose": "Prove every profile and history generation has stable identity and progress never skips or mixes records.",
       "proofClaim": "Discovery is bounded, source replacement is detected, native identifiers control progress, and duplicates have one effect.",
+      "diagramSummary": "Track each browser source without missing or repeating history.",
       "whyNow": "Safe bytes are not useful if records can be assigned to the wrong source or skipped.", "dependsOn": ["G2"],
       "parallelPreparation": ["Exercise fictional replacement, regression, duplicate, rename, and cursor-boundary histories."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -182,9 +187,10 @@
       "unlocks": ["Crash-safe endpoint progress and batching together with G4."], "neverUnlocks": ["Unbounded profile discovery."], "sources": ["SYNTHESIS"]
     },
     {
-      "id": "G4", "order": 4, "name": "Privacy transformation", "baselineName": "privacy transformation and canary containment",
+      "id": "G4", "order": 4, "name": "Privacy transformation", "diagramName": "Privacy protection", "baselineName": "privacy transformation and canary containment",
       "purpose": "Prove forbidden values are removed before IPC and ambiguous application matches fail closed.",
       "proofClaim": "The host applies a strict ceiling, hard denies, deterministic matching, realm isolation, and canary scanning before data crosses its trust boundary.",
+      "diagramSummary": "Remove private URL details before data leaves the device.",
       "whyNow": "Privacy must be proven before acquired records can enter the durable pipeline.", "dependsOn": ["G0", "G2"],
       "parallelPreparation": ["Build transformation, matcher, Unicode, encoding, derivative, and canary cases using fictional G0 data."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -199,9 +205,10 @@
       "unlocks": ["Privacy-safe events for the endpoint outbox proof."], "neverUnlocks": ["Unapproved production collection fields."], "sources": ["SCOPE", "G0-MILESTONE", "SYNTHESIS"]
     },
     {
-      "id": "G5", "order": 5, "name": "Crash-safe endpoint outbox", "baselineName": "endpoint outbox/checkpoint crash invariant",
+      "id": "G5", "order": 5, "name": "Crash-safe endpoint outbox", "diagramName": "Crash-safe device storage", "baselineName": "endpoint outbox/checkpoint crash invariant",
       "purpose": "Prove a crash or retry cannot move progress ahead of durable effects, lose an event, or change its identity.",
       "proofClaim": "One writer atomically records effect and progress, sealed batches replay unchanged, and cleanup waits for a valid receipt.",
+      "diagramSummary": "Store events safely so a crash cannot lose or wrongly confirm them.",
       "whyNow": "The endpoint must survive disconnection and interruption before any server custody claim is meaningful.", "dependsOn": ["G3", "G4"],
       "parallelPreparation": ["Model SQLite states, faults, batches, receipts, pressure, and migrations with fictional data."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -216,9 +223,10 @@
       "unlocks": ["Release, identity, diagnostics, and server-custody integration proofs."], "neverUnlocks": ["Production retention or capacity claims."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
     },
     {
-      "id": "AG-06", "order": 6, "name": "Authorized release and rollback", "baselineName": "release/update authorization and rollback",
+      "id": "AG-06", "order": 6, "name": "Authorized release and rollback", "diagramName": "Safe updates and rollback", "baselineName": "release/update authorization and rollback",
       "purpose": "Prove only complete, authorized, immutable releases run and a known-good version can be restored safely.",
       "proofClaim": "The same digest is authorized end to end; install, repair, update, downgrade denial, and N/N-1 rollback leave no mixed or privileged residue.",
+      "diagramSummary": "Install trusted releases and recover safely from failed updates.",
       "whyNow": "Later device and server proofs must bind behavior to a known release.", "dependsOn": ["G1", "G5"], "parallelPreparation": ["Research signing, MSI, metadata, rollback, and supply-chain controls; build fictional release manifests after G0."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Choose signing authority, deployment channel, updater ownership, supported rollback window, licensing, and risk acceptance."],
@@ -228,9 +236,10 @@
       "failureRecovery": ["Disable the channel, preserve sanitized installer state, restore known-good test release, revoke test authorization, and verify residue removal."], "unlocks": ["Release-bound device identity and platform qualification."], "neverUnlocks": ["Approval of a production signing service."], "sources": ["ADR-004", "ADR-032", "SYNTHESIS"]
     },
     {
-      "id": "AG-07", "order": 7, "name": "Device identity and network", "baselineName": "device identity and enterprise network compatibility",
+      "id": "AG-07", "order": 7, "name": "Device identity and network", "diagramName": "Device trust and networking", "baselineName": "device identity and enterprise network compatibility",
       "purpose": "Prove each device has a unique realm-bound credential and works safely through the approved enterprise network paths.",
       "proofClaim": "Enrollment, renewal, cloning, revocation, wrong-realm denial, proxy/VPN behavior, and direct mTLS fail safely.",
+      "diagramSummary": "Trust the correct device and work safely on company networks.",
       "whyNow": "The server cannot trust endpoint claims without proven device identity and network behavior.", "dependsOn": ["AG-06"], "parallelPreparation": ["Research certificate enrollment, TPM, cloning, proxy, VPN, and revocation; use fictional identities."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Choose certificate authority, enrollment ownership, TPM requirements, supported proxy/VPN paths, and incident response."],
@@ -240,9 +249,10 @@
       "failureRecovery": ["Revoke test credentials, quarantine the duplicate identity, restore network policy, verify denial, and remove all lab certificates."], "unlocks": ["Authenticated server ingestion and broader platform qualification."], "neverUnlocks": ["Production enrollment approval."], "sources": ["SYNTHESIS"]
     },
     {
-      "id": "AG-08", "order": 8, "name": "Safe diagnostics and platform tuple", "baselineName": "diagnostics and exact platform qualification",
+      "id": "AG-08", "order": 8, "name": "Safe diagnostics and platform tuple", "diagramName": "Safe diagnostics", "baselineName": "diagnostics and exact platform qualification",
       "purpose": "Prove support data is closed and privacy-safe, and qualify one exact Windows/browser/virtualization/security tuple at a time.",
       "proofClaim": "Only bounded structured signals are emitted; temporary diagnostics expire; no arbitrary command/file access exists; compatibility claims name exact evidence.",
+      "diagramSummary": "Diagnose problems without exposing private activity or broad access.",
       "whyNow": "Operations need safe evidence before a wider endpoint rollout can be considered.", "dependsOn": ["G1", "G4", "AG-06", "AG-07"], "parallelPreparation": ["Define fictional diagnostic schemas, cardinality budgets, support bundles, and a compatibility evidence template."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve diagnostic fields, temporary-access controls, support ownership, platform matrix, EDR coordination, and incident response."],
@@ -252,9 +262,10 @@
       "failureRecovery": ["Disable the diagnostic feature, revoke permits, delete bundles, scan sinks, and retract unsupported compatibility claims."], "unlocks": ["A supportable endpoint pilot boundary after later approvals."], "neverUnlocks": ["Broad compatibility or support approval."], "sources": ["SYNTHESIS"]
     },
     {
-      "id": "AG-09", "order": 9, "name": "Durable server inbox", "baselineName": "durable inbox/idempotency/poison handling",
+      "id": "AG-09", "order": 9, "name": "Durable server inbox", "diagramName": "Durable server intake", "baselineName": "durable inbox/idempotency/poison handling",
       "purpose": "Prove the server acknowledges only durable custody and produces one realm-isolated effect despite retries, leases, crashes, and poison input.",
       "proofClaim": "Receipt follows atomic durable bytes, leases are fenced, duplicate events have one effect, and poison handling is bounded.",
+      "diagramSummary": "Accept each event once and safely isolate invalid data.",
       "whyNow": "Endpoint deletion is unsafe until server custody has exact meaning.", "dependsOn": ["G5", "AG-07"], "parallelPreparation": ["Build fictional inbox, receipt, lease, quarantine, and materialization models after G0."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Choose service ownership, hosting boundary, durability objective, quarantine access, and incident response."],
@@ -264,9 +275,10 @@
       "failureRecovery": ["Stop receipts for the affected partition, preserve fictional custody state, fence workers, quarantine poison, and replay from the last durable boundary."], "unlocks": ["Database, capacity, lifecycle, and portal server proofs."], "neverUnlocks": ["A database product choice without experiments."], "sources": ["SYNTHESIS"]
     },
     {
-      "id": "AG-10", "order": 10, "name": "Database and capacity", "baselineName": "database and capacity evidence",
+      "id": "AG-10", "order": 10, "name": "Database and capacity", "diagramName": "Database and capacity", "baselineName": "database and capacity evidence",
       "purpose": "Measure database semantics, recovery, operations, and 6,000-device demand before selecting limits or a product.",
       "proofClaim": "Candidate databases preserve required semantics and recovery while the measured workload stays within explicit objectives and headroom.",
+      "diagramSummary": "Prove the system can recover and handle the measured workload.",
       "whyNow": "Research cannot decide numeric settings, capacity, or PostgreSQL versus SQL Server for the real workload.", "dependsOn": ["AG-09"], "parallelPreparation": ["Define the simulator, workload envelopes, semantic corpus, objectives, and experiment protocol without choosing a winner."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Set service objectives, cost/licensing boundary, staff/operations constraints, and acceptable headroom before selecting a database."],
@@ -276,9 +288,10 @@
       "failureRecovery": ["Mark the run invalid, preserve configs and measurements, restore the database fixture, verify generator headroom, and rerun without tuning away failed semantics."], "unlocks": ["Measured operational settings and long-outage proof."], "neverUnlocks": ["Unmeasured production scale or budget approval."], "sources": ["ADR-030", "ADR-032", "SYNTHESIS"]
     },
     {
-      "id": "AG-11", "order": 11, "name": "Backpressure and long outage", "baselineName": "disk/backpressure/long-outage behaviour",
+      "id": "AG-11", "order": 11, "name": "Backpressure and long outage", "diagramName": "Outage and disk pressure", "baselineName": "disk/backpressure/long-outage behaviour",
       "purpose": "Prove endpoint and server storage respond predictably to full disks, long disconnection, reconnect storms, and recovery without silent loss.",
       "proofClaim": "Pressure causes bounded pause and visible recovery, not unacknowledged drop, corruption, uncontrolled growth, or false health.",
+      "diagramSummary": "Stay safe during full disks, long outages, and reconnect storms.",
       "whyNow": "Capacity averages do not prove failure behavior during prolonged outages.", "dependsOn": ["G5", "AG-09", "AG-10"], "parallelPreparation": ["Define fictional outage histories, pressure states, alerts, and recovery invariants."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve pressure policy, alert ownership, outage objective, storage limits, and data-loss risk boundary."],
@@ -288,9 +301,10 @@
       "failureRecovery": ["Hold acquisition or receipts safely, preserve store integrity evidence, restore capacity, resume from durable checkpoints, and verify exact backlog drain."], "unlocks": ["Lifecycle and restore proofs under realistic failure pressure."], "neverUnlocks": ["An invented retention exception during pressure."], "sources": ["ADR-030", "SYNTHESIS"]
     },
     {
-      "id": "AG-12", "order": 12, "name": "Lifecycle, restore, and extended Windows", "baselineName": "deletion, restore, acknowledged replay and extended Windows fidelity",
+      "id": "AG-12", "order": 12, "name": "Lifecycle, restore, and extended Windows", "diagramName": "Data lifecycle and restore", "baselineName": "deletion, restore, acknowledged replay and extended Windows fidelity",
       "purpose": "Prove deletion remains effective through backup/restore and replay, then qualify additional Windows environment profiles individually.",
       "proofClaim": "Tombstones and acknowledgements reconcile before reads resume, and no unsupported platform tuple is claimed.",
+      "diagramSummary": "Delete, restore, and replay data correctly on Windows.",
       "whyNow": "Restore and later platform variants can reopen deleted data or break earlier invariants.", "dependsOn": ["AG-09", "AG-10", "AG-11"], "parallelPreparation": ["Model tombstones, exports, backups, restore barriers, integration deletion, and later Windows fixtures."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve retention/deletion policy, legal holds, export/integration obligations, restore authority, and extended platform priorities."],
@@ -300,9 +314,10 @@
       "failureRecovery": ["Keep reads disabled, quarantine the restore, reconcile tombstone/ACK history, re-delete derivatives, and independently verify before readiness."], "unlocks": ["Lifecycle-safe portal workflows and migration comparison."], "neverUnlocks": ["A production retention policy without human approval."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
     },
     {
-      "id": "AG-13", "order": 13, "name": "Portal authorization and audit", "baselineName": "portal authorization, workflows, audit and accessibility",
+      "id": "AG-13", "order": 13, "name": "Portal authorization and audit", "diagramName": "Portal access and audit", "baselineName": "portal authorization, workflows, audit and accessibility",
       "purpose": "Prove every portal action is purpose-bound, realm-isolated, current, audited transactionally, independently verifiable, and usable accessibly.",
       "proofClaim": "The complete route catalogue enforces approved capability rules, JIT and approval state, audit-before-disclosure, tamper evidence, and accessible critical workflows.",
+      "diagramSummary": "Make portal actions authorized, auditable, and accessible.",
       "whyNow": "Real roles and access cannot be invented during endpoint work and depend on server and lifecycle meaning.", "dependsOn": ["AG-09", "AG-12"], "parallelPreparation": ["Use T1 fictional prototypes to catalogue routes, capabilities, workflows, audit events, and accessibility risks after G0."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "SCOPE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "SCOPE"},
       "humanDecisions": ["Define purpose, roles/capabilities, realm administration, approvals, JIT, break-glass, audit access, accessibility acceptance, and support ownership."],
@@ -312,9 +327,10 @@
       "failureRecovery": ["Disable the affected route/capability, revoke temporary access, preserve audit evidence, repair atomically, notify named incident owners, and retest the whole route class."], "unlocks": ["Governed administration and migration disposition workflows after approval."], "neverUnlocks": ["Organizational access policy invented by engineering."], "sources": ["SCOPE", "SYNTHESIS"]
     },
     {
-      "id": "AG-14", "order": 14, "name": "Migration discovery and comparison", "baselineName": "migration discovery, shadow comparison, reconciliation and configuration",
+      "id": "AG-14", "order": 14, "name": "Migration discovery and comparison", "diagramName": "Migration comparison", "baselineName": "migration discovery, shadow comparison, reconciliation and configuration",
       "purpose": "Discover every legacy writer, consumer, report, script, schedule, credential, buffer, and integration, then compare old and new without dual authority or shadow egress.",
       "proofClaim": "The estate is bounded, mismatches have owned dispositions, configuration is explicit, and shadow data cannot become ordinary output.",
+      "diagramSummary": "Compare old and new results until every difference is understood.",
       "whyNow": "Cutover is unsafe while a hidden legacy dependency or unexplained mismatch remains.", "dependsOn": ["G5", "AG-09", "AG-12"], "parallelPreparation": ["Prepare discovery questionnaires, inventories, fictional comparison projections, and reconciliation categories; real parallel run waits for approval and predecessor proof."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Name owners for every legacy dependency and mismatch disposition.", "Approve the comparison window, privacy boundary, compatibility projection, and cutover criteria."],
@@ -324,9 +340,10 @@
       "failureRecovery": ["Stop the comparison, close shadow egress, preserve range and mismatch evidence, return to one authority, and expand discovery before retry."], "unlocks": ["A reversible cutover plan with known consumers and acceptance criteria."], "neverUnlocks": ["Decommissioning from research confidence alone."], "sources": ["PLAIN-ROUTE", "SYNTHESIS"]
     },
     {
-      "id": "AG-15", "order": 15, "name": "Cutover and decommissioning", "baselineName": "cutover, read-only operation, trust removal, residual monitoring and decommissioning",
+      "id": "AG-15", "order": 15, "name": "Cutover and decommissioning", "diagramName": "Safe cutover and shutdown", "baselineName": "cutover, read-only operation, trust removal, residual monitoring and decommissioning",
       "purpose": "Transfer authority once, keep rollback safe, remove legacy trust in layers, observe residue, and decommission only after independent acceptance.",
       "proofClaim": "There is one unambiguous writer at every stage, rollback boundaries are explicit, legacy credentials and write paths are removed, and residual attempts are detected and handled.",
+      "diagramSummary": "Switch safely, remove old access, and detect anything left behind.",
       "whyNow": "It is the final proof after the replacement and the migration evidence are accepted.", "dependsOn": ["AG-12", "AG-13", "AG-14"], "parallelPreparation": ["Draft fictional cutover, rollback, read-only, credential-removal, residual-monitoring, exception, and cleanup runbooks."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "SYNTHESIS"}, "gate": {"value": "open", "source": "SYNTHESIS", "note": "The synthesis describes this as OPEN/BLOCKED; the Atlas keeps gate state open and implementation state blocked."}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve cutover authority, maintenance and rollback boundaries, archive policy, exception expiry, residual observation period, trust removal, and independent final acceptance."],

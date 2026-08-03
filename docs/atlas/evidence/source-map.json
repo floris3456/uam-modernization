@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedFrom": "docs/atlas/atlas.json",
-  "modelSha256": "bc4909e31683ec5e01940359a163be7f8f9295fac0f4c04940ee362cfc8d5a09",
+  "modelSha256": "76db1de29fafa3670901e501c5500e893c3fcc0adee94e387f9ea31d73d161a1",
   "sources": [
     {
       "id": "PLAIN-WHAT",
@@ -70,7 +70,7 @@
       "authority": "Repository preparation task; changes no delivery gate",
       "classification": "Internal repository documentation; sanitize before external sharing",
       "generation": "Read from the committed path and hashed by scripts/atlas.mjs generate",
-      "sha256": "4cf8d46173f8244117962003de6769e7a2b20bcfe3ad66aeed39abe407d9bd51",
+      "sha256": "e00053fc4db1f316e491e11cee1824fa9bafb8b1d85ea42aef596c8025caee48",
       "limitations": "Repository preparation task; changes no delivery gate"
     },
     {

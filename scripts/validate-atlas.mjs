@@ -41,6 +41,10 @@ export async function validateGenerated(outDir, options = {}) {
   for (const required of ['What UAM is', 'Immediate blockers', 'Human decisions needed now', 'Work allowed now', 'Work prohibited now', 'Next proof', 'Research:', 'ADR:', 'Implementation:', 'Gate:', 'map-viewport', 'map-zoom-out', 'map-zoom-reset', 'map-zoom-in', 'onMapWheel', 'Use the scroll wheel']) {
     if (!index.includes(required)) throw new Error(`Dashboard is missing ${required}.`);
   }
+  if (index.includes('<object class="diagram"')) throw new Error('Dashboard embeds the map as an object, which prevents reliable card navigation.');
+  for (const id of expected.filter(file => file.startsWith('gates/')).map(file => file.slice(6, -5))) {
+    if (!index.includes(`href="gates/${id}.html" tabindex="0" aria-label=`)) throw new Error(`Dashboard map card does not link ${id}.`);
+  }
   const g0 = await readFile(join(outDir, 'gates/G0.html'), 'utf8');
   for (const required of ['Conservative undecided production state', 'Work prohibited', 'What must humans decide?', 'What must be measured with CLI evidence?', 'Failure, reproduction, cleanup, and recovery', 'What passing never authorizes']) {
     if (!g0.includes(required)) throw new Error(`G0 page is missing ${required}.`);

@@ -55,6 +55,7 @@ A new reader can quickly understand what UAM is, where the project stands, what 
 8. Validation rejects a bad dependency, stale output, false pass state, and broken source link.
 9. Existing research results remain byte-for-byte unchanged.
 10. Focused checks and the complete repository validation pass.
+11. Diagram cards open their detailed gate pages and use complete plain-language summaries without cut-off text.
 
 ## Failure, recovery, and rollback
 
