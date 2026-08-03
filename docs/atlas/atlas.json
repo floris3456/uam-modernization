@@ -57,6 +57,13 @@
       "purpose": "Create trustworthy fictional evidence before any live source or production-shaped implementation is allowed.",
       "proofClaim": "Deterministic classified fictional evidence, strict contracts, an independent oracle, mutation detection, privacy-canary containment, cleanup, and independently recomputable gate evidence all work together.",
       "diagramSummary": "Create safe fictional test data and independently check every result.",
+      "detailDiagram": {
+        "decision": "Name reviewers and confirm privacy rules, contracts, and experiments.",
+        "work": "Build fictional data, strict contracts, and an independent checker.",
+        "evidence": "Repeat generation, mutations, canary scans, cleanup, and hash checks.",
+        "success": "Allow synthetic endpoint foundations, but never live data.",
+        "stop": "Stop for real data, unstable results, missed canaries, coupling, or residue."
+      },
       "whyNow": "Every later gate needs known inputs, known answers, reproducible failures, and strict contracts. Starting with live Windows or browser behavior would make mistakes harder to see and could expose real data.",
       "dependsOn": [],
       "parallelPreparation": ["Read and review the initial ADRs.", "Draft fictional examples for human review.", "Keep repository validation and documentation healthy."],
@@ -136,6 +143,13 @@
       "purpose": "Prove the planned Windows process boundaries work in real sessions without crossing users or granting prohibited privilege.",
       "proofClaim": "The correct User Host starts in each session, identity and release are bound to every message, IPC rejects peers and other sessions, and hostile Task Host work stays contained.",
       "diagramSummary": "Start the right user process and keep every session safely separate.",
+      "detailDiagram": {
+        "decision": "Approve owners, the lab setup, and forbidden privileges.",
+        "work": "Start one User Host per session and isolate IPC and Task Host work.",
+        "evidence": "Measure sessions, tokens, pipe access, hostile tasks, cleanup, and rollback.",
+        "success": "Allow the carefully bounded live Edge reading experiment.",
+        "stop": "Stop for cross-session access, extra privilege, escape, or residue."
+      },
       "whyNow": "It is the first Windows-specific proof after trustworthy fictional contracts exist.", "dependsOn": ["G0"],
       "parallelPreparation": ["Prepare a harmless lab runbook and threat model.", "Review official Windows APIs and draft falsifying tests without connecting to the VM."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -155,6 +169,13 @@
       "purpose": "Prove that reading Edge history never changes the source and never treats an incomplete copy as valid.",
       "proofClaim": "Direct read, SQLite backup, or safe defer is selected correctly with zero source writes, bounded impact, and no raw-data escape.",
       "diagramSummary": "Read Edge history safely without changing its live profile.",
+      "detailDiagram": {
+        "decision": "Approve the exact Edge and Windows lab test and safety procedure.",
+        "work": "Choose direct read, safe backup, or defer without changing the source.",
+        "evidence": "Compare hashes, watch writes, test locks and crashes, and clean up.",
+        "success": "Allow source identity and cursor correctness tests.",
+        "stop": "Stop for source change, bad backup, raw-data escape, or residue."
+      },
       "whyNow": "Live acquisition is too risky until Windows isolation is proven.", "dependsOn": ["G1"],
       "parallelPreparation": ["Build fictional SQLite histories and acquisition test cases from G0 fixtures.", "Review Edge and SQLite documentation."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -173,6 +194,13 @@
       "purpose": "Prove every profile and history generation has stable identity and progress never skips or mixes records.",
       "proofClaim": "Discovery is bounded, source replacement is detected, native identifiers control progress, and duplicates have one effect.",
       "diagramSummary": "Track each browser source without missing or repeating history.",
+      "detailDiagram": {
+        "decision": "Approve discovery limits and how source replacement is handled.",
+        "work": "Give each source a stable identity and advance only with native IDs.",
+        "evidence": "Test rename, replacement, duplicates, crashes, ties, and replay.",
+        "success": "Allow privacy transformation of correctly identified records.",
+        "stop": "Stop for mixed sources, timestamp cursors, skipped data, or duplicates."
+      },
       "whyNow": "Safe bytes are not useful if records can be assigned to the wrong source or skipped.", "dependsOn": ["G2"],
       "parallelPreparation": ["Exercise fictional replacement, regression, duplicate, rename, and cursor-boundary histories."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -191,6 +219,13 @@
       "purpose": "Prove forbidden values are removed before IPC and ambiguous application matches fail closed.",
       "proofClaim": "The host applies a strict ceiling, hard denies, deterministic matching, realm isolation, and canary scanning before data crosses its trust boundary.",
       "diagramSummary": "Remove private URL details before data leaves the device.",
+      "detailDiagram": {
+        "decision": "Approve the privacy ceiling and application matching rules.",
+        "work": "Match applications and transform URLs before crossing the boundary.",
+        "evidence": "Run canaries, realm tests, matching vectors, and sink scans.",
+        "success": "Allow only transformed events into the crash-safe outbox.",
+        "stop": "Stop for raw leakage, wrong matches, realm mixing, or missed canaries."
+      },
       "whyNow": "Privacy must be proven before acquired records can enter the durable pipeline.", "dependsOn": ["G0", "G2"],
       "parallelPreparation": ["Build transformation, matcher, Unicode, encoding, derivative, and canary cases using fictional G0 data."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -209,6 +244,13 @@
       "purpose": "Prove a crash or retry cannot move progress ahead of durable effects, lose an event, or change its identity.",
       "proofClaim": "One writer atomically records effect and progress, sealed batches replay unchanged, and cleanup waits for a valid receipt.",
       "diagramSummary": "Store events safely so a crash cannot lose or wrongly confirm them.",
+      "detailDiagram": {
+        "decision": "Approve durability, receipt, migration, and disk-pressure rules.",
+        "work": "Atomically store event effects and progress, then seal exact batches.",
+        "evidence": "Crash every boundary and test replay, receipts, cleanup, and migration.",
+        "success": "Allow release, server, outage, and migration proof work.",
+        "stop": "Stop for lost events, false progress, changed replay, or early cleanup."
+      },
       "whyNow": "The endpoint must survive disconnection and interruption before any server custody claim is meaningful.", "dependsOn": ["G3", "G4"],
       "parallelPreparation": ["Model SQLite states, faults, batches, receipts, pressure, and migrations with fictional data."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}},
@@ -227,6 +269,13 @@
       "purpose": "Prove only complete, authorized, immutable releases run and a known-good version can be restored safely.",
       "proofClaim": "The same digest is authorized end to end; install, repair, update, downgrade denial, and N/N-1 rollback leave no mixed or privileged residue.",
       "diagramSummary": "Install trusted releases and recover safely from failed updates.",
+      "detailDiagram": {
+        "decision": "Approve signing authority, update policy, rollback, and deployment method.",
+        "work": "Authorize one release digest through install, repair, update, and rollback.",
+        "evidence": "Test tampering, downgrade denial, interruption, repair, and cleanup.",
+        "success": "Allow device identity and controlled enterprise deployment work.",
+        "stop": "Stop for untrusted code, mixed versions, unsafe rollback, or residue."
+      },
       "whyNow": "Later device and server proofs must bind behavior to a known release.", "dependsOn": ["G1", "G5"], "parallelPreparation": ["Research signing, MSI, metadata, rollback, and supply-chain controls; build fictional release manifests after G0."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Choose signing authority, deployment channel, updater ownership, supported rollback window, licensing, and risk acceptance."],
@@ -240,6 +289,13 @@
       "purpose": "Prove each device has a unique realm-bound credential and works safely through the approved enterprise network paths.",
       "proofClaim": "Enrollment, renewal, cloning, revocation, wrong-realm denial, proxy/VPN behavior, and direct mTLS fail safely.",
       "diagramSummary": "Trust the correct device and work safely on company networks.",
+      "detailDiagram": {
+        "decision": "Approve enrollment authority, realm rules, and network support policy.",
+        "work": "Enroll, renew, revoke, and authenticate each device to one realm.",
+        "evidence": "Test cloning, revocation, proxies, VPN, expiry, and wrong realms.",
+        "success": "Allow qualified diagnostics and server communication testing.",
+        "stop": "Stop for cloned identity, stale access, realm confusion, or unsafe bypass."
+      },
       "whyNow": "The server cannot trust endpoint claims without proven device identity and network behavior.", "dependsOn": ["AG-06"], "parallelPreparation": ["Research certificate enrollment, TPM, cloning, proxy, VPN, and revocation; use fictional identities."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Choose certificate authority, enrollment ownership, TPM requirements, supported proxy/VPN paths, and incident response."],
@@ -253,6 +309,13 @@
       "purpose": "Prove support data is closed and privacy-safe, and qualify one exact Windows/browser/virtualization/security tuple at a time.",
       "proofClaim": "Only bounded structured signals are emitted; temporary diagnostics expire; no arbitrary command/file access exists; compatibility claims name exact evidence.",
       "diagramSummary": "Diagnose problems without exposing private activity or broad access.",
+      "detailDiagram": {
+        "decision": "Approve support data, expiry, access, and exact supported platforms.",
+        "work": "Emit bounded signals and create temporary, privacy-safe support bundles.",
+        "evidence": "Scan bundles, test expiry, cap metrics, and measure each platform tuple.",
+        "success": "Allow support claims only for the exact tested environments.",
+        "stop": "Stop for private data, broad remote access, stale bundles, or vague claims."
+      },
       "whyNow": "Operations need safe evidence before a wider endpoint rollout can be considered.", "dependsOn": ["G1", "G4", "AG-06", "AG-07"], "parallelPreparation": ["Define fictional diagnostic schemas, cardinality budgets, support bundles, and a compatibility evidence template."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve diagnostic fields, temporary-access controls, support ownership, platform matrix, EDR coordination, and incident response."],
@@ -266,6 +329,13 @@
       "purpose": "Prove the server acknowledges only durable custody and produces one realm-isolated effect despite retries, leases, crashes, and poison input.",
       "proofClaim": "Receipt follows atomic durable bytes, leases are fenced, duplicate events have one effect, and poison handling is bounded.",
       "diagramSummary": "Accept each event once and safely isolate invalid data.",
+      "detailDiagram": {
+        "decision": "Approve receipt meaning, lease rules, retries, and quarantine ownership.",
+        "work": "Durably store bytes before receipt and give duplicates one effect.",
+        "evidence": "Test crashes, duplicate requests, expired leases, poison data, and replay.",
+        "success": "Allow database, outage, lifecycle, and migration proof work.",
+        "stop": "Stop for early receipts, loss, double effects, stale leases, or poison loops."
+      },
       "whyNow": "Endpoint deletion is unsafe until server custody has exact meaning.", "dependsOn": ["G5", "AG-07"], "parallelPreparation": ["Build fictional inbox, receipt, lease, quarantine, and materialization models after G0."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Choose service ownership, hosting boundary, durability objective, quarantine access, and incident response."],
@@ -279,6 +349,13 @@
       "purpose": "Measure database semantics, recovery, operations, and 6,000-device demand before selecting limits or a product.",
       "proofClaim": "Candidate databases preserve required semantics and recovery while the measured workload stays within explicit objectives and headroom.",
       "diagramSummary": "Prove the system can recover and handle the measured workload.",
+      "detailDiagram": {
+        "decision": "Set measurable demand, recovery, fairness, cost, and support goals.",
+        "work": "Compare candidate databases with the same semantics and workload.",
+        "evidence": "Measure 6,000 devices, storms, backlog drain, failure, and restore.",
+        "success": "Choose only a candidate that meets the agreed measured goals.",
+        "stop": "Stop for data loss, semantic drift, saturation, starvation, or unknown goals."
+      },
       "whyNow": "Research cannot decide numeric settings, capacity, or PostgreSQL versus SQL Server for the real workload.", "dependsOn": ["AG-09"], "parallelPreparation": ["Define the simulator, workload envelopes, semantic corpus, objectives, and experiment protocol without choosing a winner."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Set service objectives, cost/licensing boundary, staff/operations constraints, and acceptable headroom before selecting a database."],
@@ -292,6 +369,13 @@
       "purpose": "Prove endpoint and server storage respond predictably to full disks, long disconnection, reconnect storms, and recovery without silent loss.",
       "proofClaim": "Pressure causes bounded pause and visible recovery, not unacknowledged drop, corruption, uncontrolled growth, or false health.",
       "diagramSummary": "Stay safe during full disks, long outages, and reconnect storms.",
+      "detailDiagram": {
+        "decision": "Approve storage limits, pause rules, recovery goals, and user signals.",
+        "work": "Pause safely under pressure and resume without hiding loss or corruption.",
+        "evidence": "Fill disks, extend outages, reconnect fleets, and measure recovery.",
+        "success": "Allow lifecycle and extended environment qualification.",
+        "stop": "Stop for silent loss, corruption, endless growth, or false health."
+      },
       "whyNow": "Capacity averages do not prove failure behavior during prolonged outages.", "dependsOn": ["G5", "AG-09", "AG-10"], "parallelPreparation": ["Define fictional outage histories, pressure states, alerts, and recovery invariants."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve pressure policy, alert ownership, outage objective, storage limits, and data-loss risk boundary."],
@@ -305,6 +389,13 @@
       "purpose": "Prove deletion remains effective through backup/restore and replay, then qualify additional Windows environment profiles individually.",
       "proofClaim": "Tombstones and acknowledgements reconcile before reads resume, and no unsupported platform tuple is claimed.",
       "diagramSummary": "Delete, restore, and replay data correctly on Windows.",
+      "detailDiagram": {
+        "decision": "Approve retention, deletion, restore, replay, and platform support rules.",
+        "work": "Reconcile deletions and acknowledgements before restored reads resume.",
+        "evidence": "Test backup, restore, export, replay, deletion, and each Windows tuple.",
+        "success": "Allow portal and migration work on qualified lifecycle behavior.",
+        "stop": "Stop for visible deleted data, broken acknowledgements, or unsupported claims."
+      },
       "whyNow": "Restore and later platform variants can reopen deleted data or break earlier invariants.", "dependsOn": ["AG-09", "AG-10", "AG-11"], "parallelPreparation": ["Model tombstones, exports, backups, restore barriers, integration deletion, and later Windows fixtures."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve retention/deletion policy, legal holds, export/integration obligations, restore authority, and extended platform priorities."],
@@ -318,6 +409,13 @@
       "purpose": "Prove every portal action is purpose-bound, realm-isolated, current, audited transactionally, independently verifiable, and usable accessibly.",
       "proofClaim": "The complete route catalogue enforces approved capability rules, JIT and approval state, audit-before-disclosure, tamper evidence, and accessible critical workflows.",
       "diagramSummary": "Make portal actions authorized, auditable, and accessible.",
+      "detailDiagram": {
+        "decision": "Approve capabilities, purposes, workflows, audit access, and accessibility.",
+        "work": "Check current authority and record audit before every sensitive effect.",
+        "evidence": "Test routes, realms, revocation, approvals, tampering, and keyboard use.",
+        "success": "Allow governed portal use and final cutover preparation.",
+        "stop": "Stop for unauthorized access, missing audit, tampering, or blocked users."
+      },
       "whyNow": "Real roles and access cannot be invented during endpoint work and depend on server and lifecycle meaning.", "dependsOn": ["AG-09", "AG-12"], "parallelPreparation": ["Use T1 fictional prototypes to catalogue routes, capabilities, workflows, audit events, and accessibility risks after G0."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "SCOPE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "SCOPE"},
       "humanDecisions": ["Define purpose, roles/capabilities, realm administration, approvals, JIT, break-glass, audit access, accessibility acceptance, and support ownership."],
@@ -331,6 +429,13 @@
       "purpose": "Discover every legacy writer, consumer, report, script, schedule, credential, buffer, and integration, then compare old and new without dual authority or shadow egress.",
       "proofClaim": "The estate is bounded, mismatches have owned dispositions, configuration is explicit, and shadow data cannot become ordinary output.",
       "diagramSummary": "Compare old and new results until every difference is understood.",
+      "detailDiagram": {
+        "decision": "Approve inventory scope, comparison rules, and mismatch ownership.",
+        "work": "Find every legacy dependency and compare shadow results without authority.",
+        "evidence": "Reconcile closed ranges, dispositions, configuration, and blocked egress.",
+        "success": "Allow cutover planning when every material difference is understood.",
+        "stop": "Stop for hidden dependencies, dual authority, shadow egress, or unknown gaps."
+      },
       "whyNow": "Cutover is unsafe while a hidden legacy dependency or unexplained mismatch remains.", "dependsOn": ["G5", "AG-09", "AG-12"], "parallelPreparation": ["Prepare discovery questionnaires, inventories, fictional comparison projections, and reconciliation categories; real parallel run waits for approval and predecessor proof."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "PLAIN-ROUTE"}, "gate": {"value": "open", "source": "SYNTHESIS"}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Name owners for every legacy dependency and mismatch disposition.", "Approve the comparison window, privacy boundary, compatibility projection, and cutover criteria."],
@@ -344,6 +449,13 @@
       "purpose": "Transfer authority once, keep rollback safe, remove legacy trust in layers, observe residue, and decommission only after independent acceptance.",
       "proofClaim": "There is one unambiguous writer at every stage, rollback boundaries are explicit, legacy credentials and write paths are removed, and residual attempts are detected and handled.",
       "diagramSummary": "Switch safely, remove old access, and detect anything left behind.",
+      "detailDiagram": {
+        "decision": "Approve cutover fences, rollback limits, cleanup, and final acceptance.",
+        "work": "Keep one writer, remove legacy trust in layers, and monitor residue.",
+        "evidence": "Test cutover, bounded rollback, credential removal, and residual attempts.",
+        "success": "Decommission only after cleanup and independent human acceptance.",
+        "stop": "Stop for two writers, unsafe rollback, live legacy trust, or missing cleanup."
+      },
       "whyNow": "It is the final proof after the replacement and the migration evidence are accepted.", "dependsOn": ["AG-12", "AG-13", "AG-14"], "parallelPreparation": ["Draft fictional cutover, rollback, read-only, credential-removal, residual-monitoring, exception, and cleanup runbooks."],
       "statuses": {"research": {"value": "complete", "source": "SYNTHESIS"}, "adr": {"value": "not-created", "source": "ADR-INDEX"}, "implementation": {"value": "blocked", "source": "SYNTHESIS"}, "gate": {"value": "open", "source": "SYNTHESIS", "note": "The synthesis describes this as OPEN/BLOCKED; the Atlas keeps gate state open and implementation state blocked."}}, "owner": {"value": "UNASSIGNED", "source": "PLAIN-ROUTE"},
       "humanDecisions": ["Approve cutover authority, maintenance and rollback boundaries, archive policy, exception expiry, residual observation period, trust removal, and independent final acceptance."],

@@ -1,0 +1,47 @@
+direction: right
+classes: {
+  normal: {
+    style: {
+      fill: "#f5f7fa"
+      stroke: "#566273"
+    }
+  }
+  stop: {
+    style: {
+      fill: "#fff2f2"
+      stroke: "#8b1e1e"
+      stroke-width: 2
+    }
+  }
+}
+start: "AG-06 · Safe updates and rollback\nGate: open. Implementation: blocked. Depends on: G1, G5." {
+  class: normal
+  link: "AG-06.html#main"
+}
+decision: "1. Humans decide\nApprove signing authority, update policy, rollback, and deployment method." {
+  class: normal
+  link: "AG-06.html#human-decisions"
+}
+work: "2. Allowed work\nAuthorize one release digest through install, repair, update, and rollback." {
+  class: normal
+  link: "AG-06.html#allowed-work"
+}
+evidence: "3. CLI proof\nTest tampering, downgrade denial, interruption, repair, and cleanup." {
+  class: normal
+  link: "AG-06.html#cli-evidence"
+}
+success: "4. Pass and unlock\nAllow device identity and controlled enterprise deployment work." {
+  class: normal
+  link: "AG-06.html#pass-condition"
+}
+stop: "Stop or hold\nStop for untrusted code, mixed versions, unsafe rollback, or residue." {
+  class: stop
+  link: "AG-06.html#stop-condition"
+}
+start -> decision -> work -> evidence -> success
+evidence -> stop: "If proof fails" {
+  style: {
+    stroke: "#8b1e1e"
+    stroke-dash: 4
+  }
+}

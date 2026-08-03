@@ -9,6 +9,16 @@ It answers four practical questions:
 3. What proof is needed before later work starts?
 4. Which detailed document supports each summary?
 
+The dashboard shows how all gates depend on each other. Selecting a gate opens its detail page. Every detail page contains a second, smaller diagram showing that gate's own route:
+
+1. What humans must decide.
+2. What work is allowed.
+3. What CLI evidence must prove.
+4. What passing unlocks.
+5. What sends the gate to stop or hold.
+
+Each box links to the matching detailed section on the page. The short diagram text explains the route; it does not replace the complete conditions below it.
+
 The Atlas does not approve anything. It cannot accept an ADR, pass a gate, assign an owner, approve policy, or replace measured evidence. Its only hand-maintained source is [atlas.json](atlas.json). Everything under `generated/` and `evidence/source-map.json` is rebuilt from that model and the linked source documents.
 
 ## Gate names
@@ -38,9 +48,9 @@ The same command works in a Linux shell and a current Windows terminal with Node
 ## Editing workflow
 
 1. Change authoritative project documents first.
-2. Update `atlas.json` only to summarize and link those documents.
+2. Update `atlas.json` only to summarize and link those documents. Every gate must provide `diagramName`, `diagramSummary`, and all five `detailDiagram` statements (`decision`, `work`, `evidence`, `success`, and `stop`) in complete easy language.
 3. Run `node scripts/atlas.mjs generate`.
 4. Run `node scripts/atlas.mjs check` and `./scripts/validate-repository.sh`.
-5. Review the generated dashboard and G0 page. Never change generated files by hand.
+5. Review the generated dashboard, the current gate page, and at least one later gate page. Check that every diagram box is complete and opens the right section. Never change generated files by hand.
 
-The committed SVG is a small deterministic offline preview generated directly from the same model; the D2 source remains the portable diagram definition. Validation renders that D2 source twice and rejects invalid or nondeterministic D2 output. Generation uses a temporary staged directory. A model, checksum, or link failure leaves the previous valid generated Atlas untouched.
+The top-level map and every gate detail diagram have committed D2 source and a small deterministic offline SVG preview generated directly from the same model. Validation checks every D2 file, SVG, link, required summary, and generated file. It renders D2 sources with the pinned tool when available and rejects invalid or nondeterministic output. Generation uses a temporary staged directory. A model, checksum, or link failure leaves the previous valid generated Atlas untouched.

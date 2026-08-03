@@ -1,0 +1,47 @@
+direction: right
+classes: {
+  normal: {
+    style: {
+      fill: "#f5f7fa"
+      stroke: "#566273"
+    }
+  }
+  stop: {
+    style: {
+      fill: "#fff2f2"
+      stroke: "#8b1e1e"
+      stroke-width: 2
+    }
+  }
+}
+start: "AG-15 · Safe cutover and shutdown\nGate: open. Implementation: blocked. Depends on: AG-12, AG-13, AG-14." {
+  class: normal
+  link: "AG-15.html#main"
+}
+decision: "1. Humans decide\nApprove cutover fences, rollback limits, cleanup, and final acceptance." {
+  class: normal
+  link: "AG-15.html#human-decisions"
+}
+work: "2. Allowed work\nKeep one writer, remove legacy trust in layers, and monitor residue." {
+  class: normal
+  link: "AG-15.html#allowed-work"
+}
+evidence: "3. CLI proof\nTest cutover, bounded rollback, credential removal, and residual attempts." {
+  class: normal
+  link: "AG-15.html#cli-evidence"
+}
+success: "4. Pass and unlock\nDecommission only after cleanup and independent human acceptance." {
+  class: normal
+  link: "AG-15.html#pass-condition"
+}
+stop: "Stop or hold\nStop for two writers, unsafe rollback, live legacy trust, or missing cleanup." {
+  class: stop
+  link: "AG-15.html#stop-condition"
+}
+start -> decision -> work -> evidence -> success
+evidence -> stop: "If proof fails" {
+  style: {
+    stroke: "#8b1e1e"
+    stroke-dash: 4
+  }
+}

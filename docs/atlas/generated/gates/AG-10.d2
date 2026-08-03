@@ -1,0 +1,47 @@
+direction: right
+classes: {
+  normal: {
+    style: {
+      fill: "#f5f7fa"
+      stroke: "#566273"
+    }
+  }
+  stop: {
+    style: {
+      fill: "#fff2f2"
+      stroke: "#8b1e1e"
+      stroke-width: 2
+    }
+  }
+}
+start: "AG-10 · Database and capacity\nGate: open. Implementation: blocked. Depends on: AG-09." {
+  class: normal
+  link: "AG-10.html#main"
+}
+decision: "1. Humans decide\nSet measurable demand, recovery, fairness, cost, and support goals." {
+  class: normal
+  link: "AG-10.html#human-decisions"
+}
+work: "2. Allowed work\nCompare candidate databases with the same semantics and workload." {
+  class: normal
+  link: "AG-10.html#allowed-work"
+}
+evidence: "3. CLI proof\nMeasure 6,000 devices, storms, backlog drain, failure, and restore." {
+  class: normal
+  link: "AG-10.html#cli-evidence"
+}
+success: "4. Pass and unlock\nChoose only a candidate that meets the agreed measured goals." {
+  class: normal
+  link: "AG-10.html#pass-condition"
+}
+stop: "Stop or hold\nStop for data loss, semantic drift, saturation, starvation, or unknown goals." {
+  class: stop
+  link: "AG-10.html#stop-condition"
+}
+start -> decision -> work -> evidence -> success
+evidence -> stop: "If proof fails" {
+  style: {
+    stroke: "#8b1e1e"
+    stroke-dash: 4
+  }
+}

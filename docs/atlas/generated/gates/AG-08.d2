@@ -1,0 +1,47 @@
+direction: right
+classes: {
+  normal: {
+    style: {
+      fill: "#f5f7fa"
+      stroke: "#566273"
+    }
+  }
+  stop: {
+    style: {
+      fill: "#fff2f2"
+      stroke: "#8b1e1e"
+      stroke-width: 2
+    }
+  }
+}
+start: "AG-08 · Safe diagnostics\nGate: open. Implementation: blocked. Depends on: G1, G4, AG-06, AG-07." {
+  class: normal
+  link: "AG-08.html#main"
+}
+decision: "1. Humans decide\nApprove support data, expiry, access, and exact supported platforms." {
+  class: normal
+  link: "AG-08.html#human-decisions"
+}
+work: "2. Allowed work\nEmit bounded signals and create temporary, privacy-safe support bundles." {
+  class: normal
+  link: "AG-08.html#allowed-work"
+}
+evidence: "3. CLI proof\nScan bundles, test expiry, cap metrics, and measure each platform tuple." {
+  class: normal
+  link: "AG-08.html#cli-evidence"
+}
+success: "4. Pass and unlock\nAllow support claims only for the exact tested environments." {
+  class: normal
+  link: "AG-08.html#pass-condition"
+}
+stop: "Stop or hold\nStop for private data, broad remote access, stale bundles, or vague claims." {
+  class: stop
+  link: "AG-08.html#stop-condition"
+}
+start -> decision -> work -> evidence -> success
+evidence -> stop: "If proof fails" {
+  style: {
+    stroke: "#8b1e1e"
+    stroke-dash: 4
+  }
+}

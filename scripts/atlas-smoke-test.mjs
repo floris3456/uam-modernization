@@ -25,6 +25,8 @@ export async function smokeTest() {
   results.push(await mustReject('bad dependency', model => { model.gates[1].dependsOn.push('G99'); }));
   results.push(await mustReject('false pass state', model => { model.gates[0].statuses.gate.value = 'passed'; }));
   results.push(await mustReject('broken source link', model => { model.sourceDocuments[0].path = 'docs/does-not-exist.md'; }));
+  results.push(await mustReject('missing gate diagram', model => { delete model.gates[0].detailDiagram.evidence; }));
+  results.push(await mustReject('unreadable gate diagram', model => { model.gates[0].detailDiagram.work = 'This deliberately overlong diagram statement cannot fit inside the supported three complete easy-language lines and must never be shortened silently.'; }));
   const staged = await stageAtlas({renderCheck: false});
   const staleDir = await mkdtemp(join(tmpdir(), 'uam-atlas-stale-'));
   try {

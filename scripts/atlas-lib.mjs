@@ -76,6 +76,11 @@ export async function validateModel(model, options = {}) {
     }
     if (gate.diagramName && wrapSvgText(`${gate.id} · ${gate.diagramName}`, 25, 2).some(line => line.endsWith('…'))) errors.push(`${gate.id} diagramName does not fit in two complete lines.`);
     if (gate.diagramSummary && wrapSvgText(gate.diagramSummary, 36, 2).some(line => line.endsWith('…'))) errors.push(`${gate.id} diagramSummary does not fit in two complete lines.`);
+    for (const field of ['decision', 'work', 'evidence', 'success', 'stop']) {
+      const value = gate.detailDiagram?.[field];
+      if (!value || !String(value).trim()) errors.push(`${gate.id} is missing detailDiagram.${field}.`);
+      else if (wrapSvgText(value, 30, 3).some(line => line.endsWith('…'))) errors.push(`${gate.id} detailDiagram.${field} does not fit in three complete lines.`);
+    }
     for (const field of ['dependsOn', 'parallelPreparation', 'humanDecisions', 'allowedWork', 'prohibitedWork', 'cliEvidence', 'evidenceRequired', 'failureRecovery', 'unlocks', 'neverUnlocks', 'sources']) {
       if (!Array.isArray(gate[field]) || gate[field].length === 0 && !['dependsOn'].includes(field)) errors.push(`${gate.id} must define ${field}.`);
     }
@@ -146,8 +151,10 @@ const css = `
 :root{color-scheme:light;--ink:#17202a;--muted:#566273;--paper:#fff;--panel:#f5f7fa;--line:#c8d0da;--accent:#075a82;--focus:#ffbf47;--danger:#8b1e1e;--ok:#176b38;--hold:#805b00}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--accent);text-underline-offset:.15em}a:hover{text-decoration-thickness:.15em}a:focus-visible,button:focus-visible,input:focus-visible,.diagram-viewport:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;z-index:10}header,main,footer{max-width:1200px;margin:auto;padding:1rem 1.25rem}header{border-bottom:1px solid var(--line)}nav{display:flex;gap:1rem;flex-wrap:wrap}.eyebrow,.status-kind{font-weight:700}.hero{display:grid;grid-template-columns:2fr 1fr;gap:1rem}.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:.5rem;padding:1rem}.warning{border-left:.4rem solid var(--danger)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}.status-row{display:flex;gap:.4rem;flex-wrap:wrap}.status{display:inline-block;border:1px solid #657180;border-radius:999px;padding:.15rem .55rem;background:#fff}.status-open,.status-blocked,.status-not-started,.status-not-created{border-style:dashed}.status-passed,.status-accepted,.status-complete{border-color:var(--ok)}.status-hold{border-color:var(--hold)}.muted{color:var(--muted)}h1{line-height:1.1}h2{margin-top:2rem}h3{margin-bottom:.25rem}.compact li{margin:.15rem 0}.diagram-toolbar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:.75rem 0}.diagram-toolbar button{min-width:2.5rem;padding:.4rem .65rem;border:1px solid #657180;border-radius:.3rem;background:#fff;color:var(--ink);font:inherit;font-weight:700;cursor:pointer}.diagram-toolbar output{min-width:4rem;font-variant-numeric:tabular-nums}.diagram-viewport{height:520px;overflow:auto;overscroll-behavior:contain;border:1px solid var(--line);background:#fff}.diagram{display:block;width:4640px;height:425px;border:0;background:#fff}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{text-align:left;vertical-align:top;border:1px solid var(--line);padding:.55rem}th{background:#eaf0f5;position:sticky;top:0}input[type=search]{width:min(100%,32rem);font:inherit;padding:.55rem;border:2px solid #657180;border-radius:.25rem}.facts{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem}.facts dt{font-weight:700}.facts dd{margin:0}@media(max-width:720px){.hero{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.facts dd{margin-bottom:.5rem}.diagram-viewport{height:440px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 `;
 
+const gateDiagramCss = `.gate-diagram-viewport{overflow:auto;overscroll-behavior:contain;border:1px solid var(--line);background:#fff}.gate-detail-diagram{display:block;width:1340px;height:500px}.gate-detail-diagram svg{display:block;width:100%;height:100%}.gate-diagram-key{display:flex;gap:1rem;flex-wrap:wrap}.gate-diagram-key span::before{content:"";display:inline-block;width:.9rem;height:.9rem;margin-right:.35rem;border:2px solid #566273;vertical-align:-.1rem}.gate-diagram-key .stop-key::before{border-color:#8b1e1e;background:#fff2f2}`;
+
 function shell(title, body, depth = '') {
-  return `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${escapeHtml(title)}</title><style>${css}</style></head><body><a class="skip" href="#main">Skip to main content</a><header><nav aria-label="Atlas navigation"><a href="${depth}index.html">Dashboard</a><a href="${depth}index.html#map">Gate map</a><a href="${depth}index.html#register">Gate register</a><a href="${depth}../README.md">Workflow</a></nav></header><main id="main">${body}</main><footer><p>This generated Atlas is for visualization and navigation only. Source documents and measured evidence remain authoritative.</p></footer></body></html>\n`;
+  return `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${escapeHtml(title)}</title><style>${css}${gateDiagramCss}</style></head><body><a class="skip" href="#main">Skip to main content</a><header><nav aria-label="Atlas navigation"><a href="${depth}index.html">Dashboard</a><a href="${depth}index.html#map">Gate map</a><a href="${depth}index.html#register">Gate register</a><a href="${depth}../README.md">Workflow</a></nav></header><main id="main">${body}</main><footer><p>This generated Atlas is for visualization and navigation only. Source documents and measured evidence remain authoritative.</p></footer></body></html>\n`;
 }
 
 export function renderIndex(model) {
@@ -161,10 +168,94 @@ export function renderIndex(model) {
   return shell(model.title, interactiveBody);
 }
 
+function gateDetailItems(gate) {
+  return [
+    {key: 'start', title: `${gate.id} · ${gate.diagramName}`, text: `Gate: ${gate.statuses.gate.value}. Implementation: ${gate.statuses.implementation.value}. Depends on: ${gate.dependsOn.join(', ') || 'none'}.`, anchor: 'main'},
+    {key: 'decision', title: '1. Humans decide', text: gate.detailDiagram.decision, anchor: 'human-decisions'},
+    {key: 'work', title: '2. Allowed work', text: gate.detailDiagram.work, anchor: 'allowed-work'},
+    {key: 'evidence', title: '3. CLI proof', text: gate.detailDiagram.evidence, anchor: 'cli-evidence'},
+    {key: 'success', title: '4. Pass and unlock', text: gate.detailDiagram.success, anchor: 'pass-condition'},
+    {key: 'stop', title: 'Stop or hold', text: gate.detailDiagram.stop, anchor: 'stop-condition', stop: true}
+  ];
+}
+
+export function renderGateD2(gate) {
+  const items = gateDetailItems(gate);
+  const lines = [
+    'direction: right',
+    'classes: {',
+    '  normal: {',
+    '    style: {',
+    '      fill: "#f5f7fa"',
+    '      stroke: "#566273"',
+    '    }',
+    '  }',
+    '  stop: {',
+    '    style: {',
+    '      fill: "#fff2f2"',
+    '      stroke: "#8b1e1e"',
+    '      stroke-width: 2',
+    '    }',
+    '  }',
+    '}'
+  ];
+  for (const item of items) {
+    lines.push(`${item.key}: "${escapeD2(`${item.title}\n${item.text}`)}" {`);
+    lines.push(`  class: ${item.stop ? 'stop' : 'normal'}`);
+    lines.push(`  link: "${gate.id}.html#${item.anchor}"`);
+    lines.push('}');
+  }
+  lines.push('start -> decision -> work -> evidence -> success');
+  lines.push('evidence -> stop: "If proof fails" {');
+  lines.push('  style: {');
+  lines.push('    stroke: "#8b1e1e"');
+  lines.push('    stroke-dash: 4');
+  lines.push('  }');
+  lines.push('}');
+  return `${lines.join('\n')}\n`;
+}
+
+export function renderGateSvgPreview(gate) {
+  const width = 1340; const height = 500; const cardWidth = 220; const cardHeight = 160;
+  const positions = {
+    start: {x: 40, y: 55}, decision: {x: 300, y: 55}, work: {x: 560, y: 55},
+    evidence: {x: 820, y: 55}, success: {x: 1080, y: 55}, stop: {x: 820, y: 300}
+  };
+  const items = gateDetailItems(gate);
+  const arrows = [
+    ['start', 'decision'], ['decision', 'work'], ['work', 'evidence'], ['evidence', 'success']
+  ].map(([fromKey, toKey]) => {
+    const from = positions[fromKey]; const to = positions[toKey];
+    return `<path d="M ${from.x+cardWidth} ${from.y+cardHeight/2} L ${to.x} ${to.y+cardHeight/2}" fill="none" stroke="#566273" stroke-width="3" marker-end="url(#detail-arrow)"/>`;
+  });
+  const evidence = positions.evidence; const stop = positions.stop;
+  arrows.push(`<path d="M ${evidence.x+cardWidth/2} ${evidence.y+cardHeight} L ${stop.x+cardWidth/2} ${stop.y}" fill="none" stroke="#8b1e1e" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#stop-arrow)"/><text x="${evidence.x+cardWidth/2+10}" y="${evidence.y+cardHeight+46}" fill="#8b1e1e" font-family="system-ui,Segoe UI,sans-serif" font-size="14" font-weight="700">If proof fails</text>`);
+  const cards = items.map(item => {
+    const {x, y} = positions[item.key];
+    const titleLines = wrapSvgText(item.title, 22, 2);
+    const detailLines = wrapSvgText(item.text, 30, 3);
+    const titleSpans = titleLines.map((line, index) => `<tspan x="${x+14}"${index ? ' dy="20"' : ''} font-size="17" font-weight="700">${escapeHtml(line)}</tspan>`).join('');
+    const detailOffset = titleLines.length === 1 ? 27 : 23;
+    const detailSpans = detailLines.map((line, index) => `<tspan x="${x+14}" dy="${index ? 19 : detailOffset}" font-size="13">${escapeHtml(line)}</tspan>`).join('');
+    const clipId = `detail-${gate.id}-${item.key}`;
+    const fill = item.stop ? '#fff2f2' : '#f5f7fa'; const stroke = item.stop ? '#8b1e1e' : '#566273';
+    return `<a href="${escapeHtml(gate.id)}.html#${item.anchor}" tabindex="0" aria-label="${escapeHtml(`${item.title}: ${item.text}`)}"><g><title>${escapeHtml(item.text)}</title><clipPath id="${clipId}"><rect x="${x+4}" y="${y+4}" width="${cardWidth-8}" height="${cardHeight-8}" rx="7"/></clipPath><rect x="${x}" y="${y}" width="${cardWidth}" height="${cardHeight}" rx="10" fill="${fill}" stroke="${stroke}" stroke-width="2"/><text x="${x+14}" y="${y+29}" fill="#17202a" font-family="system-ui,Segoe UI,sans-serif" clip-path="url(#${clipId})">${titleSpans}${detailSpans}</text></g></a>`;
+  });
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="gate-detail-title gate-detail-description" style="display:block;width:100%;height:100%"><title id="gate-detail-title">${escapeHtml(gate.id)} proof flow</title><desc id="gate-detail-description">Human decision, allowed work, CLI evidence, pass and unlock, with a separate stop or hold path.</desc><defs><marker id="detail-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#566273"/></marker><marker id="stop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8b1e1e"/></marker></defs><rect width="100%" height="100%" fill="#ffffff"/>${arrows.join('')}${cards.join('')}</svg>\n`;
+}
+
 export function renderGatePage(model, gate) {
   const dependencies = gate.dependsOn.length ? gate.dependsOn.map(id => `<a href="${id}.html">${id}</a>`).join(', ') : 'None';
   const body = `<p class="eyebrow">Proof gate ${escapeHtml(gate.id)}</p><h1>${escapeHtml(gate.id)} — ${escapeHtml(gate.name)}</h1><p class="muted">Accepted-baseline wording: ${escapeHtml(gate.baselineName)}</p><div class="status-row">${statusBadge('Research', gate.statuses.research)}${statusBadge('ADR', gate.statuses.adr)}${statusBadge('Implementation', gate.statuses.implementation)}${statusBadge('Gate', gate.statuses.gate)}</div><dl class="facts"><dt>Owner</dt><dd>${escapeHtml(gate.owner.value)}</dd><dt>Hard dependencies</dt><dd>${dependencies}</dd><dt>Proof claim</dt><dd>${escapeHtml(gate.proofClaim)}</dd></dl>${gate.ownerGaps ? `<section class="panel warning"><h2>Current owner gaps</h2>${list(gate.ownerGaps)}</section>` : ''}<section><h2>What are we proving?</h2><p>${escapeHtml(gate.purpose)}</p><h2>Why now?</h2><p>${escapeHtml(gate.whyNow)}</p><h2>What depends on it?</h2>${list(gate.unlocks)}<h3>Preparation that may happen earlier</h3>${list(gate.parallelPreparation)}</section>${gate.conservativeState ? `<section class="panel"><h2>Conservative undecided production state</h2><dl class="facts">${Object.entries(gate.conservativeState).map(([key,value]) => `<dt>${escapeHtml(key)}</dt><dd><code>${escapeHtml(value)}</code></dd>`).join('')}</dl><p>This state must never authorize live data or production-shaped source access.</p></section>` : ''}<div class="grid"><section class="card"><h2>Work allowed</h2>${list(gate.allowedWork)}</section><section class="card warning"><h2>Work prohibited</h2>${list(gate.prohibitedWork)}</section></div><section><h2>What must humans decide?</h2>${list(gate.humanDecisions)}<h2>What must be measured with CLI evidence?</h2>${list(gate.cliEvidence)}<h2>What evidence is required?</h2>${list(gate.evidenceRequired)}<h2>What causes failure or hold?</h2><p>${escapeHtml(gate.stopCondition)}</p><h3>Failure, reproduction, cleanup, and recovery</h3>${list(gate.failureRecovery)}<h2>What does passing unlock?</h2>${list(gate.unlocks)}<h3>What passing never authorizes</h3>${list(gate.neverUnlocks)}<h2>Pass condition</h2><p>${escapeHtml(gate.passCondition)}</p><h2>Authoritative and supporting sources</h2>${sourcesHtml(model, gate, `gates/${gate.id}.html`)}</section>`;
-  return shell(`${gate.id} — ${gate.name}`, body, '../');
+  const diagram = `<section id="gate-flow"><h2>How this gate works</h2><p>This is the short route through ${escapeHtml(gate.id)}. Select a box to open the matching details below.</p><p class="gate-diagram-key"><span>Required route</span><span class="stop-key">Stop or hold route</span></p><div class="gate-diagram-viewport" tabindex="0" aria-label="Scrollable ${escapeHtml(gate.id)} proof flow"><div class="gate-detail-diagram">${renderGateSvgPreview(gate).trim()}</div></div><p class="muted">Generated from the same model as this page. <a href="${escapeHtml(gate.id)}.d2">View D2 source</a> or <a href="${escapeHtml(gate.id)}.svg">open the standalone SVG</a>.</p></section>`;
+  const detailedBody = body
+    .replace('</dl>', `</dl>${diagram}`)
+    .replace('<h2>Work allowed</h2>', '<h2 id="allowed-work">Work allowed</h2>')
+    .replace('<h2>What must humans decide?</h2>', '<h2 id="human-decisions">What must humans decide?</h2>')
+    .replace('<h2>What must be measured with CLI evidence?</h2>', '<h2 id="cli-evidence">What must be measured with CLI evidence?</h2>')
+    .replace('<h2>What causes failure or hold?</h2>', '<h2 id="stop-condition">What causes failure or hold?</h2>')
+    .replace('<h2>Pass condition</h2>', '<h2 id="pass-condition">Pass condition</h2>');
+  return shell(`${gate.id} — ${gate.name}`, detailedBody, '../');
 }
 
 export function renderRegisterMarkdown(model) {
@@ -203,7 +294,7 @@ export function renderD2(model) {
     '}'
   ];
   for (const gate of model.gates) {
-    const label = `${gate.id} · ${gate.name}\nGate: ${gate.statuses.gate.value} · Owner: ${gate.owner.value}\n${gate.proofClaim}`;
+    const label = `${gate.id} · ${gate.diagramName}\nGate: ${gate.statuses.gate.value} · Owner: ${gate.owner.value}\n${gate.diagramSummary}`;
     lines.push(`${gate.id.replace('-', '_')}: "${escapeD2(label)}" {`);
     lines.push(`  class: ${gate.statuses.gate.value}`);
     lines.push(`  link: "gates/${gate.id}.html"`);
@@ -325,7 +416,11 @@ export async function writeTree(outDir, model, options = {}) {
   await writeFile(join(outDir, 'gate-register.md'), renderRegisterMarkdown(model));
   await writeFile(join(outDir, 'gate-map.d2'), renderD2(model));
   await writeFile(join(outDir, 'gate-map.svg'), renderSvgPreview(model));
-  for (const gate of model.gates) await writeFile(join(outDir, 'gates', `${gate.id}.html`), renderGatePage(model, gate));
+  for (const gate of model.gates) {
+    await writeFile(join(outDir, 'gates', `${gate.id}.html`), renderGatePage(model, gate));
+    await writeFile(join(outDir, 'gates', `${gate.id}.d2`), renderGateD2(gate));
+    await writeFile(join(outDir, 'gates', `${gate.id}.svg`), renderGateSvgPreview(gate));
+  }
 }
 
 export async function listFiles(path, prefix = '') {

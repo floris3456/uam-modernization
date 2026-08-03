@@ -6,9 +6,10 @@ import {
   modelPath, readJson, renderSvg, rootDir, sha256, sourceMapPath, stableJson, toolManifestPath, validateModel
 } from './atlas-lib.mjs';
 
+const gateIds = ['G0','G1','G2','G3','G4','G5','AG-06','AG-07','AG-08','AG-09','AG-10','AG-11','AG-12','AG-13','AG-14','AG-15'];
 const expected = [
   'gate-map.d2', 'gate-map.svg', 'gate-register.md', 'index.html',
-  ...['G0','G1','G2','G3','G4','G5','AG-06','AG-07','AG-08','AG-09','AG-10','AG-11','AG-12','AG-13','AG-14','AG-15'].map(id => `gates/${id}.html`)
+  ...gateIds.flatMap(id => [`gates/${id}.html`, `gates/${id}.d2`, `gates/${id}.svg`])
 ].sort();
 
 function localLinks(text) {
@@ -42,7 +43,7 @@ export async function validateGenerated(outDir, options = {}) {
     if (!index.includes(required)) throw new Error(`Dashboard is missing ${required}.`);
   }
   if (index.includes('<object class="diagram"')) throw new Error('Dashboard embeds the map as an object, which prevents reliable card navigation.');
-  for (const id of expected.filter(file => file.startsWith('gates/')).map(file => file.slice(6, -5))) {
+  for (const id of gateIds) {
     if (!index.includes(`href="gates/${id}.html" tabindex="0" aria-label=`)) throw new Error(`Dashboard map card does not link ${id}.`);
   }
   const g0 = await readFile(join(outDir, 'gates/G0.html'), 'utf8');
@@ -50,7 +51,7 @@ export async function validateGenerated(outDir, options = {}) {
     if (!g0.includes(required)) throw new Error(`G0 page is missing ${required}.`);
   }
   const d2 = await readFile(join(outDir, 'gate-map.d2'), 'utf8');
-  for (const id of expected.filter(file => file.startsWith('gates/')).map(file => file.slice(6, -5))) {
+  for (const id of gateIds) {
     if (!d2.includes(`gates/${id}.html`)) throw new Error(`D2 map does not link ${id}.`);
   }
   const svg = await readFile(join(outDir, 'gate-map.svg'), 'utf8');
@@ -58,10 +59,26 @@ export async function validateGenerated(outDir, options = {}) {
   const svgLines = [...svg.matchAll(/<tspan[^>]*>(.*?)<\/tspan>/g)].map(match => match[1].replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&quot;', '"'));
   const overlongLine = svgLines.find(line => line.length > 36);
   if (overlongLine) throw new Error(`SVG card text exceeds its line limit: ${overlongLine}`);
+  const detailAnchors = ['human-decisions', 'allowed-work', 'cli-evidence', 'pass-condition', 'stop-condition'];
+  for (const id of gateIds) {
+    const html = await readFile(join(outDir, 'gates', `${id}.html`), 'utf8');
+    const detailD2 = await readFile(join(outDir, 'gates', `${id}.d2`), 'utf8');
+    const detailSvg = await readFile(join(outDir, 'gates', `${id}.svg`), 'utf8');
+    if (!html.includes('id="gate-flow"') || !html.includes('class="gate-detail-diagram"')) throw new Error(`${id} page is missing its embedded detail diagram.`);
+    if (detailD2.includes('…') || detailSvg.includes('…')) throw new Error(`${id} detail diagram contains shortened text.`);
+    for (const anchor of detailAnchors) {
+      if (!html.includes(`id="${anchor}"`)) throw new Error(`${id} page is missing section ${anchor}.`);
+      if (!html.includes(`href="${id}.html#${anchor}"`) || !detailD2.includes(`link: "${id}.html#${anchor}"`) || !detailSvg.includes(`href="${id}.html#${anchor}"`)) throw new Error(`${id} detail diagram does not link ${anchor} in every generated view.`);
+    }
+    const detailLines = [...detailSvg.matchAll(/<tspan[^>]*>(.*?)<\/tspan>/g)].map(match => match[1].replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&quot;', '"'));
+    const overlongDetailLine = detailLines.find(line => line.length > 30);
+    if (overlongDetailLine) throw new Error(`${id} detail diagram line is too long: ${overlongDetailLine}`);
+  }
   if (options.renderCheck !== false) {
     const renderDir = await mkdtemp(join(tmpdir(), 'uam-atlas-render-'));
     try {
-      const one = join(renderDir, 'one.svg'); const two = join(renderDir, 'two.svg');
+      for (const file of expected.filter(file => file.endsWith('.d2'))) await renderSvg(join(outDir, file), join(renderDir, `${file.replaceAll('/', '-')}.svg`));
+      const one = join(renderDir, 'gate-map-first.svg'); const two = join(renderDir, 'gate-map-second.svg');
       await renderSvg(join(outDir, 'gate-map.d2'), one);
       await renderSvg(join(outDir, 'gate-map.d2'), two);
       const a = await readFile(one); const b = await readFile(two);

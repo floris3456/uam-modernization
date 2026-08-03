@@ -12,6 +12,7 @@ A new reader can quickly understand what UAM is, where the project stands, what 
 
 - One authoritative visualization model for all 16 aggregate proof gates.
 - A detailed, easy-language G0 view and overview-level views of the later gates.
+- A generated D2 and SVG proof-flow diagram on every gate page, with links to its decision, work, evidence, pass, and stop details.
 - Generated offline HTML, Markdown, D2, and SVG views.
 - A repository-local, checksum-verified D2 bootstrap process for supported Linux and Windows terminals.
 - Deterministic, failure-safe generation and strict validation.
@@ -56,6 +57,7 @@ A new reader can quickly understand what UAM is, where the project stands, what 
 9. Existing research results remain byte-for-byte unchanged.
 10. Focused checks and the complete repository validation pass.
 11. Diagram cards open their detailed gate pages and use complete plain-language summaries without cut-off text.
+12. Every gate page has a complete easy-language detail diagram generated from the model, and every box opens the matching section.
 
 ## Failure, recovery, and rollback
 
@@ -83,6 +85,6 @@ node scripts/atlas.mjs smoke-test
 
 ## Current validation state
 
-- The model, generated-file set, source links, status rules, confidentiality checks, deterministic generation, research validation, pre-implementation validation, and four required smoke mutations pass locally.
+- The model, generated-file set, source links, status rules, confidentiality checks, deterministic generation, research validation, pre-implementation validation, and six required smoke mutations pass locally.
 - The required real D2 render check is blocked because this environment's outbound HTTP tunnel returns 403 while downloading the pinned official release archive. The bootstrap fails before extraction and leaves `.tools/atlas/` without an executable.
 - The complete repository validator therefore stops at the Atlas D2 check. Do not mark this task `Review` or `Done` until `node scripts/atlas.mjs bootstrap` and `node scripts/atlas.mjs check` pass in a network-enabled terminal.

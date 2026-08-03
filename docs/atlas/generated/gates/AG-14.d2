@@ -1,0 +1,47 @@
+direction: right
+classes: {
+  normal: {
+    style: {
+      fill: "#f5f7fa"
+      stroke: "#566273"
+    }
+  }
+  stop: {
+    style: {
+      fill: "#fff2f2"
+      stroke: "#8b1e1e"
+      stroke-width: 2
+    }
+  }
+}
+start: "AG-14 · Migration comparison\nGate: open. Implementation: blocked. Depends on: G5, AG-09, AG-12." {
+  class: normal
+  link: "AG-14.html#main"
+}
+decision: "1. Humans decide\nApprove inventory scope, comparison rules, and mismatch ownership." {
+  class: normal
+  link: "AG-14.html#human-decisions"
+}
+work: "2. Allowed work\nFind every legacy dependency and compare shadow results without authority." {
+  class: normal
+  link: "AG-14.html#allowed-work"
+}
+evidence: "3. CLI proof\nReconcile closed ranges, dispositions, configuration, and blocked egress." {
+  class: normal
+  link: "AG-14.html#cli-evidence"
+}
+success: "4. Pass and unlock\nAllow cutover planning when every material difference is understood." {
+  class: normal
+  link: "AG-14.html#pass-condition"
+}
+stop: "Stop or hold\nStop for hidden dependencies, dual authority, shadow egress, or unknown gaps." {
+  class: stop
+  link: "AG-14.html#stop-condition"
+}
+start -> decision -> work -> evidence -> success
+evidence -> stop: "If proof fails" {
+  style: {
+    stroke: "#8b1e1e"
+    stroke-dash: 4
+  }
+}
