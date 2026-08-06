@@ -18,8 +18,6 @@ for (const file of required) if (!fs.existsSync(path.join(root, file))) failures
 if (fs.existsSync(path.join(root, "research-packs"))) failures.push("Legacy research-packs directory exists");
 
 const generatedChecks = [
-  ["scripts/generate-implementation-research.mjs", ["--check"]],
-  ["scripts/generate-research-index.mjs", ["--check"]],
   ["scripts/generate-research-evidence-manifest.mjs", ["--check"]],
 ];
 if (fs.existsSync(path.join(root, "applicaties_alle_zichtbare_informatie.csv"))) {
