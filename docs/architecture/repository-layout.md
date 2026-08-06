@@ -9,25 +9,32 @@ A new person or agent should find purpose, current scope, the next task, governi
 ```text
 /
 ├── README.md                    start here
-├── AGENTS.md                    shared working agreement
+├── AGENTS.md                    invariants + skill triggers (always-on layer)
 ├── CONTRIBUTING.md              contribution and review rules
+├── opencode.json                default agent
+├── opencode.example.json        key-free global config template for new machines
 ├── docs/
 │   ├── plain-language/          simple explanation and scope
-│   ├── milestones/              useful outcomes and gate evidence
+│   ├── milestones/              plans, gate evidence, deviation logs
 │   ├── work/                    current tasks, templates, handoffs
 │   ├── adr/                     important decisions
 │   ├── architecture/            stable system and repository views
+│   │   └── adopted-packages/    human-signed research-package acceptances
 │   └── governance/              ownership and human decisions
 ├── contracts/                   versioned schemas and examples (G0 onward)
 ├── src/                         deployable implementation (not started)
+│   └── <component>/AS-BUILT.md  per-component fact records (as work starts)
 ├── tests/                       automated tests and fictional fixtures
 ├── tools/                       repository-owned utilities/simulators
 ├── evidence/
 │   ├── manifests/               hashes and provenance
 │   └── sanitized/               safe derived measurements
-├── research/                    colocated studies, reviews, syntheses, evidence
+├── research/                    self-contained packages: studies, reviews, syntheses
 ├── UAM-overdracht-INTERN-*/     preserved legacy handover evidence
-├── scripts/                     deterministic generation/validation
+├── scripts/                     deterministic validation
+├── .opencode/
+│   ├── agents/                  orchestrator, developer, heavy (read-only)
+│   └── skills/                  role procedures, grouped by subject
 └── .github/                     CI, task forms, and review template
 ```
 
@@ -39,8 +46,11 @@ README placeholder files reserve future code boundaries without pretending that 
 | --- | --- | --- |
 | Simple explanation of behavior/scope | `docs/plain-language/` | Prefer this for the first reader. |
 | Delivery outcome or gate | `docs/milestones/` | State evidence and human acceptance. |
+| Plan-vs-reality drift | `<gate>-deviations.md` beside the milestone | References + why; part of gate acceptance. |
 | Work being done | `docs/work/current/` | One observable outcome per task. |
 | Architecture decision | `docs/adr/` | Include alternatives and status. |
+| Accepted research package | `docs/architecture/adopted-packages/` | Human-signed record: scope, synthesis hash, links. |
+| What was actually built | `src/<component>/AS-BUILT.md` | Facts + proof commands; updated during work. |
 | Reproducible measurement | `evidence/` | Commit sanitized output and provenance, not sensitive raw input. |
 | Contract shape | `contracts/` | Version schema and valid/invalid examples together. |
 | Product behavior | `src/` | Keep deployable components explicit. |
@@ -49,7 +59,7 @@ README placeholder files reserve future code boundaries without pretending that 
 
 ## Layered agent instructions
 
-The root `AGENTS.md` contains stable repository rules. A nested `AGENTS.md` is added only when a subtree has genuinely different commands or safety constraints. It should state differences, not copy the root. This keeps the instruction chain small and prevents contradictory guidance.
+The root `AGENTS.md` is the always-on layer: universal invariants plus a skill trigger table. Procedures live in role skills (`.opencode/skills/`, loaded on demand), not in nested `AGENTS.md` files; a nested file is added only when a subtree has genuinely different commands or safety constraints and should state differences, not copy the root. Model and permissions for the agents live in `.opencode/agents/`.
 
 ## Cleanup rules
 

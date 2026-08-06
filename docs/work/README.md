@@ -16,6 +16,7 @@ Use [experiment-template.md](templates/experiment-template.md) when the main out
 ## Work
 
 - Keep the brief current when facts change.
+- Update the component's AS-BUILT.md alongside the code; record a deviation-log line when reality differs from the plan.
 - Save deterministic, sanitized outputs under `evidence/`; do not paste raw evidence into the brief.
 - Prefer a command another person can rerun over a screenshot or chat claim.
 - Stop at the active gate.
@@ -23,8 +24,8 @@ Use [experiment-template.md](templates/experiment-template.md) when the main out
 ## Finish
 
 1. Run focused checks and `./scripts/validate-repository.sh`.
-2. Complete [handoff-template.md](templates/handoff-template.md).
-3. Move the task and handoff into `archive/<year>/` after human review.
+2. Complete [handoff-template.md](templates/handoff-template.md), including the as-built delta, deviation lines, and the review decision.
+3. After review (human when the agent is uncertain, skipped with a recorded reason otherwise), move the task and handoff into `archive/<year>/`.
 4. Make the next safe task explicit. Do not leave required context only in a chat.
 
 ## Status meanings

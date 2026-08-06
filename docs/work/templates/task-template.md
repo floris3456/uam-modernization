@@ -42,5 +42,8 @@ commands go here
 
 - Changed behavior and files.
 - Evidence locations and hashes where useful.
+- As-built delta: which component records were updated and their proof commands.
+- Deviation lines: where reality differed from the plan (plan ref → as-built ref → because).
+- Review decision: human review needed (attach a human review guide: what to look at when testing, which tools/commands to use) or skipped with reason.
 - Residual risks and untested cases.
 - Next safe task.

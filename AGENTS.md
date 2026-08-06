@@ -1,3 +1,34 @@
 # Repository working agreement
 
-This file is intentionally empty. The working agreement is being redesigned in a new chat about repeatable workflows. Until that design lands, follow the [repository README](README.md), [contribution rules](CONTRIBUTING.md), and [docs/work/README.md](docs/work/README.md), and keep changes small and reversible.
+Human-first; token-efficient; small reversible changes; run the validator before handoff.
+
+## Invariants
+
+- Research is never acceptance; gates are human-accepted.
+- Research results are immutable evidence; intentional changes are recorded and the hash ledger refreshed.
+- Raw production data never travels: never committed, never zipped.
+- A fact has one normative home; everywhere else links (references, not copies).
+- Plans are proposals; as-built records are facts; reality wins.
+- Know the objective state of the repository (what is disposable, frozen, uncertain) — when a premise is uncertain, ASK the human.
+
+## Skill triggers
+
+| When | Load |
+| --- | --- |
+| Work under `research/` | `research-workflow` |
+| Writing or reviewing a research prompt | `prompt-authoring` |
+| Implementing or touching a component | `as-built` |
+| Reviewing code or PRs | `code-review` |
+| Milestone, deviation-log, or gate work | `gate-workflow` |
+| Starting or finishing a task | `task-workflow` |
+| Turning a conversation into documentation | `conversation-distiller` |
+
+Skills live in `.opencode/skills/`; agents in `.opencode/agents/` (orchestrator, developer, heavy — heavy is read-only).
+
+## Pointers
+
+- [README.md](README.md) — start here
+- [docs/work/README.md](docs/work/README.md) — task workflow
+- [research/WORKFLOW.md](research/WORKFLOW.md) — research lifecycle overview
+- [docs/architecture/repository-layout.md](docs/architecture/repository-layout.md) — where things belong
+- `./scripts/validate-repository.sh` — all checks

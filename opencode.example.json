@@ -1,0 +1,33 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "tavily": {
+      "type": "local",
+      "command": ["npx", "-y", "tavily-mcp@latest"],
+      "enabled": true,
+      "environment": {
+        "TAVILY_API_KEY": "<your-tavily-key>"
+      }
+    }
+  },
+  "provider": {
+    "kimi-k3-modal": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Kimi K3 (Modal)",
+      "options": {
+        "baseURL": "<your-modal-endpoint>",
+        "apiKey": "<your-api-key>"
+      },
+      "models": {
+        "moonshotai/Kimi-K3": {
+          "name": "Kimi K3",
+          "cost": {
+            "input": 3,
+            "output": 15,
+            "cache_read": 0.3
+          }
+        }
+      }
+    }
+  }
+}
