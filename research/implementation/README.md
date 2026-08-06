@@ -40,18 +40,16 @@
 ## Shared material
 
 - [Context and workflow](context/workflow.md)
-- [Project-file allowlists](context/project-file-allowlists.md)
 - [Evidence map](context/evidence-map.md)
 - [Sanitized attachments](attachments/)
-- [Machine-readable manifest](manifest.json)
 
-Each study keeps its prompt, result, and short index together. Each batch keeps its studies and review together. Obsolete one-time execution-wave documents have been removed; dependency order is encoded in the manifest and prompt allowlists.
+Each study keeps its prompt, result, and short index together. Each batch keeps its studies and review together.
 
 ## Regenerate and validate
 
 ```bash
-node scripts/research.mjs check
-node scripts/research.mjs validate
+node scripts/validate-research.mjs
+./scripts/validate-repository.sh
 ```
 
 Research recommends and explains. ADRs record human decisions. CLI experiments provide project-specific proof.

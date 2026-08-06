@@ -1,6 +1,5 @@
 # Research templates
 
-- The [study files](study/) show the generated shape for one bounded topic; do not copy them manually.
+- The [study template](study/) shows the shape for one bounded topic: `prompt.md`, `README.md`, and a `result-NN-<slug>.md` target. Copy it when scaffolding a new study.
 - Use [the review checklist](review-checklist.md) before accepting a result.
-
-Create a study with `node scripts/research.mjs add ...`. Define it once in `research/catalog.json`; the generator creates its folder, prompt, result target, indexes, allowlists, and manifest entries.
+- The package-card shape is described in `research/WORKFLOW.md`; the prompt-authoring guide is the `prompt-authoring` skill (`.opencode/skills/research/prompt-authoring/SKILL.md`).

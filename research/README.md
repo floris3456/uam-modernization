@@ -1,49 +1,49 @@
 # UAM research
 
-This directory contains completed research evidence in a layout designed for people and agents.
+This directory holds research packages: studies with prompts and preserved results, reviews, syntheses, and decision sheets. Each package is self-contained and described by its package card (`README.md`). The repeatable lifecycle lives in [WORKFLOW.md](WORKFLOW.md); the role procedures live in the skills (`.opencode/skills/`).
 
-## Start here
+## Packages
+
+| Package | Status | Contents |
+| --- | --- | --- |
+| [baseline](baseline/README.md) | complete-historical | first research cycle, retained for provenance |
+| [implementation](implementation/README.md) | complete | 24 studies, 6 batch reviews, one final synthesis |
+
+## Reading order
 
 1. Read the current [implementation synthesis](implementation/synthesis/result-implementation-technical-baseline.md).
-2. Open the relevant [implementation batch](implementation/batches/README.md).
+2. Open the relevant package card.
 3. Open an individual study only for its detailed evidence.
-4. Use [the workflow](WORKFLOW.md) when adding or refreshing research.
 
 ## Layout
 
 ```text
 research/
-├── README.md                 this index
-├── WORKFLOW.md               repeatable research lifecycle
-├── AGENTS.md                 local safety and maintenance rules
-├── catalog.json              authoritative research definition
-├── manifest.json             machine-readable suite index
-├── templates/                new-study and review templates
-├── baseline/                 completed first research cycle
-│   ├── context/
-│   ├── attachments/
-│   ├── studies/<study>/      prompt + result + README
-│   └── synthesis/            prompt + result
-└── implementation/           current implementation research
-    ├── context/
-    ├── attachments/
-    ├── evidence/
-    ├── batches/<batch>/
-    │   ├── <study>/          prompt + result + README
-    │   └── review/           prompt + result + README
-    └── synthesis/            prompt + result + README
+├── WORKFLOW.md                 repeatable research lifecycle
+├── templates/                  package-card, study, and review templates
+├── <package>/
+│   ├── README.md               package card: scope, status, decisions informed
+│   ├── attachments/            sanitized non-code inputs (optional)
+│   ├── studies/NN-<slug>/      prompt + result + README
+│   ├── review/                 only when the area is batched
+│   └── synthesis/              prompt + result (+ conclusions.md)
+└── (a future package sits beside the others)
 ```
 
 ## Invariants
 
-- A study keeps its prompt and result together.
-- Result filenames are globally unique so they can coexist in a ChatGPT Project.
-- Shared context and uploadable attachments are separate.
-- A batch review consumes its studies and earlier reviews; the final synthesis consumes batch reviews, not every topic.
-- Generated material is changed through its generator and checked in CI.
-- Batches, studies, attachments, and dependencies are declared once in `catalog.json`.
-- Research evidence cannot approve policy, risk, ownership, or production use.
+- A study keeps its prompt and result together; result filenames are globally unique.
+- Populated results are preserved evidence. Do not rewrite them casually; intentional changes are recorded and the hash ledger refreshed.
+- Generated research artifacts no longer exist — validation is walk-based and suite-agnostic; templates give the shape.
+- Research evidence cannot approve policy, risk, ownership, or production use; promotion requires a human disposition.
 
-## Repeat the workflow
+## Rejected routes
 
-Use `node scripts/research.mjs help`. The normal loop is `add`, edit the one catalogue entry, `generate`, run the web research, save its result beside the prompt, then `validate`.
+Routes rejected by human disposition are recorded here so they are never re-researched. To be filled as packages complete.
+
+## Validate
+
+```bash
+node scripts/validate-research.mjs
+./scripts/validate-repository.sh
+```

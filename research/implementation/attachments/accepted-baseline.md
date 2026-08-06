@@ -2,7 +2,7 @@
 
 **Classification:** internal summary sanitized for an approved research chat.
 **Source:** July 2026 final synthesis; SHA-256 `d456e5945d672d454a8d204a3d2b1ec1a9710aad865fea15a59d8cb42d408fa1`.
-**Generation:** deterministic curated baseline produced by `scripts/generate-implementation-research.mjs`.
+**Generation:** deterministic curated baseline produced by `scripts/generate-implementation-research.mjs` (retired 2026-08-07; file frozen).
 **Status:** working baseline for implementation research; production authority remains gated.
 **Limitation:** condensed decisions and gates, not full evidence, human approval, or runtime proof.
 **Baseline date:** 31 July 2026.

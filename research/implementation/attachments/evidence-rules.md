@@ -2,7 +2,7 @@
 
 **Classification:** safe research instructions; contains no source values.
 **Source:** lessons from the previous UAM research suite and current package requirements.
-**Generation:** deterministic text from `scripts/generate-implementation-research.mjs`.
+**Generation:** deterministic text from `scripts/generate-implementation-research.mjs` (retired 2026-08-07; file frozen).
 **Limitation:** governs research quality; it is not evidence that any technical claim is true.
 
 Use these labels consistently:

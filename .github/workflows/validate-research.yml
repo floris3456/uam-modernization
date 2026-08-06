@@ -20,8 +20,10 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Confirm generated research is current
+      - name: Validate research and evidence manifest
         run: |
           ./scripts/generate-research-code-reference.sh
           git diff --exit-code -- research/baseline/attachments/code-reference.md
-          node scripts/research.mjs check
+          node scripts/validate-research.mjs
+          node scripts/generate-research-evidence-manifest.mjs
+          git diff --exit-code -- evidence/manifests/research-evidence.json

@@ -2,7 +2,7 @@
 
 **Classification:** internal summary sanitized for an approved research chat.
 **Source:** the July 2026 final synthesis of six prior research results; SHA-256 `d456e5945d672d454a8d204a3d2b1ec1a9710aad865fea15a59d8cb42d408fa1`.
-**Generation:** deterministic curated extract by `scripts/generate-implementation-research.mjs`.
+**Generation:** deterministic curated extract by `scripts/generate-implementation-research.mjs` (retired 2026-08-07; file frozen).
 **Limitation:** accepted for implementation research, not unconditional production approval.
 
 ## Strong agreements
