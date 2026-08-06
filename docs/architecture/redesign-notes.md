@@ -162,7 +162,7 @@ full results                        → only when a detail actually matters
 
 ## 6. Prompt authoring guide (ingredient framework)
 
-Prompt composition is a repeatable decision, not a feeling. Fixed ingredient catalogue in `research/templates/prompt-guide.md`; each ingredient has an inclusion condition; the package card records which conditional ingredients were chosen and why.
+Prompt composition is a repeatable decision, not a feeling. Fixed ingredient catalogue in the `prompt-authoring` skill (`.opencode/skills/research/prompt-authoring/SKILL.md`, the operational home); each ingredient has an inclusion condition; the package card records which conditional ingredients were chosen and why.
 
 | Ingredient | What it produces | When to include |
 | --- | --- | --- |

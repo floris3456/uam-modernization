@@ -1,6 +1,9 @@
-# Prompt authoring guide
+---
+name: prompt-authoring
+description: Use when writing, reviewing, or assembling a research prompt for another agent (web research, heavy-model reviews, distillers). Covers the ingredient catalogue, output-mode rule, OSS research shape, and the authoring flow. The package card records chosen ingredients and why.
+---
 
-Prompt composition is a repeatable decision, not a feeling. Pick the ingredients below, record your choices and the reasons on the package card, then assemble the prompt from the study template.
+# Prompt authoring
 
 ## Ingredient catalogue
 
@@ -19,15 +22,15 @@ Prompt composition is a repeatable decision, not a feeling. Pick the ingredients
 | Cost/ops review | TCO, licensing, on-call | budget or operations factor |
 | Migration impact | Change surface | alters existing behavior |
 | Negative-evidence search | Change conditions | load-bearing decisions |
-| Objective-state declaration | Shared premise | ALWAYS when delegating to another agent: state what is disposable, frozen, and uncertain; ask the human when in doubt |
+| Objective-state declaration | Shared premise | ALWAYS when delegating: state what is disposable, frozen, and uncertain; ask the human when in doubt |
 
 ## Output-mode rule
 
-If the next artifact after this research is a PLAN → `synthesis+implementation`. If it is a decision or another research step → `synthesis` (minimal labeled seeds allowed when they help the next step).
+If the next artifact after this research is a PLAN → `synthesis+implementation` (separate `theoretical-implementation.md`, THEORETICAL/ESTIMATE labels, change conditions, unverified until CLI experiment). If it is a decision or another research step → `synthesis` (labeled seeds allowed when they help the next step).
 
-## OSS research synthesis shape (mandatory when included)
+## OSS research synthesis shape (when included)
 
-Comparison table (candidate, license, maintenance, fit, gaps, security assessment) + "what we would take inspiration from" + explicit "no relevant prior art exists" when true. Feeds dependency admission (ADR-FS-032).
+Comparison table (candidate, license, maintenance, fit, gaps, security) + "what we would take inspiration from" + explicit "no relevant prior art exists" when true. Feeds dependency admission (ADR-FS-032).
 
 ## Authoring flow
 
@@ -36,8 +39,8 @@ Comparison table (candidate, license, maintenance, fit, gaps, security assessmen
 3. Unknowns → drive the research questions.
 4. Match conditions → tick ingredients.
 5. Load-bearing claims → negative-evidence + CLI experiment + change conditions.
-6. Review against the template → sections complete, anchors mandated, reading list embedded.
+6. Review against the study template → sections complete, anchors mandated, reading list embedded.
 
-## Living catalogue
+## Mandates
 
-New ingredients are added with their inclusion condition when discovered. The package card records which conditional ingredients were chosen and why, so every prompt is auditable.
+Every prompt demands: visible reasoning (conflict reconstruction, evidence weighting, explicit UNKNOWNs, per-conclusion change conditions); stable ASCII heading anchors for load-bearing sections; a one-page Human summary front section for synthesis results. The study template (`research/templates/study/prompt.md`) is the assembly basis.
