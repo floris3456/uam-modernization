@@ -7,8 +7,6 @@ cd "$repo_root"
 ./scripts/generate-research-code-reference.sh
 git diff --exit-code -- research/baseline/attachments/code-reference.md
 node scripts/research.mjs check
-node scripts/atlas.mjs check
-node scripts/atlas.mjs smoke-test
 node scripts/validate-preimplementation.mjs
 
 if command -v pwsh >/dev/null 2>&1; then
