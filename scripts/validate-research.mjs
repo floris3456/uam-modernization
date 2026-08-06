@@ -58,6 +58,21 @@ for (const directory of directories(researchRoot)) {
 const resultFiles = files.filter(isResult);
 const resultNames = resultFiles.map((file) => path.basename(file));
 if (new Set(resultNames).size !== resultNames.length) fail("Research result basenames are not globally unique");
+const requiredPromptSections = [
+  "## Expert role",
+  "## Result target",
+  "## Research questions",
+  "## Required output",
+  "## Human decisions",
+  "## CLI evidence and experiments",
+  "## Residual risk",
+];
+for (const file of files.filter((item) => item.endsWith("/prompt.md") && !rel(item).startsWith("research/baseline/"))) {
+  const content = fs.readFileSync(file, "utf8");
+  for (const section of requiredPromptSections) {
+    if (!content.includes(section)) fail(`${rel(file)} lacks required prompt section: ${section}`);
+  }
+}
 for (const resultFile of resultFiles) {
   const directory = path.dirname(resultFile);
   if (!fs.existsSync(path.join(directory, "prompt.md"))) fail(`${rel(resultFile)} lacks a colocated prompt.md`);

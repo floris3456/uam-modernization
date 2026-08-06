@@ -8,9 +8,9 @@
 
 ## Inputs
 
-- Shared attachments:
-- Accepted predecessor results:
+- Code zips:
+- Attachments:
 
 ## Completion rule
 
-The result is saved, reviewed at its declared boundary, validated, and converted into explicit ADR proposals, human decisions, or CLI experiments.
+The result is saved verbatim, reviewed with the review checklist, validated (`node scripts/validate-research.mjs`), and converted into explicit ADR proposals, human decisions, or CLI experiments through the conclusions sheet.

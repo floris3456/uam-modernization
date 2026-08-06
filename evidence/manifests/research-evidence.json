@@ -2,7 +2,7 @@
   "schemaVersion": 3,
   "classification": "Internal research evidence manifest; contains paths, sizes, and hashes but no research content",
   "generation": "node scripts/generate-research-evidence-manifest.mjs",
-  "resultCount": 38,
+  "resultCount": 40,
   "results": [
     {
       "suite": "baseline",
@@ -231,6 +231,18 @@
       "path": "research/implementation/synthesis/result-implementation-technical-baseline.md",
       "byteCount": 268015,
       "sha256": "bf98e8d8295cdc5d16742eecafd9a6c7af29485a8b6dbeeac6315c6656b12734"
+    },
+    {
+      "suite": "mock-anchor-conventions",
+      "path": "research/mock-anchor-conventions/studies/01-anchor-slug-rules/result-01-anchor-slug-rules.md",
+      "byteCount": 1478,
+      "sha256": "94a4551833d7e764c8de8e370ca1951ff390d83bf9949c05a31048c89649f426"
+    },
+    {
+      "suite": "mock-anchor-conventions",
+      "path": "research/mock-anchor-conventions/synthesis/result-mock-anchor-conventions-synthesis.md",
+      "byteCount": 1392,
+      "sha256": "bcd56a4cb1c6fb6707007c9823efad13bb69757ad389ca9b32c82a07325ac8a2"
     }
   ],
   "limitations": [
