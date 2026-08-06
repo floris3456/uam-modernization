@@ -43,8 +43,8 @@
     {
       "suite": "baseline",
       "path": "research/baseline/synthesis/result-baseline-technical-synthesis.md",
-      "byteCount": 118273,
-      "sha256": "d456e5945d672d454a8d204a3d2b1ec1a9710aad865fea15a59d8cb42d408fa1"
+      "byteCount": 120351,
+      "sha256": "2da49a8e3c8b9da82ed15636cd7dceeaae141d29c0232e900150ebc5c0128240"
     },
     {
       "suite": "implementation",
@@ -229,8 +229,8 @@
     {
       "suite": "implementation",
       "path": "research/implementation/synthesis/result-implementation-technical-baseline.md",
-      "byteCount": 266209,
-      "sha256": "40ac82fcc88942a203df5daad4328bc088a3a37a72682f5b815d25a28bc9d522"
+      "byteCount": 268015,
+      "sha256": "bf98e8d8295cdc5d16742eecafd9a6c7af29485a8b6dbeeac6315c6656b12734"
     }
   ],
   "limitations": [

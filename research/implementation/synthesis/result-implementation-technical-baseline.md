@@ -7,6 +7,20 @@
 
 ---
 
+## Human summary
+
+**What this is:** the final synthesis of the implementation research package (24 studies, 6 batch reviews). It proposes a complete architecture for the UAM replacement and decides what is ready to build now. It recommends; it does not approve anything on its own.
+
+**The recommendation in one paragraph:** build the replacement as a deliberately narrow sequence of independently falsifiable gates, starting with G0 (fictional data, strict contracts, independent oracle, privacy canaries). Endpoint: a low-privilege Coordinator service, one ordinary-token User Host per interactive session, and short-lived restricted Task Hosts for risky collection. Server: modular monolith with authenticated ingestion, durable relational inbox, leased workers, typed facts. Portal: aggregate-first, capability-based, transactionally audited. Migration: dual observation with one authority until cutover is gated.
+
+**The shape of the evidence:** the six batch architectures compose without changing the accepted baseline (High confidence). Load-bearing claims that remain unproven until measured: Windows runtime behavior, browser acquisition safety, SQLite durability under faults, database engine choice, capacity figures. Those are deliberately converted into CLI experiments and human decisions, not asserted.
+
+**What is ready now (research-wise):** scaffolding, contracts, fictional fixtures, the independent oracle, state models, and the G0 infrastructure. **What is not ready:** anything touching live data, production integration, database/product choices, pilot, or deployment — each has its own gate.
+
+**In one line:** the architecture is trusted as a plan; the proof is gated gate-by-gate, and every numeric or production claim stays an experiment or a human decision until measured.
+
+---
+
 ## Evidence vocabulary
 
 This result uses the required labels:

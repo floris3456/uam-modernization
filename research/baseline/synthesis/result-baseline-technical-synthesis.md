@@ -10,6 +10,20 @@ The legacy code is evidence of behavior, not an approved specification. Static i
 
 ---
 
+## Human summary
+
+**What this is:** the final synthesis of the first (baseline) research cycle — six broad studies that challenged the original modernization proposal. It is retained for provenance; the implementation package later consumed and refined its conclusions.
+
+**The recommendation in one paragraph:** build the replacement as clearly separated components, not one powerful agent. On each Windows device: a low-privilege machine service owns identity, policy verification, the local SQLite queue, uploads, and health; browser and Recent-item collection runs in the signed-in user's session; risky collectors run in short-lived restricted child processes. Filter and minimize before anything enters the outbox, under a release-signed product privacy ceiling that policy may only narrow. Use C#/.NET, pinned SQLite locally, versioned JSON over mTLS, and a relational durable inbox centrally — a broker is an escalation, not a default. PostgreSQL is the target reference; SQL Server remains the benchmarked fallback. MSI plus enterprise deployment owns the stable boundary; any autonomous updater is optional and TUF-style signed.
+
+**What it decided:** eleven cross-study agreements (service-only collection is indefensible; endpoints never get database credentials; deferred SQL is the wrong offline format; collection and checkpoints must be atomic; delivery at least once with idempotent effect; six thousand devices is not a throughput requirement; migration preserves approved outcomes, not mechanisms).
+
+**What it did not approve:** production. A named list of missing evidence (real event-rate distributions, offline duration, consumer inventory, field-level purpose register, operating capability, compatibility matrices, update-key recovery, deletion-after-restore) blocks unconditional approval; each gap is converted into a bounded experiment or owner decision.
+
+**In one line:** approve the baseline for a falsification-oriented proof program and the first Browser History vertical slice — nothing broader without gates and named human decisions.
+
+---
+
 # 1. Executive recommendation in easy language
 
 ## 1.1 Recommendation

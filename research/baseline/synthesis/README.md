@@ -1,6 +1,6 @@
 # Baseline synthesis
 
-- [Prompt](prompt.md)
-- [Result](result-baseline-technical-synthesis.md)
+- [Conclusions (historical decision sheet)](conclusions.md)
+- [Result](result-baseline-technical-synthesis.md) — Human summary front section, then detail
 
-This result is historical. The implementation synthesis is the current research entry point.
+This package is historical. The implementation synthesis is the current research entry point.

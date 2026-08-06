@@ -11,9 +11,9 @@ This directory holds research packages: studies with prompts and preserved resul
 
 ## Reading order
 
-1. Read the current [implementation synthesis](implementation/synthesis/result-implementation-technical-baseline.md).
-2. Open the relevant package card.
-3. Open an individual study only for its detailed evidence.
+1. Start with the [implementation conclusions (decision sheet)](implementation/synthesis/conclusions.md).
+2. Read the [Human summary](implementation/synthesis/result-implementation-technical-baseline.md#human-summary) for the reasoning in brief.
+3. Open the relevant package card or study only for detail.
 
 ## Layout
 
