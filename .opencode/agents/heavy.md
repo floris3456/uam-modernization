@@ -12,6 +12,7 @@ permission:
     "git log*": allow
     "git ls-files*": allow
     "ls *": allow
+    "node scripts/validate-research.mjs*": allow
   task:
     "*": deny
   webfetch: allow
