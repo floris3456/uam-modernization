@@ -10,7 +10,7 @@ Save the complete response as `result-01-uuidv7-dotnet-oss.md`, with stable head
 
 ## Inputs
 
-- Code zips: none (no code-bearing roots exist yet).
+- Code zips: not applicable — this is an external-ecosystem question; the repository's code roots (e.g. `scripts/`) are not inputs to this study.
 - Attachments: none.
 
 ## Reading list

@@ -6,8 +6,9 @@ This directory holds research packages: studies with prompts and preserved resul
 
 | Package | Status | Contents |
 | --- | --- | --- |
-| [baseline](baseline/README.md) | complete-historical | first research cycle, retained for provenance |
+| [baseline](baseline/README.md) | complete (historical) | first research cycle, retained for provenance |
 | [implementation](implementation/README.md) | complete | 24 studies, 6 batch reviews, one final synthesis |
+| [pilot-uuidv7-dotnet](pilot-uuidv7-dotnet/README.md) | complete | one study, one synthesis — workflow pilot; dispositions pending |
 
 ## Reading order
 
@@ -39,7 +40,11 @@ research/
 
 ## Rejected routes
 
-Routes rejected by human disposition are recorded here so they are never re-researched. To be filled as packages complete.
+Routes rejected by human disposition are recorded here so they are never re-researched. PRE-FLIGHT of any new package checks this table.
+
+| Route / package | Rejected | Why | Link |
+| --- | --- | --- | --- |
+| *(none recorded yet)* | | | |
 
 ## Validate
 

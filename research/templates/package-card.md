@@ -1,6 +1,6 @@
 # <area> — <decision area title>
 
-**Status:** Draft
+**Status:** Draft → in progress → complete · abandoned · superseded
 **Type:** extensive | one-off
 **Output:** synthesis | synthesis+implementation
 **ETA / expected duration:**

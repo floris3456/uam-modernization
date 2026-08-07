@@ -5,244 +5,244 @@
   "resultCount": 40,
   "results": [
     {
-      "suite": "baseline",
+      "package": "baseline",
       "path": "research/baseline/studies/01-architecture-validation/result-01-architecture-validation.md",
       "byteCount": 137189,
       "sha256": "6b52a57f35c25386eb0578ccdea28441d7e41e2577ee8c5b14c86dd97729a0ae"
     },
     {
-      "suite": "baseline",
+      "package": "baseline",
       "path": "research/baseline/studies/02-language-stack/result-02-language-stack.md",
       "byteCount": 78431,
       "sha256": "49f367ab5aa21cb178dde513158a66ff16b4e1592ec2568764979e53199eea31"
     },
     {
-      "suite": "baseline",
+      "package": "baseline",
       "path": "research/baseline/studies/03-security-privacy/result-03-security-privacy.md",
       "byteCount": 137072,
       "sha256": "de42b5bf824101e63e87c74f09ada5138f140396d7a6ee0da7b34fd0d3fd2a11"
     },
     {
-      "suite": "baseline",
+      "package": "baseline",
       "path": "research/baseline/studies/04-windows-feasibility/result-04-windows-feasibility.md",
       "byteCount": 123096,
       "sha256": "3531b5003e5f8a2465dbab62736bf459628687dd4294cb34b59e8c10cbfc0538"
     },
     {
-      "suite": "baseline",
+      "package": "baseline",
       "path": "research/baseline/studies/05-scale-reliability/result-05-scale-reliability.md",
       "byteCount": 84596,
       "sha256": "fe9773e06ad9f64dbcd8f83ea4d4bed270f815bb0e654a92ed3dd149703f04b5"
     },
     {
-      "suite": "baseline",
+      "package": "baseline",
       "path": "research/baseline/studies/06-requirements-migration/result-06-requirements-migration.md",
       "byteCount": 137789,
       "sha256": "8e5e8d037ccf4054525a73543bbe84fdde3bde10e706ca411721432f4434ef0d"
     },
     {
-      "suite": "baseline",
+      "package": "baseline",
       "path": "research/baseline/synthesis/result-baseline-technical-synthesis.md",
       "byteCount": 120351,
       "sha256": "2da49a8e3c8b9da82ed15636cd7dceeaae141d29c0232e900150ebc5c0128240"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/01-foundations/01-g0-dummy-data-test-oracle/result-01-g0-dummy-data-test-oracle.md",
       "byteCount": 269979,
       "sha256": "0e2cfb7320d97cc784a032636513c35bcf6974372aa9974bbc5df143a351e3ca"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/01-foundations/02-g1-windows-runtime-ipc/result-02-g1-windows-runtime-ipc.md",
       "byteCount": 280680,
       "sha256": "fc1905b58db5ede49144d200173a241c6acb6f09d68d86eb5efe7781957293bd"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/01-foundations/03-contract-versioning/result-03-contract-versioning.md",
       "byteCount": 298078,
       "sha256": "34d6284fc2dd46cdf1af479cc8e2fb53510fa48f236f5b19597ab13788d31967"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/01-foundations/04-application-registry-matching/result-04-application-registry-matching.md",
       "byteCount": 262320,
       "sha256": "1581b0f72a536078d6e07fdf96ab2ec740e7fb30a9bac44d018bb9dc401a6955"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/01-foundations/05-privacy-ceiling-tenant-policy/result-05-privacy-ceiling-tenant-policy.md",
       "byteCount": 259733,
       "sha256": "ce6a12e391a54b949dc4025aefd7b11449e1b9ac9a91d4737c49cd9978a9308b"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/01-foundations/06-repository-build-ci/result-06-repository-build-ci.md",
       "byteCount": 222160,
       "sha256": "07f23bad9fcb13b897a365e6c2a32b8a082b04d3ce000f267d7ccfa34a3ba116"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/01-foundations/review/result-review-01-foundations.md",
       "byteCount": 135462,
       "sha256": "f18178f447064fb98c80b6eee311fddae7c2c908b5a854f2fc53bbecc3452fb6"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/02-endpoint-data/07-g2-g3-edge-acquisition-cursor/result-07-g2-g3-edge-acquisition-cursor.md",
       "byteCount": 228661,
       "sha256": "4b85eab379951d5d37ebe9d7c291e2292622ba83eb98bd288cbc1e32808a72a6"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/02-endpoint-data/08-g4-url-privacy-transformation/result-08-g4-url-privacy-transformation.md",
       "byteCount": 228533,
       "sha256": "eccc859ded453646a16d54136659bfc256c57d5679ec3e9cecf70d580263fc5f"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/02-endpoint-data/review/result-review-02-endpoint-data.md",
       "byteCount": 178509,
       "sha256": "cc31f4b8c56c7f038e9542f6f6d91c3d6bc8a98ab209ec894adac2afd8e78844"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/03-durability-release-identity/09-g5-sqlite-outbox-state-machines/result-09-g5-sqlite-outbox-state-machines.md",
       "byteCount": 281982,
       "sha256": "9b0ba3b198e10dec1836bf067f0a2f2b5f4567293c05b45677663122e838e1bb"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/03-durability-release-identity/10-invariant-fault-testing/result-10-invariant-fault-testing.md",
       "byteCount": 238536,
       "sha256": "8f0963fafd4c1b1220065a14ad3f8a1699d0aabd0ea2dd70300cf223e61951dc"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/03-durability-release-identity/11-release-updater-supply-chain/result-11-release-updater-supply-chain.md",
       "byteCount": 245530,
       "sha256": "b15787e8fbea6222393d0d80b127f519c2014413868b30e55351c8cb1c67c9cb"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/03-durability-release-identity/12-device-identity-network/result-12-device-identity-network.md",
       "byteCount": 312277,
       "sha256": "bac651bf23427436266f64401e7ca9437396cf0c0ff102f0ccb10f7e1af66b58"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/03-durability-release-identity/13-diagnostics-support/result-13-diagnostics-support.md",
       "byteCount": 206760,
       "sha256": "584df9344d49730e14e1840b15d0fa871622a35f469ff0c07e6b5e75307d88af"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/03-durability-release-identity/14-windows-compatibility-policy/result-14-windows-compatibility-policy.md",
       "byteCount": 251710,
       "sha256": "82a71c9cfcc5cabd22ef0d993ecc7968e21dc406ac5a0875ff5ecec802e333bc"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/03-durability-release-identity/review/result-review-03-durability-release-identity.md",
       "byteCount": 194299,
       "sha256": "d629cf0437918c530bf7bd8451ef7cf25bc922f2e34ebfa7a9cbdd0a06e27c2f"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/04-server-platform/15-ingestion-relational-inbox/result-15-ingestion-relational-inbox.md",
       "byteCount": 280905,
       "sha256": "c6b09b1c685971b581080201a3d5728f14173bfc80f0b8e6620b034716764a6f"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/04-server-platform/16-database-comparison-experiment/result-16-database-comparison-experiment.md",
       "byteCount": 260014,
       "sha256": "57fa5fc5bc429d3b54d05e92acdf1901c9741ed30608f1b85067cd07dad0a13d"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/04-server-platform/17-capacity-fleet-simulator/result-17-capacity-fleet-simulator.md",
       "byteCount": 227450,
       "sha256": "a58d78abcc6ba8d4fd67216eef9388cea14ef9bd85f636a879a06d74b88007bf"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/04-server-platform/18-retention-deletion-restore/result-18-retention-deletion-restore.md",
       "byteCount": 159419,
       "sha256": "e01b2badef817278041292e104c74fc6852e85bf790dd7eb61810b81db9da616"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
       "byteCount": 255292,
       "sha256": "a8b8a47cabbf54581c3faa7cb588a6635dc8a8e0d4cd8378d69e0409535ee00f"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/05-portal-governance/19-portal-authorization/result-19-portal-authorization.md",
       "byteCount": 245404,
       "sha256": "56ff80c2bb94f91bce01fbeef8f6266303c65a836c9a00268028c0d62e1bf50b"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/05-portal-governance/20-portal-information-workflows/result-20-portal-information-workflows.md",
       "byteCount": 230920,
       "sha256": "d97b84607b8e201da03903b07d1240b08745568729d0c9fae62d9edb0f6eebc0"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/05-portal-governance/21-transactional-audit/result-21-transactional-audit.md",
       "byteCount": 262759,
       "sha256": "fd82bdc904f22555424173c7b8b92c76be8ad1eccf01d8ad7e114b7c51fecf19"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/05-portal-governance/review/result-review-05-portal-governance.md",
       "byteCount": 315728,
       "sha256": "4aaf99a789faf30f20f1c3b7e86c9c68e4455207fbdcebe525b09645e19232b3"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/06-migration/22-legacy-discovery/result-22-legacy-discovery.md",
       "byteCount": 248364,
       "sha256": "e703c3b413c5ab7c1a9e5a5d82e29c9d5fd0c183d99996dd2326b7130ad53c7a"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/06-migration/23-parallel-run-reconciliation/result-23-parallel-run-reconciliation.md",
       "byteCount": 177405,
       "sha256": "f0bba4a9384484f0ef36be4e3439026acfb75768bba56d6c340a2f69ff46c291"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/06-migration/24-cutover-decommission/result-24-cutover-decommission.md",
       "byteCount": 189715,
       "sha256": "579eab55ee9c0e6777435ef289acbdca68da2e15018ddd9aeaeac918c392de09"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/batches/06-migration/review/result-review-06-migration.md",
       "byteCount": 240312,
       "sha256": "c76c84433cca1baa7f298da9816d4000b43d7d18f9f11448b56a5b58d0c6c828"
     },
     {
-      "suite": "implementation",
+      "package": "implementation",
       "path": "research/implementation/synthesis/result-implementation-technical-baseline.md",
       "byteCount": 268015,
       "sha256": "bf98e8d8295cdc5d16742eecafd9a6c7af29485a8b6dbeeac6315c6656b12734"
     },
     {
-      "suite": "pilot-uuidv7-dotnet",
+      "package": "pilot-uuidv7-dotnet",
       "path": "research/pilot-uuidv7-dotnet/studies/01-uuidv7-dotnet-oss/result-01-uuidv7-dotnet-oss.md",
-      "byteCount": 4469,
-      "sha256": "ddbcada6003b991834349baa848d7e05c0c776436fda701d389ffd508920f32a"
+      "byteCount": 4603,
+      "sha256": "fd3e6d760680f442e4823d51e6af1bcdbd260f134558f189d7663684d3da2bb4"
     },
     {
-      "suite": "pilot-uuidv7-dotnet",
+      "package": "pilot-uuidv7-dotnet",
       "path": "research/pilot-uuidv7-dotnet/synthesis/result-pilot-uuidv7-dotnet-synthesis.md",
-      "byteCount": 1829,
-      "sha256": "e7b8eac90a0bce51e2f38f1907efc978db7954af755803f0815001f5c0b5b77d"
+      "byteCount": 1841,
+      "sha256": "e94ab618efbbc2769f6c6303c1d8a0f2143c707bcad76f60486f938f2b0548c1"
     }
   ],
   "limitations": [

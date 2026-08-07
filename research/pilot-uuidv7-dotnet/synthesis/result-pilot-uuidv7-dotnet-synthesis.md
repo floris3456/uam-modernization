@@ -4,7 +4,7 @@
 
 **What this is:** the pilot package proving the research workflow end-to-end, on a real decision: which .NET UUIDv7 implementation to use for UAM contracts and G0 fixtures.
 
-**The recommendation in one paragraph:** use the built-in `Guid.CreateVersion7(timestamp)` for G0 fixtures and contracts — no third-party dependency yet. Deterministic golden vectors come from the fixture harness's fixed timestamps, not from a library. The built-in lacks the RFC 9562 §6.2 monotonic counter (verified: same-millisecond UUIDs sort randomly, causing index fragmentation under burst inserts — 525 index pages / 66.4% density vs 388 / 89.8% for a counter-based generator). For production, defer the choice to the measurement gate, with two assessed candidates: UUIDNext (MIT, monotonic, SQL Server-tailored) and Medo.Uuid7 (MIT, per-thread monotonic, high performance). Admission follows ADR-FS-032.
+**The recommendation in one paragraph:** use the built-in `Guid.CreateVersion7(timestamp)` for G0 fixtures and contracts — no third-party dependency yet. Deterministic golden vectors come from the fixture harness's fixed timestamps, not from a library. The built-in lacks the RFC 9562 §6.2 monotonic counter (same-millisecond UUIDs sort randomly; the index-fragmentation consequence — 525 index pages / 66.4% density vs 388 / 89.8% — is from a THIRD-PARTY benchmark, not yet reproduced locally). For production, defer the choice to the measurement gate, with two assessed candidates: UUIDNext (MIT, monotonic, SQL Server-tailored) and Medo.Uuid7 (MIT, per-thread monotonic, high performance). Admission follows ADR-FS-032.
 
 **In one line:** correctness never depends on identifier monotonicity — only index locality does, so the production choice is a measured, human-gated decision.
 

@@ -45,7 +45,7 @@
 
 Each study keeps its prompt, result, and short index together. Each batch keeps its studies and review together.
 
-## Regenerate and validate
+## Validate
 
 ```bash
 node scripts/validate-research.mjs

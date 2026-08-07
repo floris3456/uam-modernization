@@ -80,6 +80,29 @@ for (const resultFile of resultFiles) {
   if (fs.statSync(resultFile).size < 100) fail(`Result is empty or too small: ${rel(resultFile)}`);
 }
 
+for (const synthesisResult of files.filter((item) => /\/synthesis\/result-[^/]+\.md$/.test(item))) {
+  const content = fs.readFileSync(synthesisResult, "utf8");
+  if (!content.includes("## Human summary")) fail(`${rel(synthesisResult)} lacks the mandatory Human summary front section`);
+}
+
+for (const conclusions of files.filter((item) => item.endsWith("/conclusions.md"))) {
+  const content = fs.readFileSync(conclusions, "utf8");
+  if (!content.includes("Suggested promotion")) fail(`${rel(conclusions)} lacks the mandated conclusions table (Suggested promotion column)`);
+  if (!content.includes("Disposition")) fail(`${rel(conclusions)} lacks the Disposition column for human dispositions`);
+}
+
+for (const entry of fs.readdirSync(researchRoot, { withFileTypes: true })) {
+  if (!entry.isDirectory() || ["baseline", "implementation", "templates"].includes(entry.name)) continue;
+  const cardPath = path.join(researchRoot, entry.name, "README.md");
+  if (!fs.existsSync(cardPath)) {
+    fail(`Package ${entry.name} lacks a package card README.md`);
+    continue;
+  }
+  const content = fs.readFileSync(cardPath, "utf8");
+  if (!content.includes("**Status:**")) fail(`Package card ${entry.name}/README.md lacks a Status field`);
+  if (!content.includes("**Type:**")) fail(`Package card ${entry.name}/README.md lacks a Type field`);
+}
+
 const forbiddenDirectories = ["research-packs", "results", "execution-waves", "final-synthesis"];
 for (const directory of directories(researchRoot)) {
   const name = path.basename(directory);

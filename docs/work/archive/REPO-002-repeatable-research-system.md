@@ -40,6 +40,8 @@ node scripts/research.mjs check
 node scripts/research.mjs validate
 ```
 
+> **Retired 2026-08-07:** the `research.mjs` CLI and the catalogue/generator machinery were replaced by the suite-agnostic validator (`node scripts/validate-research.mjs`). This record is historical.
+
 ## Handoff requirements
 
 - Record the command contract and the catalogue ownership rule.

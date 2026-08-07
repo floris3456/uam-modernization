@@ -14,6 +14,8 @@ description: Use when working under research/ — creating, scaffolding, running
 5. **Promote** — only conclusions travel, each human-gated: ADR proposal, gate input, as-built facts, deviation-log entries, or adopted-package record. Dispositions land in `conclusions.md`.
 6. **Archive** — status `complete`; package stays in place; hash ledger current. Rejected routes recorded in `research/README.md`.
 
+Statuses: `Draft` → `in progress` → `complete` · `abandoned` · `superseded`.
+
 ## Types
 
 - **Type 1 `extensive`** — many parallel prompts, optional batching; implementation usually pauses.

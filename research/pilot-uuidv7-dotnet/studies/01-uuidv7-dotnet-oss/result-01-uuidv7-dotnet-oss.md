@@ -10,7 +10,7 @@
 
 **FACT.** `Guid.CreateVersion7()` was added in .NET 9 and is in the .NET 10 LTS (Microsoft Learn, net-10.0 API page). It creates the RFC 9562 v7 layout: 48-bit Unix-epoch milliseconds, version/variant bits, random `rand_a`/`rand_b`.
 
-**FACT (reproducible).** The built-in fills the sub-timestamp fields with pure randomness and does NOT implement the optional §6.2 monotonic counter (verified via Stack Overflow source excerpts and an independent experiment: 100K-row insert burst → `CreateVersion7` tight loop produced 525 index pages / 66.4% avg leaf density vs 388 / 89.8% for an advancing-millisecond or counter-based generator). UUIDs generated within the same millisecond sort randomly.
+**FACT (attributed).** The built-in fills the sub-timestamp fields with pure randomness and does NOT implement the optional §6.2 monotonic counter (confirmed via Stack Overflow source excerpts of the .NET implementation). The 100K-row insert burst figures (525 index pages / 66.4% avg leaf density vs 388 / 89.8% for an advancing-millisecond or counter-based generator) come from a THIRD-PARTY benchmark reported in a community source (sdrapkin gist) and were NOT executed in this repository — treat them as external evidence until the G0 fixture harness or a local benchmark reproduces them.
 
 **UNVERIFIED.** One community source (sdrapkin gist) further disputes byte-order details of the Microsoft claim of RFC conformance; the decisive, reproducible issue is the missing counter, and this finding does not depend on the byte-order dispute.
 

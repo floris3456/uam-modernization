@@ -25,8 +25,8 @@ const results = resultFiles.flatMap((fullPath) => {
   const bytes = fs.readFileSync(fullPath);
   if (bytes.length < 100) return [];
   const relative = path.relative(repoRoot, fullPath).split(path.sep).join("/");
-  const suite = relative.split("/")[1] ?? "unknown";
-  return [{ suite, path: relative, byteCount: bytes.length, sha256: crypto.createHash("sha256").update(bytes).digest("hex") }];
+  const pkg = relative.split("/")[1] ?? "unknown";
+  return [{ package: pkg, path: relative, byteCount: bytes.length, sha256: crypto.createHash("sha256").update(bytes).digest("hex") }];
 });
 const manifest = {
   schemaVersion: 3,

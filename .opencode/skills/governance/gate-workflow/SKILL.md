@@ -7,7 +7,7 @@ description: Use when working on milestones, deviation logs, or gate records —
 
 ## Milestones
 
-- Later gates exist as framing stubs: a 5-line "About this gate" in the plan's own voice + links to the informing studies. Full plans materialize on demand when the gate becomes active.
+- Later gates materialize as framing stubs when they become active: a 5-line "About this gate" in the plan's own voice + links to the informing studies. Until then they remain in the research baseline (see `docs/milestones/README.md`).
 - Plan format: 5-line summary → key-facts table (each row links to its source) → ordered steps (own text) → links. Summaries are the plan's own framing, never copies of research (honesty test: if editing the source forces an edit of the summary, it is duplication).
 
 ## Deviation log

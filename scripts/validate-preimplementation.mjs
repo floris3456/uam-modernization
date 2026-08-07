@@ -52,9 +52,23 @@ for (const relative of markdownRoots) {
   for (const file of walk(start).filter((item) => item.endsWith(".md"))) {
     const content = fs.readFileSync(file, "utf8");
     for (const match of content.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
-      const target = match[1].trim().replace(/^<|>$/g, "").split("#")[0];
-      if (!target || /^(?:https?:|mailto:)/i.test(target)) continue;
-      if (!fs.existsSync(path.resolve(path.dirname(file), target))) failures.push(`${path.relative(root, file)} has unresolved link: ${target}`);
+      const target = match[1].trim().replace(/^<|>$/g, "");
+      const [targetPath, anchor] = target.split("#");
+      if (!targetPath || /^(?:https?:|mailto:)/i.test(target)) continue;
+      const resolvedPath = path.resolve(path.dirname(file), targetPath);
+      if (!fs.existsSync(resolvedPath)) {
+        failures.push(`${path.relative(root, file)} has unresolved link: ${target}`);
+        continue;
+      }
+      if (anchor && resolvedPath.endsWith(".md")) {
+        const headingSlugs = new Set(
+          fs.readFileSync(resolvedPath, "utf8")
+            .split("\n")
+            .filter((line) => /^#{1,6}\s+/.test(line))
+            .map((line) => line.replace(/^#{1,6}\s+/, "").trim().toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-")),
+        );
+        if (!headingSlugs.has(anchor)) failures.push(`${path.relative(root, file)} links to missing anchor #${anchor} in ${path.relative(root, resolvedPath)}`);
+      }
     }
   }
 }
