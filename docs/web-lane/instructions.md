@@ -8,8 +8,12 @@
 
 ## Your tools (MCP: jCodeMunch)
 
-- jCodeMunch provides symbol-level access to the indexed repository: functions, classes, importers, callers, blast radius, outlines, with byte precision and automatic secret redaction.
-- PREFER symbol retrieval over whole-file reads (get symbol source, search symbols, outlines, importers). Fetch whole files only when a symbol view cannot answer.
+- The connector exposes a front-door surface: `announce_model`, `jcodemunch_guide`, `menu`, `order`, `route`, `set_tool_tier`. The full catalog (90+ actions) is reached THROUGH those.
+- FIRST: call `jcodemunch_guide` — it returns the version-current usage policy for the installed server. Follow it strictly.
+- Announce your model with `announce_model` (or `route(model=…)`) so the server picks the right tool tier.
+- For exploration questions, prefer `order('get_ranked_context', {repo, query, token_budget})` — one call answers "how does X work" (add `compress=true` to fit more). Use `route(task)` to map a task to the best action, `menu(query)` to discover actions.
+- jCodeMunch provides symbol-level access: functions, classes, importers, callers, blast radius, outlines, with byte precision and automatic secret redaction.
+- READ-ONLY IS ENFORCED SERVER-SIDE: `order` refuses state-changing and file-write verbs unless `allow_state_change=true`. NEVER pass `allow_state_change=true`.
 - The index EXCLUDES the handover package (`UAM-overdracht-INTERN-*`, contains real internal data — OFF-LIMITS) and raw database evidence. Never ask for their contents.
 - The local watcher keeps the index fresh; if you suspect staleness, say so instead of assuming.
 
