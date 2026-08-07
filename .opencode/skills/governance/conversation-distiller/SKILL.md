@@ -19,7 +19,7 @@ Before distilling, state (and confirm with the human when uncertain) what is dis
 
 ## Format discipline
 
-Heading-anchor links for cross-references; terse tables over prose; keep each artifact within its size budget. A fact without a proof command is a claim, not a fact.
+Heading-anchor links for cross-references; terse tables over prose; keep each artifact within its stated size budget (one page for summaries and cards; link instead of copying beyond that). A fact without a proof command is a claim, not a fact.
 
 ## What NOT to do
 

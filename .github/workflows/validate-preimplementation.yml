@@ -20,5 +20,5 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Validate task structure, links, evidence, and action pins
-        run: node scripts/validate-preimplementation.mjs
+      - name: Run repository validation (single entry point)
+        run: ./scripts/validate-repository.sh

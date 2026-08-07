@@ -20,10 +20,5 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Validate research and evidence manifest
-        run: |
-          ./scripts/generate-research-code-reference.sh
-          git diff --exit-code -- research/baseline/attachments/code-reference.md
-          node scripts/validate-research.mjs
-          node scripts/generate-research-evidence-manifest.mjs
-          git diff --exit-code -- evidence/manifests/research-evidence.json
+      - name: Run repository validation (single entry point)
+        run: ./scripts/validate-repository.sh

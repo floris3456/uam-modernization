@@ -21,7 +21,7 @@ description: Use when reviewing code or PRs — what to check, what blocks, and 
 
 ## Human review
 
-The agent decides whether human review is needed: uncertain → yes; certain → no; explicit human request → always. When required, the handoff carries a human review guide: what to look at when testing, which tools/commands to use, what to verify. When skipped, the handoff records `review skipped because …`.
+The review policy lives in [docs/work/README.md](../../../../docs/work/README.md) — follow it. When required, the handoff carries a human review guide: what to look at when testing, which tools/commands to use, what to verify. When skipped, the handoff records `review skipped because …`.
 
 ## Deep check (rare)
 

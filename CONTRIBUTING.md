@@ -31,4 +31,4 @@ If a check cannot run locally, state exactly which check, why, and who must run 
 
 Use the pull-request template even for an internal review. A reviewer should be able to understand the outcome, evidence, security/privacy effect, rollback, and remaining human decisions without reconstructing the work from chat history.
 
-Review follows the policy in [docs/work/README.md](docs/work/README.md): the agent decides whether human review is needed (uncertain → yes, certain → no, explicit human request → always); skipped reviews record `review skipped because …` in the handoff; when human review is required, the handoff carries a human review guide (what to look at when testing, which tools/commands to use).
+The review policy lives in [docs/work/README.md](docs/work/README.md) — follow it.

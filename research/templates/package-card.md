@@ -14,6 +14,7 @@
 
 | Ingredient | Included | Why |
 | --- | --- | --- |
+| Theoretical implementation | | |
 | OSS library research | | |
 | Standards/regulatory check | | |
 | Adversarial/falsification pass | | |
@@ -21,6 +22,7 @@
 | Cost/ops review | | |
 | Migration impact | | |
 | Negative-evidence search | | |
+| Objective-state declaration | | |
 
 ## Completion rule
 

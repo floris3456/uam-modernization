@@ -10,12 +10,36 @@ const required = [
   "docs/plain-language/00-what-we-are-building.md", "docs/plain-language/01-current-next-later.md",
   "docs/architecture/repository-layout.md", "docs/architecture/source-register.md", "docs/governance/ownership.md",
   "docs/milestones/G0-fictional-evidence-foundation.md", "docs/work/README.md",
-  "docs/work/current/G0-001-foundation-decisions.md", "evidence/sanitized/application-catalogue-profile.json",
+  "evidence/sanitized/application-catalogue-profile.json",
   "evidence/sanitized/application-catalogue-summary.md", "evidence/manifests/research-evidence.json",
-  "research/implementation/batches/04-server-platform/review/result-review-04-server-platform.md",
 ];
 for (const file of required) if (!fs.existsSync(path.join(root, file))) failures.push(`Missing ${file}`);
+for (const directory of ["docs/work/current", "docs/work/archive"]) {
+  if (!fs.existsSync(path.join(root, directory))) failures.push(`Missing directory ${directory}`);
+}
 if (fs.existsSync(path.join(root, "research-packs"))) failures.push("Legacy research-packs directory exists");
+
+const agentsDir = path.join(root, ".opencode/agents");
+const skillsRoot = path.join(root, ".opencode/skills");
+if (fs.existsSync(skillsRoot)) {
+  const skillNames = new Set();
+  for (const file of walk(skillsRoot).filter((item) => item.endsWith("/SKILL.md"))) {
+    const match = fs.readFileSync(file, "utf8").match(/^name:\s*(.+)$/m);
+    if (match) skillNames.add(match[1].trim());
+  }
+  const agentsFile = path.join(root, "AGENTS.md");
+  if (fs.existsSync(agentsFile)) {
+    const agentsContent = fs.readFileSync(agentsFile, "utf8");
+    const triggerSection = agentsContent.split("## Skill triggers")[1]?.split("## Pointers")[0] ?? "";
+    const triggerNames = [...triggerSection.matchAll(/`([a-z0-9-]+)`/g)].map((m) => m[1]);
+    for (const name of triggerNames) {
+      if (!skillNames.has(name)) failures.push(`AGENTS.md triggers missing skill: ${name}`);
+    }
+    for (const name of skillNames) {
+      if (!triggerNames.includes(name)) failures.push(`Skill not listed in AGENTS.md triggers: ${name}`);
+    }
+  }
+}
 
 const generatedChecks = [
   ["scripts/generate-research-evidence-manifest.mjs", ["--check"]],

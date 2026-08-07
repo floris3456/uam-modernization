@@ -25,7 +25,7 @@ description: Use when starting or finishing a task brief under docs/work/ — pr
 
 ## Review policy
 
-The agent decides whether human review is necessary: uncertain → yes; certain → no; explicit human request → always. Every handoff records one line when review is skipped: `review skipped because …`.
+The review policy lives in [docs/work/README.md](../../../../docs/work/README.md) — follow it.
 
 ## Statuses
 

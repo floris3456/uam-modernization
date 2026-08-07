@@ -31,7 +31,7 @@ node scripts/validate-research.mjs
 ./scripts/validate-repository.sh
 ```
 
-Validation is walk-based and suite-agnostic: structure, README presence, prompt/result co-location, globally unique result names, secrets, private addresses, internal URLs, stale layout references, attachment classification fields, link resolution, and heading-anchor resolution.
+Validation is walk-based and suite-agnostic: structure, README presence, prompt/result co-location, globally unique result names, secrets, private addresses, internal URLs, stale layout references, attachment classification fields, link resolution, and heading-anchor resolution. Package-card field checks apply to all packages except the preserved `baseline` and `implementation` suites (grandfathered) and `templates/`.
 
 ## Links and anchors
 
