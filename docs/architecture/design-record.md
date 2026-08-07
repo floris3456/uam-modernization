@@ -71,6 +71,30 @@ Rules: personas are skills on the same model (never switch models mid-chat — c
 
 `./scripts/validate-repository.sh` runs: code-reference freshness, suite-agnostic research validation (structure, README presence, prompt sections, prompt/result co-location, uniqueness, secrets, private addresses, internal URLs, stale references, attachment fields, link + heading-anchor resolution, synthesis Human summary, conclusions shape, package-card fields), evidence-manifest freshness (hash ledger — results AND prompts; conclusions.md deliberately excluded as a living file), pre-implementation checks (required files, links + anchors in docs, action pins, skill-trigger ↔ skills-directory sync), and the handover validation (Windows CI). GitHub Actions workflows run the single entry point `validate-repository.sh`.
 
+## Documentation protocol for system changes
+
+Applied when the system itself changes — workflow, agents, skills, governance, tooling, validation, CI.
+
+1. **Record the decision** — one dated row in the decisions log: what changed, why, when. Scope threshold: rule/contract/constraint changes get a row; editorial batches get one combined row. Rows are written by the orchestrator under human approval (the conversation-distiller pattern).
+2. **Update exactly one operative home per fact** — the change lands where it belongs:
+   - invariants + skill triggers → `AGENTS.md`
+   - role procedures → `.opencode/skills/<group>/<name>/SKILL.md`
+   - agents, models, permissions → `.opencode/agents/`
+   - research lifecycle → `research/WORKFLOW.md`
+   - task lifecycle + forms → `docs/work/README.md`, `docs/work/templates/`
+   - structure → `docs/architecture/repository-layout.md`
+   - shapes → `research/templates/`
+   - validation + CI → `scripts/*.mjs`, `.github/workflows/`
+   - committed config template → `opencode.example.json` (credentials stay global)
+   - governance/ownership → `docs/governance/`
+   The design record links to homes; it never copies them.
+3. **Extend the validator when the change is checkable** — any structural rule the change introduces gets a check (template + validator are one contract). First dogfood targets already live: AGENTS.md trigger table ↔ skills directories; package-card ingredients ↔ prompt-authoring catalogue.
+4. **Sweep stale references** — old rules, files, or commands the change invalidates get updated or explicitly marked retired.
+5. **Verify** — `./scripts/validate-repository.sh` green; evidence hashes refreshed when preserved files change intentionally.
+6. **Small commits** — one observable change per commit.
+
+Adopted 2026-08-07 (decision #25), per heavy-review verdict (adopt with adjustments).
+
 ## Decisions log
 
 | # | Date | Decision |
@@ -99,10 +123,12 @@ Rules: personas are skills on the same model (never switch models mid-chat — c
 | 22 | 2026-08-07 | Backfill = option A; `adopted-packages/` naming |
 | 23 | 2026-08-07 | Heavy execution-review triage: pilot attribution, disposition columns, register table, statuses, sweep completion, validator extensions, terminology alignment; deferred — heavy bash-glob chaining test, local plugin scaffolding |
 | 24 | 2026-08-07 | Second heavy review triage (ses_024d20c08ffeRh11coFO4CwdQ6 successor): bash-prefix-glob hole confirmed live → separator-chain denies added + enforcement wording made honest; validator de-coupled from hard-coded task/result paths; review policy de-duplicated to one home (docs/work/README.md); raw-data invariant narrowed to the handover boundary; prompts joined the hash ledger; CI workflows unified on `validate-repository.sh`; skill-trigger sync check added; package-card ingredients completed; templates pointer fixed; card-check exemption documented. Pending human decisions: documentation-protocol adoption (review verdict: adopt with adjustments), web-lane admission, prevention-vs-detection for the remote lane |
+| 25 | 2026-08-07 | Documentation protocol adopted (six steps; extended homes mapping; orchestrator writes rows under human approval; scope threshold: rule changes get rows, editorial batches one row) |
 
 ## Open / deferred items
 
 - Resolved 2026-08-07: opencode bash permission patterns are prefix globs over the whole command string — chained commands (`git status && …`) matched an allowed prefix. Hardened with separator-chain denies (`*&&*`, `*||*`, `*;*`, `*|*`); documented that permission enforcement is best-effort and git is the backstop.
 - `.opencode/package.json` plugin scaffolding is recreated by opencode at startup; it is runtime state, not a committed dependency.
 - Human dispositions for all conclusions sheets are pending (the promotion ledger's first real use).
-- Pending human decisions: documentation-protocol adoption (heavy review verdict: adopt with adjustments); web-lane admission (jCodeMunch / Secure MCP Tunnel / opencode-mcp are external, UNVERIFIED, ADR-FS-032 territory); prevention vs detection for the remote lane (PR-only merging vs direct main; branch protection state unverified).
+- Pending human decisions: web-lane admission (jCodeMunch / Secure MCP Tunnel / opencode-mcp are external, UNVERIFIED, ADR-FS-032 territory) — to be revisited at MCP setup.
+- Remote-lane change policy: DETECTION (direct changes, checks after) enabled by the as-built workflow; human-visibility documentation (so the human always knows what is going on) is to be strengthened — planned AFTER the MCPs are set up.

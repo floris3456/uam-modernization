@@ -10,6 +10,7 @@ Human-first; token-efficient; small reversible changes; run the validator before
 - A fact has one normative home; everywhere else links (references, not copies).
 - Plans are proposals; as-built records are facts; reality wins.
 - Know the objective state of the repository (what is disposable, frozen, uncertain) — when a premise is uncertain, ASK the human.
+- System changes follow the documentation protocol in the design record.
 
 ## Skill triggers
 
