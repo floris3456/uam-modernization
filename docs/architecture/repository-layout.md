@@ -20,6 +20,7 @@ A new person or agent should find purpose, current scope, the next task, governi
 │   ├── adr/                     important decisions
 │   ├── architecture/            stable system and repository views
 │   │   └── adopted-packages/    human-signed research-package acceptances
+│   ├── web-lane/                web-orchestrator instructions (ChatGPT lane)
 │   └── governance/              ownership and human decisions
 ├── contracts/                   versioned schemas and examples (G0 onward)
 ├── src/                         deployable implementation (not started)
