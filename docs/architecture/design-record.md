@@ -1,0 +1,106 @@
+# Design record — repository workflow redesign
+
+**Purpose:** the durable design record of the repository workflow redesign (research packages, as-built layer, promotion, prompt craft). Operative homes: `AGENTS.md` (invariants + skill triggers), `research/WORKFLOW.md` (research lifecycle overview), `.opencode/skills/` (role procedures), `.opencode/agents/` (agent definitions), `docs/architecture/repository-layout.md` (structure), `research/templates/` (shapes). This file records the design and its decisions; it does not duplicate the operative homes.
+**Adopted:** 2026-08-07, after heavy-model execution review (ses_024d20c08ffeRh11coFO4CwdQ6) and triage.
+
+## Mission
+
+Remove bloat and make the repository easy to understand and maintain for a human. Token minimization and speed are priorities in architectural decisions — never at the cost of the reliability that good documentation provides.
+
+## Three kinds of truth — never mixed in one file
+
+| Kind | Format | Status marker | Can it be wrong? |
+| --- | --- | --- | --- |
+| Proposal | research synthesis / future implementation plan | labeled (FACT / ASSUMPTION / RECOMMENDATION / CLI EXPERIMENT / HUMAN DECISION) | Yes — expected |
+| Decision | ADR | Proposed → Experimenting → Accepted | Only by supersession |
+| Fact | as-built record | verified by proof command | No — the record |
+
+Where each kind lives: `research/<package>/` (proposals, immutable), `docs/milestones/<gate>.md` (plans), `docs/adr/` (decisions), `src/<component>/AS-BUILT.md` (facts), `<gate>-deviations.md` (deltas), `docs/architecture/adopted-packages/` (human-signed acceptances).
+
+## Core principles
+
+1. **One home per fact** — a fact has one normative place; everywhere else links.
+2. **Presentation is allowed, duplication is not** — summaries are the document's own framing; honesty test: if editing the source forces an edit of the summary, it is duplication.
+3. **Research is never acceptance** — gates are human-accepted; results are immutable evidence (hash ledger).
+4. **Raw data never travels** — never committed, never zipped (`git archive` of code roots only).
+5. **Small, reversible changes** — validator after each.
+6. **Know the objective state** — know what is disposable, frozen, uncertain; when a premise is uncertain, ASK the human.
+
+## Research packages
+
+- Lifecycle: Start (package card) → Scaffold (study template) → Run (fresh chats, code zips + curated attachments, reading list embedded) → Validate (review checklist + `node scripts/validate-research.mjs`) → Promote (conclusions sheet, human-gated) → Archive (status `complete`, stays in place).
+- Statuses: `Draft` → `in progress` → `complete` · `abandoned` · `superseded`.
+- Types: Type 1 `extensive` (implementation pauses) · Type 2 `one-off` (implementation continues in the safe lane; PRE-FLIGHT / IN-FLIGHT / LANDING / PIVOT cycle).
+- Output modes: `synthesis` (conclusions + visible reasoning; 1-page Human summary front section) · `synthesis+implementation` (adds `theoretical-implementation.md`, THEORETICAL/ESTIMATE labels, unverified until CLI experiment).
+- Inputs: one zip per code-bearing root (`git archive` of the declared ref; new roots auto-included); non-code context as curated attachments; never videos, PDFs, `docs/`, `research/`, `evidence/`, or handover content.
+- Destination: results stay in place, immutable; only conclusions travel, each human-gated (ADR proposal / gate input / as-built facts / deviation-log entries / adopted-package record).
+- Rejected routes are recorded in `research/README.md` and checked at PRE-FLIGHT.
+- Reading ladder: conclusions.md (1 page) → Human summary (1 page) → milestone About (5 lines) → full results.
+- `conclusions.md` is a living file OUTSIDE the hash ledger; dispositions fill its column; the ledger protects raw results only.
+
+## Prompt authoring
+
+Ingredient catalogue with inclusion conditions lives in the `prompt-authoring` skill. Output-mode rule: next artifact is a PLAN → `synthesis+implementation`; decision or next step → `synthesis`. OSS research synthesis shape is mandatory when the ingredient is included. Every prompt demands visible reasoning and stable ASCII heading anchors; the package card records chosen ingredients and why.
+
+## Milestones and plans
+
+Later gates materialize as framing stubs when they become active (5-line About + links to informing studies); until then they remain in the research baseline. Full plans are written on demand. Summaries are the plan's own framing, never copies.
+
+## As-built records and deviations
+
+- `src/<component>/AS-BUILT.md`, updated during work; pure current-state truth with a proof command per fact; direct dependencies only, no patch versions; facts replaced, history in git; quality bar = 1:1 reconstruction from records + code + tests + contracts, verified by proof commands.
+- A fact without a proof command is a claim, not a fact.
+- Differences between plan and reality are recorded in a separate per-gate deviation log (`<gate>-deviations.md`: plan ref → as-built ref → because), never inside as-built records.
+
+## Implementation procedure
+
+Task loop: pre-flight (read as-built, gate status, safe lane) → work (small commits, as-built + deviation lines as you go) → finish (validator, handoff with as-built delta, deviation lines, next safe task, review decision). Review policy: the agent decides (uncertain → human, certain → not, explicit request → always); skipped reviews record `review skipped because …`; required human reviews carry a human review guide in the handoff.
+
+## Agent team and relay
+
+| Agent | Model | Role | Write scope |
+| --- | --- | --- | --- |
+| `orchestrator` | deepseek flash | main chat; owns docs/, research/, evidence/, AGENTS.md, skills, task briefs | its scope only |
+| `developer` | deepseek flash | code + tests + self-review; owns src/, tests/, contracts/, as-built records, own handoffs | its scope only |
+| `heavy` | Kimi K3 | thinking/review only; separate session | NOTHING (read-only) |
+| fork of `orchestrator` | deepseek flash | writing relay: distills conversations into docs | only with human approval |
+
+Rules: personas are skills on the same model (never switch models mid-chat — cache); agents committed to the repo, credentials stay global; heavy read-only enforced by permission config; driving the heavy chat via `opencode run --session` (append) and `opencode export` (read, includes reasoning); no handoff files between relay chats — git is the handoff; the ownership map prevents conflicts without worktrees.
+
+## Validation
+
+`./scripts/validate-repository.sh` runs: code-reference freshness, suite-agnostic research validation (structure, README presence, prompt sections, prompt/result co-location, uniqueness, secrets, private addresses, internal URLs, stale references, attachment fields, link + heading-anchor resolution, synthesis Human summary, conclusions shape, package-card fields), evidence-manifest freshness (hash ledger), pre-implementation checks (required files, links + anchors in docs, action pins), and the handover validation (Windows CI).
+
+## Decisions log
+
+| # | Decision |
+| --- | --- |
+| 1 | Research results stay in place, immutable; completed packages never move |
+| 2 | Destination: only conclusions travel, each human-gated |
+| 3 | Tooling: templates + suite-agnostic validator; catalog/generators/manifests deleted |
+| 4 | As-built: per-component, periodic during work, proof commands, 1:1 reconstruction quality bar |
+| 5 | Deviations recorded in a separate per-gate log, never inside as-built |
+| 6 | Milestones: stubs materialize on demand, full plans on demand |
+| 7 | Reading ladder: conclusions.md + Human summary + milestone About |
+| 8 | Anchors: heading links everywhere; templates mandate anchors |
+| 9 | Input: per-root code zips via `git archive`; reading list always embedded |
+| 10 | Output modes on the card; theoretical-implementation separate and safety-labeled |
+| 11 | Research types (extensive / one-off) + Type-2 continuation cycle |
+| 12 | Prompt authoring: ingredient framework, auditable choices, living catalogue |
+| 13 | Adopted-package records live in `docs/architecture/adopted-packages/` |
+| 14 | Archiving = status change, keep-in-place |
+| 15 | Frozen suites: facts unchanged; Human summary front sections backfilled (option A) |
+| 16 | Template + validator are one contract; pilot proves it |
+| 17 | AGENTS.md + skills: invariants + trigger table; seven role skills, committed; skills own procedures |
+| 18 | Implementation procedure + review policy with human review guides and skip audit line |
+| 19 | Agent team + expensive-think/cheap-write relay; git is the handoff |
+| 20 | Disposability stance + heavy-review triage: repo setup disposable until gates/ADRs make parts permanent |
+| 21 | Review follow-ups: zip roots + auto-include, example config, end-states + rejected-routes register, skip audit line, token measurement excluded, plugin dependency out of git, tavily skills grouped |
+| 22 | Backfill = option A; `adopted-packages/` naming |
+| 23 | Heavy execution-review triage: pilot attribution, disposition columns, register table, statuses, sweep completion, validator extensions, terminology alignment; deferred — heavy bash-glob chaining test, local plugin scaffolding |
+
+## Open / deferred items
+
+- Verify opencode's bash permission glob semantics for chained commands (`git status && …`) before relying on heavy's read-only enforcement.
+- `.opencode/package.json` plugin scaffolding is recreated by opencode at startup; it is runtime state, not a committed dependency.
+- Human dispositions for all conclusions sheets are pending (the promotion ledger's first real use).
