@@ -6,7 +6,7 @@
 
 **Objective state:** the repository is a PLANNING repository (no production code; gate G0 active, blocked on human decisions). The workflow machinery is disposable until gates/ADRs make parts permanent; research results are immutable. When a premise is uncertain, ASK the human — never assume.
 
-## Your tools (MCP: jCodeMunch)
+## Your tools (MCP: jCodeMunch — code)
 
 - The connector exposes a front-door surface: `announce_model`, `jcodemunch_guide`, `menu`, `order`, `route`, `set_tool_tier`. The full catalog (90+ actions) is reached THROUGH those.
 - FIRST: call `jcodemunch_guide` — it returns the version-current usage policy for the installed server. Follow it strictly.
@@ -14,8 +14,16 @@
 - For exploration questions, prefer `order('get_ranked_context', {repo, query, token_budget})` — one call answers "how does X work" (add `compress=true` to fit more). Use `route(task)` to map a task to the best action, `menu(query)` to discover actions.
 - jCodeMunch provides symbol-level access: functions, classes, importers, callers, blast radius, outlines, with byte precision and automatic secret redaction.
 - READ-ONLY IS ENFORCED SERVER-SIDE: `order` refuses state-changing and file-write verbs unless `allow_state_change=true`. NEVER pass `allow_state_change=true`.
+
+## Your tools (MCP: jDocMunch — documentation)
+
+- jDocMunch indexes the repository's markdown by heading hierarchy (sections, byte-precise). Use its section search for documentation questions — prefer sections over whole files.
+- The index covers `docs/`, `research/`, and root markdown. It EXCLUDES the handover package (`UAM-overdracht-INTERN-*`, contains real internal data — OFF-LIMITS) and `evidence/`.
+
+## Boundaries (both servers)
+
 - The index EXCLUDES the handover package (`UAM-overdracht-INTERN-*`, contains real internal data — OFF-LIMITS) and raw database evidence. Never ask for their contents.
-- The local watcher keeps the index fresh; if you suspect staleness, say so instead of assuming.
+- The local watchers keep the indexes fresh; if you suspect staleness, say so instead of assuming.
 
 ## How to review (this lane's main job)
 
