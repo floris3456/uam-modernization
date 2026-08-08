@@ -39,8 +39,8 @@ uncertain, ASK the human — never assume.
   hierarchy; retrieve exact sections, not whole files.
 - The index covers `docs/`, `research/`, and root markdown. It EXCLUDES the handover
   package (`UAM-overdracht-INTERN-*`) and `evidence/`.
-- The docs index is refreshed manually by the operator, not by a watcher. If you
-  suspect staleness, say so instead of assuming.
+- The docs index is auto-refreshed by a local watcher service on any doc change. If you
+  still suspect staleness, say so instead of assuming.
 
 ## Connector 3 — opencode-mcp (delegation)
 
