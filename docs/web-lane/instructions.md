@@ -38,6 +38,16 @@ write tools.
   and `opencode_conversation` to read the transcript and diff → verify the result against
   the brief's acceptance criteria → report. Use `opencode_project_init` first if the
   project is not registered.
+- **EXACT argument names — these are required by the tool schemas. Do NOT guess
+  variants like `sessionID`, `prompt`, or `id` where the schema says otherwise:**
+  - `opencode_session_create` → `directory` (the repo path), optional `title`
+  - `opencode_message_send` / `opencode_message_send_async` → `sessionId`, `text`
+  - `opencode_session_get` / `opencode_session_delete` → `id`
+  - `opencode_conversation` / `opencode_check` / `opencode_wait` /
+    `opencode_review_changes` → `sessionId`
+  - `opencode_ask` → `prompt` (single-call quick answer, no session needed)
+  If a call returns "Input validation error: … required property", you used the wrong
+  argument name — read the error and correct it.
 - Rules:
   - Write task briefs as if for a careful junior engineer: exact files, exact outcome,
     acceptance evidence, out-of-scope. A vague brief produces vague work.
