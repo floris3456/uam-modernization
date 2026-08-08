@@ -32,6 +32,11 @@ uncertain, ASK the human — never assume.
   byte-precise, with automatic secret redaction.
 - The code index is auto-refreshed by the server's built-in watcher on any change. If
   you suspect staleness, say so instead of assuming.
+- Protected-index boundary: the handover and raw-database boundaries are excluded by
+  PERSISTENT project configuration (`.jcodemunch.jsonc`: both `extra_ignore_patterns`
+  and `watch_extra_ignore`), not by one-time index commands. After any jCode
+  upgrade/rebuild/restart, verify the local indexed-file count for protected prefixes
+  is exactly zero before using code retrieval.
 - READ-ONLY IS ENFORCED SERVER-SIDE: `order` refuses state-changing and file-write verbs
   unless `allow_state_change=true`. NEVER pass `allow_state_change=true`.
 
@@ -39,10 +44,29 @@ uncertain, ASK the human — never assume.
 
 - Section-level markdown retrieval: the repository's markdown is indexed by heading
   hierarchy; retrieve exact sections, not whole files.
-- The index covers `docs/`, `research/`, and root markdown. It EXCLUDES the handover
-  package (`UAM-overdracht-INTERN-*`) and `evidence/`.
-- The docs index is auto-refreshed by a local watcher service on any doc change. If you
-  still suspect staleness, say so instead of assuming.
+- The intended jDoc corpus is the approved docs/research/root-Markdown allowlist. Do
+  not infer exclusion solely from how the index was originally built: jDocMunch
+  1.124.1's watcher can admit an out-of-subset changed path (observed: an evidence
+  JSON and root config JSONs entered the index on change). Before treating the index
+  as an access boundary, compare `doc_paths` against the approved allowlist. The
+  handover and evidence boundaries remain policy-off-limits regardless of accidental
+  index presence.
+- The watcher refreshes observed filesystem events. It is not a complete
+  reconciliation guarantee: a deletion missed while the watcher is offline can remain
+  indexed until explicitly reconciled. If you suspect staleness, say so instead of
+  assuming.
+- Exact-path rule: `get_document_outline` has forgiving path resolution in jDocMunch
+  1.124.1 — if the requested `doc_path` has no exact match it silently falls back to
+  suffix/substring matching and may return a DIFFERENT document (its response echoes
+  the requested path, which is NOT proof of resolution). For an exact path, prove it
+  with `get_doc(repo, doc_path=…)` or exact membership in `list_docs` first. If the
+  exact path is absent, do not accept an outline resolved from a suffix/substring
+  match.
+- Argument-contract rule: inspect the TOP-LEVEL `ignored_arguments` and
+  `ignored_arguments_note` on every result — NOT `_meta` (jDoc strips `_meta` by
+  default). If present, the call that ran was not the call requested: correct the
+  argument names from the current tool schema and rerun before relying on filtering
+  or an absence conclusion.
 
 ## Connector 3 — opencode-mcp (delegation)
 
@@ -52,8 +76,7 @@ uncertain, ASK the human — never assume.
   repository.
 - Standard delegation loop:
   1. `opencode_session_create` with a PRECISE task brief (`directory` = the repo path,
-     optional `title`). Use `opencode_project_init` first if the project is not
-     registered.
+     optional `title`).
   2. `opencode_message_send` to deliver the brief (`sessionId` + `text`).
   3. `opencode_check` / `opencode_session_get` to monitor; `opencode_wait` to block on
      completion.
@@ -82,6 +105,24 @@ uncertain, ASK the human — never assume.
     handoffs). Confirm the handoff exists before reporting a task complete.
   - Spawning a session that writes requires the human's confirmation (ChatGPT asks for
     write actions). Propose it deliberately.
+  - Send ambiguity rule: a timeout, reconnect error, or empty message response does NOT
+    prove the prompt was not delivered. NEVER resend immediately. First read the target
+    conversation (`opencode_conversation`) and search for the exact prompt. If present,
+    continue with check/wait. Resend only if the prompt is provably absent. Prefer
+    explicit session + async send + check/wait for long tasks so the send call itself
+    is short.
+  - Empty-response rule: never diagnose provider authentication solely from
+    opencode-mcp's "empty response / API key" warning. Unless the transport reports an
+    explicit authentication error, first read `opencode_conversation` for the affected
+    session. If the prompt and/or assistant answer exists, classify the event as
+    response/transport ambiguity and continue from session state. Investigate
+    credentials only when the message is absent AND independent provider/status checks
+    also fail.
+  - Shell rule: the opencode "bash" tool runs the configured/preferred shell (Fish on
+    this machine), not necessarily GNU Bash. Use portable single commands by default;
+    when Bash syntax is required, invoke it explicitly with `bash -lc '…'`. Never use
+    Bash-only process substitution, heredocs, arrays, or `[[ ... ]]` without explicitly
+    selecting Bash.
   - Never use this connector for reading — use jCodeMunch and jDocMunch for that.
 
 ## Boundaries (all connectors)
