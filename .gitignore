@@ -34,3 +34,7 @@ Thumbs.db
 TestResults/
 coverage/
 
+
+# Chat handoffs (conversation memory; gitignored by design, row 44)
+docs/work/handoffs/*
+!docs/work/handoffs/README.md

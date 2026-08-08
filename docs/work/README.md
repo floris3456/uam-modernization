@@ -28,6 +28,12 @@ Use [experiment-template.md](templates/experiment-template.md) when the main out
 3. After review (human when the agent is uncertain, skipped with a recorded reason otherwise), move the task and handoff into `archive/<year>/`.
 4. Make the next safe task explicit. Do not leave required context only in a chat.
 
+Note: **chat handoffs** (full conversation memory for a continuing chat, e.g.
+`CHAT-HANDOFF-*.md`) are a separate artifact from task handoffs — they live in
+`docs/work/handoffs/`, which is gitignored by design (design record row 44).
+The durable summary of each chat handoff is its design-record row; task
+handoffs above remain committed and archived.
+
 ## Status meanings
 
 - `Draft`: outcome or checks are incomplete.
