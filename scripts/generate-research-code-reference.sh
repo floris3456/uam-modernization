@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+check_only=false
+if [[ "${1:-}" == "--check" ]]; then
+    check_only=true
+fi
+
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 handover_root="$repo_root/UAM-overdracht-INTERN-2026-07-23"
 output_dir="$repo_root/research/baseline/attachments"
@@ -47,6 +52,14 @@ append_source() {
     append_source 'artifacts/database/01_legacy_uam_prod_schema.sql' 'sql' 'Production database structure only; contains DDL and no production data rows.'
 } > "$temporary_path"
 
-mv "$temporary_path" "$output_path"
-trap - EXIT
-printf 'Generated %s\n' "$output_path"
+if $check_only; then
+    if [[ ! -f "$output_path" ]] || ! cmp -s "$temporary_path" "$output_path"; then
+        echo "Research code reference is stale: ${output_path#$repo_root/}" >&2
+        exit 1
+    fi
+    echo "Research code reference is current."
+else
+    mv "$temporary_path" "$output_path"
+    trap - EXIT
+    printf 'Generated %s\n' "$output_path"
+fi

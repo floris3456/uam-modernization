@@ -32,4 +32,4 @@ Skills live in `.opencode/skills/`; agents in `.opencode/agents/` (orchestrator,
 - [docs/work/README.md](docs/work/README.md) — task workflow
 - [research/WORKFLOW.md](research/WORKFLOW.md) — research lifecycle overview
 - [docs/architecture/repository-layout.md](docs/architecture/repository-layout.md) — where things belong
-- `./scripts/validate-repository.sh` — all checks
+- `./scripts/validate-repository.sh` — web-safe checks; protected-lane checks (code reference, handover) run in CI

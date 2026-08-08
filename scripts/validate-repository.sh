@@ -4,17 +4,16 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-./scripts/generate-research-code-reference.sh
-git diff --exit-code -- research/baseline/attachments/code-reference.md
+# Web-safe trust lane (Semantic System Review, A9.2): check-only, no tracked-file
+# writes, no protected-boundary reads. Everything here can run in read-only
+# delegation sessions and on any runner.
+#
+# Protected lane (code-reference regeneration/freshness and handover validation)
+# reads protected handover material and is owned by the Windows CI workflow
+# (.github/workflows/validate-handover.yml) and trusted local sessions — it must
+# never run in the web lane.
 node scripts/validate-research.mjs
-node scripts/generate-research-evidence-manifest.mjs
-git diff --exit-code -- evidence/manifests/research-evidence.json
+node scripts/generate-research-evidence-manifest.mjs --check
 node scripts/validate-preimplementation.mjs
-
-if command -v pwsh >/dev/null 2>&1; then
-  pwsh -NoLogo -NoProfile -File ./UAM-overdracht-INTERN-2026-07-23/scripts/Test-UamDocumentationDeliverables.ps1
-else
-  echo "Notice: PowerShell handover validation skipped locally because pwsh is unavailable; Windows CI runs it."
-fi
 
 echo "Repository validation passed."

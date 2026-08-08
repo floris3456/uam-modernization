@@ -36,7 +36,8 @@ uncertain, ASK the human — never assume.
   PERSISTENT project configuration (`.jcodemunch.jsonc`: both `extra_ignore_patterns`
   and `watch_extra_ignore`), not by one-time index commands. After any jCode
   upgrade/rebuild/restart, verify the local indexed-file count for protected prefixes
-  is exactly zero before using code retrieval.
+  is exactly zero before using code retrieval. Machine check:
+  `bash scripts/check-lane-boundaries.sh` (local only — needs the index stores).
 - READ-ONLY IS ENFORCED SERVER-SIDE: `order` refuses state-changing and file-write verbs
   unless `allow_state_change=true`. NEVER pass `allow_state_change=true`.
 

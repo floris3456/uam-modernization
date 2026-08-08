@@ -29,11 +29,19 @@ const results = ledgerFiles.flatMap((fullPath) => {
   const kind = relative.endsWith("/prompt.md") ? "prompt" : "result";
   return [{ package: pkg, kind, path: relative, byteCount: bytes.length, sha256: crypto.createHash("sha256").update(bytes).digest("hex") }];
 });
+const resultCount = results.length;
+const resultFileCount = results.filter((e) => e.kind === "result").length;
+const promptFileCount = results.filter((e) => e.kind === "prompt").length;
 const manifest = {
-  schemaVersion: 3,
+  schemaVersion: 4,
   classification: "Internal research evidence manifest; contains paths, sizes, and hashes but no research content",
   generation: "node scripts/generate-research-evidence-manifest.mjs",
-  resultCount: results.length,
+  // resultCount is retained as a deprecated alias for compatibility (A9.3);
+  // entryCount is the normative field.
+  resultCount,
+  entryCount: resultCount,
+  resultFileCount,
+  promptFileCount,
   results,
   limitations: ["Only populated results of at least 100 bytes are recorded; structural validation separately rejects missing required evidence.", "A hash proves file identity, not correctness or human acceptance.", "Research conclusions remain subject to experiments, gates, and current primary-source verification."],
 };

@@ -1,8 +1,11 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "classification": "Internal research evidence manifest; contains paths, sizes, and hashes but no research content",
   "generation": "node scripts/generate-research-evidence-manifest.mjs",
   "resultCount": 81,
+  "entryCount": 81,
+  "resultFileCount": 40,
+  "promptFileCount": 41,
   "results": [
     {
       "package": "baseline",

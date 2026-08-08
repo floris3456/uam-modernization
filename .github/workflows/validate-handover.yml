@@ -23,3 +23,20 @@ jobs:
       - name: Validate documentation and artifacts
         shell: pwsh
         run: ./UAM-overdracht-INTERN-2026-07-23/scripts/Test-UamDocumentationDeliverables.ps1
+
+  # Protected-lane freshness check (Semantic System Review, A9.2): the code
+  # reference is regenerated from protected handover inputs, so it must not run
+  # in the web-safe master validator. Linux runner keeps byte-identical output
+  # (no CRLF conversion for text=auto files).
+  code-reference-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          persist-credentials: false
+
+      - name: Code-reference freshness
+        run: bash scripts/generate-research-code-reference.sh --check
