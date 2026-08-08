@@ -30,6 +30,8 @@ uncertain, ASK the human — never assume.
   `route(task)` to map a task to the best action, `menu(query)` to discover actions.
 - Symbol-level access: functions, classes, importers, callers, blast radius, outlines,
   byte-precise, with automatic secret redaction.
+- The code index is auto-refreshed by the server's built-in watcher on any change. If
+  you suspect staleness, say so instead of assuming.
 - READ-ONLY IS ENFORCED SERVER-SIDE: `order` refuses state-changing and file-write verbs
   unless `allow_state_change=true`. NEVER pass `allow_state_change=true`.
 
