@@ -189,7 +189,7 @@ for (const file of textFiles.filter((item) => !isResult(item) && path.basename(i
     const target = match[1].trim().replace(/^<|>$/g, "");
     if (/^(?:https?:|mailto:)/i.test(target)) continue;
     const [targetPath, anchor] = target.split("#");
-    const resolvedPath = path.resolve(path.dirname(file), targetPath);
+    const resolvedPath = targetPath ? path.resolve(path.dirname(file), targetPath) : file;
     if (!fs.existsSync(resolvedPath)) {
       fail(`${rel(file)} has unresolved Markdown link: ${target}`);
       continue;

@@ -78,8 +78,8 @@ for (const relative of markdownRoots) {
     for (const match of content.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)) {
       const target = match[1].trim().replace(/^<|>$/g, "");
       const [targetPath, anchor] = target.split("#");
-      if (!targetPath || /^(?:https?:|mailto:)/i.test(target)) continue;
-      const resolvedPath = path.resolve(path.dirname(file), targetPath);
+      if (/^(?:https?:|mailto:)/i.test(target)) continue;
+      const resolvedPath = targetPath ? path.resolve(path.dirname(file), targetPath) : file;
       if (!fs.existsSync(resolvedPath)) {
         failures.push(`${path.relative(root, file)} has unresolved link: ${target}`);
         continue;
