@@ -31,7 +31,7 @@ When it occurs:
 
 Never claim an unconfirmed local commit is remote work.
 
-Use `./scripts/recover-remote-sync.sh` only for a recovery task. It uses fast-forward recovery when possible. If local and remote histories truly diverged after a failed push, it may create one exact-head, non-conflicting two-parent recovery merge and push it as a fast-forward. A conflict or ref movement fails closed; remote history is never rewritten.
+Use `./scripts/recover-remote-sync.sh` only for a recovery task. A reset to the remote head does not resolve or erase a marker: recovery must prove the marker's recorded failed commit is in synchronized history before clearing it. The script restores that commit by fast-forward when safe and otherwise fails closed on ambiguous local movement. If local and remote histories truly diverged after a failed push, it may create one exact-head, non-conflicting two-parent recovery merge and push it as a fast-forward. A conflict or ref movement fails closed; remote history is never rewritten.
 
 ## End-of-turn snapshot
 
@@ -98,4 +98,4 @@ Only after the human approves an exact reviewed `developer` SHA, the small/Luna 
 
 Promotion introduces no content changes. A conflict aborts. Never bypass hooks manually.
 
-Promotion is a mechanical no-edit operation, not a normal implementation task. Do not create a task record, update an existing task record, or make a handoff snapshot before running it. If `main` is pushed but `developer` synchronization fails, make no commits and rerun the same command with the same approved SHA; the script verifies and resumes the exact existing merge. The promotion response uses the five fields with `Files changed: None` and `Task record: Not applicable; promotion operation.`
+Promotion is a mechanical no-edit operation, not a normal implementation task. Do not create a task record, update an existing task record, or make a handoff snapshot before running it. Before pushing `main`, the script records a pending tuple of the exact merge, approved developer SHA, and previous main SHA. If `main` is pushed but `developer` synchronization fails, make no commits and rerun the same command with the same approved SHA; the script requires that tuple and verifies both parents before resuming. A look-alike merge without matching pending evidence fails closed. The promotion response uses the five fields with `Files changed: None` and `Task record: Not applicable; promotion operation.`

@@ -6,11 +6,11 @@ AGENT-SYSTEM-REBUILD-001
 
 ## Status
 
-Review
+In progress
 
 ## Task-start developer SHA
 
-1365cd83762d1140ea969faf64b8ea370f6e739c
+99306f47db96acbcde34ead74a949270674b025e
 
 ## Review-base developer SHA
 
@@ -741,6 +741,85 @@ Do not merge `developer` into `main`.
 
 That happens only after independent web-orchestrator review and explicit human approval of an exact `developer` SHA.
 
+## Corrective steering
+
+Continue the existing public-safe repository task `AGENT-SYSTEM-REBUILD-001` on `floris3456/uam-modernization` as a corrective continuation. This is the same task and same intended outcome; do not create a new task ID.
+
+Execution exception: for this continuation only, the human authorized the legacy OpenCode `build` agent using `openai/gpt-5.6-sol` with the `high` variant because the live OpenCode runtime did not expose the rebuilt named developer agents. This is an execution-transport exception only. Do not change the repository's intended Luna-default / Sol-exception routing policy merely to accommodate the legacy runtime.
+
+Authoritative reviewed boundaries carried into this continuation:
+- Task-start `developer` SHA: `1365cd83762d1140ea969faf64b8ea370f6e739c`
+- Previous implementation SHA: `aa1c1099ca4418fe1f7031ddecaf20e73e8dc7f9`
+- Last reviewed/current handoff `developer` SHA: `99306f47db96acbcde34ead74a949270674b025e`
+- Expected `main` SHA before this correction: `1365cd83762d1140ea969faf64b8ea370f6e739c`
+- Expected isolated `web-orchestration` SHA from the prior review: `f3b6793249e3f36733d40bc302bc6011b3814c61`
+- Existing task record: `docs/work/current/AGENT-SYSTEM-REBUILD-001-agent-system-rebuild.md`
+
+MANDATORY STOP-GATE BEFORE ANY MUTATION:
+1. Work only in the existing UAM checkout on branch `developer`.
+2. Fetch `origin` and verify the working tree is clean.
+3. Verify `origin/developer` is exactly `99306f47db96acbcde34ead74a949270674b025e` and `origin/main` is exactly `1365cd83762d1140ea969faf64b8ea370f6e739c`.
+4. Verify local `developer` can be fast-forwarded/synchronized to that exact remote handoff without rewriting history and that the tracked hooks are active.
+5. If either remote ref differs, synchronization is broken, the tree is unexpectedly dirty, or safe continuation is ambiguous: make no implementation commit and return the five-field blocker response. Do not reset, force-push, rebase shared history, or improvise around the mismatch.
+
+General corrective outcome:
+Repair the two independent-review defects below while preserving all previously implemented agent-system behavior and the existing reviewed-base semantics. Use corrective commits on shared `developer`; do not rewrite prior commits.
+
+FINDING 1 — failed-push marker can be bypassed by discarding the failed local commit:
+The current pre-commit path may remove `uam-sync-failed` merely because current `HEAD` equals its upstream. After a failed push, a user can therefore move/reset local `developer` back to `origin/developer`, abandoning the failed local commit, and the next pre-commit can silently clear the marker. That is not an auditable synchronization recovery of the recorded failed SHA.
+
+Required behavior:
+- A failed-push marker must continue to block normal commits until the recorded failed local commit is demonstrably preserved in the synchronized history, or the repository's directed recovery procedure has safely incorporated and verified it.
+- Merely changing/resetting `HEAD` to match upstream must not erase the failure state when the marker names a different failed SHA.
+- Recovery should remain fast-forward/rebase-free where possible, preserve shared history, and fail closed on ambiguity/conflict/concurrent movement.
+- Add a regression simulation that specifically demonstrates the reset/discard bypass is rejected, plus positive recovery coverage showing the marker is cleared only after safe verified synchronization.
+
+FINDING 2 — interrupted promotion resumption is insufficiently bound to the exact promotion:
+The current promotion resume logic can recognize `origin/main` as a resumable promotion based mainly on structural properties (two parents, approved SHA as second parent, approved tree). An independently created or otherwise unexpected merge with those structural properties can therefore be mistaken for the exact interrupted human-approved promotion.
+
+Required behavior:
+- Resume only the exact promotion that this workflow previously initiated for the same approved developer SHA and expected previous main state, with sufficient durable/local evidence to distinguish it from a merely look-alike merge.
+- Validate the first parent / previous-main relationship and any pending-state evidence needed to prove exact continuity.
+- Preserve the intended resumable case where `main` was successfully pushed but synchronization of `developer` failed.
+- Fail closed if `origin/main` contains a structurally similar but unrecognized merge, if pending evidence conflicts, or if refs moved unexpectedly.
+- Add a regression simulation for a crafted/look-alike main merge that previously would have been accepted, and retain positive coverage for genuine interrupted-promotion resumption.
+
+Scope and records:
+- Inspect and change only the files needed for these corrections and their truthful documentation/tests. Likely areas include `.githooks/`, `scripts/recover-remote-sync.sh`, `scripts/promote-developer-to-main.sh`, repository validation/simulation coverage, `docs/architecture/branch-workflow.md`, relevant implementation/deviation records, and the existing task-progress file.
+- Do not touch immutable evidence or historical source material merely to satisfy current terminology.
+- Do not modify `main` or perform a real promotion.
+- Do not inspect, modify, merge, or depend on the `web-orchestration` branch.
+- All destructive/edge-case Git workflow tests must use disposable repositories/remotes, never the real remote.
+- If `/tmp/opencode/uam-agent-system-rebuild` still exists and remains part of this task's generated package, keep its corresponding payload/validation behavior consistent and rerun its validation. If it is absent, do not recreate unrelated package work solely for this correction.
+
+Task-progress continuity:
+- Continue `docs/work/current/AGENT-SYSTEM-REBUILD-001-agent-system-rebuild.md`; do not create a new task record.
+- Preserve the original task brief. Record this corrective steering verbatim in the task record (for example under a clearly labelled corrective-steering subsection) without copying private chat context.
+- Add a `Changed approach` entry identifying the prior behavior, this web-orchestrator steering, and whether existing work is retained/corrected.
+- Keep Observed vs Interpretation distinct.
+- Keep AS-BUILT/deviation/durable architecture records truthful and update them atomically with implementation commits whose facts they describe.
+
+Checks required before handoff:
+- Run the repository's normal validation entry point.
+- Run shell/Node syntax checks applicable to changed scripts.
+- Run `git diff --check` for the corrective range.
+- Run disposable Git simulations covering both negative regressions and their positive safe paths.
+- Verify `origin/main` remains exactly unchanged.
+- Verify every corrective `developer` commit is pushed and remotely visible before continuing.
+
+Handoff:
+- After substantive corrective work is complete and pushed, update task-progress completely and create the required dedicated handoff snapshot commit whose only intended purpose is the task-progress boundary.
+- Push it and verify exact remote visibility.
+- Do NOT finalize/delete the task-progress file yet. Independent web-orchestrator review must occur first.
+- Do NOT merge or promote to `main` and do not claim human acceptance.
+
+Return only these five fields:
+Status:
+Files changed:
+Checks + perceived results:
+Blockers/decisions:
+Task record:
+
 ## Current objective
 
 Apply, repair, validate, and push the agent-system rebuild while preserving newer local facts and immutable evidence.
@@ -779,6 +858,7 @@ The accepted architecture is implementable after correcting generated package de
 
 - Moved the untracked rebuild package outside the repository before migration so it could not enter Git or make the baseline checkout dirty.
 - Preserved pre-migration local work in a temporary stash while applying the exact-baseline overlay; durable facts are being reconciled semantically rather than blindly replayed over replaced architecture.
+- The prior implementation inferred marker resolution from current head/upstream equality and inferred promotion identity from merge shape. This web-orchestrator steering retains the rebuilt workflow and corrects those two inference paths to require exact recorded recovery evidence.
 
 ## Checks
 
@@ -820,4 +900,4 @@ Create the dedicated handoff snapshot commit and verify its exact remote SHA bef
 
 ## Last handoff commit
 
-None.
+99306f47db96acbcde34ead74a949270674b025e

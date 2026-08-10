@@ -12,9 +12,9 @@
 
 Every commit on `developer` is pushed immediately. A failed push creates a local failure marker and stops further implementation commits until an auditable recovery restores synchronization.
 
-The post-commit hook attempts `git push origin developer`. The pre-commit hook blocks while the marker remains unresolved. The pre-push hook rejects ordinary direct pushes to `main`, branch deletion, and non-fast-forward updates.
+The post-commit hook attempts `git push origin developer`. The pre-commit hook never clears a failed-push marker merely because the current head matches its upstream; only directed recovery may clear it after proving that the recorded failed commit is present in synchronized local and remote history. The pre-push hook rejects ordinary direct pushes to `main`, branch deletion, and non-fast-forward updates.
 
-Recovery uses fast-forward operations when either side contains the other. True divergence may be resolved only by the repository recovery script creating one exact-head, non-conflicting two-parent merge whose parents are the failed local head and the fetched remote head. The merge is pushed as a fast-forward. Conflicts or concurrent ref movement retain the failure state and stop recovery.
+Recovery validates the marker and restores a discarded local branch only by fast-forwarding it to the recorded failed commit. It then uses fast-forward operations when either side contains the other. True divergence may be resolved only by the repository recovery script creating one exact-head, non-conflicting two-parent merge whose parents are the failed local head and the fetched remote head. The merge is pushed as a fast-forward. The marker clears only when both refs match and their history contains the originally recorded failed commit. Conflicts, missing commits, ambiguous local movement, or concurrent ref movement retain the failure state and stop recovery.
 
 ## Review ranges
 
@@ -49,7 +49,7 @@ The script:
 7. pushes `developer`; and
 8. can resume the same exact promotion if `main` succeeded but developer synchronization failed.
 
-Any conflict or unsafe ref movement aborts. The merge must have exactly two parents and the exact tree of the approved `developer` SHA. A local pending marker blocks commits until both remote branches are verified at the accepted merge. Promotion never contains cleanup or opportunistic edits.
+Any conflict or unsafe ref movement aborts. The merge must have exactly two parents, the exact previous `main` first parent, and the exact approved `developer` second parent and tree. Before pushing `main`, the script durably records those three identities in a local pending marker. Resumption requires that exact marker and rejects a structurally similar merge without matching evidence. The marker blocks commits until both remote branches are verified at the accepted merge. Promotion never contains cleanup or opportunistic edits.
 
 ## `web-orchestration`
 
