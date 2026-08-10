@@ -1,19 +1,25 @@
-// jcodemunch-mcp project configuration (overrides the global ~/.code-index/config.jsonc)
-// Purpose: the protected-handover boundary must NEVER enter the code index.
-// Both knobs are required — extra_ignore_patterns guards ordinary indexing,
-// watch_extra_ignore guards the watcher's full walks (Semantic System Review,
-// anomaly A1: the row-35 index-time exclusion was lost on server restart).
 {
+  // Scouting index only. Exclusions improve relevance and minimize indexed data; they are not access controls.
   "extra_ignore_patterns": [
     "UAM-overdracht-INTERN-*",
     "UAM-overdracht-INTERN-*/**",
     "raw-database-evidence",
-    "raw-database-evidence/**"
+    "raw-database-evidence/**",
+    "research/**",
+    "evidence/**",
+    "docs/work/archive/**",
+    "docs/work/handoffs/**"
   ],
   "watch_extra_ignore": [
     "UAM-overdracht-INTERN-*",
     "UAM-overdracht-INTERN-*/**",
     "raw-database-evidence",
-    "raw-database-evidence/**"
-  ]
+    "raw-database-evidence/**",
+    "research/**",
+    "evidence/**",
+    "docs/work/archive/**",
+    "docs/work/handoffs/**"
+  ],
+  "freshness_mode": "strict",
+  "strict_timeout_ms": 15000
 }

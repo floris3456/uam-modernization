@@ -1,10 +1,21 @@
 * text=auto
 
-# Preserve the validated handover package byte-for-byte so its SHA-256
-# manifest remains meaningful on every checkout.
+# Repository-owned scripts and hooks must use LF on every platform.
+*.sh text eol=lf
+*.mjs text eol=lf
+.githooks/* text eol=lf
+
+# Preserve source-evidence bytes across checkouts.
 UAM-overdracht-INTERN-2026-07-23/** -text
+raw-database-evidence/** -text
+research/*/attachments/** -text
+research/*/studies/*/attachments/** -text
+research/*/studies/*/result*.md -text
+research/*/studies/*/result*.json -text
 
 *.png binary
+*.jpg binary
+*.jpeg binary
 *.pdf binary
 *.pptx binary
 *.mp4 binary

@@ -1,21 +1,24 @@
-# Repository-practice source register
+# Agent-system external source register
 
-**Reviewed:** 2026-08-01  
-**Use:** guidance, not project proof. Current vendor details must be rechecked when repository tooling changes.
+**Accessed:** 2026-08-10
+**Rule:** Reverify volatile model, connector, and tool configuration immediately before activation.
 
-| Primary source | Applied lesson | Project interpretation |
-| --- | --- | --- |
-| [OpenAI: AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md) | Agents read repository instructions from root to the working directory; closer files override. | One concise root agreement; nested files only for real local differences. |
-| [GitHub: repository custom instructions](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/add-custom-instructions/add-repository-instructions) | Repository and path-specific instructions should explain structure, build, test, and validation. | `.github/copilot-instructions.md` points to the shared agreement instead of duplicating it. |
-| [GitHub: README guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) | A root README should help a visitor understand and start using the project. | Root contains the shortest reading path; details live under `docs/`. |
-| [GitHub: contributing guidelines](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) | A contribution guide reduces avoidable rework and is surfaced by GitHub. | People and agents use one contribution and validation path. |
-| [GitHub: issue and pull-request templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-request-templates/about-issue-and-pull-request-templates) | Templates prompt contributors for consistent information. | Task, experiment, and review templates require evidence, safety, rollback, and human decisions. |
-| [GitHub: CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) | Code owners can identify responsible reviewers and support protected review. | An example exists, but no active owners are invented before real teams accept responsibility. |
-| [GitHub: secure use of Actions](https://docs.github.com/en/actions/reference/security/secure-use) | Use least privilege and immutable action references; workflow changes deserve careful ownership. | Workflows have read-only default permission and third-party/action references are pinned to reviewed commits. |
-| [Google: small changes](https://google.github.io/eng-practices/review/developer/small-cls.html) | Small, self-contained changes are easier to review, test, and roll back. | One useful outcome per task; unrelated cleanup/refactoring is separate. |
-| [Google: what reviewers look for](https://google.github.io/eng-practices/review/reviewer/looking-for.html) | Review design, behavior, complexity, tests, and documentation; avoid speculative complexity. | Review template asks for behavior, proof, operations, documentation, and exclusions. |
-| [NuGet: central package management](https://learn.microsoft.com/en-gb/nuget/consume-packages/central-package-management) | PackageReference versions can be managed in a root `Directory.Packages.props`. | Reserve this for the .NET solution; do not add dependencies before code exists. |
+| First-party source | Supports |
+| --- | --- |
+| https://opencode.ai/docs/agents/ | Markdown agent definitions under `.opencode/agents/`, primary mode, provider options such as `reasoningEffort`, permission configuration. |
+| https://opencode.ai/docs/config/ | `default_agent`, disabled sharing, permissions, configuration precedence. |
+| https://opencode.ai/docs/skills | `.opencode/skills/<name>/SKILL.md`, on-demand loading, recognized frontmatter, naming rules. |
+| Local `opencode models` and `opencode debug agent` on OpenCode 1.18.15 | The installed configured provider exposes `openai/gpt-5.6-luna` and `openai/gpt-5.6-sol`; project config and agent definitions resolve with task permission denied. |
+| https://github.com/anomalyco/opencode/pull/36543 | Current GPT-5.6 reasoning variants are derived from provider metadata, including the maximum tier where exposed. |
+| https://git-scm.com/docs/githooks | Hook locations, executable requirement, `pre-commit`, `post-commit`, and `pre-push` behavior and exit semantics. |
+| https://git-scm.com/docs/git-config#Documentation/git-config.txt-corehooksPath | Tracked hook activation through `core.hooksPath`. |
+| https://help.openai.com/en/articles/10169521-projects-in-chatgpt | Project instructions, project sources, persistent project context, and connected apps in project chats. |
+| https://docs.github.com/en/rest/git/refs | Public GitHub ref creation/update concepts used by the future orchestration-branch smoke test. |
+| https://docs.github.com/en/rest/repos/contents | Public GitHub file create/update concepts used by the future orchestration-state smoke test. |
+| https://docs.github.com/en/rest/commits/commits#compare-two-commits | Commit-range comparison capability assumed by MCP-ON remote review. |
 
-## Human judgment retained
+## Human requirements not established by vendor documentation
 
-These sources do not decide UAM architecture, owners, privacy policy, branch protection, technology admission, or whether a gate passes. They only support a repository workflow that makes those decisions visible and reviewable.
+- ChatGPT Project skill folder organization is an accepted operating capability supplied by the human.
+- The exact connected GitHub MCP tool surface for direct writes was not live-tested during this MCP-OFF bootstrap.
+- `web-orchestration` direct writes therefore require the smoke test in `migration/project-installation.md` before activation.

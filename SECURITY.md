@@ -1,15 +1,21 @@
-# Security and confidentiality
+# Public repository safety
 
-This repository is internal technical material and must remain private.
+This repository is intentionally public. Every deliberate Git write must therefore be safe for public disclosure.
 
-## Sensitive content
+## Never commit
 
-- `artifacts/database/02_legacy_uam_reference_data.sql` contains real internal URL and application configuration.
-- Operational samples are pseudonymized but remain internal.
-- The legacy source contains a deliberate placeholder where a hardcoded credential was removed. The original credential must never be committed, documented or reused.
-- PSU tokens, cookies, browser profiles and production credentials must not be added to this repository.
+- Credentials, secrets, access tokens, cookies, session data, or browser profiles.
+- Private chat text or private human context that is not necessary and approved for public persistence.
+- Production exports, personal data, raw device/user telemetry, or unreviewed internal identifiers.
+- The original credential removed from preserved legacy material, or any replacement for it.
+- Local `.env` files, build output, temporary workspaces, or tool caches covered by `.gitignore`.
+
+“Preserve the delegated task brief verbatim” means preserve the exact **public-safe brief actually sent to OpenCode**. The web orchestrator sanitizes the brief before delegation. Local developers must stop if a delegated brief appears unsafe to commit.
+
+## Preserved evidence
+
+Historical handover material and raw externally produced research/baseline evidence are readable when required but immutable. Correct errors through derived analysis, AS-BUILT, deviation, design, or correction records; never rewrite source evidence.
 
 ## Reporting
 
-Report suspected credential exposure or unintended publication through the organization's approved internal security channel. Do not open a public GitHub issue containing sensitive details.
-
+Do not open a public issue containing a suspected secret or sensitive value. Use the human operator's approved private security route and remove exposed credentials at their source.

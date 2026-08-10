@@ -1,18 +1,15 @@
-# Ownership and required human decisions
+# Human authority and responsibility
 
-No real repository or product owner is inferred from filenames, Git history, research, or organization data. `UNASSIGNED` means work needing that authority must stop at its gate.
+The human operating the UAM ChatGPT Project is the consequential acceptance authority for this repository.
 
-| Responsibility | Accountable owner | Needed before |
-| --- | --- | --- |
-| Product purpose and scope | UNASSIGNED | Accepting G0 and any production use |
-| Architecture and gate acceptance | UNASSIGNED | Accepting initial ADRs and G0 |
-| Privacy/legal ceiling | UNASSIGNED | Freezing G0 transformation examples |
-| Security and threat acceptance | UNASSIGNED | Accepting G0; required again at every live boundary |
-| Endpoint engineering | UNASSIGNED | G1 lab implementation |
-| Data/contracts | UNASSIGNED | Freezing first contract version |
-| Test/oracle independence | UNASSIGNED | G0 implementation review |
-| Operations/support | UNASSIGNED | Live deployment design |
-| Portal authorization | UNASSIGNED | Portal milestone |
-| Legacy system/decommissioning | UNASSIGNED | Discovery, cutover, and removal |
+| Responsibility | Authority |
+| --- | --- |
+| Define the general goal and consequential constraints | Human |
+| Decide whether an exact reviewed `developer` SHA enters `main` | Human |
+| Make product, privacy, security, risk, and ownership decisions not already settled | Human |
+| Design bounded tasks, route Luna/Sol, steer, and independently review | Web orchestrator |
+| Implement the bounded task and maintain implementation records | Delegated OpenCode developer |
+| Establish repository facts | Exact remote Git evidence |
+| Establish scouting context | jCodeMunch, never as proof |
 
-After real GitHub teams accept ownership, copy `.github/CODEOWNERS.example` to `.github/CODEOWNERS`, replace every placeholder, protect it through branch rules, and record the approval here.
+Automated checks and research provide evidence. They do not exercise human acceptance.

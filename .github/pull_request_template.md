@@ -1,33 +1,18 @@
-## Outcome
+## Exact state
 
-What becomes possible or safer after this change?
-
-## Scope
-
-- Included:
-- Deliberately excluded:
-- Active gate/task:
+- Base branch:
+- Head branch/commit:
+- Task ID(s):
 
 ## Evidence
 
-- Tests or commands run:
-- Generated files checked:
-- Result:
+- Validation commands and observed results:
+- AS-BUILT/deviation records changed with implementation:
+- Public-safety review completed:
 
-## Safety and operations
+## Human decisions
 
-- Security/privacy effect:
-- Failure and recovery behavior:
-- Rollback:
-- Observability/support effect:
+- Decisions still required:
+- Rollback/revert route:
 
-## Decisions and documentation
-
-- ADRs or human decisions affected:
-- Documentation updated:
-- Remaining unknowns or risks:
-
-## Agent assistance
-
-- Agent used, if any:
-- Human review performed:
+A pull request is optional review tooling; it is not the normal `developer → main` acceptance mechanism. Human acceptance applies to an exact reviewed SHA.

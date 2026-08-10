@@ -1,0 +1,17 @@
+.opencode/agents/orchestrator.md
+.opencode/agents/developer.md
+.opencode/agents/heavy.md
+.opencode/skills/governance/conversation-distiller/SKILL.md
+.opencode/skills/governance/gate-workflow/SKILL.md
+.opencode/skills/implementation/as-built/SKILL.md
+.opencode/skills/implementation/code-review/SKILL.md
+.opencode/skills/implementation/task-workflow/SKILL.md
+.opencode/skills/research/prompt-authoring/SKILL.md
+.opencode/skills/research/research-workflow/SKILL.md
+docs/web-lane/developer-instructions.md
+docs/work/templates/handoff-template.md
+docs/work/handoffs/README.md
+opencode.example.json
+scripts/check-lane-boundaries.sh
+.github/workflows/validate-preimplementation.yml
+.github/workflows/validate-research.yml
