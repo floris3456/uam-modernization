@@ -6,7 +6,7 @@ AGENT-SYSTEM-REBUILD-001
 
 ## Status
 
-In progress
+Review
 
 ## Task-start developer SHA
 
@@ -826,7 +826,7 @@ Apply, repair, validate, and push the agent-system rebuild while preserving newe
 
 ## Current position
 
-Implementation commit `aa1c1099ca4418fe1f7031ddecaf20e73e8dc7f9` is validated and confirmed on `origin/developer`. Hooks are active, the isolated `web-orchestration` seed is pushed, `origin/main` remains unchanged, and this task-progress update is ready for the dedicated handoff snapshot commit.
+Corrective implementation commit `2a839e127d1c4785ee843c15ae2fc2fa8738b214` is validated and confirmed on `origin/developer`. Failed-push recovery now preserves the marker's recorded commit through reset/discard attempts, promotion resumption requires exact pre-push pending evidence, `origin/main` remains unchanged, and this task-progress update is ready for the dedicated corrective handoff snapshot.
 
 ## Observed
 
@@ -842,10 +842,15 @@ Implementation commit `aa1c1099ca4418fe1f7031ddecaf20e73e8dc7f9` is validated an
 - `origin/main` remains `1365cd83762d1140ea969faf64b8ea370f6e739c`; no implementation merge or main push occurred.
 - The full implementation range changes no path in the immutable-evidence categories.
 - The corrected ChatGPT Project package remains outside the repository and is ready for manual Project installation; no live Project installation was claimed.
+- The corrective stop-gate observed clean synchronized `developer` at `99306f47db96acbcde34ead74a949270674b025e`, active tracked hooks, and `origin/main` at `1365cd83762d1140ea969faf64b8ea370f6e739c` before any file mutation.
+- The failed-push regression simulation reset local `developer` to its upstream while the marker named the discarded failed commit; the next commit remained blocked, the marker retained that SHA, and directed recovery restored and pushed it before clearing the marker.
+- The promotion regression simulation placed an independently crafted two-parent merge on disposable `main` with the approved SHA as second parent and the approved tree; promotion rejected it because no exact pending evidence existed.
+- The genuine interrupted-promotion simulation retained the exact merge/approved/previous-main tuple after the `main` push and failed `developer` push, then resumed the same merge and synchronized both disposable remote branches.
+- Corrective commit `2a839e127d1c4785ee843c15ae2fc2fa8738b214` is exactly visible at local `HEAD` and `origin/developer`; `origin/main` remained unchanged.
 
 ## Interpretation
 
-The accepted architecture is implementable after correcting generated package defects. The deviations record owns material package-to-reality differences; this task record owns the repair attempts and current procedural state.
+The accepted architecture remains intact after correcting the two reviewed evidence-binding defects. The durable workflow and deviation records own the implemented recovery invariants; this task record owns the corrective steering, observed simulations, and current review boundary.
 
 ## Attempts
 
@@ -853,6 +858,8 @@ The accepted architecture is implementable after correcting generated package de
 - Environment-only divergent-merge authorization: pre-merge validation could not establish the merge target because `MERGE_HEAD` was empty at hook time; replaced with a transient exact-head authorization marker and post-merge parent checks.
 - Divergent recovery initially relied on `post-commit` to push a merge, but Git did not invoke it for the merge path; recovery now pushes explicitly and verifies the fetched remote head.
 - Generated pre-implementation Markdown traversal: failed on ignored dependencies and immutable evidence; corrected by preserving dedicated research validation and narrowing the generic active-document walk.
+- The first crafted-merge fixture attempted to move the disposable bare ref to an object that existed only in the primary clone; the remote rejected the missing object, so the fixture was corrected to create and push the independent merge from a hook-free peer clone.
+- The first pending-evidence predicate called a shell function inside `[[ ... ]]`; the simulation exposed the runtime conditional error, so format validation and structural merge validation were split into separate fail-closed checks.
 
 ## Changed approach
 
@@ -876,6 +883,12 @@ The accepted architecture is implementable after correcting generated package de
 - Final committed `./scripts/validate-repository.sh`: passed all pre-implementation, agent-system, research, code-reference, evidence-manifest, and hook checks.
 - Final local/remote verification: `HEAD` and `origin/developer` both `aa1c1099ca4418fe1f7031ddecaf20e73e8dc7f9`; `origin/main` unchanged; `origin/web-orchestration` at the reviewed seed SHA.
 - Preserved PowerShell handover validator: not run because `pwsh` is not installed in this Linux environment (`pwsh: command not found`).
+- Corrective `./scripts/validate-repository.sh`: passed all pre-implementation, agent-system, research, code-reference, evidence-manifest, and hook checks.
+- Corrective shell and Node syntax checks: passed for all tracked hooks, changed shell scripts, repository shell entry points, and active Node validators.
+- Corrective `git diff --check 99306f47db96acbcde34ead74a949270674b025e..2a839e127d1c4785ee843c15ae2fc2fa8738b214`: passed.
+- Corrected package `validation/run-validation.sh`: passed package integrity, migration, isolated web publication, and the complete disposable Git workflow simulation.
+- Corrective disposable Git workflow: passed reset/discard rejection, verified failed-commit restoration, ordinary and divergent recovery, crafted promotion look-alike rejection, and genuine interrupted-promotion resumption.
+- Corrective remote verification: local `HEAD` and `origin/developer` both `2a839e127d1c4785ee843c15ae2fc2fa8738b214`; `origin/main` exactly `1365cd83762d1140ea969faf64b8ea370f6e739c`.
 
 ## Blockers / required decisions
 
@@ -883,12 +896,12 @@ None.
 
 ## Remaining work
 
-- Create and push the dedicated handoff snapshot commit containing only this task-progress update.
-- Independent web-orchestrator review of the full range from task-start SHA to handoff SHA.
+- Create and push the dedicated corrective handoff snapshot commit containing only this task-progress update.
+- Independent web-orchestrator review of the corrective range from `99306f47db96acbcde34ead74a949270674b025e` to the new handoff SHA.
 
 ## Next action
 
-Create the dedicated handoff snapshot commit and verify its exact remote SHA before returning control.
+Create the dedicated corrective handoff snapshot commit and verify its exact remote SHA before returning control.
 
 ## Relevant durable records
 
