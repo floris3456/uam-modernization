@@ -6,7 +6,7 @@ AGENT-SYSTEM-REBUILD-001
 
 ## Status
 
-In progress
+Review
 
 ## Task-start developer SHA
 
@@ -831,7 +831,7 @@ Apply, repair, validate, and push the agent-system rebuild while preserving newe
 
 ## Current position
 
-Corrective implementation commit `2a839e127d1c4785ee843c15ae2fc2fa8738b214` is validated and confirmed on `origin/developer`. Failed-push recovery now preserves the marker's recorded commit through reset/discard attempts, promotion resumption requires exact pre-push pending evidence, `origin/main` remains unchanged, and this task-progress update is ready for the dedicated corrective handoff snapshot.
+Review-steering implementation commit `ad5c90d3b8b83300c228b9de42d323e49fdf9444` is validated and confirmed on `origin/developer`. The immutable task-start SHA is restored, promotion rollback now requires fresh proof that the merge was not published, ambiguous push outcomes retain exact evidence, `origin/main` remains unchanged, and this task-progress update is ready for a new dedicated handoff snapshot.
 
 ## Observed
 
@@ -852,10 +852,15 @@ Corrective implementation commit `2a839e127d1c4785ee843c15ae2fc2fa8738b214` is v
 - The promotion regression simulation placed an independently crafted two-parent merge on disposable `main` with the approved SHA as second parent and the approved tree; promotion rejected it because no exact pending evidence existed.
 - The genuine interrupted-promotion simulation retained the exact merge/approved/previous-main tuple after the `main` push and failed `developer` push, then resumed the same merge and synchronized both disposable remote branches.
 - Corrective commit `2a839e127d1c4785ee843c15ae2fc2fa8738b214` is exactly visible at local `HEAD` and `origin/developer`; `origin/main` remained unchanged.
+- This continuation's stop-gate observed clean synchronized `developer` at `aa37c4fdf1153fb6e05585fe386ceb16b3ad3058`, active tracked hooks, and `origin/main` at `1365cd83762d1140ea969faf64b8ea370f6e739c` before mutation.
+- The task record now preserves `1365cd83762d1140ea969faf64b8ea370f6e739c` as the original task start while review-base and last-handoff fields separately identify `aa37c4fdf1153fb6e05585fe386ceb16b3ad3058`.
+- The definite main-push rejection simulation freshly fetched unchanged remote refs, then removed pending evidence and rewound the disposable local merge.
+- The ambiguous main-push simulation published the exact merge, forced the client command to report failure, retained a stale old-main tracking ref, and made verification unavailable; pending and local merge evidence remained intact and the same merge resumed after connectivity returned.
+- Review-steering commit `ad5c90d3b8b83300c228b9de42d323e49fdf9444` is exactly visible at local `HEAD` and `origin/developer`; `origin/main` remained unchanged.
 
 ## Interpretation
 
-The accepted architecture remains intact after correcting the two reviewed evidence-binding defects. The durable workflow and deviation records own the implemented recovery invariants; this task record owns the corrective steering, observed simulations, and current review boundary.
+The accepted architecture remains intact after correcting the reviewed evidence-lifetime and task-boundary defects. The durable workflow and deviation records own the implemented promotion invariant; this task record owns the steering, observed simulations, and separate original-task/review boundaries.
 
 ## Attempts
 
@@ -895,6 +900,12 @@ The accepted architecture remains intact after correcting the two reviewed evide
 - Corrected package `validation/run-validation.sh`: passed package integrity, migration, isolated web publication, and the complete disposable Git workflow simulation.
 - Corrective disposable Git workflow: passed reset/discard rejection, verified failed-commit restoration, ordinary and divergent recovery, crafted promotion look-alike rejection, and genuine interrupted-promotion resumption.
 - Corrective remote verification: local `HEAD` and `origin/developer` both `2a839e127d1c4785ee843c15ae2fc2fa8738b214`; `origin/main` exactly `1365cd83762d1140ea969faf64b8ea370f6e739c`.
+- Review-steering `./scripts/validate-repository.sh`: passed all pre-implementation, agent-system, research, code-reference, evidence-manifest, and hook checks.
+- Review-steering shell and Node syntax checks: passed for tracked hooks, changed promotion script, repository shell entry points, and active Node validators.
+- Review-steering `git diff --check aa37c4fdf1153fb6e05585fe386ceb16b3ad3058..ad5c90d3b8b83300c228b9de42d323e49fdf9444`: passed.
+- Updated package `validation/run-validation.sh`: passed package integrity, migration, isolated web publication, and the complete disposable Git workflow simulation.
+- Updated disposable Git workflow: passed look-alike rejection, definite main-push rollback after fresh proof, existing interrupted developer synchronization, and ambiguous accepted-main-push evidence retention plus exact resumption.
+- Review-steering remote verification: local `HEAD` and `origin/developer` both `ad5c90d3b8b83300c228b9de42d323e49fdf9444`; `origin/main` exactly `1365cd83762d1140ea969faf64b8ea370f6e739c`.
 
 ## Blockers / required decisions
 
@@ -902,12 +913,12 @@ None.
 
 ## Remaining work
 
-- Create and push the dedicated corrective handoff snapshot commit containing only this task-progress update.
-- Independent web-orchestrator review of the corrective range from `99306f47db96acbcde34ead74a949270674b025e` to the new handoff SHA.
+- Create and push the new dedicated handoff snapshot commit containing only this task-progress update.
+- Independent web-orchestrator review of the steered corrective range from `aa37c4fdf1153fb6e05585fe386ceb16b3ad3058` to the new handoff SHA.
 
 ## Next action
 
-Create the dedicated corrective handoff snapshot commit and verify its exact remote SHA before returning control.
+Create the new dedicated handoff snapshot commit and verify its exact remote SHA before returning control.
 
 ## Relevant durable records
 
