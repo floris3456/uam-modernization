@@ -1,52 +1,20 @@
 # UAM research
 
-This directory holds research packages: studies with prompts and preserved results, reviews, syntheses, and decision sheets. Each package is self-contained and described by its package card (`README.md`). The repeatable lifecycle lives in [WORKFLOW.md](WORKFLOW.md); the role procedures live in the skills (`.opencode/skills/`).
+This directory contains self-contained research packages: prompts, public-safe attachments, preserved results, reviews, syntheses, and human disposition records.
 
-## Packages
-
-| Package | Status | Contents |
-| --- | --- | --- |
-| [baseline](baseline/README.md) | complete (historical) | first research cycle, retained for provenance |
-| [implementation](implementation/README.md) | complete | 24 studies, 6 batch reviews, one final synthesis |
-| [pilot-uuidv7-dotnet](pilot-uuidv7-dotnet/README.md) | complete | one study, one synthesis — workflow pilot; dispositions pending |
-
-## Reading order
-
-1. Start with the [implementation conclusions (decision sheet)](implementation/synthesis/conclusions.md).
-2. Read the [Human summary](implementation/synthesis/result-implementation-technical-baseline.md#human-summary) for the reasoning in brief.
-3. Open the relevant package card or study only for detail.
-
-## Layout
-
-```text
-research/
-├── WORKFLOW.md                 repeatable research lifecycle
-├── templates/                  package-card, study, and review templates
-├── <package>/
-│   ├── README.md               package card: scope, status, decisions informed
-│   ├── attachments/            sanitized non-code inputs (optional)
-│   ├── studies/NN-<slug>/      prompt + result + README
-│   ├── review/                 only when the area is batched
-│   └── synthesis/              prompt + result (+ conclusions.md)
-└── (a future package sits beside the others)
-```
+Start with package cards and conclusions. Open individual preserved results only when a current question genuinely needs their detail.
 
 ## Invariants
 
-- A study keeps its prompt and result together; result filenames are globally unique.
-- Populated results are preserved evidence. Do not rewrite them casually; intentional changes are recorded and the hash ledger refreshed.
-- Generated research artifacts no longer exist — validation is walk-based and suite-agnostic; templates give the shape.
-- Research evidence cannot approve policy, risk, ownership, or production use; promotion requires a human disposition.
+- Populated research results and raw external evidence are immutable source evidence.
+- Task implementation may read them but never modify them.
+- Research recommends; it does not accept architecture, risk, production use, or gates.
+- Anything committed must be safe for public disclosure.
+- Conclusions move into ADR, design, gate, AS-BUILT, deviation, or another durable home only through explicit disposition.
 
-## Rejected routes
+## Workflow
 
-Routes rejected by human disposition are recorded here so they are never re-researched. PRE-FLIGHT of any new package checks this table.
-
-| Route / package | Rejected | Why | Link |
-| --- | --- | --- | --- |
-| *(none recorded yet)* | | | |
-
-## Validate
+See [`WORKFLOW.md`](WORKFLOW.md) and load the OpenCode `research-workflow` skill when working here.
 
 ```bash
 node scripts/validate-research.mjs

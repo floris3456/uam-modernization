@@ -34,7 +34,5 @@ Thumbs.db
 TestResults/
 coverage/
 
-
-# Chat handoffs (conversation memory; gitignored by design, row 44)
-docs/work/handoffs/*
-!docs/work/handoffs/README.md
+# Retired local chat-handoff artifacts are private residue, not active task state.
+docs/work/handoffs/

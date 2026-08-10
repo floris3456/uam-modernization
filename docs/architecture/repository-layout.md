@@ -1,75 +1,52 @@
 # Repository layout
 
-## Design goal
-
-A new person or agent should find purpose, current scope, the next task, governing decisions, and the validation command from the root without searching chat history. Detailed evidence stays available without crowding that path.
-
-## Current and reserved structure
-
 ```text
 /
-├── README.md                    start here
-├── AGENTS.md                    invariants + skill triggers (always-on layer)
-├── CONTRIBUTING.md              contribution and review rules
-├── opencode.json                default agent
-├── opencode.example.json        key-free global config template for new machines
-├── docs/
-│   ├── plain-language/          simple explanation and scope
-│   ├── milestones/              plans, gate evidence, deviation logs
-│   ├── work/                    current tasks, templates, handoffs
-│   ├── adr/                     important decisions
-│   ├── architecture/            stable system and repository views
-│   │   └── adopted-packages/    human-signed research-package acceptances
-│   ├── web-lane/                web-orchestrator instructions (ChatGPT lane)
-│   └── governance/              ownership and human decisions
-├── contracts/                   versioned schemas and examples (G0 onward)
-├── src/                         deployable implementation (not started)
-│   └── <component>/AS-BUILT.md  per-component fact records (as work starts)
-├── tests/                       automated tests and fictional fixtures
-├── tools/                       repository-owned utilities/simulators
-├── evidence/
-│   ├── manifests/               hashes and provenance
-│   └── sanitized/               safe derived measurements
-├── research/                    self-contained packages: studies, reviews, syntheses
-├── UAM-overdracht-INTERN-*/     preserved legacy handover evidence
-├── scripts/                     deterministic validation
+├── README.md
+├── AGENTS.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── opencode.json
+├── .jcodemunch.jsonc
+├── .githooks/                       tracked local enforcement
 ├── .opencode/
-│   ├── agents/                  orchestrator, developer, heavy (read-only)
-│   └── skills/                  role procedures, grouped by subject
-└── .github/                     CI, task forms, and review template
+│   ├── agents/                      local implementation agents
+│   └── skills/                      conditional local procedures
+├── .github/                         CI and contribution templates
+├── docs/
+│   ├── architecture/                current system truth
+│   ├── governance/                  human authority/ownership roles
+│   ├── milestones/                  gate plans and evidence
+│   ├── plain-language/              first-reader explanation
+│   └── work/
+│       ├── current/                 temporary task-progress
+│       ├── archive/                 durable closed work records only
+│       ├── future/                  non-normative proposals
+│       └── templates/
+├── contracts/                       versioned schemas/examples
+├── src/                             deployable implementation and component AS-BUILT
+├── tests/                           automated tests and fictional fixtures
+├── tools/ and scripts/              deterministic repository utilities
+├── research/                        research packages and workflow
+├── evidence/                        sanitized derived evidence/provenance
+└── UAM-overdracht-INTERN-*/         immutable historical handover evidence
 ```
 
-README placeholder files reserve future code boundaries without pretending that implementation exists.
+The ChatGPT Project developer instructions and Project skills are deliberately **not** stored in this repository. The independent `web-orchestration` branch contains only `web-orchestration-only/**` and is not part of the normal implementation tree.
 
-## Where a change belongs
+## Placement rules
 
-| Change | Location | Rule |
-| --- | --- | --- |
-| Simple explanation of behavior/scope | `docs/plain-language/` | Prefer this for the first reader. |
-| Delivery outcome or gate | `docs/milestones/` | State evidence and human acceptance. |
-| Plan-vs-reality drift | `<gate>-deviations.md` beside the milestone | References + why; part of gate acceptance. |
-| Work being done | `docs/work/current/` | One observable outcome per task. |
-| Architecture decision | `docs/adr/` | Include alternatives and status. |
-| Accepted research package | `docs/architecture/adopted-packages/` | Human-signed record: scope, synthesis hash, links. |
-| What was actually built | `src/<component>/AS-BUILT.md` | Facts + proof commands; updated during work. |
-| Reproducible measurement | `evidence/` | Commit sanitized output and provenance, not sensitive raw input. |
-| Contract shape | `contracts/` | Version schema and valid/invalid examples together. |
-| Product behavior | `src/` | Keep deployable components explicit. |
-| Test behavior | `tests/` | Never depend on production or personal data. |
-| Repeatable repository command | `scripts/` or `tools/` | Provide help and a deterministic check mode. |
+| Change | Location |
+| --- | --- |
+| Active task process | `docs/work/current/<task>.md` |
+| Current implemented component facts | `src/<component>/AS-BUILT.md` or the component's established AS-BUILT location |
+| Planned-versus-actual difference | applicable milestone/component deviation record |
+| Architecture authority/branch model | `docs/architecture/` |
+| Human gate evidence | `docs/milestones/` |
+| Conditional local agent procedure | `.opencode/skills/<name>/SKILL.md` |
+| Repeatable command | `scripts/` or `tools/` |
+| Source evidence | existing immutable evidence root; never rewrite |
 
-## Layered agent instructions
+## Cleanup
 
-The root `AGENTS.md` is the always-on layer: universal invariants plus a skill trigger table. Procedures live in role skills (`.opencode/skills/`, loaded on demand), not in nested `AGENTS.md` files; a nested file is added only when a subtree has genuinely different commands or safety constraints and should state differences, not copy the root. Model and permissions for the agents live in `.opencode/agents/`.
-
-## Cleanup rules
-
-- Generated files must identify a generator and be checkable without rewriting them.
-- Raw catalogues, credentials, local environments, build output, and temporary files stay ignored.
-- Do not reorganize preserved evidence merely for visual neatness; moves must improve retrieval and retain history.
-- No empty framework, service, or dependency is added before its milestone.
-- Review temporary placeholders at every gate and remove those that no longer communicate a real boundary.
-
-## Why this layout
-
-It follows established repository guidance: keep root instructions concise, put contribution rules and templates in conventional locations, use layered path-specific instructions sparingly, make small self-contained changes, and protect automated workflows. Applied sources are recorded in [the source register](source-register.md).
+Remove obsolete agents, skills, templates, scripts, validators, and active references together. Do not preserve old agent-system chronology in current architecture records. Do not add empty product frameworks before their milestone.

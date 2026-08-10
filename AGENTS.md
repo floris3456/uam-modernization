@@ -1,35 +1,35 @@
-# Repository working agreement
+# Local developer agreement
 
-Human-first; token-efficient; small reversible changes; run the validator before handoff.
+Implement only the bounded public-safe task delegated by the web orchestrator. Remote Git is the shared implementation record; the human alone accepts work into `main`.
 
-## Invariants
+## Always-active boundaries
 
-- Research is never acceptance; gates are human-accepted.
-- Research results are immutable evidence; intentional changes are recorded and the hash ledger refreshed.
-- Raw production data never travels: never committed outside the preserved handover boundary (`UAM-overdracht-INTERN-*`), never zipped for research.
-- A fact has one normative home; everywhere else links (references, not copies).
-- Plans are proposals; as-built records are facts; reality wins.
-- Know the objective state of the repository (what is disposable, frozen, uncertain) — when a premise is uncertain, ASK the human.
-- System changes follow the documentation protocol in the design record.
+- Work on `developer` unless carrying out an exact-SHA promotion operation. Promotion is not an implementation task: it creates no task record, edits, or handoff snapshot.
+- Every commit is pushed immediately. A failed push stops implementation; synchronization recovery is the only allowed repository-changing work until fixed.
+- Before returning control, create and push the required handoff snapshot commit. Use only the five-field response contract in `docs/work/README.md`.
+- Anything persisted to Git must be safe for public disclosure.
+- Preserved historical handover and raw externally produced research/baseline evidence may be read when needed but never modified.
+- Do not read or modify the independent `web-orchestration` branch.
+- Do not launch subagents. The web orchestrator selects and steers implementation agents.
+- AS-BUILT and applicable deviation records are part of implementation. Keep them correct in the same commit as the implementation facts they describe.
 
 ## Skill triggers
 
 | When | Load |
 | --- | --- |
-| Work under `research/` | `research-workflow` |
-| Writing or reviewing a research prompt | `prompt-authoring` |
-| Implementing or touching a component | `as-built` |
-| Reviewing code or PRs | `code-review` |
-| Milestone, deviation-log, or gate work | `gate-workflow` |
-| Starting or finishing a task | `task-workflow` |
-| Turning a conversation into documentation | `conversation-distiller` |
+| Starting, continuing, recovering, steering, finalizing, or handing off a delegated task | `task-workflow` |
+| Implementing a component, changing an implemented fact, or creating/changing a plan-versus-reality difference | `implementation-records` |
+| Committing, pushing, handing off, recovering synchronization, or carrying out an approved promotion | `git-sync-and-handoff` |
+| Working on a milestone, gate record, gate evidence, or human acceptance record | `gate-workflow` |
+| Creating, running, reviewing, or promoting a research package | `research-workflow` |
+| Writing or materially revising a research prompt | `prompt-authoring` |
 
-Skills live in `.opencode/skills/`; agents in `.opencode/agents/` (orchestrator, developer, heavy — heavy is read-only).
+Load the applicable skills through OpenCode's native skill mechanism. A skill may direct you to load another skill when responsibility transitions.
 
 ## Pointers
 
-- [README.md](README.md) — start here
-- [docs/work/README.md](docs/work/README.md) — task workflow
-- [research/WORKFLOW.md](research/WORKFLOW.md) — research lifecycle overview
-- [docs/architecture/repository-layout.md](docs/architecture/repository-layout.md) — where things belong
-- `./scripts/validate-repository.sh` — web-safe checks; protected-lane checks (code reference, handover) run in CI
+- [`docs/work/README.md`](docs/work/README.md) — task lifecycle and response contract
+- [`docs/architecture/implementation-records.md`](docs/architecture/implementation-records.md) — record responsibilities
+- [`docs/architecture/branch-workflow.md`](docs/architecture/branch-workflow.md) — branches, synchronization, and acceptance
+- [`docs/architecture/repository-layout.md`](docs/architecture/repository-layout.md) — where changes belong
+- `./scripts/validate-repository.sh` — reliable mechanical checks

@@ -1,36 +1,38 @@
-# TASK-ID — Short outcome
+# TASK-ID - Human decision outcome
 
-**Status:** Draft  
-**Gate/milestone:**  
+**Status:** Draft
+**Gate/milestone:**
 **Accountable human:** UNASSIGNED
+
+Use this template only for a human decision or gate-preparation brief. Delegated implementation work uses `task-progress-template.md`.
 
 ## Useful outcome
 
-What becomes possible or safer, in simple language?
+What decision becomes explicit, and what work becomes possible or safer?
 
 ## In scope
 
-- 
+-
 
 ## Out of scope
 
-- 
+-
 
 ## Inputs and source of truth
 
-- 
+-
 
 ## Constraints and human decisions
 
-- 
+-
 
 ## Acceptance evidence
 
-1. 
+1.
 
 ## Failure, recovery, and rollback
 
-- 
+-
 
 ## Validation commands
 
@@ -38,12 +40,6 @@ What becomes possible or safer, in simple language?
 commands go here
 ```
 
-## Handoff requirements
+## Next safe action
 
-- Changed behavior and files.
-- Evidence locations and hashes where useful.
-- As-built delta: which component records were updated and their proof commands.
-- Deviation lines: where reality differed from the plan (plan ref → as-built ref → because).
-- Review decision: human review needed (attach a human review guide: what to look at when testing, which tools/commands to use) or skipped with reason.
-- Residual risks and untested cases.
-- Next safe task.
+Name the next action that is safe only after the recorded human decision.

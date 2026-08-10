@@ -1,44 +1,46 @@
-# Repeatable task workflow
+# Work lifecycle
 
-## Choose the right unit
+`docs/work/current/` contains one temporary task-progress file per active delegated implementation task. It is public-safe procedural memory, not authoritative implementation evidence. A pre-existing human decision brief, such as a gate-owner decision, may also remain there but does not use the implementation handoff lifecycle.
 
-A task should deliver one observable outcome. Separate unrelated cleanup, refactoring, experiments, and product changes. If a reviewer cannot explain the change without reading its entire diff, the task is probably too broad.
+## Task lifecycle
 
-## Start
+1. The web orchestrator assigns a stable task ID and a bounded public-safe brief.
+2. The developer creates `docs/work/current/<task-id>-<slug>.md` before substantive implementation.
+3. The original delegated brief is preserved verbatim.
+4. Task-progress, AS-BUILT, and applicable deviations are maintained during work.
+5. Every commit is pushed immediately.
+6. Before returning control, the developer creates and pushes a dedicated handoff snapshot commit.
+7. The web orchestrator independently reviews the exact remote range.
+8. After substantive approval, the implementing developer reconciles durable records and deletes task-progress in the finalization commit.
+9. The web orchestrator reviews finalization.
+10. The human may approve an exact `developer` SHA for promotion to `main`.
 
-1. Copy [task-template.md](templates/task-template.md) to `current/<gate>-<number>-<short-name>.md`.
-2. Fill every section before implementation. Use `None` with a reason instead of leaving blanks.
-3. Link the milestone, relevant ADRs, sources, and evidence inputs.
-4. Mark policy, ownership, risk acceptance, money, and production choices as human decisions.
+## Record responsibilities
 
-Use [experiment-template.md](templates/experiment-template.md) when the main output is a measurement rather than product behavior.
+- Task-progress: current task process, attempts, observations, interpretations, steering, remaining work, next action.
+- AS-BUILT: continuously accurate implementation reality and live developer memory.
+- Deviation: continuously accurate intended-versus-actual differences.
 
-## Work
+## Developer response contract
 
-- Keep the brief current when facts change.
-- Update the component's AS-BUILT.md alongside the code; record a deviation-log line when reality differs from the plan.
-- Save deterministic, sanitized outputs under `evidence/`; do not paste raw evidence into the brief.
-- Prefer a command another person can rerun over a screenshot or chat claim.
-- Stop at the active gate.
+```text
+Status:
+Files changed:
+Checks + perceived results:
+Blockers/decisions:
+Task record:
+```
 
-## Finish
+No narrative summary, full files, reproduced diff, long rationale, or correctness claim. `Files changed` covers the entire current review range. The response is navigation, not proof.
 
-1. Run focused checks and `./scripts/validate-repository.sh`.
-2. Complete [handoff-template.md](templates/handoff-template.md), including the as-built delta, deviation lines, and the review decision.
-3. After review (human when the agent is uncertain, skipped with a recorded reason otherwise), move the task and handoff into `archive/<year>/`.
-4. Make the next safe task explicit. Do not leave required context only in a chat.
+## Review bases
 
-Note: **chat handoffs** (full conversation memory for a continuing chat, e.g.
-`CHAT-HANDOFF-*.md`) are a separate artifact from task handoffs — they live in
-`docs/work/handoffs/`, which is gitignored by design (design record row 44).
-The durable summary of each chat handoff is its design-record row; task
-handoffs above remain committed and archived.
+- First handoff: task-start `developer` SHA to current handoff SHA.
+- Later handoff: last reviewed `developer` SHA to current handoff SHA.
+- Finalization: substantive-approval SHA to finalization SHA.
 
-## Status meanings
+The task-progress template carries the task-start and orchestrator-supplied review-base SHAs. The web task context remains the normative home for reviewed and substantive-approval boundaries.
 
-- `Draft`: outcome or checks are incomplete.
-- `Ready`: scope and acceptance evidence are clear; blockers are resolved.
-- `In progress`: implementation or measurement is underway.
-- `Review`: work is complete and evidence awaits review.
-- `Done`: accepted and archived.
-- `Blocked`: named external decision or permission prevents safe progress.
+## Completion
+
+Move durable facts into their proper records. Delete task-progress in finalization; do not archive it as a permanent diary.

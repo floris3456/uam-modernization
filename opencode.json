@@ -1,18 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "default_agent": "orchestrator",
+  "default_agent": "small-developer",
+  "share": "disabled",
   "permission": {
-    "read": {
-      "*": "allow",
-      "UAM-overdracht-INTERN-*": "deny",
-      "UAM-overdracht-INTERN-*/**": "deny",
-      "raw-database-evidence": "deny",
-      "raw-database-evidence/**": "deny"
-    },
-    "bash": {
-      "*": "allow",
-      "*UAM-overdracht-INTERN-*": "deny",
-      "*raw-database-evidence*": "deny"
-    }
+    "task": "deny"
   }
 }

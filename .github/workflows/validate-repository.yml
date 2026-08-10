@@ -1,4 +1,4 @@
-name: Validate preserved handover
+name: Validate repository
 
 on:
   push:
@@ -12,13 +12,14 @@ permissions:
 
 jobs:
   validate:
-    runs-on: windows-latest
-    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
-      - name: Validate immutable handover package
-        shell: pwsh
-        run: ./UAM-overdracht-INTERN-2026-07-23/scripts/Test-UamDocumentationDeliverables.ps1
+      - name: Activate tracked hooks for validation
+        run: ./scripts/bootstrap-agent-workflow.sh
+      - name: Run repository validation
+        run: ./scripts/validate-repository.sh
