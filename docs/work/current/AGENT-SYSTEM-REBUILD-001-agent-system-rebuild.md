@@ -6,7 +6,7 @@ AGENT-SYSTEM-REBUILD-001
 
 ## Status
 
-In progress
+Review
 
 ## Task-start developer SHA
 
@@ -747,7 +747,7 @@ Apply, repair, validate, and push the agent-system rebuild while preserving newe
 
 ## Current position
 
-The repaired package overlay and repository-specific reconciliation are validated on `developer`. Hooks are active and the isolated `web-orchestration` seed was verified and pushed. The implementation commit, final verification, and handoff snapshot remain.
+Implementation commit `aa1c1099ca4418fe1f7031ddecaf20e73e8dc7f9` is validated and confirmed on `origin/developer`. Hooks are active, the isolated `web-orchestration` seed is pushed, `origin/main` remains unchanged, and this task-progress update is ready for the dedicated handoff snapshot commit.
 
 ## Observed
 
@@ -759,6 +759,10 @@ The repaired package overlay and repository-specific reconciliation are validate
 - The running OpenCode session cannot hot-load the newly installed skill paths; their installed contents were read directly and are being followed. A restarted OpenCode session will discover them normally.
 - The repository validator initially reported 451 false link errors because the generated generic Markdown walker scanned ignored dependencies and immutable generated code evidence; traversal now leaves research to its dedicated parser-aware validator and ignores retired local handoffs/dependencies.
 - `web-orchestration` was created as orphan commit `f3b6793249e3f36733d40bc302bc6011b3814c61`, verified to contain exactly five `web-orchestration-only/**` seed files, and pushed to `origin/web-orchestration`.
+- The implementation hook pushed `aa1c1099ca4418fe1f7031ddecaf20e73e8dc7f9`; local `HEAD`, `origin/developer`, and the remote branch ref were equal afterward.
+- `origin/main` remains `1365cd83762d1140ea969faf64b8ea370f6e739c`; no implementation merge or main push occurred.
+- The full implementation range changes no path in the immutable-evidence categories.
+- The corrected ChatGPT Project package remains outside the repository and is ready for manual Project installation; no live Project installation was claimed.
 
 ## Interpretation
 
@@ -788,6 +792,10 @@ The accepted architecture is implementable after correcting generated package de
 - `./scripts/bootstrap-agent-workflow.sh --check`: passed with `core.hooksPath=.githooks` and executable hooks.
 - OpenCode debug resolution: both developer agents resolved with the intended models, reasoning options, primary mode, and task denial.
 - Remote web-branch bootstrap: exact reviewed orphan commit pushed successfully.
+- Final repaired `validation/run-validation.sh`: passed with 50 payload files, 17 deletions, linked-worktree migration, isolated web publication, failed-push blocking/recovery, divergent merge recovery, finalization, and resumable promotion.
+- Final committed `./scripts/validate-repository.sh`: passed all pre-implementation, agent-system, research, code-reference, evidence-manifest, and hook checks.
+- Final local/remote verification: `HEAD` and `origin/developer` both `aa1c1099ca4418fe1f7031ddecaf20e73e8dc7f9`; `origin/main` unchanged; `origin/web-orchestration` at the reviewed seed SHA.
+- Preserved PowerShell handover validator: not run because `pwsh` is not installed in this Linux environment (`pwsh: command not found`).
 
 ## Blockers / required decisions
 
@@ -795,14 +803,12 @@ None.
 
 ## Remaining work
 
-- Inspect final active architecture references and immutable-evidence diff state.
-- Commit the implementation and verify the automatic push.
-- Rerun final checks on committed state.
-- Update this record, create the dedicated handoff snapshot commit, and verify the remote handoff SHA.
+- Create and push the dedicated handoff snapshot commit containing only this task-progress update.
+- Independent web-orchestrator review of the full range from task-start SHA to handoff SHA.
 
 ## Next action
 
-Review and commit the complete implementation range, then verify the automatic remote push.
+Create the dedicated handoff snapshot commit and verify its exact remote SHA before returning control.
 
 ## Relevant durable records
 
