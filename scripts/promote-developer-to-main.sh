@@ -135,14 +135,15 @@ printf '%s %s %s\n' "$merge_sha" "$approved" "$old_main" > "$pending"
 
 if ! git push origin main; then
   rm -f "$authorization"
-  git fetch origin main developer >/dev/null 2>&1 || true
-  if [[ "$(git rev-parse origin/main 2>/dev/null || true)" == "$old_main" ]]; then
+  if git fetch origin main developer >/dev/null 2>&1 \
+    && [[ "$(git rev-parse origin/main)" == "$old_main" ]] \
+    && [[ "$(git rev-parse origin/developer)" == "$approved" ]]; then
     rm -f "$pending"
     git checkout developer >/dev/null 2>&1 || true
     git branch -f main "$old_main" >/dev/null 2>&1 || true
-    echo "Promotion main push failed; the unpushed local promotion merge was removed." >&2
+    echo "Promotion main push failed; fresh remote verification proved it was not published, so the local merge was removed." >&2
   else
-    echo "Promotion main push did not complete cleanly; exact pending evidence was retained for verification." >&2
+    echo "Promotion main push outcome could not be proven unpublished; exact pending and local merge evidence were retained." >&2
   fi
   exit 1
 fi

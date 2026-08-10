@@ -6,15 +6,15 @@ AGENT-SYSTEM-REBUILD-001
 
 ## Status
 
-Review
+In progress
 
 ## Task-start developer SHA
 
-99306f47db96acbcde34ead74a949270674b025e
+1365cd83762d1140ea969faf64b8ea370f6e739c
 
 ## Review-base developer SHA
 
-1365cd83762d1140ea969faf64b8ea370f6e739c
+aa37c4fdf1153fb6e05585fe386ceb16b3ad3058
 
 ## Original task brief
 
@@ -824,6 +824,11 @@ Task record:
 
 Apply, repair, validate, and push the agent-system rebuild while preserving newer local facts and immutable evidence.
 
+## Directed review findings
+
+- The prior corrective handoff accidentally replaced the immutable task-start SHA with the correction-start SHA. This continuation restores the original task start and keeps the current review boundary in the separate review-base and last-handoff fields.
+- The prior promotion failure branch could use a stale tracking ref after an unsuccessful verification fetch and delete exact pending evidence even when the server had accepted the merge. This continuation requires fresh proof of non-publication before rollback.
+
 ## Current position
 
 Corrective implementation commit `2a839e127d1c4785ee843c15ae2fc2fa8738b214` is validated and confirmed on `origin/developer`. Failed-push recovery now preserves the marker's recorded commit through reset/discard attempts, promotion resumption requires exact pre-push pending evidence, `origin/main` remains unchanged, and this task-progress update is ready for the dedicated corrective handoff snapshot.
@@ -866,6 +871,7 @@ The accepted architecture remains intact after correcting the two reviewed evide
 - Moved the untracked rebuild package outside the repository before migration so it could not enter Git or make the baseline checkout dirty.
 - Preserved pre-migration local work in a temporary stash while applying the exact-baseline overlay; durable facts are being reconciled semantically rather than blindly replayed over replaced architecture.
 - The prior implementation inferred marker resolution from current head/upstream equality and inferred promotion identity from merge shape. This web-orchestrator steering retains the rebuilt workflow and corrects those two inference paths to require exact recorded recovery evidence.
+- Review of corrective handoff `aa37c4fdf1153fb6e05585fe386ceb16b3ad3058` retained the exact promotion-binding design but changed failed-main-push cleanup from stale-ref inference to fresh remote proof; ambiguous outcomes now preserve local and pending evidence.
 
 ## Checks
 
@@ -913,4 +919,4 @@ Create the dedicated corrective handoff snapshot commit and verify its exact rem
 
 ## Last handoff commit
 
-99306f47db96acbcde34ead74a949270674b025e
+aa37c4fdf1153fb6e05585fe386ceb16b3ad3058

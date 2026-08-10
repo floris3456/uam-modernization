@@ -49,7 +49,7 @@ The script:
 7. pushes `developer`; and
 8. can resume the same exact promotion if `main` succeeded but developer synchronization failed.
 
-Any conflict or unsafe ref movement aborts. The merge must have exactly two parents, the exact previous `main` first parent, and the exact approved `developer` second parent and tree. Before pushing `main`, the script durably records those three identities in a local pending marker. Resumption requires that exact marker and rejects a structurally similar merge without matching evidence. The marker blocks commits until both remote branches are verified at the accepted merge. Promotion never contains cleanup or opportunistic edits.
+Any conflict or unsafe ref movement aborts. The merge must have exactly two parents, the exact previous `main` first parent, and the exact approved `developer` second parent and tree. Before pushing `main`, the script durably records those three identities in a local pending marker. If the push reports failure, that evidence and the local merge are discarded only after a fresh successful fetch proves `main` remains at the previous SHA and `developer` remains at the approved SHA; an unavailable or different remote state retains both and fails closed. Resumption requires the exact marker and rejects a structurally similar merge without matching evidence. The marker blocks commits until both remote branches are verified at the accepted merge. Promotion never contains cleanup or opportunistic edits.
 
 ## `web-orchestration`
 
