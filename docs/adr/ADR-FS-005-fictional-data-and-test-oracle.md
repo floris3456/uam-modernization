@@ -6,13 +6,13 @@
 
 ## Decision
 
-G0 uses the exact [current randomized dataset contract](../../research/current-randomized-dataset-contract.md) for covered positive values and declared property facts. Its structure is inaccurate and untrusted. A scenario composer creates only the required structure, identities, clocks, boundaries, canaries, and negative mutations and labels every construct `TEST_AUTHORED`. A separately owned oracle predicts outcomes before the system runs.
+G0 uses the generated research manifest and exact [current randomized dataset contract](../../research/current-randomized-dataset-contract.md) for covered positive values and declared property facts. Its structure is inaccurate and untrusted. A scenario composer creates only the required structure, identities, clocks, boundaries, canaries, and negative mutations and labels every construct `TEST_AUTHORED`. A separately owned oracle predicts outcomes before the system runs.
 
 The dataset cannot establish grouping, keys, relationships, joins, hierarchy, order, cardinality, co-occurrence, distributions, topology, scale, representativeness, behavior, or production safety. Missing or mismatched bytes put only dependent claims in `HOLD`.
 
 Exact privacy canaries must be detectable in every declared output sink. Mutation tests must prove that the oracle, canary scanner, and gate fail when mandatory rules are deliberately broken.
 
-The 173-application catalogue may contribute aggregate shape only. Raw application names, internal identifiers, URLs, addresses, ownership values, or organizational mappings must not be copied into fixtures.
+The separately governed 173-application catalogue is not evidence about this dataset's structure. If later authorized, a sanitized aggregate profile may inform `TEST_AUTHORED` scenario selection only; it cannot establish source or production shape. Raw application names, internal identifiers, URLs, addresses, ownership values, or organizational mappings must not be copied into fixtures.
 
 ## Why
 
@@ -31,7 +31,7 @@ Tests based on production data create privacy and deletion risk. An oracle that 
 - G0 blocks live collection and production authority.
 - Fixtures have classification, lineage, technical provenance, expiry, and deletion records.
 - Dataset adaptation, `TEST_AUTHORED` scenario composition, and oracle implementations are separated.
-- The detailed application catalogue can inform safe aggregate scenarios after a sanitized profile is generated.
+- An independently authorized sanitized catalogue profile may inform `TEST_AUTHORED` scenario selection without becoming source or production evidence.
 
 ## Required before acceptance
 

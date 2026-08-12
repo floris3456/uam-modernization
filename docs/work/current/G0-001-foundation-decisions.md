@@ -15,8 +15,8 @@ The small set of decisions that controls G0 is explicitly accepted or amended, s
 - Express the initial privacy ceiling as testable fictional examples.
 - Resolve or assign experiments for contract contradictions that affect the first fixtures.
 - Record dated decisions and owners.
-- Bind [the current dataset contract](../../../research/current-randomized-dataset-contract.md) for covered positive property/value inputs.
-- Treat source structure, relationships, counts, distributions, topology, scale, and representativeness as untrusted; label constructed cases `TEST_AUTHORED`.
+- Bind the generated research manifest and [current dataset contract](../../../research/current-randomized-dataset-contract.md) for covered positive property/value inputs.
+- Treat source structure, relationships, counts, distributions, topology, scale, and representativeness as untrusted; label every constructed structure, identity, clock, boundary, canary, and negative mutation `TEST_AUTHORED`.
 
 ## Out of scope
 

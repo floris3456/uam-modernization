@@ -22,7 +22,7 @@ Many parts of UAM affect privacy, Windows security boundaries, durable data, adm
 
 ## Consequences
 
-- Work may proceed on G0, contracts, pure models, exact randomized-property inputs, `TEST_AUTHORED` scenario structures, and repository scaffolding.
+- Work may proceed on G0, contracts, pure models, manifest-bound randomized-property inputs, `TEST_AUTHORED` scenario structures, and repository scaffolding.
 - Later implementation waits for its predecessor gate.
 - Gate failures are retained and corrected; a rerun does not erase the first failure.
 - Human policy and production decisions remain separate.

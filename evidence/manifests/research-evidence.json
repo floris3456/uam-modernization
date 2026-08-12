@@ -571,8 +571,8 @@
       "package": "templates",
       "kind": "prompt",
       "path": "research/templates/study/prompt.md",
-      "byteCount": 3561,
-      "sha256": "a3be0f79b9ddb00b5ee7ee86bd6136084a0290cffe70d4efd3d653f7814837c7"
+      "byteCount": 4630,
+      "sha256": "e7ac0a9127bb10a96d2dd35da90691048e3d6a32d8830de3108d127f8a10a6f8"
     }
   ],
   "limitations": [

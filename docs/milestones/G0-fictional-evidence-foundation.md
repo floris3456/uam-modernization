@@ -36,7 +36,7 @@ A developer can run one deterministic command and see that manifest-bound random
 
 ## Gate evidence
 
-- The exact dataset identity is verified before dataset-dependent runs; mismatch yields `HOLD` only for dependent claims.
+- The exact dataset identity is verified before dataset-dependent runs; mismatch yields `HOLD` only for dependent claims while independent work continues.
 - All G0 scenarios pass twice with byte-equivalent generated outputs.
 - The oracle is demonstrably independent from production implementations.
 - Mutation or deliberately incorrect implementations are caught by the oracle suite.
