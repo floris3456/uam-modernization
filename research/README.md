@@ -8,6 +8,7 @@ Start with package cards and conclusions. Open individual preserved results only
 
 - Populated research results and raw external evidence are immutable source evidence.
 - Task implementation may read them but never modify them.
+- The [current randomized dataset contract](current-randomized-dataset-contract.md) takes interpretation precedence over older fictional-only or structure-accurate premises. It permits property/value claims only; source structure remains untrusted.
 - Research recommends; it does not accept architecture, risk, production use, or gates.
 - Anything committed must be safe for public disclosure.
 - Conclusions move into ADR, design, gate, AS-BUILT, deviation, or another durable home only through explicit disposition.

@@ -1,7 +1,7 @@
-# G0-001 — Approve the fictional evidence foundation
+# G0-001 — Approve the randomized-property evidence foundation
 
 **Status:** Blocked on named human decisions  
-**Gate/milestone:** [G0 fictional evidence foundation](../../milestones/G0-fictional-evidence-foundation.md)  
+**Gate/milestone:** [G0 randomized-property evidence foundation](../../milestones/G0-fictional-evidence-foundation.md)
 **Accountable human:** UNASSIGNED
 
 ## Useful outcome
@@ -15,6 +15,8 @@ The small set of decisions that controls G0 is explicitly accepted or amended, s
 - Express the initial privacy ceiling as testable fictional examples.
 - Resolve or assign experiments for contract contradictions that affect the first fixtures.
 - Record dated decisions and owners.
+- Bind [the current dataset contract](../../../research/current-randomized-dataset-contract.md) for covered positive property/value inputs.
+- Treat source structure, relationships, counts, distributions, topology, scale, and representativeness as untrusted; label constructed cases `TEST_AUTHORED`.
 
 ## Out of scope
 
@@ -28,6 +30,7 @@ The small set of decisions that controls G0 is explicitly accepted or amended, s
 - [G0 milestone](../../milestones/G0-fictional-evidence-foundation.md)
 - [Implementation scope](../../plain-language/implementation-scope.md)
 - [Final research baseline](../../../research/implementation/synthesis/result-implementation-technical-baseline.md)
+- [Current randomized dataset contract](../../../research/current-randomized-dataset-contract.md)
 
 ## Acceptance evidence
 
@@ -36,6 +39,7 @@ The small set of decisions that controls G0 is explicitly accepted or amended, s
 3. Privacy transformations needed by the first fixtures have approved examples.
 4. Unresolved technical claims have a named experiment, owner, and decision deadline.
 5. No production or later-gate approval is implied.
+6. Dataset-backed claims bind the exact dataset identity and never infer source structure.
 
 ## Failure, recovery, and rollback
 

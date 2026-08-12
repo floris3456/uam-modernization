@@ -1,22 +1,23 @@
-# G0 — Fictional evidence and test-oracle foundation
+# G0 — Randomized-property evidence and test-oracle foundation
 
 **Status:** ready for human decisions, then implementation  
 **Why first:** every later component needs trustworthy contracts, fixtures, and failure cases.
 
 ## Useful result
 
-A developer can run one deterministic command and see that fictional activity flows through agreed transformations and state transitions, with independently generated expected answers. Failures are reproducible and contain no real user data.
+A developer can run one deterministic command and see that manifest-bound randomized values and accurate declared properties flow through `TEST_AUTHORED` transformations and state transitions, with independently generated expected answers.
 
 ## Work included
 
-- Versioned fictional personas, realms, devices, applications, browser records, clocks, and fault schedules.
+- The exact [randomized dataset contract](../../research/current-randomized-dataset-contract.md) as the primary positive property/value input.
+- Deterministic structures, identities, clocks, fault schedules, boundaries, and canaries labeled `TEST_AUTHORED`.
 - Small, reviewable contract schemas and valid/invalid examples.
 - An oracle implementation that does not call production transformation code.
 - Stable scenario identifiers and seeds.
 - Golden expected outcomes with explicit comparison rules.
 - Cases for duplicates, reordered input, cursor boundaries, crashes, retries, privacy transformation, realm isolation, and time behavior.
 - A deterministic runner suitable for local use and CI.
-- A minimal capability boundary tested only with fictional identities; no organizational role system.
+- A minimal capability boundary tested only with `TEST_AUTHORED` identities; no organizational role system.
 
 ## Not included
 
@@ -35,6 +36,7 @@ A developer can run one deterministic command and see that fictional activity fl
 
 ## Gate evidence
 
+- The exact dataset identity is verified before dataset-dependent runs; mismatch yields `HOLD` only for dependent claims.
 - All G0 scenarios pass twice with byte-equivalent generated outputs.
 - The oracle is demonstrably independent from production implementations.
 - Mutation or deliberately incorrect implementations are caught by the oracle suite.
@@ -53,7 +55,7 @@ A failed scenario must preserve its scenario ID, seed, sanitized inputs, expecte
 1. Resolve and record the four human decisions above.
 2. Convert the G0 research conclusions into small accepted ADR amendments where needed.
 3. Define the first contract schemas and deliberately invalid examples.
-4. Implement the fictional scenario model and deterministic generator.
+4. Implement the dataset-backed property/value adapter and `TEST_AUTHORED` scenario composer.
 5. Implement the independent oracle.
 6. Add privacy, cursor, deduplication, time, realm, and controlled-fault scenarios.
 7. Add mutation/falsification checks and CI.

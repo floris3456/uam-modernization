@@ -22,7 +22,7 @@ Many parts of UAM affect privacy, Windows security boundaries, durable data, adm
 
 ## Consequences
 
-- Work may proceed on G0, contracts, pure models, fictional fixtures, and repository scaffolding.
+- Work may proceed on G0, contracts, pure models, exact randomized-property inputs, `TEST_AUTHORED` scenario structures, and repository scaffolding.
 - Later implementation waits for its predecessor gate.
 - Gate failures are retained and corrected; a rerun does not erase the first failure.
 - Human policy and production decisions remain separate.
@@ -32,6 +32,7 @@ Many parts of UAM affect privacy, Windows security boundaries, durable data, adm
 - Architecture governance confirms the baseline and gate order.
 - Accountable owners are assigned.
 - The exact reviewed input hashes are recorded.
+- Dataset-backed claims remain property/value-only; inaccurate source structure cannot support a gate claim.
 
 ## Revisit when
 

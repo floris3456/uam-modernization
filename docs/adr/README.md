@@ -12,7 +12,7 @@ An ADR records a decision; it does not prove that the design works. A decision m
 | [ADR-FS-002](ADR-FS-002-evidence-and-gate-records.md) | Evidence and gate records | Proposed |
 | [ADR-FS-003](ADR-FS-003-contract-and-identifier-rules.md) | Contracts, identifiers, time, and text | Experimenting |
 | [ADR-FS-004](ADR-FS-004-repository-build-and-supply-chain.md) | Repository, build, and supply chain | Experimenting |
-| [ADR-FS-005](ADR-FS-005-fictional-data-and-test-oracle.md) | Fictional data and independent test oracle | Experimenting — next gate |
+| [ADR-FS-005](ADR-FS-005-fictional-data-and-test-oracle.md) | Randomized-property data and independent test oracle | Experimenting — next gate |
 | [ADR-FS-030](ADR-FS-030-measured-numeric-settings.md) | Measured numeric settings | Proposed |
 | [ADR-FS-032](ADR-FS-032-external-dependency-admission.md) | External dependency admission | Proposed |
 

@@ -13,6 +13,20 @@ Save the complete response as `result-NN-short-topic.md` — a globally unique f
 - Code zips: one per code-bearing root (`src`, `tests`, `contracts`, `tools`, `scripts`, …), produced via `git archive` of the declared ref.
 - Attachments (non-code context): list exact basenames.
 
+## Dataset contract
+
+Choose exactly one:
+
+- `Dataset use: NONE` — state why this study needs no dataset; or
+- `Dataset use: RANDOMIZED_VALUES` — copy these literal identity lines and state the covered property/value claims:
+  - `Contract: research/current-randomized-dataset-contract.md`
+  - `Basename: iamdev-Full-2026-08-03T15-36-03-MANGLED.bak`
+  - `Byte count: 145977344`
+  - `SHA-256: 6d7a4677b05e11b6ca446a1dfd362958aa99804acaf8bbcbf42b04caca2b5045`
+  - `Covered use: <explicit property/value claims>`
+
+For `RANDOMIZED_VALUES`, state `Structure: UNTRUSTED`. Do not infer containers, records or rows, grouping, keys, relationships, joins, hierarchy, order, cardinality or counts, null or co-occurrence patterns, frequency or distributions, topology, scale, representativeness, behavior, or production safety. List every constructed deterministic structure, identity, clock, boundary, canary, or negative mutation as `TEST_AUTHORED`. A missing or mismatched source puts only dependent claims in `HOLD`; record the mismatch and never substitute another source.
+
 ## Reading list
 
 List exactly which files inside the zips and attachments this study reads. Inputs are shared by all parallel prompts and every step of a multi-step run — the reading list is what distinguishes this study, so it must be written into this prompt. You may read other files only if you truly think the effort is worth it; state why.
